@@ -32,12 +32,9 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>10.13.0</version>
                 <configuration>
-                    <url>jdbc:mysql://192.168.135.150:3306/videos_online</url>
-                    <user>root</user>
-                    <password>123</password>
-                    <locations>
-                        <location>classpath:db</location>
-                    </locations>
+                    <configFiles>
+                        <configFile>flyway.conf</configFile>
+                    </configFiles>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -47,7 +44,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            
         </plugins>
     </build>
 
