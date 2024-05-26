@@ -13,6 +13,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <start.class>org.hzz.AppMain</start.class>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
@@ -34,7 +35,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.hzz.AppMain</mainClass>
+                    <mainClass>${start.class}</mainClass>
                 </configuration>
                 <executions>
                     <execution>
