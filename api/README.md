@@ -13,3 +13,5 @@
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
+
+开发完一个模块如app-auth需要install到本地。
