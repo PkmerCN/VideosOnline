@@ -4,32 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-          <groupId>org.hzz</groupId>
-          <artifactId>api</artifactId>
-          <version>1.0.1</version>
+        <groupId>org.hzz</groupId>
+        <artifactId>api</artifactId>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>app-main</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <start.class>org.hzz.AppMain</start.class>
-        <jjwt.version>0.12.5</jjwt.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <dependencies>
         <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>auth-servier</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>${jjwt.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>

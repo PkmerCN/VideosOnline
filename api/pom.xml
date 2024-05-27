@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>app-main</module>
+        <module>app-auth</module>
     </modules>
 
     <name>api</name>
