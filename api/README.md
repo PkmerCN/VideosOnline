@@ -19,7 +19,7 @@
 
 # 运行
 
-进入到api根据目录执行
+进入到api根目录执行
 ```shell
 mvn install
 ```
