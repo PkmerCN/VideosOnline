@@ -17,6 +17,7 @@
     <properties>
         <spring.boot.version>3.2.6</spring.boot.version>
         <lombok.version>1.18.32</lombok.version>
+        <mysql.version>8.0.28</mysql.version>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
@@ -41,6 +42,11 @@
                 <scope>provided</scope>
             </dependency>
 
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
         </dependencies>
 
 
