@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>auth-servier</module>
+        <module>auth-server</module>
     </modules>
     <properties>
         <jjwt.version>0.12.5</jjwt.version>

@@ -10,6 +10,6 @@ public class AuthServerCommandLiner implements CommandLineRunner {
 
     @Override
     public void run(String... args){
-        log.info("Auth Server on work");
+        log.info("Auth Server on work2");
     }
 }

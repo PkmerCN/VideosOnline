@@ -22,10 +22,8 @@
 
 进入到api根目录执行
 ```shell
-mvn install
+mvn clean install
+mvn -pl app-main spring-boot:run
 ```
-进入到app-main目录执行
-```shell
-cd app-main 
-mvn spring-boot:run
-```
+-pl: This stands for "project list"
+It allows you to specify which modules in your multi-module project you want to include

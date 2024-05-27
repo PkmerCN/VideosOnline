@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @GetMapping("/auth")
-    String hello(){
-        return "hello auth demo";
+    public String hello(){
+        return "hello auth demo success";
     }
 }
