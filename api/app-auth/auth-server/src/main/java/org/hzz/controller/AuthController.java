@@ -14,6 +14,6 @@ public class AuthController {
 
     @GetMapping("/auth")
     public String hello(){
-        return "hello auth demo success23";
+        return "hello auth demo success";
     }
 }
