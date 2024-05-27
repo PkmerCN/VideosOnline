@@ -15,3 +15,16 @@
 ```
 
 开发完一个模块如app-auth需要install到本地。
+
+
+# 运行
+
+进入到api根据目录执行
+```shell
+mvn install
+```
+进入到app-main目录执行
+```shell
+cd app-main 
+mvn spring-boot:run
+```
