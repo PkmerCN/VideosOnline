@@ -13,10 +13,35 @@
         <module>app-auth</module>
     </modules>
 
-    <name>api</name>
+    <name>胖卡</name>
+    <description>🔥😊This is a project that I use for full-stack development😊🔥</description>
+    <url>https://pkmer.gitee.io</url>
+
+    <!-- Licenses -->
+    <licenses>
+        <license>
+            <name>Apache License</name>
+            <comments>Comments: We are pretty good sharing</comments>
+        </license>
+    </licenses>
+
+    <!-- Summary -->
+    <organization>
+        <name>Developer Digital Garden organization</name>
+        <url>https://pkmer.gitee.io</url>
+    </organization>
+
+    <!-- Team -->
+    <developers>
+        <developer>
+            <name>卡卡</name>
+            <email>1193094618@qq.com</email>
+        </developer>
+    </developers>
 
     <properties>
         <spring.boot.version>3.2.6</spring.boot.version>
+        <springdoc.version>2.5.0</springdoc.version>
         <lombok.version>1.18.32</lombok.version>
         <mysql.version>8.0.28</mysql.version>
         <java.version>17</java.version>
@@ -24,6 +49,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
+
 
 
     <dependencyManagement>
@@ -34,6 +60,12 @@
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
             </dependency>
 
             <dependency>

@@ -1,0 +1,5 @@
+
+springdoc:
+  use-fqn: true    #  enables fully qualified names
+
+app-version: '@project.version@'
