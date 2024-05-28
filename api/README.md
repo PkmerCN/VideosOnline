@@ -25,6 +25,20 @@ dP        `88888P' dP dP    `88888P'   dP   `88888P8 `88888P' dP   `YP
 | Maven      | 3.9.0   |
 
 
+# 运行
+
+进入到api根目录执行
+```shell
+mvn clean install
+```
+```shell
+mvn -pl app-main spring-boot:run
+```
+`-pl`: This stands for "project list"
+It allows you to specify which modules in your multi-module project you want to include
+
+
+
 # 项目搭建集成的开发工具
 
 
@@ -40,20 +54,6 @@ dP        `88888P' dP dP    `88888P'   dP   `88888P8 `88888P' dP   `YP
 | git版本控制，多分支开发,tag标记，release发布版本        |
 
 
-
-
-
-# 运行
-
-进入到api根目录执行
-```shell
-mvn clean install
-```
-```shell
-mvn -pl app-main spring-boot:run
-```
--pl: This stands for "project list"
-It allows you to specify which modules in your multi-module project you want to include
 
 # 分包开发
 
