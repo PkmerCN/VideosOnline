@@ -1,5 +1,21 @@
 
-![app](./imgs/app.png)
+
+```vue
+88888888b          dP dP               dP                     dP
+88                 88 88               88                     88
+a88aaaa    dP    dP 88 88    .d8888b. d8888P .d8888b. .d8888b. 88  .dP
+88        88    88 88 88    Y8ooooo.   88   88'  `88 88'  `"" 88888"
+88        88.  .88 88 88          88   88   88.  .88 88.  ... 88  `8b.
+dP        `88888P' dP dP    `88888P'   dP   `88888P8 `88888P' dP   `YP
+
+                           🤗 Happy Coding!!! 🤗
+😊Author: 胖卡
+🍅Email: 1193094618@qq.com
+🔥Website: https://pkmer.gitee.io
+
+📖Generate Online API: http://localhost:8080/doc/index.html
+```
+
 # 版本
 
 | Library    | Version |
@@ -31,6 +47,8 @@
 进入到api根目录执行
 ```shell
 mvn clean install
+```
+```shell
 mvn -pl app-main spring-boot:run
 ```
 -pl: This stands for "project list"
@@ -54,3 +72,5 @@ It allows you to specify which modules in your multi-module project you want to 
 开发完一个模块如app-auth需要install到本地。
 
 
+
+![app](./imgs/app.png)
