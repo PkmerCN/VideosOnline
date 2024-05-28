@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.hzz</groupId>
     <artifactId>api</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <packaging>pom</packaging>
     <modules>
@@ -14,7 +13,7 @@
     </modules>
 
     <name>VideosOnline</name>
-    <description>🔥😊This is a project that I use for full-stack development😊🔥</description>
+    <description>&#x1f525;&#x1f60a;This is a project that I use for full-stack development&#x1f60a;&#x1f525;</description>
     <url>https://pkmer.gitee.io</url>
 
     <!-- Licenses -->
@@ -91,7 +90,8 @@
 
     <scm>
         <connection>scm:git:https://gitee.com/developeros/videos-online</connection>
-    </scm>
+      <tag>api-1.0.0</tag>
+  </scm>
     <build>
         <plugins>
             <plugin>
