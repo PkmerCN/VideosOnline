@@ -14,6 +14,11 @@ public class AuthController {
 
     @GetMapping("/auth")
     public String hello(){
-        return "hello auth demo success";
+        return "hello auth demo success04";
+    }
+
+    @GetMapping("/user")
+    public String user(){
+        return "胖卡666";
     }
 }

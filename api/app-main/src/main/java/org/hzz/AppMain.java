@@ -16,7 +16,7 @@ public class AppMain {
 
     @RequestMapping("/test")
     String test(){
-        return "test 胖卡..hello world m1";
+        return "test 胖卡..hello world m101";
     }
 
     public static void main(String[] args) {
