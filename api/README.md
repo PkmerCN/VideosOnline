@@ -1,4 +1,21 @@
-后端接口
+# 版本
+
+| Library    | Version |
+|------------|---------|
+| SpringBoot | 3.2.6   |
+| JDK        | 17      |
+| Maven      | 3.9.0   |
+
+
+# 运行
+
+进入到api根目录执行
+```shell
+mvn clean install
+mvn -pl app-main spring-boot:run
+```
+-pl: This stands for "project list"
+It allows you to specify which modules in your multi-module project you want to include
 
 # 分包开发
 
@@ -18,12 +35,3 @@
 开发完一个模块如app-auth需要install到本地。
 
 
-# 运行
-
-进入到api根目录执行
-```shell
-mvn clean install
-mvn -pl app-main spring-boot:run
-```
--pl: This stands for "project list"
-It allows you to specify which modules in your multi-module project you want to include

@@ -19,6 +19,6 @@ public class AuthController {
 
     @GetMapping("/user")
     public String user(){
-        return "胖卡666";
+        return "胖卡666777";
     }
 }
