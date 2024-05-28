@@ -4,7 +4,7 @@
 
     <groupId>org.hzz</groupId>
     <artifactId>api</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <packaging>pom</packaging>
     <modules>
@@ -91,7 +91,7 @@
     <!--将所有的代码提交到版本管理库（SVN，GIT）-->
     <scm>
         <connection>scm:git:https://gitee.com/developeros/videos-online</connection>
-        <tag>v1.0.2</tag>
+        <tag>HEAD</tag>
     </scm>
     <build>
         <plugins>
