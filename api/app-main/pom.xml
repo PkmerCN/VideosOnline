@@ -8,6 +8,7 @@
     </parent>
 
     <artifactId>app-main</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
 
     <properties>
         <start.class>org.hzz.AppMain</start.class>

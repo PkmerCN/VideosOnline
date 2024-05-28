@@ -88,10 +88,11 @@
         </dependencies>
     </dependencyManagement>
 
+    <!--将所有的代码提交到版本管理库（SVN，GIT）-->
     <scm>
         <connection>scm:git:https://gitee.com/developeros/videos-online</connection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
     <build>
         <plugins>
             <plugin>
