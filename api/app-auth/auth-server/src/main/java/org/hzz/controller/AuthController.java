@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 认证处理
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/5/28
