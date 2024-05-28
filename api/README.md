@@ -9,6 +9,23 @@
 | Maven      | 3.9.0   |
 
 
+# 项目搭建集成的开发工具
+
+
+| 集成的开发工具                                |
+| -------------------------------------- |
+| 多模块热部署spring-boot-devtools             |
+| 多模块版本控制maven-release                   |
+| 启动springboot项目spring-boot-maven-plugin |
+| 自动生成API文档springdoc-openapi             |
+| 数据迁移flyway                             |
+| maven 多模块开发                            |
+| JWT 认证                                 |
+
+
+
+
+
 # 运行
 
 进入到api根目录执行
