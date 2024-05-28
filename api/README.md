@@ -29,7 +29,7 @@ dP        `88888P' dP dP    `88888P'   dP   `88888P8 `88888P' dP   `YP
 
 
 | 集成的开发工具                                |
-| -------------------------------------- |
+|----------------------------------------|
 | 多模块热部署spring-boot-devtools             |
 | 多模块版本控制maven-release                   |
 | 启动springboot项目spring-boot-maven-plugin |
@@ -37,6 +37,7 @@ dP        `88888P' dP dP    `88888P'   dP   `88888P8 `88888P' dP   `YP
 | 数据迁移flyway                             |
 | maven 多模块开发                            |
 | JWT 认证                                 |
+| git版本控制，多分支开发,tag标记，release发布版本        |
 
 
 
