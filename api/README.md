@@ -42,16 +42,17 @@ It allows you to specify which modules in your multi-module project you want to 
 # 项目搭建集成的开发工具
 
 
-| 集成的开发工具                                |
-|----------------------------------------|
-| 多模块热部署spring-boot-devtools             |
-| 多模块版本控制maven-release                   |
+| 集成的开发工具                              |
+|--------------------------------------|
+| 多模块热部署spring-boot-devtools           |
+| 多模块版本控制maven-release                 |
 | 启动springboot项目spring-boot-maven-plugin |
-| 自动生成API文档springdoc-openapi             |
-| 数据迁移flyway                             |
-| maven 多模块开发                            |
-| JWT 认证                                 |
-| git版本控制，多分支开发,tag标记，release发布版本        |
+| 自动生成API文档springdoc-openapi           |
+| 数据迁移flyway                           |
+| maven 多模块开发                          |
+| JWT 认证                               |
+| git版本控制，多分支开发,tag标记，release发布版本      |
+| Gitee和Github远程仓库同步                   |
 
 
 
