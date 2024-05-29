@@ -74,8 +74,10 @@ It allows you to specify which modules in your multi-module project you want to 
 
 # 附录
 
-[Github: VideosOnline](https://github.com/pkmer-cn/VideosOnline)
+目前我有两个远程仓库[Github: VideosOnline](https://github.com/pkmer-cn/VideosOnline)和[Gitee: VideosOnline](https://gitee.com/developeros/videos-online)
 
-[Gitee: VideosOnline](https://gitee.com/developeros/videos-online)
+在开发的时候，分支的开辟我只提交到[Gitee: VideosOnline](https://gitee.com/developeros/videos-online),而[Github: VideosOnline](https://github.com/pkmer-cn/VideosOnline)仓库只同步与[Gitee: VideosOnline](https://gitee.com/developeros/videos-online)的master分支
+
+
 
 ![app](./imgs/app.png)
