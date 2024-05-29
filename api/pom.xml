@@ -42,6 +42,7 @@
         <spring.boot.version>3.2.6</spring.boot.version>
         <springdoc.version>2.5.0</springdoc.version>
         <lombok.version>1.18.24</lombok.version>
+        <junit.version>5.9.3</junit.version>
         <mysql.version>8.0.28</mysql.version>
         <jjwt.version>0.12.5</jjwt.version>
         <java.version>17</java.version>
@@ -66,6 +67,14 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <dependency>
