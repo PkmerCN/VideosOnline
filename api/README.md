@@ -72,6 +72,10 @@ It allows you to specify which modules in your multi-module project you want to 
 
 开发完一个模块如app-auth需要install到本地。
 
+# 附录
 
+[Github: VideosOnline](https://github.com/pkmer-cn/VideosOnline)
+
+[Gitee: VideosOnline](https://gitee.com/developeros/videos-online)
 
 ![app](./imgs/app.png)
