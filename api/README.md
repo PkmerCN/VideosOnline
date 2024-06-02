@@ -16,15 +16,6 @@ dP        `88888P' dP dP    `88888P'   dP   `88888P8 `88888P' dP   `YP
 📖Generate Online API: http://localhost:8080/doc/index.html
 ```
 
-# 版本
-
-| Library        | Version           |
-|----------------|-------------------|
-| SpringBoot     | 3.3.0             |
-| JDK            | 17                |
-| Maven          | 3.9.0             |
-| Docker Compose | v2.24.5-desktop.1 |
-
 
 # 运行
 
@@ -39,27 +30,44 @@ mvn -pl app-main spring-boot:run
 It allows you to specify which modules in your multi-module project you want to include
 
 
+# 版本
+
+| Library             | Version           |
+|---------------------|-------------------|
+| SpringBoot          | 3.3.0             |
+| JDK                 | 17                |
+| Maven               | 3.9.0             |
+| Docker Compose      | v2.24.5-desktop.1 |
+| MyBatis Spring Boot | 3.0.3             |
+| MyBatis Generate    | 1.4.2             |
+
+
+## 插件
+
+| Maven Plugin                   | Version |
+| :----------------------------- | ------- |
+| flyway-maven-plugin            | 10.13.0 |
+| spring-boot-maven-plugin       | 3.3.0   |
+| maven-release-plugin           | 3.0.1   |
+| mybatis-generator-maven-plugin | 1.4.2   |
+
+
 
 # 项目搭建集成的开发工具
 
-
-
-
 | 集成的开发工具                                |
-| :------------------------------------- |
+|:---------------------------------------|
 | 多模块热部署spring-boot-devtools             |
 | 多模块版本控制maven-release                   |
 | 启动springboot项目spring-boot-maven-plugin |
 | 自动生成API文档springdoc-openapi             |
-| 数据迁移flyway                             |
+| 数据库版本控制flyway                          |
 | maven 多模块开发                            |
 | git版本控制，多分支开发,tag标记，release发布版本        |
 | Gitee和Github远程仓库同步                     |
 | JWT 认证                                 |
 | docker集成                               |
 | MyBatis集成以及逆向工程生成代码                    |
-
-
 
 
 # 分包开发
