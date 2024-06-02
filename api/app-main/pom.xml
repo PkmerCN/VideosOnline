@@ -58,6 +58,7 @@
                 <version>${spring.boot.version}</version>
                 <configuration>
                     <mainClass>${start.class}</mainClass>
+                    <workingDirectory>${project.parent.basedir}</workingDirectory>
                 </configuration>
                 <executions>
                     <execution>
