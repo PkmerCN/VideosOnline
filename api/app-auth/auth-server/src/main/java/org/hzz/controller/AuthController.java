@@ -15,7 +15,8 @@ public class AuthController {
 
     @GetMapping("/auth")
     public String hello(){
-        return "hello auth demo success04";
+        throw new RuntimeException("auth error");
+//        return "hello auth demo success04";
     }
 
     @GetMapping("/user")

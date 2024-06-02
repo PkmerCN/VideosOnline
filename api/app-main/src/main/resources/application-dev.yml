@@ -1,5 +1,34 @@
+server:
+  port: 8080
+spring:
+  docker:
+    compose:
+      lifecycle-management: start_only
+  thymeleaf:
+    cache: false
+  flyway:
+    locations: classpath:db
+    enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3308/videos_online?autoreconnect=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: Root.123456
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      pool-name: SpringBootHikariCP
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/**/*.xml
 
 springdoc:
   use-fqn: true    #  enables fully qualified names
 
+# 用于文档说明
 app-version: '@project.version@'
+

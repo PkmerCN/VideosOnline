@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf Error Page</title>
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>
+            <span class="fade-in">4</span>
+            <span class="fade-in">0</span>
+            <span class="fade-in">4</span>
+        </h1>
+        <div>Oops Something Wrong.</div>
+        <div><span>您的访问路径<span class="path" th:text="${path}"></span>是否正确</span></div>
+    </div>
+    <main>
+        <section>
+            <h3>Timestamp</h3>
+            <p th:text="${timestamp}">xxx</p>
+        </section>
+        <section>
+            <h3>Error</h3>
+            <p th:text="${error}">xxx</p>
+        </section>
+        <section>
+            <h3>Path</h3>
+            <p th:text="${path}">xxx</p>
+        </section>
+        <section>
+            <h3>Message</h3>
+            <p th:text="${message}">xxx</p>
+        </section>
+        <section>
+            <h3>Trace</h3>
+            <p th:text="${trace}">xxx</p>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>

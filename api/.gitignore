@@ -1,5 +1,5 @@
 .vscode
 target
-test
 *.class
 .idea
+docker_data
