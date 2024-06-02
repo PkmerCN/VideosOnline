@@ -66,6 +66,15 @@ It allows you to specify which modules in your multi-module project you want to 
 | maven-release-plugin           | 3.0.1   |
 | mybatis-generator-maven-plugin | 1.4.2   |
 
+# 页面开发
+
+
+| 页面      | 链接                                                                           |
+|---------|------------------------------------------------------------------------------|
+| 首页      | [http://localhost:8080/](http://localhost:8080/)                             |
+| 404页面   | 路径错误就会显示                                                                     |
+| 5xx页面   | 服务内部异常（如自己没有抛出的异常没处理）                                                        |
+| 文档页面    | [http://localhost:8080/doc/index.html](http://localhost:8080/doc/index.html) |
 
 
 # 项目搭建集成的开发工具
