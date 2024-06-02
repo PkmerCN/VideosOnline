@@ -10,6 +10,7 @@
     <modules>
         <module>app-main</module>
         <module>app-auth</module>
+        <module>app-mybatis-generate</module>
     </modules>
 
     <name>VideosOnline</name>
