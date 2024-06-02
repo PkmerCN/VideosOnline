@@ -1,5 +1,6 @@
 package org.hzz.info;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.ClassPathResource;
@@ -18,13 +19,17 @@ import java.nio.file.Paths;
 @Component
 public class AppInfo implements CommandLineRunner, Ordered {
 
+    @Value("${server.port}")
+    private Integer serverPort;
     @Override
     public void run(String... args) throws Exception {
         ClassPathResource classPathResource = new ClassPathResource("info.txt");
         // file:/D:/gitee/challenges/videos-online/api/app-main/target/classes/info.txt
         Path path = Paths.get(classPathResource.getURI());
         String contents = Files.readString(path);
-        System.out.println(contents);
+        System.out.print(contents);
+        System.out.printf("🛜Server Run On %d \n",serverPort);
+        System.out.printf("📖Generate Online API: http://localhost:%d/doc/index.html \n\n",serverPort);
     }
 
     @Override

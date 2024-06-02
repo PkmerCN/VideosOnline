@@ -7,8 +7,7 @@ a88aaaa    dP    dP 88 88    .d8888b. d8888P .d8888b. .d8888b. 88  .dP
  dP        `88888P' dP dP    `88888P'   dP   `88888P8 `88888P' dP   `YP
 
                            🤗 Happy Coding!!! 🤗
-😊Author: 胖卡
+😊Author: 胖卡(HPangKa)
 🍅Email: 1193094618@qq.com
-🔥Website: https://pkmer.gitee.io
+🔥Gitee: https://gitee.com/developeros/videos-online
 
-📖Generate Online API: http://localhost:8080/doc/index.html

@@ -1,9 +1,11 @@
-
-
+server:
+  port: 8080
 spring:
   docker:
     compose:
       lifecycle-management: start_only
+  thymeleaf:
+    cache: false
   flyway:
     locations: classpath:db
     enabled: true
@@ -29,5 +31,4 @@ springdoc:
 
 # 用于文档说明
 app-version: '@project.version@'
-
 
