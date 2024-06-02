@@ -20,7 +20,7 @@ dP        `88888P' dP dP    `88888P'   dP   `88888P8 `88888P' dP   `YP
 
 | Library    | Version |
 |------------|---------|
-| SpringBoot | 3.2.6   |
+| SpringBoot | 3.3.0   |
 | JDK        | 17      |
 | Maven      | 3.9.0   |
 

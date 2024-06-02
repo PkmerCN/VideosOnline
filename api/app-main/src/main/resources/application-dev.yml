@@ -1,5 +1,12 @@
 
+
+spring:
+  docker:
+    compose:
+      lifecycle-management: start_only
+
 springdoc:
   use-fqn: true    #  enables fully qualified names
 
+# 用于文档说明
 app-version: '@project.version@'
