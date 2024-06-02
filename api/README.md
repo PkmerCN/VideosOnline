@@ -18,11 +18,12 @@ dP        `88888P' dP dP    `88888P'   dP   `88888P8 `88888P' dP   `YP
 
 # 版本
 
-| Library    | Version |
-|------------|---------|
-| SpringBoot | 3.3.0   |
-| JDK        | 17      |
-| Maven      | 3.9.0   |
+| Library        | Version           |
+|----------------|-------------------|
+| SpringBoot     | 3.3.0             |
+| JDK            | 17                |
+| Maven          | 3.9.0             |
+| Docker Compose | v2.24.5-desktop.1 |
 
 
 # 运行
@@ -42,17 +43,22 @@ It allows you to specify which modules in your multi-module project you want to 
 # 项目搭建集成的开发工具
 
 
-| 集成的开发工具                              |
-|--------------------------------------|
-| 多模块热部署spring-boot-devtools           |
-| 多模块版本控制maven-release                 |
+
+
+| 集成的开发工具                                |
+| :------------------------------------- |
+| 多模块热部署spring-boot-devtools             |
+| 多模块版本控制maven-release                   |
 | 启动springboot项目spring-boot-maven-plugin |
-| 自动生成API文档springdoc-openapi           |
-| 数据迁移flyway                           |
-| maven 多模块开发                          |
-| JWT 认证                               |
-| git版本控制，多分支开发,tag标记，release发布版本      |
-| Gitee和Github远程仓库同步                   |
+| 自动生成API文档springdoc-openapi             |
+| 数据迁移flyway                             |
+| maven 多模块开发                            |
+| git版本控制，多分支开发,tag标记，release发布版本        |
+| Gitee和Github远程仓库同步                     |
+| JWT 认证                                 |
+| docker集成                               |
+| MyBatis集成以及逆向工程生成代码                    |
+
 
 
 
