@@ -92,6 +92,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | JWT 认证                                 |
 | docker集成                               |
 | MyBatis集成以及逆向工程生成代码                    |
+| Valid 参数检验以及异常处理                       |
 
 
 # 分包开发

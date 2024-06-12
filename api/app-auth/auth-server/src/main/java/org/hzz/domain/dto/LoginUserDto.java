@@ -1,6 +1,7 @@
 package org.hzz.domain.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -11,7 +12,9 @@ import lombok.Data;
 @Data
 public class LoginUserDto {
     @Schema(description = "邮箱",example = "1193094618@qq.com")
+    @NotNull
     private String email;
     @Schema(description = "密码",example = "Root.123456")
+    @NotNull
     private String password;
 }

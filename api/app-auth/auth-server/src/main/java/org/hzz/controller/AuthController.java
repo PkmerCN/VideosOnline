@@ -3,10 +3,12 @@ package org.hzz.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.domain.dto.LoginUserDto;
 import org.hzz.services.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "用户认证",description = "用户的登录注册等")
 @RestController("/auth")
 @Slf4j
+@Validated
 public class AuthController {
 
     @Autowired
@@ -25,7 +28,7 @@ public class AuthController {
 
     @Operation(summary = "用户注册",description = "用户登录生成token")
     @PostMapping("login")
-    public void login(@RequestBody LoginUserDto loginUserDto){
+    public void login(@Valid @RequestBody LoginUserDto loginUserDto){
         log.info(" email = {} password = {}",loginUserDto.getEmail(),loginUserDto.getPassword());
     }
 
