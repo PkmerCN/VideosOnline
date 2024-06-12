@@ -24,8 +24,8 @@ import java.util.function.Function;
 @Service
 public class JWTService {
 
-  private long expirationTime;
-  private String secretKey;
+  private final long expirationTime;
+  private final String secretKey;
 
    public JWTService(AppProps appProps){
        secretKey = appProps.getJwt().getSecretKey();
