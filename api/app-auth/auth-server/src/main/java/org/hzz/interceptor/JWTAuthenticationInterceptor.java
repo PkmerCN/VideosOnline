@@ -13,6 +13,6 @@ public class JWTAuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        throw new RuntimeException("xxx pkmer");
+        return true;
     }
 }

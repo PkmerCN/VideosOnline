@@ -4,7 +4,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.hzz.config.AppProps;
 import org.hzz.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +24,13 @@ import java.util.function.Function;
 @Service
 public class JWTService {
 
-    @Value("${jwt.expiration-time}")
-    private long expirationTime;
+  private long expirationTime;
+  private String secretKey;
 
-    @Value("${jwt.secret-key}")
-    private String secretKey;
+   public JWTService(AppProps appProps){
+       secretKey = appProps.getJwt().getSecretKey();
+       expirationTime = appProps.getJwt().getExpirationTime();
+   }
 
 
     /**
