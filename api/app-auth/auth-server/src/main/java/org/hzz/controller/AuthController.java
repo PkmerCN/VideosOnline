@@ -2,14 +2,18 @@ package org.hzz.controller;
 
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.domain.Result;
 import org.hzz.domain.dto.LoginUserDto;
 import org.hzz.services.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * 认证处理
@@ -28,8 +32,11 @@ public class AuthController {
 
     @Operation(summary = "用户注册",description = "用户登录生成token")
     @PostMapping("login")
-    public void login(@Valid @RequestBody LoginUserDto loginUserDto){
+    public Result<Map<String,Object>> login(@Valid @RequestBody LoginUserDto loginUserDto){
         log.info(" email = {} password = {}",loginUserDto.getEmail(),loginUserDto.getPassword());
+        Map<String,Object> data = Map.of("email",loginUserDto.getEmail(),"password",loginUserDto.getPassword());
+        return Result.success(data);
+
     }
 
     @GetMapping("/auth")
