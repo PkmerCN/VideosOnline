@@ -1,9 +1,10 @@
 app:
   ignore_urls:
+    - /auth/*
+    - /error
     - /index
     - /index.html
     - /index.htm
-    - /error
     - /css/*.css
   jwt:
     expiration-time: 3600000 # 1h in millisecond
