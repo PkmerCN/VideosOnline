@@ -34,6 +34,7 @@ public class ParseJWT {
             System.out.println(payload.get("slogan"));
             System.out.println(payload.getSubject());
         } catch (JwtException ex) {
+            System.out.println(ex);
         }
 
     }

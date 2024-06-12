@@ -1,0 +1,10 @@
+app:
+  ignore_urls:
+    - /index
+    - /index.html
+    - /index.htm
+    - /error
+    - /css/*.css
+  jwt:
+    expiration-time: 3600000 # 1h in millisecond
+    secret-key: 9cZjXN9uHH0erCgOAdZCsXIAJbeh7Q43eLa/c1a69rU=
