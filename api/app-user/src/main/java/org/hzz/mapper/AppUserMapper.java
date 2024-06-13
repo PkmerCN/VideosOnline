@@ -1,11 +1,13 @@
 package org.hzz.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.hzz.domain.entity.AppUser;
 import org.hzz.domain.entity.AppUserExample;
 
 import java.util.List;
 
+@Mapper
 public interface AppUserMapper {
     long countByExample(AppUserExample example);
 

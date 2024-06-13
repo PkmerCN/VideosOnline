@@ -45,11 +45,12 @@
         <spring.boot.version>3.3.0</spring.boot.version>
         <springdoc.version>2.5.0</springdoc.version>
         <mybatis.spring.boot.version>3.0.3</mybatis.spring.boot.version>
-        <lombok.version>1.18.24</lombok.version>
+        <lombok.version>1.18.16</lombok.version>
         <junit.version>5.9.3</junit.version>
         <mysql.version>8.0.28</mysql.version>
         <jjwt.version>0.12.5</jjwt.version>
         <password4j.version>1.8.2</password4j.version>
+        <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <java.version>17</java.version>
         <fastjson2.version>2.0.51</fastjson2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -103,6 +104,10 @@
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
         </dependency>
     </dependencies>
 
@@ -164,6 +169,11 @@
                 <artifactId>password4j</artifactId>
                 <version>${password4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -178,6 +188,35 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.0.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source> <!-- depending on your project -->
+                    <target>${java.version}</target> <!-- depending on your project -->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+
+                        <!-- additional annotation processor required as of Lombok 1.18.16 -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
         </plugins>
     </build>

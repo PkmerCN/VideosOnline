@@ -5,13 +5,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.hzz.config.AppProps;
-import org.hzz.domain.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.hzz.domain.bo.UserBo;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
-import java.security.Key;
 import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
@@ -37,8 +34,10 @@ public class JWTService {
      * 生成token
      * @return
      */
-    public String generateToken(User user){
-        Map<String, ?> extraClaims = Map.of("id",user.getId(),"email",user.getEmail());
+    public String generateToken(UserBo user){
+        Map<String, ?> extraClaims = Map.of(
+                "id",user.getId(),
+                "email",user.getEmail());
 
         return Jwts.builder()
                 .subject(user.getUsername())

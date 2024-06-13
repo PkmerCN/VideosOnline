@@ -11,6 +11,14 @@
 
     <artifactId>app-user</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>app-common</artifactId>
+            <version>1.0.4-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>

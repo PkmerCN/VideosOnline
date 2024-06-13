@@ -1,4 +1,4 @@
-package org.hzz.domain;
+package org.hzz.domain.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class UserBo {
     private Long id;
     private String username;
     private String cellPhone;
