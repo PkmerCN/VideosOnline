@@ -12,6 +12,7 @@
         <module>app-auth</module>
         <module>app-mybatis-generate</module>
         <module>app-common</module>
+        <module>app-user</module>
     </modules>
 
     <name>VideosOnline</name>
@@ -48,6 +49,7 @@
         <junit.version>5.9.3</junit.version>
         <mysql.version>8.0.28</mysql.version>
         <jjwt.version>0.12.5</jjwt.version>
+        <password4j.version>1.8.2</password4j.version>
         <java.version>17</java.version>
         <fastjson2.version>2.0.51</fastjson2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -79,6 +81,28 @@
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2-extension-spring6</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- idea的支持，因为我们使用的版本是5.9.3 -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -133,6 +157,12 @@
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2-extension-spring6</artifactId>
                 <version>${fastjson2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.password4j</groupId>
+                <artifactId>password4j</artifactId>
+                <version>${password4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

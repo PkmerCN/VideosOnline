@@ -9,14 +9,7 @@
         <version>1.0.4-SNAPSHOT</version>
     </parent>
 
-    <artifactId>app-common</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.password4j</groupId>
-            <artifactId>password4j</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>app-user</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

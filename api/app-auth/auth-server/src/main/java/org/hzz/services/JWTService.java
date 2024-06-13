@@ -38,7 +38,7 @@ public class JWTService {
      * @return
      */
     public String generateToken(User user){
-        Map<String, ?> extraClaims = Map.of("id",user.getId());
+        Map<String, ?> extraClaims = Map.of("id",user.getId(),"email",user.getEmail());
 
         return Jwts.builder()
                 .subject(user.getUsername())
