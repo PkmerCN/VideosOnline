@@ -16,6 +16,11 @@
             <groupId>com.password4j</groupId>
             <artifactId>password4j</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.4.2</version>
+        </dependency>
     </dependencies>
 
     <properties>
