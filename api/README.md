@@ -45,7 +45,7 @@ mvn -pl app-main spring-boot:run
 It allows you to specify which modules in your multi-module project you want to include
 
 
-# 版本
+# 核心开发版本
 
 | Library             | Version           |
 |---------------------|-------------------|
@@ -93,6 +93,8 @@ It allows you to specify which modules in your multi-module project you want to 
 | docker集成                               |
 | MyBatis集成以及逆向工程生成代码                    |
 | Valid 参数检验以及异常处理                       |
+| 引入fastjson                             |
+| 引入password4j                           |
 
 
 # 分模块开发
