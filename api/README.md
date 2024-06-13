@@ -120,6 +120,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | Valid 参数检验以及异常处理                       |
 | 引入fastjson                             |
 | 引入password4j                           |
+| 引入mapstruct对象映射                        |
 
 
 
