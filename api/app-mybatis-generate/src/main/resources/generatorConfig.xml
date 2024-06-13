@@ -16,7 +16,7 @@
                         password="Root.123456">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="org.hzz.model" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="org.hzz.domain.entity" targetProject="src/main/java"/>
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
         <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.mapper" targetProject="src/main/java"/>
 
