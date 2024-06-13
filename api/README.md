@@ -95,22 +95,33 @@ It allows you to specify which modules in your multi-module project you want to 
 | Valid 参数检验以及异常处理                       |
 
 
-# 分包开发
+# 分模块开发
 
 主程序是app-main
 以依赖的方式来处理其他功能的jar包
 
-如app-main的`pom.xml`,依赖auth-seriver
+如app-main的`pom.xml`,依赖auth-server
 
 ```xml
 <dependency>
     <groupId>org.hzz</groupId>
-    <artifactId>auth-servier</artifactId>
+    <artifactId>auth-server</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
-
 开发完一个模块如app-auth需要install到本地。
+
+| 模块                   |                 |
+| -------------------- | --------------- |
+| app-main             | 程序入口            |
+| app-auth             | 认证父模块           |
+| auth-server          | 认证服务            |
+| app-common           | 通用模块            |
+| app-mybatis-generate | mybatis逆向工程生成代码 |
+| app-user             | 用户相关            |
+
+
+
 
 # 附录
 
