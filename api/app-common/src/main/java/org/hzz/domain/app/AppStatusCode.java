@@ -9,5 +9,5 @@ package org.hzz.domain.app;
  */
 public interface AppStatusCode {
 
-    int value();
+    int code();
 }

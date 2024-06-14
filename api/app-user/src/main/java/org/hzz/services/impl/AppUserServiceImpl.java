@@ -1,10 +1,8 @@
 package org.hzz.services.impl;
 
-import org.hzz.domain.app.AppStatusImpl;
 import org.hzz.domain.bo.UserBo;
 import org.hzz.domain.entity.AppUser;
 import org.hzz.domain.entity.AppUserExample;
-import org.hzz.exceptions.AppCommonException;
 import org.hzz.mapper.AppUserMapper;
 import org.hzz.mapstruct.AppUserEntityToBo;
 import org.hzz.services.AppUserService;

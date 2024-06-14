@@ -21,7 +21,7 @@ public enum AppStatusImpl implements AppStatus{
     }
 
     @Override
-    public int value() {
+    public int code() {
         return this.code;
     }
 
