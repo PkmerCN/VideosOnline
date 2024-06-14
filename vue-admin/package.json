@@ -5,14 +5,14 @@
   "type": "module",
   "packageManager": "yarn@1.22.22",
   "scripts": {
-    "dev": "vite",
+    "dev": "yarn tsx scripts/dev",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "test:echo": "echo '🔥Hello World'"
+    "test": "yarn tsx scripts/test"
   },
   "dependencies": {
     "vue": "^3.4.21"

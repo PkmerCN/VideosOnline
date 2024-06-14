@@ -1,5 +1,3 @@
-import { log } from 'console'
-
 const logo = `
 88888888b          dP dP               dP                     dP
 88                 88 88               88                     88
@@ -14,4 +12,4 @@ dP         88888P  dP dP     88888P'   dP    88888P8  88888P' dP   YP
 🔥Gitee: https://gitee.com/developeros/videos-online
 `
 
-log(logo)
+export default logo
