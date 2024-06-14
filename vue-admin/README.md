@@ -1,3 +1,10 @@
+# 启动项目
+
+```shell
+yarn dev
+```
+![dev console](./attachment/imgs/cmd.png)
+
 # 版本
 
 | 开发工具 | 版本    |
@@ -9,8 +16,8 @@
 | tsx      | 4.15.4  |
 
 
-# 启动项目
 
-```shell
-yarn dev
-```
+# 项目开发进度
+
+1. 项目搭建
+2. 脚本编写显示logo
