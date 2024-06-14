@@ -1,6 +1,6 @@
 import { execSync as exec } from 'node:child_process'
 import logo from "./logo";
-import {log} from "console"
+import { log } from "console"
 
 /**
  * 1. 打印我们的logo
