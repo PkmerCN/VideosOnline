@@ -121,6 +121,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | 引入fastjson                             |
 | 引入password4j                           |
 | 引入mapstruct对象映射                        |
+| 系统自定义异常以及AppStatusCode完成               |
 
 
 
