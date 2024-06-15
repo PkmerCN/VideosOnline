@@ -29,7 +29,7 @@ yarn dev
 | 用到的技术                |
 |----------------------|
 | Vite                 |
-| vue3                 |
+| Vue3                 |
 | TypeScript           |
 | Sass                 |
 | Composition API      |
