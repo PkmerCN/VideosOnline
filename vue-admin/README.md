@@ -22,3 +22,6 @@ yarn dev
 
 1. 项目搭建
 2. 脚本编写显示logo
+3. 登录页面
+4. axios与后端联调
+4. router
