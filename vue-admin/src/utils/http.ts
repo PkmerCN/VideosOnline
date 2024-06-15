@@ -1,3 +1,6 @@
+/**
+ * axios配置
+ */
 import axios, { type AxiosRequestConfig } from 'axios'
 import type { AppHTTP } from '@/@types/app-http/http'
 
