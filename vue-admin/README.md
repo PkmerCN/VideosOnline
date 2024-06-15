@@ -15,14 +15,16 @@ yarn dev
 
 # 版本
 
-| 开发工具     | 版本        |
-|----------|-----------|
-| Vue      | 3.4.21    |
-| sass     | 1.77.5    |
-| yarn     | 1.22.22   |
-| node     | 20.13.1   |
-| tsx      | 4.15.4    |
-| webstorm | 2024.1.4  |
+| 开发工具     | 版本       |
+|----------|----------|
+| Vue      | 3.4.21   |
+| sass     | 1.77.5   |
+| yarn     | 1.22.22  |
+| node     | 20.13.1  |
+| tsx      | 4.15.4   |
+| webstorm | 2024.1.4 |
+| axios    | 1.7.2    |
+
 
 # 项目技术亮点
 
@@ -36,6 +38,7 @@ yarn dev
 | Composeable Function |
 | 自建脚本Script           |
 | 自建Icon组件             |
+| axios ts封装           |
 
 
 # 项目开发进度
@@ -43,5 +46,6 @@ yarn dev
 1. 项目搭建
 2. 脚本编写显示logo
 3. 登录页面
-4. axios与后端联调
-4. router
+4. axios ts封装
+5. axios 联调
+6. router
