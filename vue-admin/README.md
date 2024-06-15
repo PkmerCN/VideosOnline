@@ -16,6 +16,18 @@ yarn dev
 | tsx      | 4.15.4    |
 | webstorm | 2024.1.4  |
 
+# 项目技术亮点
+
+| 用到的技术                |
+|----------------------|
+| Vite                 |
+| vue3                 |
+| TypeScript           |
+| Sass                 |
+| Composition API      |
+| Composeable Function |
+| 自建脚本Script           |
+| 自建Icon组件             |
 
 
 # 项目开发进度
