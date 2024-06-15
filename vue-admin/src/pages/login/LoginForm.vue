@@ -31,9 +31,6 @@ import LoginAndSign from './components/LoginAndSign.vue'
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    width: 60%;
-    height: 55%;
-    background-color: antiquewhite;
   }
 }
 </style>
