@@ -61,12 +61,16 @@ const iconSize = {
 }
 
 async function submitLogin(){
-  console.log("login")
-  isLogining.value = true
-  const response = await login(loginFormData.email,loginFormData.password)
-  const { token } = response.data
-  console.log(token)
-  isLogining.value = false
+  try{
+    isLogining.value = true
+    const response = await login(loginFormData.email,loginFormData.password)
+    if(response.data){
+      const { token } = response.data
+      console.log(token)
+    }
+  }finally {
+    isLogining.value = false
+  }
 }
 </script>
 
