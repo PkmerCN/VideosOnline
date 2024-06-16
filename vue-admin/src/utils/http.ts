@@ -15,7 +15,7 @@ const axiosInstance=axios.create({
  * 请求拦截配置
  */
 axiosInstance.interceptors.request.use((config) => {
-
+  console.log("请求拦截")
   config.headers['Content-Type'] = "application/json";
   // token
   return config;
@@ -25,6 +25,7 @@ axiosInstance.interceptors.request.use((config) => {
  * 响应拦截配置
  */
 axiosInstance.interceptors.response.use((response)=>{
+ console.log("响应拦截")
   // 先检查业务
   const code = (response.data.code ?? 0) as number
 
@@ -59,15 +60,32 @@ axiosInstance.interceptors.response.use((response)=>{
  */
 const http: AppHTTP = {
   async get<T>(url: string, data?: Data, config?: AxiosRequestConfig): AppResponse<T> {
-    const response = await axiosInstance.get<AppBaseResponse<T>>(url, {
-      params: data,
-      ...config
-    })
-    return response.data
+    try{
+      const response = await axiosInstance.get<AppBaseResponse<T>>(url, {
+        params: data,
+        ...config
+      })
+      return response.data
+    }catch (error){
+      if(axios.isAxiosError(error)){
+        console.log(error.message)
+        Message.error(error.message)
+      }
+      throw error; // 重新抛出错误，以便调用者可以处理它
+    }
   },
   async post<T>(url: string, data?: Data, config?: AxiosRequestConfig): AppResponse<T> {
-    const response = await axiosInstance.post<AppBaseResponse<T>>(url, data, config);
-    return response.data;
+    try{
+      const response = await axiosInstance.post<AppBaseResponse<T>>(url, data, config);
+      return response.data;
+    }catch (error){
+      if(axios.isAxiosError(error)){
+        console.log(error.message)
+        Message.error(error.message)
+      }
+      throw error; // 重新抛出错误，以便调用者可以处理它
+    }
+
   }
 };
 
