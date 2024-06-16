@@ -12,10 +12,7 @@ import org.hzz.services.AppUserService;
 import org.hzz.services.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -27,9 +24,10 @@ import java.util.Map;
  * @date 2024/5/28
  */
 @Tag(name = "用户认证", description = "用户的登录注册等")
-@RestController("/auth")
 @Slf4j
 @Validated
+@RestController
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired

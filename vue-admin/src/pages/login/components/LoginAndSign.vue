@@ -26,11 +26,11 @@
       <h1 class="title">登录</h1>
       <form class="sign-in">
         <div class="input-group">
-          <input type="text" placeholder="用户名" />
+          <input type="text" placeholder="用户名" v-model="loginFormData.email"/>
           <ProfileIcon class="icon" v-bind="iconSize"></ProfileIcon>
         </div>
         <div class="input-group">
-          <input type="password" placeholder="密码" />
+          <input type="password" placeholder="密码" v-model="loginFormData.password"/>
           <LockIcon class="icon" v-bind="iconSize"></LockIcon>
         </div>
         <button :disabled="isLogining" class="form-btn" @click.prevent="submitLogin">登录</button>
@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import ProfileIcon from '@/components/icons/ProfileIcon.vue'
 import EmailIcon from '@/components/icons/EmailIcon.vue'
 import LockIcon from '@/components/icons/LockIcon.vue'
@@ -49,6 +49,10 @@ import img1 from '@/assets/imgs/img1.png'
 import img2 from '@/assets/imgs/img2.png'
 import { login } from '@/api/user'
 
+const loginFormData = reactive({
+  email: '1193094618@qq.com',
+  password: 'Root.123456'
+})
 const active = ref(false)
 const isLogining = ref(false)
 const iconSize = {
@@ -56,10 +60,13 @@ const iconSize = {
   height: 20
 }
 
-function submitLogin(){
+async function submitLogin(){
   console.log("login")
   isLogining.value = true
-  login()
+  const response = await login(loginFormData.email,loginFormData.password)
+  const { token } = response.data
+  console.log(token)
+  isLogining.value = false
 }
 </script>
 
