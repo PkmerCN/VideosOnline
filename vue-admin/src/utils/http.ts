@@ -2,7 +2,7 @@
  * axios配置
  */
 import axios, { type AxiosRequestConfig } from 'axios'
-import type { AppHTTP } from '@/@types/app-http/http'
+import { type AppHTTP, StatusCode } from '@/@types/app-http/http'
 import {timeout,baseURL} from '@/config/env-variables'
 import Message from '@/utils/message'
 
@@ -30,7 +30,8 @@ axiosInstance.interceptors.response.use((response)=>{
   const code = (response.data.code ?? 0) as number
 
   if(code === StatusCode.OK){
-    return response.data
+    console.log("running???")
+    return response
   }
 
   // 检测4开头还是5开头
@@ -46,12 +47,12 @@ axiosInstance.interceptors.response.use((response)=>{
 
   // 再检查网络
   if(response.status === 200){
-    return response.data
+    return response
   }else{
     Message.info("网络错误")
   }
 
-  return response.data
+  return response
 })
 
 

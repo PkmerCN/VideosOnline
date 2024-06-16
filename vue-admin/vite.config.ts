@@ -10,7 +10,7 @@ export default defineConfig((configEnv)=> {
   return {
     plugins: [
       vue(),
-      VueDevTools(),
+      // VueDevTools(),
     ],
     resolve: {
       alias: {

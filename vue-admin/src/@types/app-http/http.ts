@@ -11,3 +11,6 @@ export interface AppHTTP {
   post<T>(url: string, data?: Data, config?: AxiosRequestConfig): AppResponse<T>;
 }
 
+export enum StatusCode{
+  OK = 2000
+}
