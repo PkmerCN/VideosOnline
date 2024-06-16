@@ -59,6 +59,7 @@ defineExpose({showMessage})
     display: flex;
     align-items: center;
     .text{
+      font-size: 1rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; /* 溢出部分显示省略号 */
