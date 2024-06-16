@@ -27,14 +27,23 @@ axiosInstance.interceptors.request.use((config) => {
 axiosInstance.interceptors.response.use((response)=>{
   // 先检查业务
   const code = (response.data.code ?? 0) as number
-  //todo 未登录的一个校验Messge.info
+
   if(code === StatusCode.OK){
     return response.data
-  }else if(code){
-    Message.error(response.data.msg)
   }
 
-  // 在检查网络
+  // 检测4开头还是5开头
+  if(code){
+    const codeStr = code.toString()
+    const msg = response.data.msg ?? "未知错误(后端未处理)"
+    if(codeStr.startsWith('4')){
+      Message.info(msg)
+    }else if(codeStr.startsWith('5')){
+      Message.error(msg)
+    }
+  }
+
+  // 再检查网络
   if(response.status === 200){
     return response.data
   }else{
