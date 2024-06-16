@@ -40,6 +40,7 @@ yarn dev
 | 自建Icon组件             |
 | axios ts封装           |
 | vue3使用虚拟节点创建全局消息提示   |
+| env+axios+代理服务器配置    |
 
 
 # 项目开发进度
@@ -48,6 +49,7 @@ yarn dev
 2. 脚本编写显示logo
 3. 登录页面
 4. axios ts封装
-5. axios 联调
-6. 全局消息提示
-6. router
+5. axios+env+代理服务器配置
+6. axios 联调
+7. 全局消息提示
+8. router
