@@ -1,0 +1,1 @@
+type MsgType = 'info' | 'success' | 'error'
