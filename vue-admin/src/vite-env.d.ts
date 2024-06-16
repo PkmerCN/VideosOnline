@@ -4,7 +4,7 @@ interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
   readonly VITE_APP_API_URL: string
   readonly VITE_APP_TIMEOUT: number
-  readonly VITE_APP_APP_PREVENT_DUPLICATE_SUBMISSIONS: number
+  readonly VITE_APP_AXIOS_BASE_URL: string
   // more env variables...
 }
 
