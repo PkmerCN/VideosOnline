@@ -39,6 +39,7 @@ yarn dev
 | 自建脚本Script           |
 | 自建Icon组件             |
 | axios ts封装           |
+| vue3使用虚拟节点创建全局消息提示   |
 
 
 # 项目开发进度
@@ -48,4 +49,5 @@ yarn dev
 3. 登录页面
 4. axios ts封装
 5. axios 联调
+6. 全局消息提示
 6. router
