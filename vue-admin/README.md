@@ -33,6 +33,7 @@ yarn dev
 | axios ts封装           |
 | vue3使用虚拟节点创建全局消息提示   |
 | env+axios+代理服务器配置    |
+| $msg插件编写,提示消息        |
 
 
 # 项目开发进度
@@ -44,7 +45,8 @@ yarn dev
 5. axios+env+代理服务器配置
 6. axios 联调
 7. 全局消息提示
-8. router
+8. $msg插件编写
+9. router
 
 # todo
 整理axios
