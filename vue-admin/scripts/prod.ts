@@ -7,5 +7,4 @@ import { log } from "console"
  * 2. 执行vite
  */
 log(logo)
-// exec(`vite --mode development`, { stdio: 'inherit' })
-exec(`vite`, { stdio: 'inherit' })
+exec(`vite  --mode production`, { stdio: 'inherit' })
