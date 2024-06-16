@@ -8,3 +8,6 @@ interface AppBaseResponse<T = unknown>{
 type AppResponse<T> = Promise<AppBaseResponse<T>>
 type Data = Record<string, unknown>
 
+enum StatusCode{
+  OK = 2000
+}
