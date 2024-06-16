@@ -2,7 +2,7 @@
 interface AppBaseResponse<T = unknown>{
   code: number,
   msg: string,
-  data: T
+  data: T | null
 }
 
 type AppResponse<T> = Promise<AppBaseResponse<T>>
