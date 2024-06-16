@@ -41,14 +41,16 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import {reactive, ref } from 'vue'
 import ProfileIcon from '@/components/icons/ProfileIcon.vue'
 import EmailIcon from '@/components/icons/EmailIcon.vue'
 import LockIcon from '@/components/icons/LockIcon.vue'
 import img1 from '@/assets/imgs/img1.png'
 import img2 from '@/assets/imgs/img2.png'
 import { login } from '@/api/user'
+import useMsg from '@/composables/useMsg'
 
+const $msg = useMsg()
 const loginFormData = reactive({
   email: '1193094618@qq.com',
   password: 'Root.123456'
@@ -65,6 +67,7 @@ async function submitLogin(){
     isLogining.value = true
     const response = await login(loginFormData.email,loginFormData.password)
     if(response.data){
+      $msg.success("登录成功")
       const { token } = response.data
       console.log(token)
     }

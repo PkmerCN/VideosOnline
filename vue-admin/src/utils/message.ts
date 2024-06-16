@@ -19,4 +19,6 @@ const createMessage = () => {
 }
 
 const Message = createMessage()
+export type MessageType = typeof Message
+
 export default Message
