@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import configNavigationGuards from '@/router/guards'
 import defaultRoutes from '@/router/modules/default'
 
 const routes = [...defaultRoutes]
@@ -15,4 +16,5 @@ const appRouter = createRouter({
   }
 })
 
+configNavigationGuards(appRouter)
 export default appRouter
