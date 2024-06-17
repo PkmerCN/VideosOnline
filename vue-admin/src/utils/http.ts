@@ -5,6 +5,10 @@ import axios, { type AxiosRequestConfig } from 'axios'
 import { type AppHTTP, StatusCode } from '@/@types/app-http/http'
 import {timeout,baseURL} from '@/config/env-variables'
 import Message from '@/utils/message'
+import { TOKEN_NAME } from '@/config/global-variables'
+import appLocalStorage from '@/utils/appLocalStorage'
+
+
 
 const axiosInstance=axios.create({
   baseURL,
@@ -17,7 +21,8 @@ const axiosInstance=axios.create({
 axiosInstance.interceptors.request.use((config) => {
   console.log("请求拦截")
   config.headers['Content-Type'] = "application/json";
-  // token
+  // 使用 Bearer 令牌进行认证，通常用于 OAuth 2.0
+  config.headers['Authorization'] = `Bear ${appLocalStorage.get(TOKEN_NAME)??'' }`
   return config;
 })
 
