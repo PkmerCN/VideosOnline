@@ -847,6 +847,11 @@
     "@vue/compiler-dom" "3.4.28"
     "@vue/shared" "3.4.28"
 
+"@vue/devtools-api@^6.5.0":
+  version "6.6.3"
+  resolved "https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.6.3.tgz#b23a588154cba8986bba82b6e1d0248bde3fd1a0"
+  integrity sha512-0MiMsFma/HqA6g3KLKn+AGpL1kgKhFWszC9U29NfpWK5LE7bjeXxySWJrOJ77hBz+TBrBQ7o4QJqbPbqbs8rJw==
+
 "@vue/devtools-core@^7.2.1":
   version "7.2.1"
   resolved "https://registry.npmmirror.com/@vue/devtools-core/-/devtools-core-7.2.1.tgz#e23df464e2aaa54be4efda4cebb068a4ad9e9777"
@@ -2090,6 +2095,14 @@ pidtree@^0.6.0:
   resolved "https://registry.npmmirror.com/pidtree/-/pidtree-0.6.0.tgz#90ad7b6d42d5841e69e0a2419ef38f8883aa057c"
   integrity sha512-eG2dWTVw5bzqGRztnHExczNxt5VGsE6OwTeCG3fdUf9KBsZzO3R5OIIIzWR+iZA0NtZ+RDVdaoE2dK1cn6jH4g==
 
+pinia@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.npmmirror.com/pinia/-/pinia-2.1.7.tgz#4cf5420d9324ca00b7b4984d3fbf693222115bbc"
+  integrity sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==
+  dependencies:
+    "@vue/devtools-api" "^6.5.0"
+    vue-demi ">=0.14.5"
+
 postcss-selector-parser@^6.0.15:
   version "6.1.0"
   resolved "https://registry.npmmirror.com/postcss-selector-parser/-/postcss-selector-parser-6.1.0.tgz#49694cb4e7c649299fea510a29fa6577104bcf53"
@@ -2479,6 +2492,11 @@ vscode-uri@^3.0.8:
   version "3.0.8"
   resolved "https://registry.npmmirror.com/vscode-uri/-/vscode-uri-3.0.8.tgz#1770938d3e72588659a172d0fd4642780083ff9f"
   integrity sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==
+
+vue-demi@>=0.14.5:
+  version "0.14.8"
+  resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.14.8.tgz#00335e9317b45e4a68d3528aaf58e0cec3d5640a"
+  integrity sha512-Uuqnk9YE9SsWeReYqK2alDI5YzciATE0r2SkA6iMAtuXvNTMNACJLJEXNXaEy94ECuBe4Sk6RzRU80kjdbIo1Q==
 
 vue-eslint-parser@^9.3.1, vue-eslint-parser@^9.4.2:
   version "9.4.3"
