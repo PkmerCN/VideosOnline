@@ -9,6 +9,7 @@ export const useUserStore = defineStore('user', () => {
 
   function setToken(tokenV:string){
     token.value = tokenV
+    appLocalStorage.set(TOKEN_NAME,tokenV)
   }
 
   return { count,token,setToken }
