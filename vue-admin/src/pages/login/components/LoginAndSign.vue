@@ -49,7 +49,8 @@ import img1 from '@/assets/imgs/img1.png'
 import img2 from '@/assets/imgs/img2.png'
 import { login } from '@/api/user'
 import useMsg from '@/composables/useMsg'
-
+import {useUserStore} from '@/store'
+const userStore = useUserStore()
 const $msg = useMsg()
 const loginFormData = reactive({
   email: '1193094618@qq.com',
@@ -69,6 +70,7 @@ async function submitLogin(){
     if(response.data){
       $msg.success("登录成功")
       const { token } = response.data
+      userStore.setToken(token)
       console.log(token)
     }
   }finally {
