@@ -16,6 +16,7 @@ yarn dev
 | tsx      | 4.15.4   |
 | webstorm | 2024.1.4 |
 | axios    | 1.7.2    |
+| pinia    | 2.1.7    |
 
 
 # 项目技术亮点
@@ -34,6 +35,8 @@ yarn dev
 | vue3使用虚拟节点创建全局消息提示   |
 | env+axios+代理服务器配置    |
 | $msg插件编写,提示消息        |
+| 封装localStorage       |
+| 集成pinia              |
 
 
 # 项目开发进度
@@ -46,7 +49,8 @@ yarn dev
 6. axios 联调
 7. 全局消息提示
 8. $msg插件编写
-9. router
+9. 集成pinia
+10. router
 
 # todo
 整理axios
