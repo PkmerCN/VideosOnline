@@ -9,10 +9,10 @@ function configNavigationGuards(router: Router) {
     const { isLogin } = useUserStore()
     console.log(`从 ${from.path} 导航到 ${to.path}`)
     console.log(`是否已经登录: ${isLogin}`)
-    if(isLogin){
+    if (isLogin) {
       //允许导航
       next()
-    }else{
+    } else {
       // 未登录且目标路由不是登录页面，跳转到登录页面
       if (to.path !== '/login') {
         next('/login')

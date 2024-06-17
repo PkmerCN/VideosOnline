@@ -14,7 +14,9 @@ const createMessage = () => {
   // 使用render函数将VNode渲染到临时DOM容器
   render(vNode, containerDiv)
 
-  const { showMessage } = vNode.component?.exposed as { showMessage: (msg: string, msgType?: MsgType) => void }
+  const { showMessage } = vNode.component?.exposed as {
+    showMessage: (msg: string, msgType?: MsgType) => void
+  }
 
   return {
     info: (msg: string) => showMessage(msg, 'info'),

@@ -11,7 +11,7 @@ export interface IconProps {
 export function useIconProps(props: IconProps) {
   const defaultProps = reactive({
     width: props.width ?? 16,
-    height: props.height ?? 16,
+    height: props.height ?? 16
   })
 
   return toRefs(defaultProps)

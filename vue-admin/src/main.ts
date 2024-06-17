@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import "@/assets/style/main.scss"
+import '@/assets/style/main.scss'
 import App from './App.vue'
 import '@/utils/env-test'
 import msgPlugin from '@/plugins/msg'

@@ -10,12 +10,12 @@ export const useUserStore = defineStore('user', () => {
   const count = ref(0)
   const token = ref(appLocalStorage.get<string>(TOKEN_NAME))
 
-  const isLogin = computed(()=> token.value !== null)
+  const isLogin = computed(() => token.value !== null)
 
   function setToken(tokenV: string) {
     token.value = tokenV
     appLocalStorage.set(TOKEN_NAME, tokenV)
   }
 
-  return { count, token,isLogin, setToken }
+  return { count, token, isLogin, setToken }
 })

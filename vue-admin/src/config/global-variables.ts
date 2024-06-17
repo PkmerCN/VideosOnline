@@ -1,1 +1,1 @@
-export const TOKEN_NAME = "adminToken"
+export const TOKEN_NAME = 'adminToken'

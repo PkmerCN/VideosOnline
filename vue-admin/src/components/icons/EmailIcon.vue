@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { IconProps } from '@/composables/useIconProps'
-const { width, height } = withDefaults(defineProps<IconProps>(),{
+const { width, height } = withDefaults(defineProps<IconProps>(), {
   width: 16,
   height: 16
 })

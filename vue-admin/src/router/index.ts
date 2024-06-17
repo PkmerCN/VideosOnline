@@ -8,9 +8,9 @@ import defaultRoutes from '@/router/modules/default'
 const routes = [...defaultRoutes]
 
 const appRouter = createRouter({
-  history:createWebHashHistory(),
+  history: createWebHashHistory(),
   routes,
-  scrollBehavior(){
+  scrollBehavior() {
     return {
       el: '#app',
       top: 0,
@@ -18,7 +18,6 @@ const appRouter = createRouter({
     }
   }
 })
-
 
 configNavigationGuards(appRouter)
 export default appRouter
