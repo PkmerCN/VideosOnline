@@ -35,7 +35,6 @@ axiosInstance.interceptors.response.use((response)=>{
   const code = (response.data.code ?? 0) as number
 
   if(code === StatusCode.OK){
-    console.log("running???")
     return response
   }
 
