@@ -22,25 +22,28 @@ yarn dev
 
 # 项目技术亮点
 
-| 用到的技术                |
-|----------------------|
-| Vite                 |
-| Vue3                 |
-| TypeScript           |
-| Sass                 |
-| Composition API      |
-| Composeable Function |
-| 自建脚本Script           |
-| 自建Icon组件             |
-| axios ts封装           |
-| vue3使用虚拟节点创建全局消息提示   |
-| env+axios+代理服务器配置    |
-| $msg插件编写,提示消息        |
-| 封装localStorage       |
-| 集成pinia              |
+| 用到的技术                 |
+|-----------------------|
+| Vite                  |
+| Vue3                  |
+| TypeScript            |
+| Sass                  |
+| Composition API       |
+| Composeable Function  |
+| 自建脚本Script            |
+| 自建Icon组件              |
+| axios ts封装            |
+| vue3使用虚拟节点创建全局消息提示    |
+| env+axios+代理服务器配置     |
+| $msg插件编写,提示消息         |
+| 封装localStorage        |
+| 集成pinia               |
+| 集成vue-router4 并编写导航守卫 |
 
 
 # 项目开发进度
+
+## 项目技术功能 
 
 1. 项目搭建
 2. 脚本编写显示logo
@@ -51,7 +54,8 @@ yarn dev
 7. 全局消息提示
 8. $msg插件编写
 9. 集成pinia
-10. router
+10. 集成router
+11. 导航守卫
 
 # todo
 整理axios
