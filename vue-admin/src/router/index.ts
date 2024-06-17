@@ -16,5 +16,6 @@ const appRouter = createRouter({
   }
 })
 
+
 configNavigationGuards(appRouter)
 export default appRouter
