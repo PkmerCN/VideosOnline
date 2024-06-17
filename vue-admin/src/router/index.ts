@@ -1,3 +1,6 @@
+/**
+ * 路由配置
+ */
 import { createRouter, createWebHashHistory } from 'vue-router'
 import configNavigationGuards from '@/router/guards'
 import defaultRoutes from '@/router/modules/default'

@@ -1,3 +1,8 @@
+/**
+ * 将组件实例化成vNode，方便在ts中调用
+ * 比如axios中
+ */
+
 import MsgPrompt from '@/components/message/MsgPrompt.vue'
 import { h, render } from 'vue'
 
