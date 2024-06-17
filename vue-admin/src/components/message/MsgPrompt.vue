@@ -8,38 +8,38 @@ import ErrorIcon from '@/components/icons/ErrorIcon.vue'
 const msgArr = ref<MessageI[]>([])
 const visiable = ref(false)
 
-function showMessage(content:string,msgType:MsgType = 'info') {
-  if(msgArr.value.length >= 5) return
+function showMessage(content: string, msgType: MsgType = 'info') {
+  if (msgArr.value.length >= 5) return
 
-  const msg: MessageI = {id:generateId(),content,msgType}
+  const msg: MessageI = { id: generateId(), content, msgType }
   msgArr.value.push(msg)
   visiable.value = true
 
   setTimeout(() => {
     // visiable.value = false
     const index = msgArr.value.indexOf(msg)
-    if(index !== -1){
-      msgArr.value.splice(index,1)
+    if (index !== -1) {
+      msgArr.value.splice(index, 1)
     }
-  },3000)
+  }, 3000)
 }
 
-defineExpose({showMessage})
+defineExpose({ showMessage })
 </script>
 
 <template>
-<div v-if="visiable" class="message-container">
-  <div v-for="msg in msgArr" :key="msg.id" :class="['message',msg.msgType]">
-    <InfoIcon v-if="'info' === msg.msgType"/>
-    <SuccessIcon v-if="'success' === msg.msgType"/>
-    <ErrorIcon v-if="'error' === msg.msgType"/>
-    <span class="text">{{msg.content}}</span>
+  <div v-if="visiable" class="message-container">
+    <div v-for="msg in msgArr" :key="msg.id" :class="['message', msg.msgType]">
+      <InfoIcon v-if="'info' === msg.msgType" />
+      <SuccessIcon v-if="'success' === msg.msgType" />
+      <ErrorIcon v-if="'error' === msg.msgType" />
+      <span class="text">{{ msg.content }}</span>
+    </div>
   </div>
-</div>
 </template>
 
 <style scoped lang="scss">
-.message-container{
+.message-container {
   //border: 1px solid black;
   //width: 60%;
   position: fixed;
@@ -47,18 +47,21 @@ defineExpose({showMessage})
   left: 50%;
   top: 10px;
   transform: translateX(-50%);
-  .message{
+  .message {
     margin-bottom: 10px;
     padding: 10px 20px;
     width: 300px;
     border-radius: 20px;
     font-size: 18px;
     background-color: white;
-    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, .08), 0 3px 6px -4px rgba(0, 0, 0, .12), 0 9px 28px 8px rgba(0, 0, 0, .05);
+    box-shadow:
+      0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 9px 28px 8px rgba(0, 0, 0, 0.05);
 
     display: flex;
     align-items: center;
-    .text{
+    .text {
       font-size: 1rem;
       white-space: nowrap;
       overflow: hidden;
@@ -67,30 +70,28 @@ defineExpose({showMessage})
       vertical-align: middle;
       transform: translateY(-2px);
     }
-
   }
 
-  .info{
+  .info {
     $info-color: sandybrown;
-    color:$info-color;
-    svg{
+    color: $info-color;
+    svg {
       fill: $info-color;
     }
   }
-  .success{
+  .success {
     $success-color: green;
     color: $success-color;
-    svg{
+    svg {
       fill: $success-color;
     }
   }
-  .error{
+  .error {
     $error-color: red;
     color: $error-color;
-    svg{
+    svg {
       fill: $error-color;
     }
   }
 }
-
 </style>

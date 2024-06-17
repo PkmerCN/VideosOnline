@@ -83,5 +83,4 @@ async function submitLogin() {
 }
 </script>
 
-<style lang="scss" scoped src="./LoginAndSign.scss">
-</style>
+<style lang="scss" scoped src="./LoginAndSign.scss"></style>

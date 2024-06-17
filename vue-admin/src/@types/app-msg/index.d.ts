@@ -1,7 +1,7 @@
 type MsgType = 'info' | 'success' | 'error'
 
-interface MessageI{
+interface MessageI {
   id: number
-  content:string
-  msgType:MsgType
+  content: string
+  msgType: MsgType
 }
