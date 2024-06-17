@@ -25,6 +25,7 @@ yarn dev
 | webstorm | 2024.1.4 |
 | axios    | 1.7.2    |
 | pinia    | 2.1.7    |
+| vue-router   | 4.3.3    |
 
 
 # 项目技术亮点
