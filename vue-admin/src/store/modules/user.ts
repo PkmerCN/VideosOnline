@@ -1,3 +1,6 @@
+/**
+ * 定义user相关的store
+ */
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import appLocalStorage from '@/utils/appLocalStorage'

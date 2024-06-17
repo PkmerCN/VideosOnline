@@ -1,3 +1,6 @@
+/**
+ * 定义Icon的默认宽度和高度
+ */
 import { reactive, toRefs } from 'vue'
 
 export interface IconProps {

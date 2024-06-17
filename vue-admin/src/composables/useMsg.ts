@@ -1,3 +1,6 @@
+/**
+ * 封装获取全局消息提示，方便在组件中使用
+ */
 import { getCurrentInstance } from 'vue'
 import type { MessageType } from '@/utils/message'
 

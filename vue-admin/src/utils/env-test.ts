@@ -1,3 +1,7 @@
+/**
+ * 测试环境变量，在main.ts中导入
+ */
+
 const logo = `
 88888888b          dP dP               dP                     dP
 88                 88 88               88                     88
