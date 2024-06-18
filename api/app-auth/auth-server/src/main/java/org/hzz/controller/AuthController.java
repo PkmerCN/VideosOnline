@@ -53,8 +53,8 @@ public class AuthController {
 //        return "hello auth demo success04";
     }
 
-    @GetMapping("/user")
+    @GetMapping("/test")
     public String user() {
-        return "胖卡666777";
+        return "This is a test";
     }
 }
