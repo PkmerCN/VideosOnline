@@ -114,7 +114,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | maven 多模块开发                            |
 | git版本控制，多分支开发,tag标记，release发布版本        |
 | Gitee和Github远程仓库同步                     |
-| JWT 认证                                 |
+| JWT 认证 并解析成User封装到ThreadLocal中         |
 | docker集成                               |
 | MyBatis集成以及逆向工程生成代码                    |
 | Valid 参数检验以及异常处理                       |

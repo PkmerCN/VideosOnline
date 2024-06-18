@@ -12,6 +12,8 @@ import org.hzz.exceptions.auth.AppTokenInvalidException;
 import org.hzz.services.JWTService;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import static org.hzz.constants.JWTConstants.*;
+
 /**
  * @author 胖卡
  * @version 1.0.0
@@ -28,9 +30,9 @@ public class JWTAuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        final String header = request.getHeader("Authorization");
-        if (header != null && header.startsWith("Bear ")) {
-            String token = header.substring(5);
+        final String header = request.getHeader(AUTHORIZATION_HEADER);
+        if (header != null && header.startsWith(OAUTH2_Bear)) {
+            String token = header.substring(OAUTH2_PREFIX_SIZE);
             log.info("Token = {}", token);
             try {
                 UserBo userBo = jwtService.parseToken(token);
@@ -42,13 +44,10 @@ public class JWTAuthenticationInterceptor implements HandlerInterceptor {
                 log.info("token不合法");
                 throw new AppTokenInvalidException();
             }
-
         } else {
             log.info("no token");
+            throw new AppTokenInvalidException();
         }
-
-
-        // todo 就是如何确认token是否过期
         return true;
     }
 
