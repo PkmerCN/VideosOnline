@@ -10,6 +10,8 @@ public enum AppStatusImpl implements AppStatus{
     NOT_FOUND(4000,"不存在"),
     EMAIL_ERROR(4001,"邮箱不存在"),
     PASSWORD_ERROR(4002,"密码不正确"),
+    TOKEN_EXPIRED(4003,"Token已过期"),
+    TOKEN_INVALID(4004,"Token不合法"),
     INTERNAL_ERROR(5000,"应用异常");
 
     private final int code;
