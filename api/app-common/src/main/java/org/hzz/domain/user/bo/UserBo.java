@@ -1,4 +1,4 @@
-package org.hzz.domain.bo;
+package org.hzz.domain.user.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,11 +1,13 @@
 package org.hzz.controller;
 
+
+import org.hzz.context.AppContextHolder;
+import org.hzz.domain.user.bo.UserBo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-
 /**
  * @author 胖卡
  * @version 1.0.0
@@ -18,6 +20,7 @@ public class AuthTestController {
 
     @GetMapping
     public String authTest(){
-        return "This is a Test at "+ LocalDate.now();
+        UserBo user = AppContextHolder.userContextHolder.getUser();
+        return user.getEmail()+"This is a Test at "+ LocalDate.now();
     }
 }

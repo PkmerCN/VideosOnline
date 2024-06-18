@@ -1,8 +1,7 @@
 package org.hzz.services;
 
 import org.hzz.domain.app.AppStatusImpl;
-import org.hzz.domain.bo.UserBo;
-import org.hzz.domain.entity.AppUser;
+import org.hzz.domain.user.bo.UserBo;
 import org.hzz.exceptions.AppCommonException;
 
 /**
