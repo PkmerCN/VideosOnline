@@ -8,7 +8,7 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.config.AppProps;
-import org.hzz.domain.bo.UserBo;
+import org.hzz.domain.user.bo.UserBo;
 import org.hzz.exceptions.auth.AppTokenExpireException;
 import org.hzz.exceptions.auth.AppTokenInvalidException;
 import org.springframework.stereotype.Service;

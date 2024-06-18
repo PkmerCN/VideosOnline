@@ -1,6 +1,6 @@
 package org.hzz.services.impl;
 
-import org.hzz.domain.bo.UserBo;
+import org.hzz.domain.user.bo.UserBo;
 import org.hzz.domain.entity.AppUser;
 import org.hzz.domain.entity.AppUserExample;
 import org.hzz.mapper.AppUserMapper;

@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.domain.app.Result;
-import org.hzz.domain.bo.UserBo;
+import org.hzz.domain.user.bo.UserBo;
 import org.hzz.domain.dto.LoginUserDto;
 import org.hzz.services.AppUserService;
 import org.hzz.services.JWTService;
