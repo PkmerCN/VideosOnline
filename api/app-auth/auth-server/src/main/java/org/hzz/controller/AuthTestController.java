@@ -21,6 +21,6 @@ public class AuthTestController {
     @GetMapping
     public String authTest(){
         UserBo user = AppContextHolder.userContextHolder.getUser();
-        return user.getEmail()+"This is a Test at "+ LocalDate.now();
+        return user.getEmail()+" This is a Test at "+ LocalDate.now();
     }
 }
