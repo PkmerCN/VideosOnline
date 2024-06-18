@@ -35,6 +35,7 @@ public class GenerateJWT {
         key = "9cZjXN9uHH0erCgOAdZCsXIAJbeh7Q43eLa/c1a69rU=";
         // 1h in millisecond
         expirationTime = 3600000;
+        expirationTime = 10;
     }
 
     @Test
