@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.hzz</groupId>
         <artifactId>api</artifactId>
-        <version>1.0.4</version>
+        <version>2.1.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>app-user</artifactId>
@@ -13,7 +13,7 @@
         <dependency>
             <groupId>org.hzz</groupId>
             <artifactId>app-common</artifactId>
-            <version>1.0.4</version>
+            <version>2.1.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
