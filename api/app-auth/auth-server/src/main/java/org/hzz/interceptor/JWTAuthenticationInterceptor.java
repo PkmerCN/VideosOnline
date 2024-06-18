@@ -5,6 +5,7 @@ import io.jsonwebtoken.JwtException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.context.AppContextHolder;
 import org.hzz.domain.user.bo.UserBo;
 import org.hzz.exceptions.auth.AppTokenExpireException;
 import org.hzz.exceptions.auth.AppTokenInvalidException;
@@ -33,7 +34,7 @@ public class JWTAuthenticationInterceptor implements HandlerInterceptor {
             log.info("Token = {}", token);
             try {
                 UserBo userBo = jwtService.parseToken(token);
-//                AppContextHolderManager.userContext.setUser(userBo);
+                AppContextHolder.userContextHolder.setUser(userBo);
             } catch (ExpiredJwtException ex) {
                 log.info("token已过期");
                 throw new AppTokenExpireException();
@@ -58,6 +59,6 @@ public class JWTAuthenticationInterceptor implements HandlerInterceptor {
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-//        AppContextHolderManager.userContext.clear();
+        AppContextHolder.userContextHolder.clear();
     }
 }
