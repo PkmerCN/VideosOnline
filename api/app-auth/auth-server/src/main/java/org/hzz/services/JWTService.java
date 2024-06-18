@@ -58,7 +58,7 @@ public class JWTService {
         try {
             Claims payload = extractAllClaims(token);
             return UserBo.builder()
-                    .id((Long)payload.get("id"))
+                    .id(((Integer)payload.get("id")).longValue())
                     .email((String)payload.get("email"))
                     .username(payload.getSubject())
                     .build();
@@ -68,6 +68,9 @@ public class JWTService {
         } catch (JwtException ex) {
             log.info("token不合法");
             throw new AppTokenInvalidException();
+        } catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
         }
     }
 
