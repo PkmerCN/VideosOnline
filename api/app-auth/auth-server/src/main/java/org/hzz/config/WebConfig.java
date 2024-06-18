@@ -1,6 +1,7 @@
 package org.hzz.config;
 
 import org.hzz.interceptor.JWTAuthenticationInterceptor;
+import org.hzz.services.JWTService;
 import org.hzz.utils.AppPasswordEncoder;
 import org.hzz.utils.BcryptPassword4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private AppProps appProps;
 
+    @Autowired
+    private JWTService jwtService;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new JWTAuthenticationInterceptor())
+        registry.addInterceptor(new JWTAuthenticationInterceptor(jwtService))
                 .excludePathPatterns(appProps.getIgnore_urls())
                 .order(1);
     }
