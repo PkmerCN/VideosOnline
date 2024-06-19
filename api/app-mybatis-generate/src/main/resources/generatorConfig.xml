@@ -11,14 +11,14 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3308/videos_online?autoreconnect=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC"
+                        connectionURL="jdbc:mysql://localhost:3308/videos_online?autoreconnect=true&amp;allowPublicKeyRetrieval=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC"
                         userId="root"
                         password="Root.123456">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="org.hzz.domain.entity" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="org.hzz.user.infrastructure.dao.entity" targetProject="src/main/java"/>
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.mapper" targetProject="src/main/java"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.user.infrastructure.dao.mapper" targetProject="src/main/java"/>
 
         <!--   要生成的表     -->
         <table tableName="app_user"/>
