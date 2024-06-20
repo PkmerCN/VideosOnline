@@ -1,4 +1,4 @@
-package org.hzz.user.domain.command;
+package org.hzz.user.application.command;
 
 /**
  * @author 胖卡
