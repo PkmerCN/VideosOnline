@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * @date 2024/6/19
  */
 @Repository
-public abstract class BaseRepository<T,M extends > {
+public abstract class BaseRepository<T,M> {
    @Autowired
     protected T mapper;
 
