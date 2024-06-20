@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>app-ddd-framework-core</module>
+        <module>app-convention-spring-boot-starter</module>
+        <module>app-base-spring-boot-starter</module>
     </modules>
 
     <properties>
