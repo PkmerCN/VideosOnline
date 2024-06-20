@@ -1,6 +1,6 @@
 package org.hzz.user.domain.repository;
 
-import org.hzz.user.infrastructure.dao.entity.AppUser;
+import org.hzz.user.domain.model.User;
 
 /**
  * @author 胖卡
@@ -9,5 +9,5 @@ import org.hzz.user.infrastructure.dao.entity.AppUser;
  */
 public interface UserRepository {
 
-    AppUser findUserByEmailAndPassword(String email,String password);
+    User findUserByEmailAndPassword(String email, String password);
 }
