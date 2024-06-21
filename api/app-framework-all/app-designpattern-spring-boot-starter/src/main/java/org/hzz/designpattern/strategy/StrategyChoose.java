@@ -4,8 +4,10 @@ import org.hzz.springboot.starter.base.ApplicationContextHolder;
 import org.hzz.springboot.starter.base.init.ApplicationInitializingEvent;
 import org.springframework.context.ApplicationListener;
 
+import javax.swing.text.html.Option;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * @author 胖卡
@@ -14,6 +16,22 @@ import java.util.Map;
  */
 public class StrategyChoose implements ApplicationListener<ApplicationInitializingEvent> {
     private final Map<String,AbstractExecuteStrategy> abstractExecuteStrategyMap = new HashMap<>();
+
+    public AbstractExecuteStrategy choose(String mark){
+        return Optional.ofNullable(abstractExecuteStrategyMap.get(mark))
+                .orElseThrow(() -> new RuntimeException(String.format("[%s] 策略未定义", mark)));
+    }
+
+    public <T> void chooseAndExecute(String mark,T command){
+        AbstractExecuteStrategy strategy = choose(mark);
+        strategy.execute(command);
+    }
+
+    public <T,R> R chooseAndExecuteWithResp(String mark,T command){
+        AbstractExecuteStrategy strategy = choose(mark);
+        return (R)strategy.executeWithResp(command);
+    }
+
 
     @Override
     public void onApplicationEvent(ApplicationInitializingEvent event) {
@@ -27,4 +45,8 @@ public class StrategyChoose implements ApplicationListener<ApplicationInitializi
             }
         });
     }
+
+
+
+
 }

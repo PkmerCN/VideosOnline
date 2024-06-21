@@ -13,7 +13,9 @@ public interface AbstractExecuteStrategy<T,R> {
      * 执行策略
      * @param t
      */
-    default void execute(T t){}
+    default void execute(T t){
+        throw new UnsupportedOperationException("未实现");
+    }
 
 
     /**
@@ -22,7 +24,7 @@ public interface AbstractExecuteStrategy<T,R> {
      * @return
      */
     default R executeWithResp(T t){
-        return null;
+        throw new UnsupportedOperationException("未实现");
     }
 
 }
