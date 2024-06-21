@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.hzz.designpattern.strategy.ChooseCommandHandler
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.hzz.designpattern.strategy.StrategyChoose

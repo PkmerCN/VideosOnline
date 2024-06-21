@@ -1,6 +1,6 @@
 package org.hzz.designpattern.config;
 
-import org.hzz.designpattern.strategy.ChooseCommandHandler;
+import org.hzz.designpattern.strategy.StrategyChoose;
 import org.hzz.springboot.starter.config.ApplicationBaseAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +25,8 @@ public class DesignPatternAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public ChooseCommandHandler chooseCommandHandler(){
-        return new ChooseCommandHandler();
+    public StrategyChoose chooseCommandHandler(){
+        return new StrategyChoose();
     }
 
 }
