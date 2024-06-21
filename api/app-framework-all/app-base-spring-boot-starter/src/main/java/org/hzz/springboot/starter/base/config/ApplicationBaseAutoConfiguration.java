@@ -1,6 +1,7 @@
-package org.hzz.springboot.starter.config;
+package org.hzz.springboot.starter.base.config;
 
-import org.hzz.springboot.starter.init.ApplicationContentPostProcessor;
+import org.hzz.springboot.starter.base.ApplicationContextHolder;
+import org.hzz.springboot.starter.base.init.ApplicationContentPostProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -16,6 +17,13 @@ public class ApplicationBaseAutoConfiguration {
 
     public ApplicationBaseAutoConfiguration(){
         LOG.info("检测到ApplicationBaseAutoConfiguration自动配置");
+    }
+
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ApplicationContextHolder applicationContextHolder(){
+        return new ApplicationContextHolder();
     }
 
     @Bean

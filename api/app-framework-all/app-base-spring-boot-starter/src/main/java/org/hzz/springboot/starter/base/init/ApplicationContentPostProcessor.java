@@ -1,4 +1,4 @@
-package org.hzz.springboot.starter.init;
+package org.hzz.springboot.starter.base.init;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +27,10 @@ public class ApplicationContentPostProcessor implements ApplicationContextAware 
 
     }
 
+    /**
+     * 监听springboot启动初始化事件，然后发布自己的事件
+     * @param event
+     */
     @EventListener
     public synchronized void handleApplicationReadyEvent(ApplicationReadyEvent event){
         if(!executed){

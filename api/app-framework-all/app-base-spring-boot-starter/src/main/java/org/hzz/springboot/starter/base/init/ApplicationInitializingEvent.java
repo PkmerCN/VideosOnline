@@ -1,4 +1,4 @@
-package org.hzz.springboot.starter.init;
+package org.hzz.springboot.starter.base.init;
 
 import org.springframework.context.ApplicationEvent;
 
