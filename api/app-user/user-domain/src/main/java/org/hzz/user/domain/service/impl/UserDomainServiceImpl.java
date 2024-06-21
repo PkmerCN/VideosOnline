@@ -15,7 +15,8 @@ import org.springframework.stereotype.Service;
 public class UserDomainServiceImpl extends BaseDomainService<UserRepository> implements UserDomainService {
     @Override
     public User login(String email, String password) {
-        logger.info("");
-        return null;
+        User user = repository.findUserByEmailAndPassword(email, password);
+
+        return user;
     }
 }
