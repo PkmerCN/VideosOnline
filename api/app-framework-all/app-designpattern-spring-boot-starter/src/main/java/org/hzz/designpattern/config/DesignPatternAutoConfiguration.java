@@ -1,7 +1,7 @@
 package org.hzz.designpattern.config;
 
 import org.hzz.designpattern.strategy.StrategyChoose;
-import org.hzz.springboot.starter.config.ApplicationBaseAutoConfiguration;
+import org.hzz.springboot.starter.base.config.ApplicationBaseAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
