@@ -19,6 +19,6 @@ public class UserDomainServiceImpl extends BaseDomainService<UserRepository> imp
     @Override
     public User getUserByEmailAndPassword(String email) {
         User user = repository.findUserByEmailAndPassword(email);
-        return Optional.ofNullable(user).orElseThrow(() -> new EmailException());
+        return Optional.ofNullable(user).orElseThrow(EmailException::new);
     }
 }
