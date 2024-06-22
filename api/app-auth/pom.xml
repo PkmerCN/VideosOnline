@@ -16,13 +16,6 @@
         <module>auth-server</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.hzz</groupId>
-            <artifactId>app-common</artifactId>
-            <version>2.1.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
