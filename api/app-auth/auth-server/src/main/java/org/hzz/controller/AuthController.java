@@ -50,7 +50,6 @@ public class AuthController {
     @GetMapping("/auth")
     public String hello() {
         throw new RuntimeException("auth error");
-//        return "hello auth demo success04";
     }
 
     @GetMapping("/test")
