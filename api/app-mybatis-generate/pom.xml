@@ -43,7 +43,7 @@
                     </dependency>
                     <dependency>
                         <groupId>org.hzz</groupId>
-                        <artifactId>app-common</artifactId>
+                        <artifactId>app-mybatis-spring-boot-starter</artifactId>
                         <version>2.1.1-SNAPSHOT</version>
                     </dependency>
                 </dependencies>

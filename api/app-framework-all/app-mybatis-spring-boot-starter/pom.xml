@@ -5,26 +5,24 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.hzz</groupId>
-        <artifactId>api</artifactId>
+        <artifactId>app-framework-all</artifactId>
         <version>2.1.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>app-framework-all</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>app-ddd-framework-core</module>
-        <module>app-convention-spring-boot-starter</module>
-        <module>app-base-spring-boot-starter</module>
-        <module>app-designpattern-spring-boot-starter</module>
-        <module>app-security-spring-boot-starter</module>
-        <module>app-web-spring-boot-starter</module>
-        <module>app-mybatis-spring-boot-starter</module>
-    </modules>
+    <artifactId>app-mybatis-spring-boot-starter</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+    </dependencies>
 
 </project>

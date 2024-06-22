@@ -5,7 +5,7 @@
 
     <context id="MySQLTables" targetRuntime="MyBatis3">
         <!--   使用自己的注释类     -->
-        <commentGenerator type="org.hzz.mybatis.MyCommentGenerator">
+        <commentGenerator type="org.hzz.mybatis.common.MyCommentGenerator">
             <!--   不生成注释     -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
