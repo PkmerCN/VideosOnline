@@ -22,4 +22,6 @@ public interface AuthAPI {
     @Operation(summary = "用户登录", description = "用户登录生成token")
     @PostMapping("/login")
     public Result<Object> login(@Valid @RequestBody LoginUserRequest loginUserRequest);
+
+
 }
