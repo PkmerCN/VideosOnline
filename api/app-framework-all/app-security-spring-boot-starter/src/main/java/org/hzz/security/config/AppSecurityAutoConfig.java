@@ -15,10 +15,13 @@ import org.springframework.context.annotation.Bean;
  * @version 1.0.0
  * @date 2024/6/21
  */
-@EnableConfigurationProperties({JWTProps.class})
+//@EnableConfigurationProperties({JWTProps.class})
 public class AppSecurityAutoConfig {
     private final Logger LOG = LoggerFactory.getLogger(AppSecurityAutoConfig.class);
 
+    public AppSecurityAutoConfig(){
+        LOG.info("检测到AppSecurityAutoConfig自动配置类");
+    }
     @Bean
     @ConditionalOnMissingBean
     public AppPasswordEncoder bcryptPassword4j(){

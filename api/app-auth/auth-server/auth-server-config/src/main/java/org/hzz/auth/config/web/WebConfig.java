@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @date 2024/6/22
  */
 @Configuration
-@ImportAutoConfiguration({AppSecurityAutoConfig.class})
+//@ImportAutoConfiguration({AppSecurityAutoConfig.class})
 @EnableConfigurationProperties({AppProps.class})
 public class WebConfig implements WebMvcConfigurer {
     private AppProps appProps;

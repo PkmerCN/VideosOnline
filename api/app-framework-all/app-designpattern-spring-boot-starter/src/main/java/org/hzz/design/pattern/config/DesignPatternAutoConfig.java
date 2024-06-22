@@ -1,6 +1,6 @@
-package org.hzz.designpattern.config;
+package org.hzz.design.pattern.config;
 
-import org.hzz.designpattern.strategy.StrategyChoose;
+import org.hzz.design.pattern.strategy.StrategyChoose;
 import org.hzz.springboot.starter.base.config.ApplicationBaseAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,16 +16,17 @@ import org.springframework.context.annotation.Bean;
  * @date 2024/6/20
  */
 @ImportAutoConfiguration(ApplicationBaseAutoConfiguration.class)
-public class DesignPatternAutoConfiguration {
-    private final Logger LOG = LoggerFactory.getLogger(DesignPatternAutoConfiguration.class);
+public class DesignPatternAutoConfig {
+    private final Logger LOG = LoggerFactory.getLogger(DesignPatternAutoConfig.class);
 
-    public DesignPatternAutoConfiguration(){
+    public DesignPatternAutoConfig(){
         LOG.info("检测到自动配置: DesignPatternAutoConfiguration");
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public StrategyChoose chooseCommandHandler(){
+    public StrategyChoose strategyChoose(){
+        LOG.info("正在注册strategyChoose");
         return new StrategyChoose();
     }
 

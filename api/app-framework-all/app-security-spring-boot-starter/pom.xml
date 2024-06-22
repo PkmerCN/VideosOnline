@@ -12,6 +12,11 @@
     <artifactId>app-security-spring-boot-starter</artifactId>
     <dependencies>
         <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>app-designpattern-spring-boot-starter</artifactId>
+            <version>2.1.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.password4j</groupId>
             <artifactId>password4j</artifactId>
         </dependency>

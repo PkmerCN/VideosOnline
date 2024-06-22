@@ -10,6 +10,7 @@ import org.springframework.context.event.EventListener;
 
 /**
  * 应用初始化后置处理器，防止Spring事件被多次执行
+ * 注册CommandHandler
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/20

@@ -1,4 +1,4 @@
-package org.hzz.designpattern.strategy;
+package org.hzz.design.pattern.strategy;
 
 /**
  * 策略执行抽象
