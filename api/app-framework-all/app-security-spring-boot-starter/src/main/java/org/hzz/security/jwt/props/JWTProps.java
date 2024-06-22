@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
  */
 @Setter
 @Getter
-@Component
 @ConfigurationProperties(prefix = "app.jwt")
 public class JWTProps {
     private String secretKey;

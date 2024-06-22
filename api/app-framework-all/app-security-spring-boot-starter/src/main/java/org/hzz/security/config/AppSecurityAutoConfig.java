@@ -4,8 +4,10 @@ import org.hzz.security.jwt.service.JWTService;
 import org.hzz.security.password.AppPasswordEncoder;
 import org.hzz.security.password.BcryptPassword4j;
 import org.hzz.security.jwt.props.JWTProps;
+import org.hzz.springboot.starter.base.config.ApplicationBaseAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +17,8 @@ import org.springframework.context.annotation.Bean;
  * @version 1.0.0
  * @date 2024/6/21
  */
-//@EnableConfigurationProperties({JWTProps.class})
+//@ImportAutoConfiguration({ApplicationBaseAutoConfiguration.class})
+@EnableConfigurationProperties({JWTProps.class})
 public class AppSecurityAutoConfig {
     private final Logger LOG = LoggerFactory.getLogger(AppSecurityAutoConfig.class);
 
