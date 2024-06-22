@@ -14,7 +14,6 @@ import java.nio.file.Paths;
 @RestController
 @SpringBootApplication
 public class AppMain{
-
     public static void main(String[] args) {
         SpringApplication.run(AppMain.class,args);
     }

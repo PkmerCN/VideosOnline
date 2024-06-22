@@ -29,7 +29,7 @@
     <dependencies>
         <dependency>
             <groupId>org.hzz</groupId>
-            <artifactId>user-domain</artifactId>
+            <artifactId>user-infrastructure</artifactId>
             <version>2.1.1-SNAPSHOT</version>
         </dependency>
         <dependency>
