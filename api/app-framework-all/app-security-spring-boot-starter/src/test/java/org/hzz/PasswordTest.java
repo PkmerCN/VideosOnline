@@ -1,7 +1,7 @@
 package org.hzz;
 
-import org.hzz.utils.AppPasswordEncoder;
-import org.hzz.utils.BcryptPassword4j;
+import org.hzz.security.password.AppPasswordEncoder;
+import org.hzz.security.password.BcryptPassword4j;
 import org.junit.Before;
 import org.junit.Test;
 
