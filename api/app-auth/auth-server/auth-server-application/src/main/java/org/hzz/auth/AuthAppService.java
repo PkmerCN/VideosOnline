@@ -1,6 +1,9 @@
 package org.hzz.auth;
 
 import org.hzz.auth.command.UserLoginCommand;
+import org.hzz.design.pattern.strategy.StrategyChoose;
+import org.hzz.user.domain.common.UserLoginTypeEnum;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,8 +13,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AuthAppService {
-//    @Autowired
-//    private StrategyChoose strategyChoose;
+    @Autowired
+    private StrategyChoose strategyChoose;
 
     /**
      * 登录
@@ -19,9 +22,8 @@ public class AuthAppService {
      * @return 返回对应的token
      */
     public String login(UserLoginCommand command){
-//        return strategyChoose.chooseAndExecuteWithResp(
-//                UserLoginTypeEnum.USER_LOGIN_MAIL.toString(),
-//                command);
-        return "";
+        return strategyChoose.chooseAndExecuteWithResp(
+                UserLoginTypeEnum.USER_LOGIN_MAIL.toString(),
+                command);
     }
 }

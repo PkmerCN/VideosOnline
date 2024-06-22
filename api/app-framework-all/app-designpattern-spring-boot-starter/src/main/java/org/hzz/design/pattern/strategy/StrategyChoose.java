@@ -1,5 +1,6 @@
 package org.hzz.design.pattern.strategy;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hzz.springboot.starter.base.ApplicationContextHolder;
 import org.hzz.springboot.starter.base.init.ApplicationInitializingEvent;
 import org.springframework.context.ApplicationListener;
@@ -13,6 +14,7 @@ import java.util.Optional;
  * @version 1.0.0
  * @date 2024/6/20
  */
+@Slf4j
 public class StrategyChoose implements ApplicationListener<ApplicationInitializingEvent> {
     private final Map<String,AbstractExecuteStrategy> abstractExecuteStrategyMap = new HashMap<>();
 
@@ -34,6 +36,7 @@ public class StrategyChoose implements ApplicationListener<ApplicationInitializi
 
     @Override
     public void onApplicationEvent(ApplicationInitializingEvent event) {
+        log.info("监听到ApplicationInitializingEvent事件,准备添加配置CommandHandler");
         Map<String, AbstractExecuteStrategy> beansOfType = ApplicationContextHolder.getBeansOfType(AbstractExecuteStrategy.class);
         beansOfType.forEach((beanName,bean) -> {
             AbstractExecuteStrategy stragegy = abstractExecuteStrategyMap.get(bean.mark());
@@ -41,6 +44,7 @@ public class StrategyChoose implements ApplicationListener<ApplicationInitializi
                 throw new RuntimeException(String.format("[%s] Duplicate execution policy", bean.mark()));
             }else{
                 abstractExecuteStrategyMap.put(bean.mark(),bean);
+                log.info("添加{} - {} success",bean.mark(),bean.getClass().getSimpleName());
             }
         });
     }
