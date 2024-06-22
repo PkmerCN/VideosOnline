@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
  * @version 1.0.0
  * @date 2024/6/21
  */
-@EnableConfigurationProperties(JWTProps.class)
+@EnableConfigurationProperties({JWTProps.class})
 public class AppSecurityAutoConfig {
     private final Logger LOG = LoggerFactory.getLogger(AppSecurityAutoConfig.class);
 
