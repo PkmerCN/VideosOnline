@@ -11,7 +11,6 @@
         <module>app-main</module>
         <module>app-auth</module>
         <module>app-mybatis-generate</module>
-        <module>app-common</module>
         <module>app-user</module>
         <module>app-framework-all</module>
     </modules>
