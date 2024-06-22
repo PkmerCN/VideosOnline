@@ -1,10 +1,13 @@
 package org.hzz.user.domain.service.impl;
 
 import org.hzz.core.service.BaseDomainService;
+import org.hzz.user.domain.exception.EmailException;
 import org.hzz.user.domain.model.User;
 import org.hzz.user.domain.repository.UserRepository;
 import org.hzz.user.domain.service.UserDomainService;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * @author 胖卡
@@ -14,9 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDomainServiceImpl extends BaseDomainService<UserRepository> implements UserDomainService {
     @Override
-    public User login(String email, String password) {
-        User user = repository.findUserByEmailAndPassword(email, password);
-
-        return user;
+    public User getUserByEmailAndPassword(String email) {
+        User user = repository.findUserByEmailAndPassword(email);
+        return Optional.ofNullable(user).orElseThrow(() -> new EmailException());
     }
 }

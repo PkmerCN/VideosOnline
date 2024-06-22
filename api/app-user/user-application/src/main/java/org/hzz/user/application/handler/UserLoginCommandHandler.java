@@ -28,7 +28,7 @@ public class UserLoginCommandHandler implements CommandHandler, AbstractExecuteS
 
     @Override
     public UserLoginRespDTO executeWithResp(UserLoginCommand command) {
-        User login = userDomainService.login(command.getEmail(), command.getPassword());
+        User user = userDomainService.getUserByEmailAndPassword(command.getEmail());
         // todo 转换
         return null;
     }

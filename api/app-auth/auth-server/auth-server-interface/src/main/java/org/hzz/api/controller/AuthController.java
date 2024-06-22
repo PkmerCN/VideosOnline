@@ -1,13 +1,15 @@
 package org.hzz.api.controller;
 
+import org.hzz.auth.AuthAppService;
 import org.hzz.api.AuthAPI;
 import org.hzz.api.model.LoginUserRequest;
+import org.hzz.auth.command.UserLoginCommand;
 import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;
-import org.hzz.user.application.command.UserLoginCommand;
-import org.hzz.user.application.service.UserAppService;
+import org.hzz.core.result.Result;;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author 胖卡
@@ -17,11 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AuthController extends BaseController implements AuthAPI {
     @Autowired
-    private UserAppService userAppService;
+    private AuthAppService authAppService;
+
     @Override
     public Result<Object> login(LoginUserRequest loginUserRequest) {
-        UserLoginCommand userLoginCommand = UserLoginCommand.commandOf(loginUserRequest.getEmail(), loginUserRequest.getPassword());
-        userAppService.login(userLoginCommand);
-        return null;
+        final String email = loginUserRequest.getEmail();
+        final String password = loginUserRequest.getPassword();
+        logger.info("用户登录 email = {} , password = {}",email,password);
+
+        UserLoginCommand userLoginCommand = UserLoginCommand.commandOf(email,password);
+        String token = authAppService.login(userLoginCommand);
+        Map<String,Object> body = Map.of("token",token);
+        return success(body);
     }
 }

@@ -9,5 +9,5 @@ import org.hzz.user.domain.model.User;
  */
 public interface UserDomainService {
 
-    User login(String email, String password);
+    User getUserByEmailAndPassword(String email);
 }

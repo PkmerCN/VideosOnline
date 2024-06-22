@@ -22,7 +22,7 @@ import java.util.List;
 public class UserRepositoryImpl extends BaseRepository<AppUserMapper, UserConverter> implements UserRepository {
 
     @Override
-    public User findUserByEmailAndPassword(String email, String password) {
+    public User findUserByEmailAndPassword(String email) {
         AppUserExample appUserExample = new AppUserExample();
         appUserExample.createCriteria()
                 .andEmailEqualTo(email);
