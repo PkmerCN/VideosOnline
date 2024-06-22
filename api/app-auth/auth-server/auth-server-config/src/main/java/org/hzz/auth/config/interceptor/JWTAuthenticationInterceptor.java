@@ -24,7 +24,7 @@ import static org.hzz.security.jwt.constants.JWTConstants.*;
 public class JWTAuthenticationInterceptor implements HandlerInterceptor {
     private final Logger logger = LoggerFactory.getLogger(JWTAuthenticationInterceptor.class);
 
-    private JWTService jwtService;
+    private final JWTService jwtService;
 
     public JWTAuthenticationInterceptor(JWTService jwtService) {
         this.jwtService = jwtService;
