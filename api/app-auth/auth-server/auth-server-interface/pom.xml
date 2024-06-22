@@ -22,5 +22,10 @@
             <artifactId>auth-server-application</artifactId>
             <version>2.1.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>auth-server-config</artifactId>
+            <version>2.1.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

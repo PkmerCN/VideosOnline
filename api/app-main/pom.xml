@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>org.hzz</groupId>
-            <artifactId>auth-server</artifactId>
+            <artifactId>auth-server-interface</artifactId>
             <version>2.1.1-SNAPSHOT</version>
         </dependency>
         <dependency>

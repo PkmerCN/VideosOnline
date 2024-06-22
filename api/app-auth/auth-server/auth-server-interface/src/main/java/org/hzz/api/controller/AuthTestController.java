@@ -1,8 +1,8 @@
-package org.hzz.controller;
+package org.hzz.api.controller;
 
 
-import org.hzz.context.AppContextHolder;
-import org.hzz.domain.user.bo.UserBo;
+import org.hzz.security.context.AppContextHolder;
+import org.hzz.security.jwt.bo.JWTUserBo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +20,7 @@ public class AuthTestController {
 
     @GetMapping
     public String authTest(){
-        UserBo user = AppContextHolder.userContextHolder.getUser();
+        JWTUserBo user = AppContextHolder.userContextHolder.getUser();
         return user.getEmail()+" This is a Test at "+ LocalDate.now();
     }
 }
