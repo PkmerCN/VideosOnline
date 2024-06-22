@@ -9,5 +9,5 @@ import org.hzz.user.domain.model.User;
  */
 public interface UserRepository {
 
-    User findUserByEmailAndPassword(String email, String password);
+    User findUserByEmailAndPassword(String email);
 }

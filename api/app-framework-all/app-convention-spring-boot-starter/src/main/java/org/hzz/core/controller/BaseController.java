@@ -1,6 +1,7 @@
 package org.hzz.core.controller;
 
 import org.hzz.core.base.AppBase;
+import org.hzz.core.result.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,4 +11,8 @@ import org.slf4j.LoggerFactory;
  * @date 2024/6/20
  */
 public abstract class BaseController extends AppBase {
+
+    protected <T> Result<T> success(T data){
+        return Result.success(data);
+    }
 }
