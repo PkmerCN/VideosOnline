@@ -1,1 +1,3 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.hzz.security.config.AppSecurityAutoConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.hzz.security.config.AppSecurityAutoConfig
+

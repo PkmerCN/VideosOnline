@@ -22,6 +22,7 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       pool-name: SpringBootHikariCP
+# mybatis 配置
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
@@ -40,6 +41,8 @@ app:
   auth:
     ignore-urls:
       - /auth/*
+      - /auth-test/test
+      - /auth-test/error
       - /error
       - /index
       - /index.html

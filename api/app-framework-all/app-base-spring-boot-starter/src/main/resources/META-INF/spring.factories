@@ -1,1 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.hzz.springboot.starter.base.config.ApplicationBaseAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.hzz.springboot.starter.base.config.ApplicationBaseAutoConfiguration

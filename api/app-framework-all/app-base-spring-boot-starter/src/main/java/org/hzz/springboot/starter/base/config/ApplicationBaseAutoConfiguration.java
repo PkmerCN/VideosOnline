@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 
 /**
+ * 主要是配置一个事件监听{@link ApplicationContentPostProcessor}
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/20
