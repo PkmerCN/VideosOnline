@@ -5,21 +5,23 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.hzz</groupId>
-        <artifactId>api</artifactId>
+        <artifactId>app-framework-all</artifactId>
         <version>2.1.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>app-framework-all</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>app-ddd-framework-core</module>
-        <module>app-convention-spring-boot-starter</module>
-        <module>app-base-spring-boot-starter</module>
-        <module>app-designpattern-spring-boot-starter</module>
-        <module>app-security-spring-boot-starter</module>
-        <module>app-web-spring-boot-starter</module>
-    </modules>
-
+    <artifactId>app-web-spring-boot-starter</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>app-convention-spring-boot-starter</artifactId>
+            <version>2.1.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
