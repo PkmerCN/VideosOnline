@@ -3,6 +3,7 @@ package org.hzz.rabbitmq.config;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.rabbitmq.core.RabbitMQHelper;
 import org.hzz.rabbitmq.fastjson2.Fastjson2JsonMessageConverter;
+import org.hzz.rabbitmq.fastjson2.Fastjson2RabbitListenerConfigurer;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * @author 胖卡
@@ -17,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2024/6/23
  */
 @Slf4j
+@Import(Fastjson2RabbitListenerConfigurer.class)
 @Configuration
 public class AppRabbitAutoConfig {
 
