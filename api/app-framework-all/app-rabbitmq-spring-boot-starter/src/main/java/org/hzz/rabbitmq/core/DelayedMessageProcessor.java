@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
 
+import java.time.Duration;
+
 /**
  * 设置延迟时间
  * @author 胖卡
@@ -13,8 +15,8 @@ import org.springframework.amqp.core.Message;
 @Slf4j
 public class DelayedMessageProcessor extends BasicIdMessageProcessor{
     private final long delay;
-    public DelayedMessageProcessor(long delay){
-        this.delay = delay;
+    public DelayedMessageProcessor(Duration duration){
+        this.delay = duration.toMillis();
     }
 
     @Override

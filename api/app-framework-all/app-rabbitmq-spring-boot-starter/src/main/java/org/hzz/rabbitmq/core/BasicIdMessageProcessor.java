@@ -1,6 +1,7 @@
 package org.hzz.rabbitmq.core;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.rabbitmq.util.UUIDHelper;
 import org.slf4j.MDC;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
@@ -23,7 +24,7 @@ public class BasicIdMessageProcessor implements MessagePostProcessor {
         String requestId = MDC.get(REQUEST_ID_HEADER);
         if(requestId == null){
             log.info("requestId为空，生成requestId");
-            requestId = UUID.randomUUID().toString();
+            requestId = UUIDHelper.generateUUID();
         }
         log.info("requestId = {}",requestId);
         message.getMessageProperties().setHeader(REQUEST_ID_HEADER,requestId);
