@@ -153,3 +153,8 @@ It allows you to specify which modules in your multi-module project you want to 
 ![app](./imgs/app.png)
 
 
+# 今日目标（我的课表）
+
+1. 数据库表建好
+2. 接口
+3. 业务功能

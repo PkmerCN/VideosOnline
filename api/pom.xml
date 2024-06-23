@@ -13,6 +13,7 @@
         <module>app-mybatis-generate</module>
         <module>app-user</module>
         <module>app-framework-all</module>
+        <module>app-learning</module>
     </modules>
 
     <name>VideosOnline</name>
