@@ -15,11 +15,14 @@ services:
     container_name: video_rabbitmq
     image: rabbitmq:3.13.3-management
     restart: unless-stopped
+    environment:
+      - RABBITMQ_DEFAULT_USER=pkmer
+      - RABBITMQ_DEFAULT_PASS=Root.123456
+      - RABBITMQ_PLUGINS_DIR=/opt/rabbitmq/plugins:/usr/lib/rabbitmq/plugins
     volumes:
-      - "./docker_data/rabbitmq:/var/lib/rabbitmq"
+      - "./docker_data/rabbitmq/data:/var/lib/rabbitmq"
+      - "./attachment/rabbitmq/plugins:/usr/lib/rabbitmq/plugins"
+      - "./attachment/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins:rw"
     ports:
       - "15672:15672"
       - "5672:5672"
-    environment:
-      RABBITMQ_DEFAULT_USER: pkmer
-      RABBITMQ_DEFAULT_PASS: Root.123456
