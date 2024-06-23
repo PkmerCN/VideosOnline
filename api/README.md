@@ -45,16 +45,25 @@ mvn -pl app-main spring-boot:run
 It allows you to specify which modules in your multi-module project you want to include
 
 
-# 核心开发版本
+# 核心开发环境与版本
 
-| Library             | Version           |
-|---------------------|-------------------|
-| SpringBoot          | 3.3.0             |
-| JDK                 | 17                |
-| Maven               | 3.9.0             |
-| Docker Compose      | v2.24.5-desktop.1 |
-| MyBatis Spring Boot | 3.0.3             |
-| MyBatis Generate    | 1.4.2             |
+| Library             | Version          |
+|---------------------|------------------|
+| SpringBoot          | 3.3.0            |
+| JDK                 | 17               |
+| Maven               | 3.9.0            |
+| MyBatis Spring Boot | 3.0.3            |
+| MyBatis Generate    | 1.4.2            |
+
+
+## 开发环境
+
+| 设施             | Version           |
+|----------------|-------------------|
+| Docker Desktop | 4.27.2            |
+| Docker Compose | v2.24.5-desktop.1 |
+| RabbitMQ       | 3.13.3            |
+| MySQL          | 8.0               |
 
 # 分模块开发
 
