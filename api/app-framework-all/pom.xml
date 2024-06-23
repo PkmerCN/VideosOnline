@@ -17,6 +17,7 @@
         <module>app-security-spring-boot-starter</module>
         <module>app-web-spring-boot-starter</module>
         <module>app-mybatis-spring-boot-starter</module>
+        <module>app-rabbitmq-spring-boot-starter</module>
     </modules>
 
     <properties>
