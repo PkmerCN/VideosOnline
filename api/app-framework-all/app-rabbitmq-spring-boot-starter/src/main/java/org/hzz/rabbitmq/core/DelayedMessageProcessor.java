@@ -24,5 +24,6 @@ public class DelayedMessageProcessor extends BasicIdMessageProcessor{
 
         // 2.添加延迟时间
         message.getMessageProperties().setHeader("x-delay",this.delay);
+        return message;
     }
 }
