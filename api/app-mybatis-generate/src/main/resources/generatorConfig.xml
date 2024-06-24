@@ -16,12 +16,13 @@
                         password="Root.123456">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="org.hzz.user.infrastructure.dao.entity" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="org.hzz.learning.infrastructure.dao.entity" targetProject="src/main/java"/>
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.user.infrastructure.dao.mapper" targetProject="src/main/java"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.learning.infrastructure.dao.mapper" targetProject="src/main/java"/>
 
         <!--   要生成的表     -->
-        <table tableName="app_user"/>
+<!--        <table tableName="app_user"/>-->
+        <table tableName="learning_lesson"/>
     </context>
 
 </generatorConfiguration>
