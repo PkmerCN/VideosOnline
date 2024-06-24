@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hzz.rabbitmq.core.RabbitMQHelper;
 import org.hzz.rabbitmq.fastjson2.Fastjson2JsonMessageConverter;
 import org.hzz.rabbitmq.fastjson2.Fastjson2RabbitListenerConfigurer;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -21,6 +22,7 @@ import org.springframework.context.annotation.Import;
 @Slf4j
 @Import(Fastjson2RabbitListenerConfigurer.class)
 @Configuration
+@EnableRabbit
 public class AppRabbitAutoConfig {
 
     public AppRabbitAutoConfig(){

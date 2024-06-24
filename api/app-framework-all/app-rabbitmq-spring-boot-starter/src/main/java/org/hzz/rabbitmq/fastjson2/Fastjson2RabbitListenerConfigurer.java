@@ -21,7 +21,6 @@ import org.springframework.messaging.handler.annotation.support.DefaultMessageHa
  */
 @Configuration
 @Slf4j
-@EnableRabbit
 public class Fastjson2RabbitListenerConfigurer implements RabbitListenerConfigurer {
     /**
      * 要配置成一个bean,覆盖掉默认的DefaultMessageHandlerMethodFactory
