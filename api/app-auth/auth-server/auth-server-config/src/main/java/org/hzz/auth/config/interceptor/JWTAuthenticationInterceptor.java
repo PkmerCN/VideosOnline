@@ -43,11 +43,12 @@ public class JWTAuthenticationInterceptor implements HandlerInterceptor {
                 logger.info("token已过期");
                 throw new AppTokenExpireException();
             } catch (JwtException ex) {
-                logger.info("token不合法");
+
+                logger.info("request = {} token不合法",request.getRequestURI());
                 throw new AppTokenInvalidException();
             }
         } else {
-            logger.info("no token");
+            logger.info("request = {} no token",request.getRequestURI());
             throw new AppTokenInvalidException();
         }
         return true;

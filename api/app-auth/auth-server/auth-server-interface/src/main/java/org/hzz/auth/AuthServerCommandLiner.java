@@ -1,4 +1,5 @@
-package org.hzz;
+package org.hzz.auth;
+
 
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.auth.repository.TestRepository;

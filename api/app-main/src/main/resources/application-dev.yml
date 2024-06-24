@@ -53,8 +53,10 @@ app:
       - /auth/*
       - /auth-test/test
       - /auth-test/error
+      - /learning-test/*
       - /error
       - /index
       - /index.html
       - /index.htm
       - /css/*.css
+      - /favicon.ico
