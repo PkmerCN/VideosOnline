@@ -16,6 +16,7 @@ import java.io.IOException;
 
 
 /**
+ * 配置Rabbitmq，使用这个类来进行测试
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/24
