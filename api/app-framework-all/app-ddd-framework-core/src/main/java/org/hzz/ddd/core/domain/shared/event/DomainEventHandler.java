@@ -1,4 +1,4 @@
-package org.hzz.ddd.core.domain.shared;
+package org.hzz.ddd.core.domain.shared.event;
 
 /**
  * 领域事件处理器

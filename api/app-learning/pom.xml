@@ -11,6 +11,9 @@
 
     <artifactId>app-learning</artifactId>
     <packaging>pom</packaging>
+
+    <description>学习服务</description>
+
     <modules>
         <module>learning-interface</module>
         <module>learnling-application</module>
