@@ -1,7 +1,7 @@
 # 项目特点
 
 1. 单体项目，前后端分离
-2. Java后端springboot
+2. Java后端springboot3，maven多模块，DDD开发模式,docker开发环境
 3. 前端后台管理： Vite+Vue3+TypeScript+Sass
 4. 前端用户界面：Vite+React18+TypeScript+Sass
 
@@ -9,9 +9,7 @@
 | ------------------------------------------------------------ | --------------- |
 | [api](https://gitee.com/developeros/videos-online/tree/master/api) | Java后端        |
 | [vue-admin](https://gitee.com/developeros/videos-online/tree/master/vue-admin) | 管理后台Vue3    |
-| protal                                                       | 用户界面React18 |
-
-
+| [react-protal](https://gitee.com/developeros/videos-online/tree/master/react-protal) | 用户界面React18 |
 
 
 
@@ -24,5 +22,12 @@
 ```shell
 net stop winnat
 net start winnat
+```
+
+
+
+```sh
+netstat -ano | findstr "8080"
+taskkill -f pid id的数字
 ```
 
