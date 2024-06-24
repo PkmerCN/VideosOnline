@@ -28,7 +28,7 @@ public class BasicIdMessageProcessor implements MessagePostProcessor {
         }
         log.info("requestId = {}",requestId);
         message.getMessageProperties().setHeader(REQUEST_ID_HEADER,requestId);
-        message.getMessageProperties().setHeader("name","pkmer");
+        message.getMessageProperties().setHeader("name","pkmer@hzz");
         message.getMessageProperties().setMessageId(requestId);
         return message;
     }

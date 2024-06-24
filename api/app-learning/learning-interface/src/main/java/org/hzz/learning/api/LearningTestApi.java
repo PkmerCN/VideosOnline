@@ -22,13 +22,8 @@ public interface LearningTestApi {
     @Operation(summary = "测试mq",
             description = "发送数据到mq")
     @GetMapping("/mq")
-    public String sendMsg(
-            @Valid
+    String sendMsg(
             @NotNull(message = "msg不能为空")
-            @RequestParam(value = "msg",required = true)
-            String msg,
-            @Valid
-            @NotNull(message = "tag不能为空")
-            @RequestParam(value = "tag",required = true)
-            String tag);
+            @RequestParam(value = "msg")
+            String msg);
 }
