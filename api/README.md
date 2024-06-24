@@ -81,15 +81,19 @@ It allows you to specify which modules in your multi-module project you want to 
 ```
 开发完一个模块如app-auth需要install到本地。
 
-| 模块                   |                 |
-|----------------------|-----------------|
-| app-main             | 程序入口            |
-| app-auth             | 认证父模块           |
-| auth-server          | 认证服务            |
-| app-framework-all    | 项目通用框架集合        |
-| app-mybatis-generate | mybatis逆向工程生成代码 |
-| app-user             | 用户相关            |
-| app-learning         | 学习课程相关          |
+
+| 模块                   |                              |
+| -------------------- |------------------------------|
+| app-main             | 程序入口                         |
+| app-auth             | 认证父模块                        |
+| auth-server          | 认证服务                         |
+| app-framework-all    | 项目通用框架集合                     |
+| app-mybatis-generate | mybatis逆向工程生成代码              |
+| app-user             | 用户相关                         |
+| app-learning         | 学习课程相关                       |
+| attachment           | docker的挂载目录，目前是配置了rabbitmq插件 |
+
+
 
 
 ## app-framework-all子模块
