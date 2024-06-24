@@ -89,6 +89,8 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-framework-all    | 项目通用框架集合        |
 | app-mybatis-generate | mybatis逆向工程生成代码 |
 | app-user             | 用户相关            |
+| app-learning         | 学习课程相关          |
+
 
 ## app-framework-all子模块
 
@@ -96,7 +98,7 @@ It allows you to specify which modules in your multi-module project you want to 
 
 
 | 模块                                    | 说明                              |
-| ------------------------------------- | ------------------------------- |
+|---------------------------------------|---------------------------------|
 | app-ddd-framework-core                | DDD核心概念，描述接口封装                  |
 | app-convention-spring-boot-starter    | 项目的约定，比如异常，Result返回结果等          |
 | app-security-spring-boot-starter      | JWT与password加密以及全局获取UserContext |
@@ -104,16 +106,18 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-mybatis-spring-boot-starter       | 目前只封装了逆向生成代码时的注释处理              |
 | app-designpattern-spring-boot-starter | 封装用到的设计模式的通用类                   |
 | app-base-spring-boot-starter          | 目前扩展了spring的事件                  |
+| app-rabbitmq-spring-boot-starter      | 封装了rabbitmq基础功能(序列化使用fastjson2) |
 
 
 ## 插件
 
-| Maven Plugin                   | Version |
-| :----------------------------- | ------- |
-| flyway-maven-plugin            | 10.13.0 |
-| spring-boot-maven-plugin       | 3.3.0   |
-| maven-release-plugin           | 3.0.1   |
-| mybatis-generator-maven-plugin | 1.4.2   |
+| Maven Plugin                      | Version |
+|:----------------------------------|---------|
+| flyway-maven-plugin               | 10.13.0 |
+| spring-boot-maven-plugin          | 3.3.0   |
+| maven-release-plugin              | 3.0.1   |
+| mybatis-generator-maven-plugin    | 1.4.2   |
+| rabbitmq_delayed_message_exchange | 3.13.0  |
 
 # 页面开发
 
