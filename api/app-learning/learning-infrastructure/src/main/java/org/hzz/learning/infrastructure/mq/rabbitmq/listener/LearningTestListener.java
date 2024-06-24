@@ -36,7 +36,7 @@ public class LearningTestListener {
                            Channel channel,
                            @Header("name") String name,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag,
-                           @Header(AmqpHeaders.MESSAGE_ID)String id){
+                           @Header(AmqpHeaders.MESSAGE_ID)String id) throws IOException {
         try {
             log.info("payload = {},name = {},tag = {},message_id = {}",
                     payload,
@@ -46,7 +46,8 @@ public class LearningTestListener {
             channel.basicAck(tag,false);
         } catch (IOException e) {
             log.info("手动ack失败");
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            channel.basicNack(tag,false,true);
         }
     }
 }

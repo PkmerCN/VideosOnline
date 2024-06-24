@@ -22,6 +22,15 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       pool-name: SpringBootHikariCP
+  # rabbitmq配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: pkmer
+    password: Root.123456
+    listener:
+      simple:
+        acknowledge-mode: manual # 手动ack
 # mybatis 配置
 mybatis:
   configuration:
@@ -30,6 +39,7 @@ mybatis:
 
 springdoc:
   use-fqn: true    #  enables fully qualified names
+
 
 # 用于文档说明
 app-version: '@project.version@'
