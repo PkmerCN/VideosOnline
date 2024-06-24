@@ -37,6 +37,11 @@ public class AppRabbitAutoConfig {
     }
 
     @Bean
+    public MessageConverter fastjson2JsonMessageConverter(){
+        return new Fastjson2JsonMessageConverter();
+    }
+
+    @Bean
     @ConditionalOnBean(RabbitTemplate.class)
     @ConditionalOnMissingBean
     public RabbitMQHelper rabbitMQHelper(RabbitTemplate rabbitTemplate){
@@ -44,8 +49,5 @@ public class AppRabbitAutoConfig {
         return new RabbitMQHelper(rabbitTemplate);
     }
 
-    @Bean
-    public MessageConverter fastjson2JsonMessageConverter(){
-        return new Fastjson2JsonMessageConverter();
-    }
+
 }

@@ -1,13 +1,12 @@
 package org.hzz.rabbitmq.fastjson2;
 
 import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.TypeReference;
+import com.alibaba.fastjson2.support.config.FastJsonConfig;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.support.converter.AbstractMessageConverter;
 import org.springframework.amqp.support.converter.MessageConversionException;
 
-import java.lang.reflect.Type;
 
 /**
  * 使用Fastjson2
@@ -17,8 +16,11 @@ import java.lang.reflect.Type;
  * @date 2024/6/23
  */
 public class Fastjson2JsonMessageConverter extends AbstractMessageConverter {
-    private static final Type type = new TypeReference<Object>(){}.getType();
+    private final FastJsonConfig fastJsonConfig;
 
+    public Fastjson2JsonMessageConverter() {
+        this.fastJsonConfig = new FastJsonConfig();
+    }
     /**
      * 将Java对象转换为消息
      * @param o the payload.
@@ -35,14 +37,13 @@ public class Fastjson2JsonMessageConverter extends AbstractMessageConverter {
     }
 
     /**
-     * 将消息转换为Java对象
+     * 将消息取出来，交给后面的MappingFastJsonMessageConverter来进行反序列化
      * @param message the message to convert
      * @return
      * @throws MessageConversionException
      */
     @Override
     public Object fromMessage(Message message) throws MessageConversionException {
-        byte[] body = message.getBody();
-        return JSON.parseObject(body, type);
+        return message.getBody();
     }
 }
