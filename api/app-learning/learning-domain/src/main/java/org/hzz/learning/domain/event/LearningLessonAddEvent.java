@@ -1,10 +1,8 @@
 package org.hzz.learning.domain.event;
 
 import lombok.*;
-import org.hzz.ddd.core.domain.shared.event.DomainEvent;
 import org.hzz.ddd.core.domain.shared.event.base.BaseDomainEvent;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
