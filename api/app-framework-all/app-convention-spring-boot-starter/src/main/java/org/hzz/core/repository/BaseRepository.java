@@ -1,5 +1,6 @@
 package org.hzz.core.repository;
 
+import lombok.Setter;
 import org.hzz.core.base.AppBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,9 +11,9 @@ import org.springframework.stereotype.Repository;
  * @date 2024/6/20
  */
 public abstract class BaseRepository<M,C> extends AppBase {
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     protected M mapper;
 
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     protected C converter;
 }
