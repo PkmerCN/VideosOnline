@@ -1,5 +1,9 @@
 package org.hzz.learning.domain.repository;
 
+import org.hzz.learning.domain.valueobject.EnrollerLesson;
+
+import java.util.List;
+
 /**
  * @author 胖卡
  * @version 1.0.0
@@ -7,5 +11,5 @@ package org.hzz.learning.domain.repository;
  */
 public interface LearnLessonRepository {
 
-        void saveBath();
+        void saveBath(List<EnrollerLesson> lessonList);
 }
