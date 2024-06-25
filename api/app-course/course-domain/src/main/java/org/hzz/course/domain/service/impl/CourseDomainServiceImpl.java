@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
+ * course领域服务
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/26
