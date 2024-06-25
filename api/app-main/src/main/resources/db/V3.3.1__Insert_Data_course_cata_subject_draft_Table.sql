@@ -1,0 +1,8 @@
+INSERT INTO `course_cata_subject_draft` VALUES (71, 10, 120, 1589901500625817602);
+INSERT INTO `course_cata_subject_draft` VALUES (72, 10, 120, 1587999779978223618);
+INSERT INTO `course_cata_subject_draft` VALUES (73, 10, 120, 1566029032905007000);
+INSERT INTO `course_cata_subject_draft` VALUES (74, 10, 120, 1561507025660268546);
+INSERT INTO `course_cata_subject_draft` VALUES (75, 10, 131, 1587999779978223618);
+INSERT INTO `course_cata_subject_draft` VALUES (76, 10, 131, 1561507025660268546);
+INSERT INTO `course_cata_subject_draft` VALUES (77, 10, 131, 1561505580659625985);
+INSERT INTO `course_cata_subject_draft` VALUES (78, 10, 131, 1561504460092592130);
