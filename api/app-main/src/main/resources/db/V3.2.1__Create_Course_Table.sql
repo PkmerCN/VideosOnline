@@ -24,8 +24,8 @@ CREATE TABLE `course`  (
    `publish_time` datetime NULL DEFAULT NULL COMMENT '最近一次发布时间',
    `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
    `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-   `creater` varchar(255) NOT NULL COMMENT '创建人',
-   `updater` varchar(255) NOT NULL COMMENT '更新人',
+   `creater_id` bigint NOT NULL COMMENT '创建人Id',
+   `updater_id` bigint NOT NULL COMMENT '更新人Id',
    `deleted` tinyint NOT NULL DEFAULT 0 COMMENT '逻辑删除',
    PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '草稿课程' ROW_FORMAT = Dynamic;

@@ -8,8 +8,8 @@ CREATE TABLE `category`  (
      `status` tinyint NOT NULL COMMENT '课程分类状态，1：正常，2：禁用',
      `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
      `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-     `creater` varchar(50) NOT NULL COMMENT '创建者',
-     `updater` varchar(50) NOT NULL COMMENT '更新者',
+     `creater_id` bigint NOT NULL COMMENT '创建者Id',
+     `updater_id` bigint NOT NULL COMMENT '更新者Id',
      `deleted` tinyint NOT NULL DEFAULT 0,
      PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3656 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '课程分类' ROW_FORMAT = Dynamic;

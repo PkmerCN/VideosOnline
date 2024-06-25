@@ -12,5 +12,3 @@ create table app_user(
     PRIMARY KEY (`id`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表' ROW_FORMAT = Dynamic;
 
-insert into app_user(username,password,email,cell_phone) value("pkmer","$2b$10$v54tBm6hSleOidxLJvznju9KZkBgv6IubYoGwKvyrUd84Nb7aLTpK","1193094618@qq.com","17801054490");
-insert into app_user(username,password,email,cell_phone) value("pangka","$2b$10$v54tBm6hSleOidxLJvznju9KZkBgv6IubYoGwKvyrUd84Nb7aLTpK","q10viking@outlook.com","17877361854");
