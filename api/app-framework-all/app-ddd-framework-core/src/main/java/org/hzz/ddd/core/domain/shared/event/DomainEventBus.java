@@ -7,11 +7,11 @@ package org.hzz.ddd.core.domain.shared.event;
  * @version 1.0.0
  * @date 2024/6/25
  */
-public interface DomainEventBus<E extends DomainEvent> {
+public interface DomainEventBus {
 
     /**
      * 发布领域事件
      * @param event
      */
-    void publishDomainEvent(E event);
+    void publishDomainEvent(DomainEvent event);
 }
