@@ -94,8 +94,6 @@ It allows you to specify which modules in your multi-module project you want to 
 | attachment           | docker的挂载目录，目前是配置了rabbitmq插件 |
 
 
-
-
 ## app-framework-all子模块
 
 > 这里我单独建立了一个父模块`app-framework-all`用于存储项目通用的模块代码，详情如下
@@ -111,6 +109,20 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-designpattern-spring-boot-starter | 封装用到的设计模式的通用类                   |
 | app-base-spring-boot-starter          | 目前扩展了spring的事件                  |
 | app-rabbitmq-spring-boot-starter      | 封装了rabbitmq基础功能(序列化使用fastjson2) |
+
+## 业务模块的ddd模块划分
+
+
+
+| DDD业务模块        |                 |
+| -------------- | --------------- |
+| interface      | 接口层             |
+| application    | 应用层             |
+| domain         | 领域层             |
+| infrastructure | 基础层             |
+| trigger        | 触发层,如微服务，mq消费者  |
+| types          | 通用类型，如constants |
+
 
 
 ## 插件
