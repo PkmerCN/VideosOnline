@@ -18,6 +18,8 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 import static org.hzz.learning.types.constant.Constants.Queue.*;
 import static org.hzz.learning.types.constant.Constants.Key.*;
 import static org.hzz.order.types.constant.Constants.Exchange.*;
@@ -48,9 +50,10 @@ public class LearnLessonChange {
     })
     public void handlePayLesson(@Payload LearningLessonAddEvent event,
                                 Channel channel,
-                                @Header(AmqpHeaders.DELIVERY_TAG) long tag){
+                                @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
         logger.info("接收到支付课程消息 AT {}",event.occurredOn());
         //todo 手动ack
         eventBus.publishDomainEvent(event);
+        channel.basicAck(tag,false);
     }
 }
