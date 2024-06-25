@@ -10,6 +10,7 @@ import org.mapstruct.Named;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -45,6 +46,8 @@ public interface CourseConverter {
             @Mapping(source = "purchaseEndTime",target = "purchaseEndTime",qualifiedByName = "mapDateToLocalDateTime")
     })
     CourseSimpleInfoDto mapToCourseSimpleInfoDto(Course course);
+
+    List<CourseSimpleInfoDto> mapToCourseSimpleInfoDtoList(List<Course> courses);
 
     @Mappings({
             @Mapping(source = "free",target = "dd",qualifiedByName = "mapBooleanToByte"),
