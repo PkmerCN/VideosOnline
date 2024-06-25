@@ -1,14 +1,13 @@
-package org.hzz.learning.trigger.mq.rabbitmq.constants;
+package org.hzz.learning.types.constant;
 
 /**
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/25
  */
-public interface MQConstants {
+public interface Constants {
     interface Exchange{
-        // todo 抽离到订单的
-        String LEARNING_EXCHANGE = "order.direct";
+        String LEARNING_EXCHANGE = "learning.direct";
     }
     interface Queue{
         String LEARNING_LESSON_PAY_QUEUE = "learning.lesson.pay.queue";
