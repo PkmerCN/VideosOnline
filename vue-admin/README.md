@@ -1,3 +1,9 @@
+# 项目预览
+
+## 登录与注册页面
+
+![login](./attachment/imgs/admin.jpg)
+
 # 启动项目
 
 ```shell
