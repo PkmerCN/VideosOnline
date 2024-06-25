@@ -14,6 +14,7 @@
         <module>app-user</module>
         <module>app-framework-all</module>
         <module>app-learning</module>
+        <module>app-order</module>
     </modules>
 
     <name>VideosOnline</name>
