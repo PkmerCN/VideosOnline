@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hzz.learning.infrastructure.dao.mapper.LearningLessonBatchMapper">
+    <insert id="saveBatch" parameterType="java.util.List">
+        insert into learning_lesson
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="list[0].id != null">
+                id,
+            </if>
+            <if test="list[0].userId != null">
+                user_id,
+            </if>
+            <if test="list[0].courseId != null">
+                course_id,
+            </if>
+            <if test="list[0].status != null">
+                status,
+            </if>
+            <if test="list[0].weekFreq != null">
+                week_freq,
+            </if>
+            <if test="list[0].planStatus != null">
+                plan_status,
+            </if>
+            <if test="list[0].learnedSections != null">
+                learned_sections,
+            </if>
+            <if test="list[0].latestSectionId != null">
+                latest_section_id,
+            </if>
+            <if test="list[0].latestLearnTime != null">
+                latest_learn_time,
+            </if>
+            <if test="list[0].createTime != null">
+                create_time,
+            </if>
+            <if test="list[0].expireTime != null">
+                expire_time,
+            </if>
+            <if test="list[0].updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <foreach collection="list" item="lesson" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="lesson.id != null">
+                    id,
+                </if>
+                <if test="lesson.userId != null">
+                    user_id,
+                </if>
+                <if test="lesson.courseId != null">
+                    course_id,
+                </if>
+                <if test="lesson.status != null">
+                    status,
+                </if>
+                <if test="lesson.weekFreq != null">
+                    week_freq,
+                </if>
+                <if test="lesson.planStatus != null">
+                    plan_status,
+                </if>
+                <if test="lesson.learnedSections != null">
+                    learned_sections,
+                </if>
+                <if test="lesson.latestSectionId != null">
+                    latest_section_id,
+                </if>
+                <if test="lesson.latestLearnTime != null">
+                    latest_learn_time,
+                </if>
+                <if test="lesson.createTime != null">
+                    create_time,
+                </if>
+                <if test="lesson.expireTime != null">
+                    expire_time,
+                </if>
+                <if test="lesson.updateTime != null">
+                    update_time,
+                </if>
+            </trim>
+        </foreach>
+    </insert>
+</mapper>

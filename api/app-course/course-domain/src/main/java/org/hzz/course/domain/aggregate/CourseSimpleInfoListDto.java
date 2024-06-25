@@ -1,5 +1,6 @@
 package org.hzz.course.domain.aggregate;
 
+import lombok.Builder;
 import lombok.Data;
 import org.hzz.ddd.core.domain.shared.AggregateRoot;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @date 2024/6/26
  */
 @Data
+@Builder
 public class CourseSimpleInfoListDto implements AggregateRoot {
 
     /**
