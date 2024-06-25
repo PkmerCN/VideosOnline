@@ -1,4 +1,4 @@
-package org.hzz.learning.domain.handler.event;
+package org.hzz.learning.domain.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.learning.domain.event.LearningLessonAddEvent;
