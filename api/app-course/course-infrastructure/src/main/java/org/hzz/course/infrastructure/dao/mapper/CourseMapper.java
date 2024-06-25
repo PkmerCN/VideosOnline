@@ -1,11 +1,13 @@
 package org.hzz.course.infrastructure.dao.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.hzz.course.infrastructure.dao.po.Course;
 import org.hzz.course.infrastructure.dao.po.CourseExample;
 
 import java.util.List;
 
+@Mapper
 public interface CourseMapper {
     long countByExample(CourseExample example);
 
