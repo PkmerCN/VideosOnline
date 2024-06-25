@@ -1,5 +1,6 @@
 package org.hzz.auth.handler;
 
+import lombok.Setter;
 import org.hzz.auth.command.UserLoginCommand;
 import org.hzz.auth.converter.JWTUserConverter;
 import org.hzz.auth.exception.PasswordException;
@@ -22,16 +23,16 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserLoginCommandHandler implements CommandHandler, AbstractExecuteStrategy<UserLoginCommand,String> {
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     private JWTService jwtService;
 
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     private AppPasswordEncoder appPasswordEncoder;
 
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     private UserDomainService userDomainService;
 
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     private JWTUserConverter jwtUserConverter;
 
     @Override
