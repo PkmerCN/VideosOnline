@@ -1,5 +1,7 @@
 package org.hzz.course.domain.entity;
 
+import org.hzz.ddd.core.domain.shared.Entity;
+
 import java.time.LocalDateTime;
 
 /**
@@ -7,7 +9,7 @@ import java.time.LocalDateTime;
  * @version 1.0.0
  * @date 2024/6/26
  */
-public class CourseSimpleInfoDto {
+public class CourseSimpleInfoDto implements Entity {
     // 课程草稿id，对应正式草稿id
     private Long id;
 
