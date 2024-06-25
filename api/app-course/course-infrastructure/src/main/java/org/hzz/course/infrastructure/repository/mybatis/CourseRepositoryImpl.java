@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
+ * Course表查询
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/26
