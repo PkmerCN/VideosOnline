@@ -31,5 +31,6 @@ public interface LearningTestApi {
 
     @Operation(summary = "发送下单数据",
             description = "测试领域事件模型")
+    @GetMapping("/pay")
     Result<LearningLessonAddEvent> sendPayLesson();
 }
