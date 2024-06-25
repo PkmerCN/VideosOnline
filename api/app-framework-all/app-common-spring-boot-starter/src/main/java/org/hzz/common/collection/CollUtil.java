@@ -3,6 +3,7 @@ package org.hzz.common.collection;
 import java.util.Collection;
 
 /**
+ * 集合通用工具类
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/26
