@@ -1,15 +1,23 @@
 package org.hzz.learning.api.controller;
 
 import com.alibaba.fastjson2.JSON;
+import lombok.Setter;
 import org.hzz.core.controller.BaseController;
+import org.hzz.core.result.Result;
 import org.hzz.learning.api.LearningTestApi;
+import org.hzz.learning.domain.event.LearningLessonAddEvent;
 import org.hzz.learning.infrastructure.mq.rabbitmq.model.TestData;
 import org.hzz.rabbitmq.core.RabbitMQHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import static org.hzz.learning.infrastructure.mq.rabbitmq.constants.RabbitmqConstants.Exchange.*;
 import static org.hzz.learning.infrastructure.mq.rabbitmq.constants.RabbitmqConstants.RoutingKey.*;
+import static org.hzz.learning.types.constant.Constants.Key.*;
+import static org.hzz.order.types.constant.Constants.Exchange.*;
 /**
  * @author 胖卡
  * @version 1.0.0
@@ -17,10 +25,11 @@ import static org.hzz.learning.infrastructure.mq.rabbitmq.constants.RabbitmqCons
  */
 @RestController
 public class LearningTestController extends BaseController implements LearningTestApi {
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     private RabbitMQHelper rabbitMQHelper;
 
-    public String sendMsg(String msg) {
+    @Override
+    public Result<String> sendMsg(String msg) {
         TestData testData = new TestData();
         testData.setMsg(msg);
         rabbitMQHelper.send(
@@ -28,6 +37,17 @@ public class LearningTestController extends BaseController implements LearningTe
                 LEARNING_TEST_KEY,
                 testData);
         logger.info("发送成功");
-        return String.format("发送 %s success", JSON.toJSON(testData));
+        return success(String.format("发送 %s success", JSON.toJSON(testData)));
+    }
+
+    @Override
+    public Result<LearningLessonAddEvent> sendPayLesson() {
+        LearningLessonAddEvent event = LearningLessonAddEvent.eventOf(1L, 2L,
+                List.of(1L, 2L, 3L),
+                LocalDateTime.now());
+
+        rabbitMQHelper.send(ORDER_EXCHANGE,LESSON_PAY_KEY,event);
+        logger.info("发送成功");
+        return success(event);
     }
 }

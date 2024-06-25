@@ -4,6 +4,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import org.hzz.core.result.Result;
+import org.hzz.learning.domain.event.LearningLessonAddEvent;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +24,12 @@ public interface LearningTestApi {
     @Operation(summary = "测试mq",
             description = "发送数据到mq")
     @GetMapping("/mq")
-    String sendMsg(
+    Result<String> sendMsg(
             @NotNull(message = "msg不能为空")
             @RequestParam(value = "msg")
             String msg);
+
+    @Operation(summary = "发送下单数据",
+            description = "测试领域事件模型")
+    Result<LearningLessonAddEvent> sendPayLesson();
 }

@@ -23,6 +23,16 @@
             <artifactId>learnling-application</artifactId>
             <version>2.2.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>order-types</artifactId>
+            <version>2.2.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>learning-types</artifactId>
+            <version>2.2.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -18,5 +18,7 @@ public class LearningLessonAddEventHandler {
     @EventListener
     public void handleLearningLessonAddEvent(LearningLessonAddEvent event){
         log.info("准备处理: {}",event);
+
+        // todo 提交ack
     }
 }
