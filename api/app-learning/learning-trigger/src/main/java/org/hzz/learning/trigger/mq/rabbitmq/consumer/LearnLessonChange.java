@@ -55,5 +55,6 @@ public class LearnLessonChange {
         //todo 手动ack
         eventBus.publishDomainEvent(event);
         channel.basicAck(tag,false);
+        logger.info("ack 消息 success");
     }
 }
