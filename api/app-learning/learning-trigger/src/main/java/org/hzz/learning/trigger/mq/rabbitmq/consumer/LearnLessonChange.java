@@ -4,7 +4,6 @@ import com.rabbitmq.client.Channel;
 import lombok.Setter;
 import org.hzz.ddd.core.domain.shared.event.DomainEventBus;
 import org.hzz.learning.domain.event.LearningLessonAddEvent;
-import org.hzz.learning.types.constant.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.Exchange;
@@ -14,6 +13,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
@@ -52,8 +52,20 @@ public class LearnLessonChange {
                                 Channel channel,
                                 @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
         logger.info("接收到支付课程消息 AT {}",event.occurredOn());
-        eventBus.publishDomainEvent(event);
-        channel.basicAck(tag,false);
-        logger.info("ack 消息 success");
+        try{
+            eventBus.publishDomainEvent(event);
+            // 发布事件还是单线程执行，只不过是代码解耦了而已。
+            // 所以监听该事件做完业务之后，才回到这里，进行ack
+            channel.basicAck(tag,false);
+            logger.info("ack 消息 success");
+        }catch (DuplicateKeyException ex){
+            // 幂等性控制，数据库唯一键unique key发挥作用
+            logger.info("重复消费消息{}",event.toString());
+            channel.basicAck(tag,false);
+        }catch (Exception ex){
+            logger.info("业务异常，回退消息{}",event.toString());
+            channel.basicNack(tag,false,true);
+            throw ex;
+        }
     }
 }
