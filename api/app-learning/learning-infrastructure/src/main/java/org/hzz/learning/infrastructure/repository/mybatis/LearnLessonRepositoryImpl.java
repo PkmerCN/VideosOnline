@@ -3,6 +3,8 @@ package org.hzz.learning.infrastructure.repository.mybatis;
 import lombok.Setter;
 import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
+import org.hzz.learning.infrastructure.converter.EnrollerLessonConverter;
+import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonBatchMapper;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,13 @@ public class LearnLessonRepositoryImpl implements LearnLessonRepository {
     @Setter(onMethod_ = @Autowired)
     private LearningLessonBatchMapper learningLessonBatchMapper;
 
+    @Setter(onMethod_ = @Autowired)
+    private EnrollerLessonConverter enrollerLessonConverter;
+
 
     @Override
     public void saveBath(List<EnrollerLesson> lessonList) {
-        //todo 转换
-        learningLessonBatchMapper.saveBatch(null);
+        List<LearningLesson> learningLessons = enrollerLessonConverter.mapToLearningLessonList(lessonList);
+        learningLessonBatchMapper.saveBatch(learningLessons);
     }
 }

@@ -1,5 +1,6 @@
 package org.hzz.course.infrastructure.converter;
 
+import org.hzz.common.date.DateUtil;
 import org.hzz.course.domain.entity.CourseSimpleInfoDto;
 import org.hzz.course.infrastructure.dao.po.Course;
 import org.mapstruct.Mapper;
@@ -33,12 +34,12 @@ public interface CourseConverter {
 
     @Named("mapDateToLocalDateTime")
     default LocalDateTime mapDateToLocalDateTime(Date date) {
-        return date != null ? LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()) : null;
+        return DateUtil.changeDateToLocalDateTime(date);
     }
 
     @Named("mapLocalDateTimeToDate")
     default Date mapLocalDateTimeToDate(LocalDateTime dateTime) {
-        return dateTime != null ? Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant()) : null;
+        return DateUtil.changeLocalDateTimeToDate(dateTime);
     }
 
     @Mappings({
