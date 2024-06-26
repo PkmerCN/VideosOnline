@@ -27,20 +27,16 @@ public class CourseRepositoryImpl extends BaseRepository<CourseMapper, CourseCon
         CourseExample.Criteria criteria = courseExample.createCriteria();
         criteria.andIdEqualTo(1L);
 
-        Course course = mapper.selectByPrimaryKey(1L);
-        List<Course> courses = mapper.selectByExample(courseExample);
-        return null;
+        if(CollUtil.isNotEmpty(dto.getThirdCataIds())){
+            criteria.andThirdCateIdIn(dto.getThirdCataIds());
+        }
 
-//        if(CollUtil.isNotEmpty(dto.getThirdCataIds())){
-//            criteria.andThirdCateIdIn(dto.getThirdCataIds());
-//        }
-//
-//        if(CollUtil.isNotEmpty(dto.getIds())){
-//            criteria.andIdIn(dto.getIds());
-//        }
-//
-//        List<Course> courses = mapper.selectByExample(courseExample);
-//        logger.info("查询出: {} 个course 记录",courses.size());
-//        return converter.mapToCourseSimpleInfoDtoList(courses);
+        if(CollUtil.isNotEmpty(dto.getIds())){
+            criteria.andIdIn(dto.getIds());
+        }
+
+        List<Course> courses = mapper.selectByExample(courseExample);
+        logger.info("查询出: {} 个course 记录",courses.size());
+        return converter.mapToCourseSimpleInfoDtoList(courses);
     }
 }
