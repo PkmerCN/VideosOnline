@@ -33,6 +33,11 @@
             <artifactId>app-common-spring-boot-starter</artifactId>
             <version>2.2.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>app-mybatis-spring-boot-starter</artifactId>
+            <version>2.2.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

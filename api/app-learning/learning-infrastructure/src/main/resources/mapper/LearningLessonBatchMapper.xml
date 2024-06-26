@@ -45,40 +45,40 @@
         <foreach collection="list" item="lesson" separator=",">
             <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="lesson.id != null">
-                    id,
+                    #{lesson.id},
                 </if>
                 <if test="lesson.userId != null">
-                    user_id,
+                    #{lesson.userId},
                 </if>
                 <if test="lesson.courseId != null">
-                    course_id,
+                    #{lesson.courseId},
                 </if>
                 <if test="lesson.status != null">
-                    status,
+                    #{lesson.status},
                 </if>
                 <if test="lesson.weekFreq != null">
-                    week_freq,
+                    #{lesson.weekFreq},
                 </if>
                 <if test="lesson.planStatus != null">
-                    plan_status,
+                    #{lesson.planStatus},
                 </if>
                 <if test="lesson.learnedSections != null">
-                    learned_sections,
+                    #{lesson.learnedSections},
                 </if>
                 <if test="lesson.latestSectionId != null">
-                    latest_section_id,
+                    #{lesson.latestSectionId},
                 </if>
                 <if test="lesson.latestLearnTime != null">
-                    latest_learn_time,
+                    #{lesson.latestLearnTime},
                 </if>
                 <if test="lesson.createTime != null">
-                    create_time,
+                    #{lesson.createTime},
                 </if>
                 <if test="lesson.expireTime != null">
-                    expire_time,
+                    #{lesson.expireTime},
                 </if>
                 <if test="lesson.updateTime != null">
-                    update_time,
+                    #{lesson.updateTime},
                 </if>
             </trim>
         </foreach>

@@ -35,15 +35,8 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   mapper-locations:
     - classpath*:mapper/**/*.xml
-
-logging:
-  level:
-    root: info
-    org.mybatis: debug
-    com.your.package.mapper: debug
 
 springdoc:
   use-fqn: true    #  enables fully qualified names

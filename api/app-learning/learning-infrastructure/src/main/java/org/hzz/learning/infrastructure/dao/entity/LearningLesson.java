@@ -1,5 +1,7 @@
 package org.hzz.learning.infrastructure.dao.entity;
 
+import org.hzz.mybatis.annotation.SnowflakeId;
+
 import java.util.Date;
 
 /**
@@ -12,6 +14,7 @@ import java.util.Date;
  */
 public class LearningLesson {
     // learning_lesson.id (主键)
+    @SnowflakeId
     private Long id;
 
     // learning_lesson.user_id (学员id)

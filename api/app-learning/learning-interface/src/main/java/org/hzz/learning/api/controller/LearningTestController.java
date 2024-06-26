@@ -41,8 +41,8 @@ public class LearningTestController extends BaseController implements LearningTe
     }
 
     @Override
-    public Result<LearningLessonAddEvent> sendPayLesson() {
-        LearningLessonAddEvent event = LearningLessonAddEvent.eventOf(1L, 2L,
+    public Result<LearningLessonAddEvent> sendPayLesson(Long userId) {
+        LearningLessonAddEvent event = LearningLessonAddEvent.eventOf(1L, userId,
                 List.of(1L, 2L, 3L),
                 LocalDateTime.now());
 

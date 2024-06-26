@@ -25,7 +25,6 @@ public class CourseRepositoryImpl extends BaseRepository<CourseMapper, CourseCon
     public List<CourseSimpleInfoDto> selectCourseSimpleInfoList(CourseSimpleInfoListDto dto) {
         CourseExample courseExample = new CourseExample();
         CourseExample.Criteria criteria = courseExample.createCriteria();
-        criteria.andIdEqualTo(1L);
 
         if(CollUtil.isNotEmpty(dto.getThirdCataIds())){
             criteria.andThirdCateIdIn(dto.getThirdCataIds());

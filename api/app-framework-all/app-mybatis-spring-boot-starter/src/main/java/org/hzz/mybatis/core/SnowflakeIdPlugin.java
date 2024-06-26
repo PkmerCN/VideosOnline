@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
-import java.util.List;
+import java.util.*;
 
 /**
  * 拦截insert生成雪花算法
@@ -30,21 +30,47 @@ public class SnowflakeIdPlugin implements Interceptor {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         Object[] args = invocation.getArgs();
+        //args数组对应对象就是上面@Signature注解中args对应的对应类型
         MappedStatement mappedStatement = (MappedStatement) args[0];
         Object parameter = args[1];
 
         if(mappedStatement.getSqlCommandType().equals(SqlCommandType.INSERT)){
             logger.info("SnowflakeIdPlugin插件拦截{}，生成雪花算法id中",SqlCommandType.INSERT);
-            if(parameter instanceof List){
-                List<?> list = (List<?>)parameter;
-                for (Object object: list){
-                    setSnowflakeId(object);
-                }
-            }else{
-                setSnowflakeId(parameter);
+            List<Object> entities = getEntityObject(parameter);
+            for (Object e: entities){
+                setSnowflakeId(e);
+                System.out.println(e.toString());
             }
         }
         return invocation.proceed();
+    }
+
+    /**
+     * 解析参数，因为mybatis会将参数进行封装，我们需要提取出来
+     * @param object mybatis封装的参数
+     * @return 解析出来我们原始的变量
+     */
+    private List<Object> getEntityObject(Object object) {
+        List<Object> entities = new ArrayList<>();
+        if (object instanceof Map<?, ?> map) {
+            // Batch insert (批量操作)
+            final String LIST_KEY = "list";
+            Object listObject = map.get(LIST_KEY);
+
+            if (listObject instanceof List<?> values) {
+                for (Object v : values) {
+                    if (v instanceof List<?>) {
+                        entities.addAll((List<?>) v);
+                    } else {
+                        entities.add(v);
+                    }
+                }
+            }
+        }else{
+            // 单个对象
+            entities.add(object);
+        }
+        return entities;
     }
 
     private void setSnowflakeId(Object object) throws IllegalAccessException {
