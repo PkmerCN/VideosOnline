@@ -39,6 +39,12 @@ mybatis:
   mapper-locations:
     - classpath*:mapper/**/*.xml
 
+logging:
+  level:
+    root: info
+    org.mybatis: debug
+    com.your.package.mapper: debug
+
 springdoc:
   use-fqn: true    #  enables fully qualified names
 

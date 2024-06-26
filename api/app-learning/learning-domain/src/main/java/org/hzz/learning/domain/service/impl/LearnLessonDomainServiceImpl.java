@@ -1,7 +1,9 @@
 package org.hzz.learning.domain.service.impl;
 
+import org.hzz.core.service.BaseDomainService;
 import org.hzz.course.domain.entity.CourseSimpleInfoDto;
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
+import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.service.LearnLessonDomainService;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
 import org.springframework.stereotype.Service;
@@ -16,7 +18,12 @@ import java.util.List;
  * @date 2024/6/26
  */
 @Service
-public class LearnLessonDomainServiceImpl  implements LearnLessonDomainService {
+public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonRepository> implements LearnLessonDomainService {
+
+    /**
+     * 用户订阅课程
+     * @param enrollCourse 用户订阅的课程
+     */
     @Override
     public void enrollCourse(EnrollCourseAggregate enrollCourse) {
         List<EnrollerLesson> enrollerLessonList  = new ArrayList<>();
@@ -28,7 +35,11 @@ public class LearnLessonDomainServiceImpl  implements LearnLessonDomainService {
             // 计算过期时间
             lesson.setExpireTime(LocalDateTime.now()
                     .plusMonths(course.getValidDuration()));
+
+            enrollerLessonList.add(lesson);
         }
 
+        repository.saveBath(enrollerLessonList);
+        logger.info("用户订阅{}个课程成功",enrollerLessonList.size());
     }
 }

@@ -52,7 +52,6 @@ public class LearnLessonChange {
                                 Channel channel,
                                 @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
         logger.info("接收到支付课程消息 AT {}",event.occurredOn());
-        //todo 手动ack
         eventBus.publishDomainEvent(event);
         channel.basicAck(tag,false);
         logger.info("ack 消息 success");

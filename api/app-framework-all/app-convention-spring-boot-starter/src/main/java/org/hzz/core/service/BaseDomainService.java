@@ -1,5 +1,6 @@
 package org.hzz.core.service;
 
+import lombok.Setter;
 import org.hzz.core.base.AppBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,6 @@ import org.springframework.stereotype.Service;
  * @date 2024/6/20
  */
 public abstract class BaseDomainService<R> extends AppBase {
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     protected R repository;
 }
