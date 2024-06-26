@@ -6,7 +6,6 @@ import org.hzz.course.infrastructure.dao.po.Course;
 import org.hzz.course.infrastructure.dao.po.CourseExample;
 
 import java.util.List;
-
 @Mapper
 public interface CourseMapper {
     long countByExample(CourseExample example);

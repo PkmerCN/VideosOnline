@@ -43,7 +43,7 @@ public interface CourseConverter {
     }
 
     @Mappings({
-            @Mapping(source = "free",target = "dd",qualifiedByName = "mapByteToBoolean"),
+            @Mapping(source = "free",target = "free",qualifiedByName = "mapByteToBoolean"),
             @Mapping(source = "purchaseEndTime",target = "purchaseEndTime",qualifiedByName = "mapDateToLocalDateTime")
     })
     CourseSimpleInfoDto mapToCourseSimpleInfoDto(Course course);
@@ -51,7 +51,7 @@ public interface CourseConverter {
     List<CourseSimpleInfoDto> mapToCourseSimpleInfoDtoList(List<Course> courses);
 
     @Mappings({
-            @Mapping(source = "free",target = "dd",qualifiedByName = "mapBooleanToByte"),
+            @Mapping(source = "free",target = "free",qualifiedByName = "mapBooleanToByte"),
             @Mapping(source = "purchaseEndTime",target = "purchaseEndTime",qualifiedByName = "mapLocalDateTimeToDate")
     })
     Course mapToCourse(CourseSimpleInfoDto dto);

@@ -33,10 +33,5 @@
             <artifactId>course-domain</artifactId>
             <version>2.2.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>org.hzz</groupId>
-            <artifactId>learning-infrastructure</artifactId>
-            <version>2.2.1-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 </project>
