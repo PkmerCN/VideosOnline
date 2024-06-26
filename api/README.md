@@ -105,10 +105,11 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-convention-spring-boot-starter    | 项目的约定，比如异常，Result返回结果等          |
 | app-security-spring-boot-starter      | JWT与password加密以及全局获取UserContext |
 | app-web-spring-boot-starter           | 封装了全局异常处理等                      |
-| app-mybatis-spring-boot-starter       | 目前只封装了逆向生成代码时的注释处理              |
+| app-mybatis-spring-boot-starter       | 目前封装了逆向生成代码时的注释处理，雪花算法的主键生成     |
 | app-designpattern-spring-boot-starter | 封装用到的设计模式的通用类                   |
 | app-base-spring-boot-starter          | 目前扩展了spring的事件                  |
 | app-rabbitmq-spring-boot-starter      | 封装了rabbitmq基础功能(序列化使用fastjson2) |
+| app-common-spring-boot-starter        | 封装了常用工具类                        |
 
 ## 业务模块的ddd模块划分
 
@@ -168,7 +169,8 @@ It allows you to specify which modules in your multi-module project you want to 
 | 系统自定义异常以及AppStatusCode完成               |
 | DDD模式开发                                |
 | 探索springboot3自动配置类,抽离模块成功              |
-
+| mybatis插件，雪花算法生成ID                     |
+| 数据库唯一键约束，幂等性防止消息重复消费                   |
 
 
 
