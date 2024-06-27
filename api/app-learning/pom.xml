@@ -16,7 +16,7 @@
 
     <modules>
         <module>learning-interface</module>
-        <module>learnling-application</module>
+        <module>learning-application</module>
         <module>learning-domain</module>
         <module>learning-infrastructure</module>
         <module>learning-trigger</module>

@@ -9,7 +9,7 @@
         <version>2.2.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>learnling-application</artifactId>
+    <artifactId>learning-application</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -31,6 +31,11 @@
         <dependency>
             <groupId>org.hzz</groupId>
             <artifactId>app-designpattern-spring-boot-starter</artifactId>
+            <version>2.2.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hzz.fastjson2</groupId>
+            <artifactId>app-fastjson2-spring-boot-starter</artifactId>
             <version>2.2.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
