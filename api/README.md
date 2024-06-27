@@ -99,17 +99,18 @@ It allows you to specify which modules in your multi-module project you want to 
 > 这里我单独建立了一个父模块`app-framework-all`用于存储项目通用的模块代码，详情如下
 
 
-| 模块                                    | 说明                              |
-|---------------------------------------|---------------------------------|
-| app-ddd-framework-core                | DDD核心概念，描述接口封装                  |
-| app-convention-spring-boot-starter    | 项目的约定，比如异常，Result返回结果等          |
-| app-security-spring-boot-starter      | JWT与password加密以及全局获取UserContext |
-| app-web-spring-boot-starter           | 封装了全局异常处理等                      |
-| app-mybatis-spring-boot-starter       | 目前封装了逆向生成代码时的注释处理，雪花算法的主键生成     |
-| app-designpattern-spring-boot-starter | 封装用到的设计模式的通用类                   |
-| app-base-spring-boot-starter          | 目前扩展了spring的事件                  |
-| app-rabbitmq-spring-boot-starter      | 封装了rabbitmq基础功能(序列化使用fastjson2) |
-| app-common-spring-boot-starter        | 封装了常用工具类                        |
+| 模块                                    | 说明                                    |
+|---------------------------------------|---------------------------------------|
+| app-ddd-framework-core                | DDD核心概念，描述接口封装                        |
+| app-convention-spring-boot-starter    | 项目的约定，比如异常，Result返回结果等                |
+| app-security-spring-boot-starter      | JWT与password加密以及全局获取UserContext       |
+| app-web-spring-boot-starter           | 封装了全局异常处理等                            |
+| app-mybatis-spring-boot-starter       | 目前封装了逆向生成代码时的注释处理，雪花算法的主键生成           |
+| app-designpattern-spring-boot-starter | 封装用到的设计模式的通用类                         |
+| app-base-spring-boot-starter          | 目前扩展了spring的事件                        |
+| app-rabbitmq-spring-boot-starter      | 封装了rabbitmq基础功能(序列化使用fastjson2)       |
+| app-common-spring-boot-starter        | 封装了常用工具类                              |
+| app-aop-spring-boot-starter           | 项目中自定义的切面,目前实现了添加了自动注解标记添加用户id过滤,用于分页 |
 
 ## 业务模块的ddd模块划分
 
@@ -172,6 +173,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | mybatis插件，雪花算法生成ID                     |
 | 数据库唯一键约束，幂等性防止消息重复消费                   |
 | 分页逻辑抽离，包含排序和条件过滤                       |
+| 自定义aop切面，基于注解                          |
 
 
 
