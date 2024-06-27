@@ -28,6 +28,6 @@ net start winnat
 
 ```sh
 netstat -ano | findstr "8080"
-taskkill -f pid id的数字
+taskkill /f /pid id的数字
 ```
 
