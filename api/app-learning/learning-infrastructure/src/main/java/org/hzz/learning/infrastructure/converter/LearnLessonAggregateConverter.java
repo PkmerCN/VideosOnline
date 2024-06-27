@@ -32,9 +32,9 @@ public interface LearnLessonAggregateConverter extends BaseConverter {
 
     @Mappings({
             @Mapping(source = "planStatus",target = "planStatus",qualifiedByName = "mapToPlanStatus"),
-            @Mapping(source = "status",target = "status",qualifiedByName = "mapToLessonStatus"),
-            @Mapping(source = "createTime",target = "createTime",qualifiedByName = "mapLocalDateTimeToDate"),
-            @Mapping(source = "expireTime",target = "expireTime",qualifiedByName = "mapLocalDateTimeToDate")
+            @Mapping(source = "status",target = "lessonStatus",qualifiedByName = "mapToLessonStatus"),
+            @Mapping(source = "createTime",target = "createTime",qualifiedByName = "mapDateToLocalDateTime"),
+            @Mapping(source = "expireTime",target = "expireTime",qualifiedByName = "mapDateToLocalDateTime")
     })
     LearningLessonAggregate mapToAggregate(LearningLesson source);
 
