@@ -39,7 +39,6 @@ public class SnowflakeIdPlugin implements Interceptor {
             List<Object> entities = getEntityObject(parameter);
             for (Object e: entities){
                 setSnowflakeId(e);
-                System.out.println(e.toString());
             }
         }
         return invocation.proceed();

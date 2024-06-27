@@ -44,6 +44,5 @@ public class LearningLessonAddEventHandler {
                 .courses(courses)
                 .userId(event.getUserId())
                 .build());
-        // todo 提交ack
     }
 }
