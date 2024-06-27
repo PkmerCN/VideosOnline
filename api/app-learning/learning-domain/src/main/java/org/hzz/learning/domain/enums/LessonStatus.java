@@ -31,4 +31,16 @@ public enum LessonStatus implements BaseEnum {
     public String getDesc() {
         return desc;
     }
+
+    public static LessonStatus fromValue(Byte value) {
+        if (value == null) {
+            return null;
+        }
+        for (LessonStatus status : LessonStatus.values()) {
+            if (status.getValue().equals(value.intValue())) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("Unknown enum value: " + value + "in LessonStatus");
+    }
 }

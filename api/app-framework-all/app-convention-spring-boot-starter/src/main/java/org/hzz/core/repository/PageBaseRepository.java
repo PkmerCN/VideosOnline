@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  */
 public abstract class PageBaseRepository<P extends PageMapper<T>,T,C> extends BaseRepository<P,C> {
 
-    PageResponse<T> pageQuery(PageQuery pageQuery){
+    public PageResponse<T> pageQuery(PageQuery pageQuery){
         // LIMIT #{limit} OFFSET #{offset}
         // 查询的记录数据
         final Integer limit = pageQuery.getPageSize();

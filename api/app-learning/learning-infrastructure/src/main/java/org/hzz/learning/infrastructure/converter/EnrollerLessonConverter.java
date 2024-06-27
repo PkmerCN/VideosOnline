@@ -1,6 +1,7 @@
 package org.hzz.learning.infrastructure.converter;
 
 import org.hzz.common.date.DateUtil;
+import org.hzz.core.converter.BaseConverter;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
 import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
 import org.mapstruct.Mapper;
@@ -18,17 +19,7 @@ import java.util.List;
  * @date 2024/6/26
  */
 @Mapper(componentModel = "spring")
-public interface EnrollerLessonConverter {
-    @Named("mapDateToLocalDateTime")
-    default LocalDateTime mapDateToLocalDateTime(Date date) {
-        return DateUtil.changeDateToLocalDateTime(date);
-    }
-
-    @Named("mapLocalDateTimeToDate")
-    default Date mapLocalDateTimeToDate(LocalDateTime dateTime) {
-        return DateUtil.changeLocalDateTimeToDate(dateTime);
-    }
-
+public interface EnrollerLessonConverter extends BaseConverter {
     @Mappings({
             @Mapping(source = "expireTime",target = "expireTime",qualifiedByName = "mapLocalDateTimeToDate")
     })

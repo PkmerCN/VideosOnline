@@ -27,4 +27,16 @@ public enum PlanStatus implements BaseEnum {
     public String getDesc() {
         return null;
     }
+
+    public static PlanStatus fromValue(Byte value) {
+        if (value == null) {
+            return null;
+        }
+        for (PlanStatus status : PlanStatus.values()) {
+            if (status.getValue().equals(value.intValue())) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("Unknown enum value: " + value + "in PlanStatus");
+    }
 }

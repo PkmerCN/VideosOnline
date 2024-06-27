@@ -1,12 +1,12 @@
 package org.hzz.learning.infrastructure.repository.mybatis;
 
-import lombok.Setter;
+import org.hzz.core.page.PageResponse;
 import org.hzz.core.repository.PageBaseRepository;
+import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
+import org.hzz.learning.domain.repository.LearnLessonPageRepository;
 import org.hzz.learning.infrastructure.converter.LearnLessonAggregateConverter;
 import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
-import org.hzz.learning.infrastructure.dao.mapper.LearningLessonMapper;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonPageMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,9 +19,19 @@ import java.util.List;
 @Repository
 public class LearnLessonPageRepositoryImpl extends PageBaseRepository<LearningLessonPageMapper,
         LearningLesson,
-        LearnLessonAggregateConverter> {
+        LearnLessonAggregateConverter> implements LearnLessonPageRepository {
 
 
+    @Override
+    public PageResponse<LearningLessonAggregate> selectPage(LearningLessonAggregate aggregate) {
+        PageResponse<LearningLesson> results = super.pageQuery(aggregate.getPageQuery());
+        List<LearningLessonAggregate> learningLessonAggregates = converter.mapToAggregateList(results.getList());
 
+        return PageResponse.<LearningLessonAggregate>builder()
+                .totalPages(results.getTotalPages())
+                .currentPageNo(results.getCurrentPageNo())
+                .total(results.getTotal())
+                .list(learningLessonAggregates).build();
 
+    }
 }
