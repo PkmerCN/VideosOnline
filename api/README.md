@@ -171,6 +171,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | 探索springboot3自动配置类,抽离模块成功              |
 | mybatis插件，雪花算法生成ID                     |
 | 数据库唯一键约束，幂等性防止消息重复消费                   |
+| 分页逻辑抽离，包含排序和条件过滤                       |
 
 
 
