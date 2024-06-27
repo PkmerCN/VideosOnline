@@ -1,4 +1,4 @@
-package org.hzz.fastjson2.autoconfig;
+package org.hzz.fastjson2.converter;
 
 import com.alibaba.fastjson2.JSONReader;
 import com.alibaba.fastjson2.JSONWriter;
@@ -18,7 +18,6 @@ import java.util.List;
  * @version 1.0.0
  * @date 2024/6/28
  */
-@Configuration
 public class JsonMessageConverterConfigurer implements WebMvcConfigurer {
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
