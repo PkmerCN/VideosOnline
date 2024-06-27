@@ -2,17 +2,14 @@ package org.hzz.aop.aspectj;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.hzz.aop.annotations.AddUserIdFilterCondition;
 import org.hzz.core.page.query.FilterCondition;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.security.context.AppContextHolder;
 
-import java.lang.reflect.Method;
 
 /**
  * 自动添加过滤user_id处理
