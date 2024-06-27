@@ -1,6 +1,6 @@
 package org.hzz.learning.application.service.impl;
 
-import org.hzz.core.page.PageRequest;
+import org.hzz.core.page.query.PageQuery;
 import org.hzz.learning.application.service.LearningLessonService;
 
 /**
@@ -10,7 +10,7 @@ import org.hzz.learning.application.service.LearningLessonService;
  */
 public class LearningLessonServiceImpl implements LearningLessonService {
     @Override
-    public void pageQueryLesson(PageRequest pageRequest) {
+    public void pageQueryLesson(PageQuery pageQuery) {
         // 分页
     }
 }

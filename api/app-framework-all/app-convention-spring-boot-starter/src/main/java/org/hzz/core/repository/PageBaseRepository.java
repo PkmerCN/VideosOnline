@@ -2,7 +2,7 @@ package org.hzz.core.repository;
 
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.mapper.PageMapper;
-import org.hzz.core.page.PageRequest;
+import org.hzz.core.page.query.PageQuery;
 import org.hzz.core.page.PageResponse;
 
 import java.util.List;
@@ -17,33 +17,34 @@ import java.util.stream.Collectors;
  * @version 1.0.0
  * @date 2024/6/27
  */
-public class PageBaseRepository<P extends PageMapper<T>,T,C> extends BaseRepository<P,C> {
+public abstract class PageBaseRepository<P extends PageMapper<T>,T,C> extends BaseRepository<P,C> {
 
-    PageResponse<T> pageQuery(PageRequest pageRequest){
+    PageResponse<T> pageQuery(PageQuery pageQuery){
         // LIMIT #{limit} OFFSET #{offset}
         // 查询的记录数据
-        final Integer limit = pageRequest.getPageSize();
+        final Integer limit = pageQuery.getPageSize();
         // 需要跳过的记录数据
-        final Integer offset = (pageRequest.getPageNo() - 1) * pageRequest.getPageSize();
+        final Integer offset = (pageQuery.getPageNo() - 1) * pageQuery.getPageSize();
 
         // 构建排序
         String orderByClause = null;
 
-        if(CollUtil.isNotEmpty(pageRequest.getSortOrders())){
-            orderByClause = pageRequest.getSortOrders().stream()
+        if(CollUtil.isNotEmpty(pageQuery.getSortOrders())){
+            orderByClause = pageQuery.getSortOrders().stream()
                     .map(sortOrder -> String.format("%s %s",sortOrder.getField(),(sortOrder.getIsAsc() ? "ASC":"DESC")))
                     .collect(Collectors.joining(","));
             logger.info("orderByClause = {}",orderByClause);
         }
 
-        int total = mapper.countRecords();
-        int totalPages = (int) Math.ceil((double) total / pageRequest.getPageSize());
+        int total = mapper.countRecords(pageQuery.getFilters());
+        int totalPages = (int) Math.ceil((double) total / pageQuery.getPageSize());
 
-        List<T> list = mapper.pageSelect(offset, limit, orderByClause);
+        List<T> list = mapper.pageSelect(offset, limit, orderByClause,pageQuery.getFilters());
 
         return PageResponse.<T>builder().totalPages(totalPages)
-                .currentPageNo(pageRequest.getPageNo())
+                .currentPageNo(pageQuery.getPageNo())
                 .total(total)
                 .list(list).build();
     }
+
 }

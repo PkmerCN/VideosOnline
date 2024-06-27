@@ -1,6 +1,7 @@
 package org.hzz.core.mapper;
 
 import org.apache.ibatis.annotations.Param;
+import org.hzz.core.page.query.FilterCondition;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ import java.util.List;
  */
 public interface PageMapper<T> {
     List<T> pageSelect(@Param("offset") Integer offset,
-                           @Param("limit") Integer limit,
-                           @Param("orderByClause") String orderByClause);
-
-    int countRecords();
+                       @Param("limit") Integer limit,
+                       @Param("orderByClause") String orderByClause,
+                       @Param("filters") List<FilterCondition> filters);
+    int countRecords(@Param("filters") List<FilterCondition> filters);
 }

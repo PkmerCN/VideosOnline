@@ -1,15 +1,14 @@
 package org.hzz.learning.domain.aggregate;
 
 import lombok.Data;
-import org.hzz.core.page.PageRequest;
-import org.hzz.course.domain.aggregate.CourseSimpleInfoListDto;
+import org.hzz.core.page.query.PageQuery;
 import org.hzz.course.domain.entity.CourseSimpleInfoDto;
 import org.hzz.ddd.core.domain.shared.AggregateRoot;
 import org.hzz.learning.domain.enums.LessonStatus;
 import org.hzz.learning.domain.enums.PlanStatus;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+
 
 /**
  * @author 胖卡
@@ -32,6 +31,6 @@ public class LearningLessonAggregate implements AggregateRoot {
     private LocalDateTime expireTime;
 
 
-    private PageRequest pageQuery;
+    private PageQuery pageQuery;
     private CourseSimpleInfoDto course;
 }

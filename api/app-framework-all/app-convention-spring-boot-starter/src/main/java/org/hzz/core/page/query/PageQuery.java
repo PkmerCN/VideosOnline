@@ -1,9 +1,10 @@
-package org.hzz.core.page;
+package org.hzz.core.page.query;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 @Data
 @Schema(description = "分页请求")
-public class PageRequest {
+public class PageQuery {
     private static final Integer DEFAULT_PAGE_NO = 1;
     private static final Integer DEFAULT_PAGE_SIZE = 20;
 
@@ -33,14 +34,9 @@ public class PageRequest {
     private Boolean isAsc = true;
 
     @Schema(description = "排序字段和顺序")
-    private List<SortOrder> sortOrders;
+    private List<SortOrder> sortOrders = new ArrayList<>();
 
-    @Data
-    public class SortOrder{
-        @Schema(description = "排序方式",example = "id")
-        private String field;
+    @Schema(description = "过滤条件")
+    private List<FilterCondition> filters = new ArrayList<>();
 
-        @Schema(description = "是否升序",example = "true")
-        private Boolean isAsc = true;
-    }
 }

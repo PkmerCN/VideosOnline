@@ -1,6 +1,6 @@
 package org.hzz.learning.application.service;
 
-import org.hzz.core.page.PageRequest;
+import org.hzz.core.page.query.PageQuery;
 
 /**
  * @author 胖卡
@@ -9,5 +9,5 @@ import org.hzz.core.page.PageRequest;
  */
 public interface LearningLessonService {
 
-    void pageQueryLesson(PageRequest pageRequest);
+    void pageQueryLesson(PageQuery pageQuery);
 }

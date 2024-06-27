@@ -13,5 +13,4 @@ public interface LearnLessonRepository {
 
         void saveBath(List<EnrollerLesson> lessonList);
 
-        void selectPage();
 }
