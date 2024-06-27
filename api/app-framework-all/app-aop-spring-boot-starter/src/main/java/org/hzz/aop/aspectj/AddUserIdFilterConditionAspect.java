@@ -20,7 +20,9 @@ public class AddUserIdFilterConditionAspect {
     public void pointcut(AddUserIdFilterCondition addUserIdFilterCondition, PageQuery pageQuery){}
 
     @Before(value = "pointcut(addUserIdFilterCondition, pageQuery)", argNames = "joinPoint,addUserIdFilterCondition,pageQuery")
-    public void beforeMethodWithAddUserIdFilterCondition(JoinPoint joinPoint, AddUserIdFilterCondition addUserIdFilterCondition, PageQuery pageQuery) {
+    public void beforeMethodWithAddUserIdFilterCondition(JoinPoint joinPoint,
+                                                         AddUserIdFilterCondition addUserIdFilterCondition,
+                                                         PageQuery pageQuery) {
         System.out.println("Before method: " + joinPoint.getSignature());
         System.out.println("PageQuery: " + pageQuery);
     }

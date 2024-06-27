@@ -27,12 +27,6 @@ public class PageQuery {
     @Min(value = 1,message = "每页查询数量不能小于1")
     private Integer pageSize = DEFAULT_PAGE_SIZE;
 
-    @Schema(description = "排序方式",example = "id")
-    private String sortBy;
-
-    @Schema(description = "是否升序",example = "true")
-    private Boolean isAsc = true;
-
     @Schema(description = "排序字段和顺序")
     private List<SortOrder> sortOrders = new ArrayList<>();
 
