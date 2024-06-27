@@ -10,7 +10,7 @@ import java.util.List;
  * @date 2024/6/27
  */
 public interface PageMapper<T> {
-    List<T> selectEntities(@Param("offset") Integer offset,
+    List<T> pageSelect(@Param("offset") Integer offset,
                            @Param("limit") Integer limit,
                            @Param("orderByClause") String orderByClause);
 }

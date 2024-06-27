@@ -32,6 +32,6 @@ public class PageBaseRepository<P extends PageMapper<?>,C> extends BaseRepositor
             logger.info("orderByClause = {}",orderByClause);
         }
 
-        mapper.selectEntities(offset,limit,orderByClause);
+        mapper.pageSelect(offset,limit,orderByClause);
     }
 }
