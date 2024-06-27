@@ -1,5 +1,6 @@
 package org.hzz.learning.domain.service;
 
+import org.hzz.core.page.PageResponse;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 
 /**
@@ -8,6 +9,5 @@ import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
  * @date 2024/6/27
  */
 public interface LearningLessonPageService {
-
-    void pageQueryLesson(LearningLessonAggregate learningLessonAggregate);
+    PageResponse<LearningLessonAggregate> pageQueryLesson(LearningLessonAggregate learningLessonAggregate);
 }
