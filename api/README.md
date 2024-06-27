@@ -111,6 +111,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-rabbitmq-spring-boot-starter      | 封装了rabbitmq基础功能(序列化使用fastjson2)       |
 | app-common-spring-boot-starter        | 封装了常用工具类                              |
 | app-aop-spring-boot-starter           | 项目中自定义的切面,目前实现了添加了自动注解标记添加用户id过滤,用于分页 |
+| app-fastjson2-spring-boot-starter     | 集成使用fastjson2,枚举序列化与反序列化              |
 
 ## 业务模块的ddd模块划分
 
@@ -164,7 +165,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | docker集成                               |
 | MyBatis集成以及逆向工程生成代码                    |
 | Valid 参数检验以及异常处理                       |
-| 引入fastjson                             |
+| 引入fastjson2,并配置枚举序列化                   |
 | 引入password4j                           |
 | 引入mapstruct对象映射                        |
 | 系统自定义异常以及AppStatusCode完成               |
