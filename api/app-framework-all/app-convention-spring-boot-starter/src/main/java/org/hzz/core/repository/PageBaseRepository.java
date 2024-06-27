@@ -1,11 +1,9 @@
 package org.hzz.core.repository;
 
-import lombok.Setter;
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.mapper.PageMapper;
 import org.hzz.core.page.PageRequest;
 import org.hzz.core.page.PageResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.stream.Collectors;
