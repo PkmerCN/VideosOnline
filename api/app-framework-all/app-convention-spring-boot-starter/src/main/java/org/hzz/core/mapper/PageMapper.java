@@ -13,4 +13,6 @@ public interface PageMapper<T> {
     List<T> pageSelect(@Param("offset") Integer offset,
                            @Param("limit") Integer limit,
                            @Param("orderByClause") String orderByClause);
+
+    int countRecords();
 }
