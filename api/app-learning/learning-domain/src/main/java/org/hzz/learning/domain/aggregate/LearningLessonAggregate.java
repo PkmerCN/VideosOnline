@@ -1,5 +1,6 @@
 package org.hzz.learning.domain.aggregate;
 
+import lombok.Builder;
 import lombok.Data;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.course.domain.entity.CourseSimpleInfoDto;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
  * @date 2024/6/27
  */
 @Data
+@Builder
 public class LearningLessonAggregate implements AggregateRoot {
 
     private Long id;

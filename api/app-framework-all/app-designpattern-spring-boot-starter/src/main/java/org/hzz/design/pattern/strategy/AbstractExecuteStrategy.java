@@ -2,6 +2,8 @@ package org.hzz.design.pattern.strategy;
 
 /**
  * 策略执行抽象
+ * T Command
+ * R 返回结果
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/21

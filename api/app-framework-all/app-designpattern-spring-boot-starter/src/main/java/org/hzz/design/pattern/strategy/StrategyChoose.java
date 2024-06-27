@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
+ * 策略选择
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/20
@@ -29,7 +30,7 @@ public class StrategyChoose implements ApplicationListener<ApplicationInitializi
     }
 
     public <T,R> R chooseAndExecuteWithResp(String mark,T command){
-        AbstractExecuteStrategy strategy = choose(mark);
+        AbstractExecuteStrategy<T,R> strategy = choose(mark);
         return (R)strategy.executeWithResp(command);
     }
 
