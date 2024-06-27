@@ -26,17 +26,9 @@ public class LearningLessonController extends BaseController implements Learning
     @AddUserIdFilterCondition
     public void queryUserLessons(PageQuery pageQuery) {
         logger.info("分页查询用户课程");
-        // 下面这段代码可以用注解优化一下
-        Long userId = AppContextHolder.userContextHolder.getUser().getId();
-        FilterCondition filterCondition = new FilterCondition();
-        filterCondition.setField("user_id");
-        filterCondition.setOperator("=");
-        filterCondition.setValue(userId);
-        pageQuery.getFilters().add(filterCondition);
-
         System.out.println(pageQuery.toString());
 
-//        PageQueryCommand pageQueryCommand = PageQueryCommand.commandOf(pageQuery);
-//        appLearningLessonService.pageQueryLesson(pageQueryCommand);
+        PageQueryCommand pageQueryCommand = PageQueryCommand.commandOf(pageQuery);
+        appLearningLessonService.pageQueryLesson(pageQueryCommand);
     }
 }

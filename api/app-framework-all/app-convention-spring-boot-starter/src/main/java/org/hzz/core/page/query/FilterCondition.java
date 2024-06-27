@@ -19,4 +19,11 @@ public class FilterCondition {
 
     @Schema(description = "值", example = "3")
     private Object value;
+
+    @Override
+    public String toString() {
+        return "FilterCondition{ " +
+                field + " " + operator + " " + value +
+                " }";
+    }
 }

@@ -1,5 +1,7 @@
 package org.hzz.aop.annotations;
 
+import org.springframework.core.annotation.AliasFor;
+
 import java.lang.annotation.*;
 
 /**
@@ -12,4 +14,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface AddUserIdFilterCondition {
+    /**
+     * 对应数据库中user_id，其他的可能命名不同如id.
+     * @return 数据库中的字段名
+     */
+    String value() default "user_id";
 }
