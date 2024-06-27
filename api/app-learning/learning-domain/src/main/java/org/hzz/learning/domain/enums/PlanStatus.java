@@ -20,12 +20,12 @@ public enum PlanStatus implements BaseEnum {
     }
     @Override
     public Integer getValue() {
-        return null;
+        return value;
     }
 
     @Override
     public String getDesc() {
-        return null;
+        return desc;
     }
 
     public static PlanStatus fromValue(Byte value) {
