@@ -10,10 +10,9 @@ import org.hzz.core.code.impl.AppStatusImpl;
  * @date 2024/6/28
  */
 public class AppDbException extends AppCommonException{
-    static final AppStatus status = AppStatusImpl.DB_ERROR;
+    final AppStatus status = AppStatusImpl.DB_ERROR;
     public AppDbException(String message){
         super(message);
     }
-
 
 }

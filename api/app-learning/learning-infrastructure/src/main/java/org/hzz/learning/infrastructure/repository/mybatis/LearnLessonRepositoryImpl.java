@@ -1,11 +1,14 @@
 package org.hzz.learning.infrastructure.repository.mybatis;
 
 import lombok.Setter;
+import org.hzz.common.collection.CollUtil;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
 import org.hzz.learning.infrastructure.converter.EnrollerLessonConverter;
+import org.hzz.learning.infrastructure.converter.LearningLessonEntityConverter;
 import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
+import org.hzz.learning.infrastructure.dao.entity.LearningLessonExample;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonBatchMapper;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,8 @@ public class LearnLessonRepositoryImpl implements LearnLessonRepository {
     @Setter(onMethod_ = @Autowired)
     private EnrollerLessonConverter enrollerLessonConverter;
 
+    @Setter(onMethod_ = @Autowired)
+    private LearningLessonEntityConverter lessonEntityConverter;
 
     @Override
     public void saveBath(List<EnrollerLesson> lessonList) {
@@ -38,6 +43,14 @@ public class LearnLessonRepositoryImpl implements LearnLessonRepository {
 
     @Override
     public LearningLessonEntity getLearningLesson(Long userId, Long courseId) {
+        LearningLessonExample example = new LearningLessonExample();
+        example.createCriteria()
+                .andUserIdEqualTo(userId)
+                .andCourseIdEqualTo(courseId);
+        List<LearningLesson> lessons = learningLessonMapper.selectByExample(example);
+        if(CollUtil.isNotEmpty(lessons)){
+            return lessonEntityConverter.mapToEntity(lessons.get(0));
+        }
         return null;
     }
 }
