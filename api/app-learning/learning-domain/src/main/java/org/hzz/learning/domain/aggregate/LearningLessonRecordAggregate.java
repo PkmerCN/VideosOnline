@@ -20,9 +20,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class LearningLessonRecordAggregate implements AggregateRoot {
-
     private LearningLessonEntity lesson;
-
     private List<LearnRecordEntity> records;
-
 }

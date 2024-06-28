@@ -4,9 +4,15 @@ import lombok.Setter;
 import org.hzz.ddd.core.domain.shared.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.service.command.LearnLessonRecordCommand;
+import org.hzz.learning.application.service.resp.LearnLessonRecordDto;
 import org.hzz.learning.application.service.resp.LearnRecordDto;
 import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
+import org.hzz.learning.domain.entity.LearnRecordEntity;
 import org.hzz.learning.domain.service.LearnLessonRecordDomainService;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +24,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class LearnLessonRecordCommandHandler implements CommandHandler,
-        AbstractExecuteStrategy<LearnLessonRecordCommand, LearnRecordDto> {
+        AbstractExecuteStrategy<LearnLessonRecordCommand, LearnLessonRecordDto> {
 
     @Setter(onMethod_ = @Autowired)
     private LearnLessonRecordDomainService learnLessonRecordDomainService;
@@ -29,12 +35,26 @@ public class LearnLessonRecordCommandHandler implements CommandHandler,
     }
 
     @Override
-    public LearnRecordDto executeWithResp(LearnLessonRecordCommand command) {
+    public LearnLessonRecordDto executeWithResp(LearnLessonRecordCommand command) {
         LearningLessonRecordAggregate aggregate = learnLessonRecordDomainService.queryLearnLessonRecord(
                 command.getUserId(),
                 command.getCourseId()
         );
-        // todo
-        return null;
+
+        return LearnLessonRecordDtoMapper.INSTANCE.convertFrom(aggregate);
+    }
+
+    @Mapper
+    interface LearnLessonRecordDtoMapper{
+        LearnLessonRecordDtoMapper INSTANCE = Mappers.getMapper(LearnLessonRecordDtoMapper.class);
+
+        @Mappings({
+                @Mapping(source = "lesson.id", target = "id"),
+                @Mapping(source = "lesson.latestSectionId", target = "latestSectionId")
+        })
+        LearnLessonRecordDto convertFrom(LearningLessonRecordAggregate source);
+
+        @Mapping(source = "id", target = "sectionId")
+        LearnRecordDto toDto(LearnRecordEntity entity);
     }
 }

@@ -1,7 +1,10 @@
 package org.hzz.learning.application.service.resp;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -11,6 +14,9 @@ import java.util.List;
  * @date 2024/6/29
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Schema(description = "用户学习课程记录")
 public class LearnLessonRecordDto {
     @Schema(description = "用户学习的课程id")
@@ -19,5 +25,4 @@ public class LearnLessonRecordDto {
     private Long latestSectionId;
     @Schema(description = "小节学习进度列表")
     List<LearnRecordDto> records;
-
 }
