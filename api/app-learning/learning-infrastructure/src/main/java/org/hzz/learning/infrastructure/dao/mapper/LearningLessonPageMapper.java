@@ -2,7 +2,7 @@ package org.hzz.learning.infrastructure.dao.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.hzz.core.mapper.PageMapper;
-import org.hzz.learning.infrastructure.dao.po.LearningLesson;
+import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
 
 /**
  * @author 胖卡

@@ -1,7 +1,7 @@
 package org.hzz.learning.infrastructure.dao.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.hzz.learning.infrastructure.dao.po.LearningLesson;
+import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
 
 import java.util.List;
 

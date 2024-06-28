@@ -2,7 +2,7 @@ package org.hzz.learning.infrastructure.converter;
 
 import org.hzz.core.converter.BaseConverter;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
-import org.hzz.learning.infrastructure.dao.po.LearningLesson;
+import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

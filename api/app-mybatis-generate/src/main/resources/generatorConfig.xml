@@ -4,6 +4,7 @@
 <generatorConfiguration>
 
     <context id="MySQLTables" targetRuntime="MyBatis3">
+
         <!--   使用自己的注释类     -->
         <commentGenerator type="org.hzz.mybatis.common.MyCommentGenerator">
             <!--   不生成注释     -->
@@ -16,6 +17,10 @@
                         password="Root.123456">
         </jdbcConnection>
 
+        <javaTypeResolver>
+            <property name="useJSR310Types" value="true" />
+        </javaTypeResolver>
+
         <javaModelGenerator targetPackage="org.hzz.learning.infrastructure.dao.entity.record" targetProject="src/main/java" />
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
         <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.learning.infrastructure.dao.mapper.record" targetProject="src/main/java"/>
@@ -26,7 +31,7 @@
 <!--        <table tableName="app_user"/>-->
 <!--        <table tableName="learning_lesson"/>-->
 <!--        <table tableName="course"/>-->
-        <table tableName="learning_record" domainObjectName="LearningRecordDO"/>
+        <table tableName="learning_record"/>
     </context>
 
 </generatorConfiguration>

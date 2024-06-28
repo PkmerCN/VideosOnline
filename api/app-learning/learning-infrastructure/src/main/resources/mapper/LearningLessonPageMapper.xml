@@ -5,7 +5,7 @@
         id, user_id, course_id, status, week_freq, plan_status, learned_sections, latest_section_id,
     latest_learn_time, create_time, expire_time, update_time
     </sql>
-    <select id="pageSelect" resultType="org.hzz.learning.infrastructure.dao.po.LearningLesson">
+    <select id="pageSelect" resultType="org.hzz.learning.infrastructure.dao.entity.LearningLesson">
         select
         <include refid="Base_Column_List"/>
         from learning_lesson

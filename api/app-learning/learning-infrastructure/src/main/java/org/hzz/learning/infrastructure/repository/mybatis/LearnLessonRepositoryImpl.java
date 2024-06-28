@@ -5,7 +5,7 @@ import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
 import org.hzz.learning.infrastructure.converter.EnrollerLessonConverter;
-import org.hzz.learning.infrastructure.dao.po.LearningLesson;
+import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonBatchMapper;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
