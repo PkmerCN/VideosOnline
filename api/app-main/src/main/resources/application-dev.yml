@@ -47,7 +47,7 @@ app-version: '@project.version@'
 # 自定义的应用配置
 app:
   jwt:
-    expiration-time: 3600000 # 1h in millisecond
+    expiration-time: 36000000 # 10h in millisecond
     secret-key: 9cZjXN9uHH0erCgOAdZCsXIAJbeh7Q43eLa/c1a69rU=
   auth:
     ignore-urls:
