@@ -31,6 +31,6 @@ public class AppCommonException extends RuntimeException implements AppException
 
     @Override
     public AppStatus getStatus() {
-        return appStatus;
+        return this.appStatus;
     }
 }
