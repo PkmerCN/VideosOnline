@@ -7,4 +7,5 @@ package org.hzz.learning.application.service.handler;
  */
 public interface MarkConstants {
     String PAGE_QUERY = "lesson::PageQueryCommand";
+    String LEARN_LESSON_RECORD = "lesson::record::LearnLessonRecordCommand";
 }

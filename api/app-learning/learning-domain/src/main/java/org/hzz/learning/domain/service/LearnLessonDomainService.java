@@ -11,5 +11,4 @@ import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 public interface LearnLessonDomainService{
 
     void enrollCourse(EnrollCourseAggregate enrollCourse);
-
 }
