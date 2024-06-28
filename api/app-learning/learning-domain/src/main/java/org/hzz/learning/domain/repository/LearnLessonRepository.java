@@ -1,5 +1,6 @@
 package org.hzz.learning.domain.repository;
 
+import org.hzz.learning.domain.mode.LearningLesson;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
 
 import java.util.List;
@@ -12,5 +13,7 @@ import java.util.List;
 public interface LearnLessonRepository {
 
         void saveBath(List<EnrollerLesson> lessonList);
+
+        LearningLesson getLearningLesson(Long userId, Long courseId);
 
 }

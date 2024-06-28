@@ -4,7 +4,7 @@ import lombok.Setter;
 import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
 import org.hzz.learning.infrastructure.converter.EnrollerLessonConverter;
-import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
+import org.hzz.learning.infrastructure.dao.po.LearningLesson;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonBatchMapper;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +33,10 @@ public class LearnLessonRepositoryImpl implements LearnLessonRepository {
     public void saveBath(List<EnrollerLesson> lessonList) {
         List<LearningLesson> learningLessons = enrollerLessonConverter.mapToLearningLessonList(lessonList);
         learningLessonBatchMapper.saveBatch(learningLessons);
+    }
+
+    @Override
+    public org.hzz.learning.domain.mode.LearningLesson getLearningLesson(Long userId, Long courseId) {
+        return null;
     }
 }

@@ -4,7 +4,7 @@ import org.hzz.core.converter.BaseConverter;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 import org.hzz.learning.domain.enums.LessonStatus;
 import org.hzz.learning.domain.enums.PlanStatus;
-import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
+import org.hzz.learning.infrastructure.dao.po.LearningLesson;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

@@ -1,4 +1,4 @@
-package org.hzz.learning.infrastructure.dao.entity.record;
+package org.hzz.learning.infrastructure.dao.po.record;
 
 import org.hzz.mybatis.annotation.SnowflakeId;
 

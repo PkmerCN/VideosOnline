@@ -5,7 +5,7 @@ import org.hzz.core.repository.PageBaseRepository;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 import org.hzz.learning.domain.repository.LearnLessonPageRepository;
 import org.hzz.learning.infrastructure.converter.LearnLessonAggregateConverter;
-import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
+import org.hzz.learning.infrastructure.dao.po.LearningLesson;
 import org.hzz.learning.infrastructure.dao.mapper.LearningLessonPageMapper;
 import org.springframework.stereotype.Repository;
 

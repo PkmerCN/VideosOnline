@@ -1,4 +1,4 @@
-package org.hzz.learning.infrastructure.dao.entity;
+package org.hzz.learning.infrastructure.dao.po;
 
 import java.util.ArrayList;
 import java.util.Date;

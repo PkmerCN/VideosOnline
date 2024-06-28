@@ -2,7 +2,7 @@ package org.hzz.learning.domain.aggregate;
 
 import lombok.Data;
 import org.hzz.ddd.core.domain.shared.AggregateRoot;
-import org.hzz.learning.domain.entity.LearnRecord;
+import org.hzz.learning.domain.entity.LearnRecordEntity;
 
 import java.util.List;
 
@@ -17,6 +17,6 @@ public class LearningLessonRecordAggregate implements AggregateRoot {
     private Long id;
     private Long latestSectionId;
 
-    private List<LearnRecord> records;
+    private List<LearnRecordEntity> records;
 
 }

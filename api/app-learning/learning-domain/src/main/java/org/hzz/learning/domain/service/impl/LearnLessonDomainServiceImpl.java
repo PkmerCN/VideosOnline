@@ -3,6 +3,8 @@ package org.hzz.learning.domain.service.impl;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.course.domain.entity.CourseSimpleInfoDto;
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
+import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
+import org.hzz.learning.domain.mode.LearningLesson;
 import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.service.LearnLessonDomainService;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
@@ -41,5 +43,12 @@ public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonR
 
         repository.saveBath(enrollerLessonList);
         logger.info("用户订阅{}个课程成功",enrollerLessonList.size());
+    }
+
+    @Override
+    public LearningLesson queryLesson(Long userId, Long courseId) {
+
+
+        return null;
     }
 }

@@ -5,6 +5,8 @@ import org.hzz.ddd.core.domain.shared.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.service.command.LearnLessonRecordCommand;
 import org.hzz.learning.application.service.resp.LearnRecordDto;
+import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
+import org.hzz.learning.domain.service.LearnLessonRecordDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +20,8 @@ import org.springframework.stereotype.Component;
 public class LearnLessonRecordCommandHandler implements CommandHandler,
         AbstractExecuteStrategy<LearnLessonRecordCommand, LearnRecordDto> {
 
-//    @Setter(onMethod_ = @Autowired)
-    
+    @Setter(onMethod_ = @Autowired)
+    private LearnLessonRecordDomainService learnLessonRecordDomainService;
 
     @Override
     public String mark() {
@@ -27,8 +29,12 @@ public class LearnLessonRecordCommandHandler implements CommandHandler,
     }
 
     @Override
-    public LearnRecordDto executeWithResp(LearnLessonRecordCommand learnLessonRecordCommand) {
-
+    public LearnRecordDto executeWithResp(LearnLessonRecordCommand command) {
+        LearningLessonRecordAggregate aggregate = learnLessonRecordDomainService.queryLearnLessonRecord(
+                command.getUserId(),
+                command.getCourseId()
+        );
+        // todo
         return null;
     }
 }

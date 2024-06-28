@@ -1,8 +1,8 @@
 package org.hzz.learning.infrastructure.dao.mapper.record;
 
 import org.apache.ibatis.annotations.Param;
-import org.hzz.learning.infrastructure.dao.entity.record.LearningRecord;
-import org.hzz.learning.infrastructure.dao.entity.record.LearningRecordExample;
+import org.hzz.learning.infrastructure.dao.po.record.LearningRecord;
+import org.hzz.learning.infrastructure.dao.po.record.LearningRecordExample;
 
 import java.util.List;
 
