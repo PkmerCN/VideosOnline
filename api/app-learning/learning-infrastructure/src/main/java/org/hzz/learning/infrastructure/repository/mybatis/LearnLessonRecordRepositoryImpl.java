@@ -7,7 +7,6 @@ import org.hzz.learning.domain.repository.LearnLessonRecordRepository;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecord;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecordExample;
 import org.hzz.learning.infrastructure.dao.mapper.record.LearningRecordMapper;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
