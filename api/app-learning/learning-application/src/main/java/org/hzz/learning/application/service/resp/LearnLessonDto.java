@@ -23,13 +23,13 @@ public class LearnLessonDto {
     @Schema(description = "学习课程id")
     private Long id;
 
-    @Schema(description = "课程状态，0-未学习，1-学习中，2-已学完，3-已失效")
-    @JSONField(serializeUsing = BaseEnumWriter.class)
-    private LessonStatus status;
-
     @Schema(description = "学习计划状态，0-没有计划，1-计划进行中")
     @JSONField(serializeUsing = BaseEnumWriter.class)
     private PlanStatus planStatus;
+
+    @Schema(description = "课程状态，0-未学习，1-学习中，2-已学完，3-已失效")
+    @JSONField(serializeUsing = BaseEnumWriter.class)
+    private LessonStatus lessonStatus;
 
     @Schema(description = "总已学习章节数")
     private Integer learnedSections;

@@ -5,6 +5,8 @@ import org.hzz.learning.application.service.resp.CourseDto;
 import org.hzz.learning.application.service.resp.LearnLessonDto;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
 import java.util.List;
 
@@ -16,8 +18,13 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface LearnLessonDtoConverter {
 
+
     LearnLessonDto mapToLearnLessonDto(LearningLessonAggregate source);
-    CourseDto mapToCourseDto(CourseSimpleInfoDto source);
+
+    @Mappings({
+            @Mapping(source = "sectionNum",target = "sections")
+    })
+    CourseDto mapToCourseDto(CourseSimpleInfoDto dto);
 
     List<LearnLessonDto> mapToDtos(List<LearningLessonAggregate> sources);
 }
