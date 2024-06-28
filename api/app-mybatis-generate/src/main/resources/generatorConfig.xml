@@ -16,7 +16,7 @@
                         password="Root.123456">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="org.hzz.learning.infrastructure.dao.po.record" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="org.hzz.learning.infrastructure.dao.entity.record" targetProject="src/main/java" />
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
         <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.learning.infrastructure.dao.mapper.record" targetProject="src/main/java"/>
 
@@ -24,7 +24,7 @@
 <!--        <table tableName="app_user"/>-->
 <!--        <table tableName="learning_lesson"/>-->
 <!--        <table tableName="course"/>-->
-        <table tableName="learning_record"/>
+        <table tableName="learning_record" domainObjectName="LearningRecordDO"/>
     </context>
 
 </generatorConfiguration>
