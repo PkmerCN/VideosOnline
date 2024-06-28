@@ -44,9 +44,12 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
 
     @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
-        field.addJavaDocLine(String.format("// %s.%s (%s)",
-                introspectedTable.getFullyQualifiedTable(),
-                introspectedColumn.getActualColumnName(),
+//        field.addJavaDocLine(String.format("// %s.%s (%s)",
+//                introspectedTable.getFullyQualifiedTable(),
+//                introspectedColumn.getActualColumnName(),
+//                introspectedColumn.getRemarks()));
+
+        field.addJavaDocLine(String.format("// %s",
                 introspectedColumn.getRemarks()));
     }
 }
