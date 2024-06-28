@@ -55,6 +55,7 @@
         <password4j.version>1.8.2</password4j.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <java.version>17</java.version>
+        <hutool.version>5.8.28</hutool.version>
         <fastjson2.version>2.0.51</fastjson2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
@@ -123,7 +124,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
