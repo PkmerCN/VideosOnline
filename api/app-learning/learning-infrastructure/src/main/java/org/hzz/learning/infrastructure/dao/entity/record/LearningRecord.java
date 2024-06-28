@@ -1,5 +1,7 @@
 package org.hzz.learning.infrastructure.dao.entity.record;
 
+import org.hzz.mybatis.annotation.SnowflakeId;
+
 import java.time.LocalDateTime;
 
 /**
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
  */
 public class LearningRecord {
     // 学习记录的id
+    @SnowflakeId
     private Long id;
 
     // 对应课表的id
