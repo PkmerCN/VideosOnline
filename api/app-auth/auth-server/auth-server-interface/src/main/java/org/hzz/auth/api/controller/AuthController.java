@@ -1,5 +1,6 @@
 package org.hzz.api.controller;
 
+import lombok.Setter;
 import org.hzz.auth.AuthAppService;
 import org.hzz.api.AuthAPI;
 import org.hzz.api.model.LoginUserRequest;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 @RestController
 public class AuthController extends BaseController implements AuthAPI {
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     private AuthAppService authAppService;
 
     @Override
