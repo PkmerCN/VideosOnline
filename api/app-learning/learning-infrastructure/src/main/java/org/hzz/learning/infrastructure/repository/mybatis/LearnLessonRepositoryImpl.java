@@ -1,6 +1,7 @@
 package org.hzz.learning.infrastructure.repository.mybatis;
 
 import lombok.Setter;
+import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
 import org.hzz.learning.infrastructure.converter.EnrollerLessonConverter;
@@ -36,7 +37,7 @@ public class LearnLessonRepositoryImpl implements LearnLessonRepository {
     }
 
     @Override
-    public org.hzz.learning.domain.mode.LearningLesson getLearningLesson(Long userId, Long courseId) {
+    public LearningLessonEntity getLearningLesson(Long userId, Long courseId) {
         return null;
     }
 }

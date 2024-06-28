@@ -1,8 +1,7 @@
 package org.hzz.learning.domain.service;
 
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
-import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
-import org.hzz.learning.domain.mode.LearningLesson;
+import org.hzz.learning.domain.entity.LearningLessonEntity;
 
 /**
  * @author 胖卡
@@ -19,5 +18,5 @@ public interface LearnLessonDomainService{
      * @param courseId 课程Id
      * @return Lesson
      */
-    LearningLesson queryLesson(Long userId, Long courseId);
+    LearningLessonEntity queryLesson(Long userId, Long courseId);
 }

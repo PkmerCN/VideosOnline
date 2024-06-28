@@ -3,8 +3,7 @@ package org.hzz.learning.domain.service.impl;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.course.domain.entity.CourseSimpleInfoDto;
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
-import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
-import org.hzz.learning.domain.mode.LearningLesson;
+import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.service.LearnLessonDomainService;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
@@ -46,7 +45,7 @@ public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonR
     }
 
     @Override
-    public LearningLesson queryLesson(Long userId, Long courseId) {
+    public LearningLessonEntity queryLesson(Long userId, Long courseId) {
 
 
         return null;
