@@ -4,8 +4,10 @@ import lombok.Setter;
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.LearnRecordApi;
+import org.hzz.learning.api.req.LearningRecordFormRequest;
 import org.hzz.learning.application.service.AppLearningLessonService;
 import org.hzz.learning.application.service.command.LearnLessonRecordCommand;
+import org.hzz.learning.application.service.command.LearnRecordSaveCommand;
 import org.hzz.learning.application.service.resp.LearnLessonRecordDto;
 import org.hzz.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +30,19 @@ public class LearnRecordController extends BaseController implements LearnRecord
                 courseId);
         LearnLessonRecordDto learnLessonRecordDto = appLearningLessonService.queryLearningRecord(command);
         return success(learnLessonRecordDto);
+    }
+
+    @Override
+    public Result<Object> commitLearnRecord(LearningRecordFormRequest request) {
+        logger.info("提交学习记录 lessonID = {}",request.getLessonId());
+        LearnRecordSaveCommand command = new LearnRecordSaveCommand()
+                .setLessonId(request.getLessonId())
+                .setSectionId(request.getSectionId())
+                .setCommitTime(request.getCommitTime())
+                .setDuration(request.getDuration())
+                .setMoment(request.getMoment())
+                .setSectionType(request.getSectionType());
+
+        return success(null);
     }
 }
