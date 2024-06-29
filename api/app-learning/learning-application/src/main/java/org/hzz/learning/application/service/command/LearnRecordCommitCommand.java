@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
-public class LearnRecordSaveCommand {
+public class LearnRecordCommitCommand {
     Long lessonId;
     Long sectionId;
     SectionType sectionType;

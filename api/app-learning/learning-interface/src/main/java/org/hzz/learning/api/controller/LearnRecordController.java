@@ -7,7 +7,7 @@ import org.hzz.learning.api.LearnRecordApi;
 import org.hzz.learning.api.req.LearningRecordFormRequest;
 import org.hzz.learning.application.service.AppLearningLessonService;
 import org.hzz.learning.application.service.command.LearnLessonRecordCommand;
-import org.hzz.learning.application.service.command.LearnRecordSaveCommand;
+import org.hzz.learning.application.service.command.LearnRecordCommitCommand;
 import org.hzz.learning.application.service.resp.LearnLessonRecordDto;
 import org.hzz.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class LearnRecordController extends BaseController implements LearnRecord
     @Override
     public Result<Object> commitLearnRecord(LearningRecordFormRequest request) {
         logger.info("提交学习记录 lessonID = {}",request.getLessonId());
-        LearnRecordSaveCommand command = new LearnRecordSaveCommand()
+        LearnRecordCommitCommand command = new LearnRecordCommitCommand()
                 .setLessonId(request.getLessonId())
                 .setSectionId(request.getSectionId())
                 .setCommitTime(request.getCommitTime())
