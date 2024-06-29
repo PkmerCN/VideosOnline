@@ -15,8 +15,9 @@ import java.time.LocalDateTime;
  * @date 2024/6/29
  */
 @Data
+@Schema(description = "提交记录")
 public class LearningRecordFormRequest {
-    @Schema(description = "课程ID")
+    @Schema(description = "课程ID",example = "7211836839752241153")
     @NotNull
     private Long lessonId;
 
@@ -24,12 +25,12 @@ public class LearningRecordFormRequest {
     @NotNull
     private Long sectionId;
 
-    @Schema(description = "课程类型",example = "0或者1")
+    @Schema(description = "课程类型",example = "1或者2")
     @NotNull
     @JSONField(deserializeUsing = BaseEnumReader.class)
     private SectionType sectionType;
 
-    @Schema(description = "提交时间")
+    @Schema(description = "提交时间",example = "")
     @NotNull
     private LocalDateTime commitTime;
     @Schema(description = "视频时长（秒）")

@@ -7,10 +7,10 @@ import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
 import org.hzz.learning.infrastructure.converter.EnrollerLessonConverter;
 import org.hzz.learning.infrastructure.converter.LearningLessonEntityConverter;
-import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
-import org.hzz.learning.infrastructure.dao.entity.LearningLessonExample;
-import org.hzz.learning.infrastructure.dao.mapper.LearningLessonBatchMapper;
-import org.hzz.learning.infrastructure.dao.mapper.LearningLessonMapper;
+import org.hzz.learning.infrastructure.dao.entity.lesson.LearningLesson;
+import org.hzz.learning.infrastructure.dao.entity.lesson.LearningLessonExample;
+import org.hzz.learning.infrastructure.dao.mapper.lesson.LearningLessonBatchMapper;
+import org.hzz.learning.infrastructure.dao.mapper.lesson.LearningLessonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -44,7 +44,7 @@ public class LearnLessonRepositoryImpl implements LearnLessonRepository {
     @Override
     public int updateLearnLesson(LearningLessonEntity entity) {
         LearningLesson learningLesson = lessonEntityConverter.mapToDo(entity);
-        return learningLessonMapper.updateByPrimaryKey(learningLesson);
+        return learningLessonMapper.updateByPrimaryKeySelective(learningLesson);
     }
 
     @Override

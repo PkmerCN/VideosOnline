@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.hzz.learning.infrastructure.dao.mapper.LearningLessonPageMapper">
+<mapper namespace="org.hzz.learning.infrastructure.dao.mapper.lesson.LearningLessonPageMapper">
     <sql id="Base_Column_List">
         id, user_id, course_id, status, week_freq, plan_status, learned_sections, latest_section_id,
     latest_learn_time, create_time, expire_time, update_time
     </sql>
-    <select id="pageSelect" resultType="org.hzz.learning.infrastructure.dao.entity.LearningLesson">
+    <select id="pageSelect" resultType="org.hzz.learning.infrastructure.dao.entity.lesson.LearningLesson">
         select
         <include refid="Base_Column_List"/>
         from learning_lesson

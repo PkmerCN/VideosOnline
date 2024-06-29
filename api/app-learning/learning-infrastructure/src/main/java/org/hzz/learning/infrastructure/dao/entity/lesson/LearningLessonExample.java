@@ -1,7 +1,7 @@
-package org.hzz.learning.infrastructure.dao.entity;
+package org.hzz.learning.infrastructure.dao.entity.lesson;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class LearningLessonExample {
@@ -595,52 +595,52 @@ public class LearningLessonExample {
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeEqualTo(Date value) {
+        public Criteria andLatestLearnTimeEqualTo(LocalDateTime value) {
             addCriterion("latest_learn_time =", value, "latestLearnTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeNotEqualTo(Date value) {
+        public Criteria andLatestLearnTimeNotEqualTo(LocalDateTime value) {
             addCriterion("latest_learn_time <>", value, "latestLearnTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeGreaterThan(Date value) {
+        public Criteria andLatestLearnTimeGreaterThan(LocalDateTime value) {
             addCriterion("latest_learn_time >", value, "latestLearnTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andLatestLearnTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("latest_learn_time >=", value, "latestLearnTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeLessThan(Date value) {
+        public Criteria andLatestLearnTimeLessThan(LocalDateTime value) {
             addCriterion("latest_learn_time <", value, "latestLearnTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeLessThanOrEqualTo(Date value) {
+        public Criteria andLatestLearnTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("latest_learn_time <=", value, "latestLearnTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeIn(List<Date> values) {
+        public Criteria andLatestLearnTimeIn(List<LocalDateTime> values) {
             addCriterion("latest_learn_time in", values, "latestLearnTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeNotIn(List<Date> values) {
+        public Criteria andLatestLearnTimeNotIn(List<LocalDateTime> values) {
             addCriterion("latest_learn_time not in", values, "latestLearnTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeBetween(Date value1, Date value2) {
+        public Criteria andLatestLearnTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("latest_learn_time between", value1, value2, "latestLearnTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestLearnTimeNotBetween(Date value1, Date value2) {
+        public Criteria andLatestLearnTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("latest_learn_time not between", value1, value2, "latestLearnTime");
             return (Criteria) this;
         }
@@ -655,52 +655,52 @@ public class LearningLessonExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
+        public Criteria andCreateTimeEqualTo(LocalDateTime value) {
             addCriterion("create_time =", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
+        public Criteria andCreateTimeNotEqualTo(LocalDateTime value) {
             addCriterion("create_time <>", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
+        public Criteria andCreateTimeGreaterThan(LocalDateTime value) {
             addCriterion("create_time >", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andCreateTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("create_time >=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
+        public Criteria andCreateTimeLessThan(LocalDateTime value) {
             addCriterion("create_time <", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+        public Criteria andCreateTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("create_time <=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
+        public Criteria andCreateTimeIn(List<LocalDateTime> values) {
             addCriterion("create_time in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
+        public Criteria andCreateTimeNotIn(List<LocalDateTime> values) {
             addCriterion("create_time not in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+        public Criteria andCreateTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("create_time between", value1, value2, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+        public Criteria andCreateTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
@@ -715,52 +715,52 @@ public class LearningLessonExample {
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeEqualTo(Date value) {
+        public Criteria andExpireTimeEqualTo(LocalDateTime value) {
             addCriterion("expire_time =", value, "expireTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeNotEqualTo(Date value) {
+        public Criteria andExpireTimeNotEqualTo(LocalDateTime value) {
             addCriterion("expire_time <>", value, "expireTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeGreaterThan(Date value) {
+        public Criteria andExpireTimeGreaterThan(LocalDateTime value) {
             addCriterion("expire_time >", value, "expireTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andExpireTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("expire_time >=", value, "expireTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeLessThan(Date value) {
+        public Criteria andExpireTimeLessThan(LocalDateTime value) {
             addCriterion("expire_time <", value, "expireTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeLessThanOrEqualTo(Date value) {
+        public Criteria andExpireTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("expire_time <=", value, "expireTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeIn(List<Date> values) {
+        public Criteria andExpireTimeIn(List<LocalDateTime> values) {
             addCriterion("expire_time in", values, "expireTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeNotIn(List<Date> values) {
+        public Criteria andExpireTimeNotIn(List<LocalDateTime> values) {
             addCriterion("expire_time not in", values, "expireTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeBetween(Date value1, Date value2) {
+        public Criteria andExpireTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("expire_time between", value1, value2, "expireTime");
             return (Criteria) this;
         }
 
-        public Criteria andExpireTimeNotBetween(Date value1, Date value2) {
+        public Criteria andExpireTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("expire_time not between", value1, value2, "expireTime");
             return (Criteria) this;
         }
@@ -775,52 +775,52 @@ public class LearningLessonExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeEqualTo(Date value) {
+        public Criteria andUpdateTimeEqualTo(LocalDateTime value) {
             addCriterion("update_time =", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotEqualTo(Date value) {
+        public Criteria andUpdateTimeNotEqualTo(LocalDateTime value) {
             addCriterion("update_time <>", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThan(Date value) {
+        public Criteria andUpdateTimeGreaterThan(LocalDateTime value) {
             addCriterion("update_time >", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andUpdateTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("update_time >=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThan(Date value) {
+        public Criteria andUpdateTimeLessThan(LocalDateTime value) {
             addCriterion("update_time <", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+        public Criteria andUpdateTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("update_time <=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeIn(List<Date> values) {
+        public Criteria andUpdateTimeIn(List<LocalDateTime> values) {
             addCriterion("update_time in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotIn(List<Date> values) {
+        public Criteria andUpdateTimeNotIn(List<LocalDateTime> values) {
             addCriterion("update_time not in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeBetween(Date value1, Date value2) {
+        public Criteria andUpdateTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("update_time between", value1, value2, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+        public Criteria andUpdateTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("update_time not between", value1, value2, "updateTime");
             return (Criteria) this;
         }

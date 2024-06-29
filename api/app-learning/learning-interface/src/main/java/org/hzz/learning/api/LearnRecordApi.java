@@ -32,9 +32,6 @@ public interface LearnRecordApi {
     @Operation(description = "提交用户课程的学习记录（也就是课程小节学习进度）")
     @ApiResponse
     @PostMapping
-    Result<Object> commitLearnRecord(
-            @Parameter
-            @Valid
-            @RequestBody
-            LearningRecordFormRequest learningRecordFormRequest);
+    Result<Object> commitLearnRecord(@Parameter @Valid @RequestBody LearningRecordFormRequest request);
+
 }

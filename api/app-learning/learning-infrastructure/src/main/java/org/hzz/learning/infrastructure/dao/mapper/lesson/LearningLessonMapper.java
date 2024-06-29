@@ -1,11 +1,11 @@
-package org.hzz.learning.infrastructure.dao.mapper;
-
-import java.util.List;
+package org.hzz.learning.infrastructure.dao.mapper.lesson;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
-import org.hzz.learning.infrastructure.dao.entity.LearningLessonExample;
+import org.hzz.learning.infrastructure.dao.entity.lesson.LearningLesson;
+import org.hzz.learning.infrastructure.dao.entity.lesson.LearningLessonExample;
+
+import java.util.List;
 
 @Mapper
 public interface LearningLessonMapper {

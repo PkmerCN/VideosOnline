@@ -3,7 +3,7 @@ package org.hzz.learning.infrastructure.converter;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.enums.LessonStatus;
 import org.hzz.learning.domain.enums.PlanStatus;
-import org.hzz.learning.infrastructure.dao.entity.LearningLesson;
+import org.hzz.learning.infrastructure.dao.entity.lesson.LearningLesson;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
