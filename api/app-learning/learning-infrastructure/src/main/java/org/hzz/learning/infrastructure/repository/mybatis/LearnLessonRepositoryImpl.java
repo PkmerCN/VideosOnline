@@ -42,6 +42,12 @@ public class LearnLessonRepositoryImpl implements LearnLessonRepository {
     }
 
     @Override
+    public int updateLearnLesson(LearningLessonEntity entity) {
+        LearningLesson learningLesson = lessonEntityConverter.mapToDo(entity);
+        return learningLessonMapper.updateByPrimaryKey(learningLesson);
+    }
+
+    @Override
     public LearningLessonEntity getLearningLesson(Long userId, Long courseId) {
         LearningLessonExample example = new LearningLessonExample();
         example.createCriteria()

@@ -2,11 +2,15 @@ package org.hzz.learning.application.handler;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.ddd.core.domain.shared.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.LearnRecordCommitCommand;
+import org.hzz.learning.domain.aggregate.LearnLessonAggregate;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
+import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.enums.SectionType;
+import org.hzz.learning.domain.service.LearnLessonDomainService;
 import org.hzz.learning.domain.service.LearnLessonRecordDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,6 +32,8 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
 
     @Setter(onMethod_ = @Autowired)
     private LearnLessonRecordDomainService learnLessonRecordDomainService;
+    @Setter(onMethod_ = @Autowired)
+    private LearnLessonDomainService learnLessonDomainService;
 
     @Override
     public String mark() {
@@ -52,6 +58,10 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
 
     void handleLearnLesson(LearnRecordCommitCommand command,boolean finished){
         // 课程数据
+        LearnLessonAggregate learnLessonAggregate = learnLessonDomainService.getLearnLessonAggregate(command.getLessonId());
+        LearningLessonEntity learningLesson = learnLessonAggregate.getLearningLesson();
+        CourseEntity courseEntity = learnLessonAggregate.getCourseEntity();
+
 
         // 最近学习小节
         // 最近学习时间

@@ -1,6 +1,7 @@
 package org.hzz.learning.domain.service.impl;
 
 import lombok.Setter;
+import org.hzz.core.exception.db.AppDbUpdateException;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.CourseDomainService;
@@ -49,6 +50,15 @@ public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonR
 
         repository.saveBath(enrollerLessonList);
         logger.info("用户订阅{}个课程成功",enrollerLessonList.size());
+    }
+
+    @Override
+    public void updateLesson(LearningLessonEntity entity) {
+        int i = repository.updateLearnLesson(entity);
+        logger.info("更新{}条 Success",i);
+        if(i == 0){
+            throw new AppDbUpdateException("更新learning lesson失败");
+        }
     }
 
     @Override

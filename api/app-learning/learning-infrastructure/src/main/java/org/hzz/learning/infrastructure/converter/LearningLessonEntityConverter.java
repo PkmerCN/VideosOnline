@@ -24,9 +24,25 @@ public interface LearningLessonEntityConverter {
         return PlanStatus.fromValue(value);
     }
 
+    @Named("planStatusToByte")
+    default Byte planStatusToByte(PlanStatus planStatus) {
+        if (planStatus == null) {
+            return null;
+        }
+        return planStatus.getValue().byteValue();
+    }
+
     @Named("mapToLessonStatus")
     default LessonStatus mapToLessonStatus(Byte value) {
         return LessonStatus.fromValue(value);
+    }
+
+    @Named("learnStatusToByte")
+    default Byte learnStatusToByte(LessonStatus lessonStatus) {
+        if (lessonStatus == null) {
+            return null;
+        }
+        return lessonStatus.getValue().byteValue();
     }
 
     @Mappings({
@@ -34,6 +50,12 @@ public interface LearningLessonEntityConverter {
             @Mapping(source = "status",target = "lessonStatus",qualifiedByName = "mapToLessonStatus")
     })
     LearningLessonEntity mapToEntity(LearningLesson learningLesson);
+
+    @Mappings({
+            @Mapping(source = "planStatus",target = "planStatus",qualifiedByName = "planStatusToByte"),
+            @Mapping(source = "lessonStatus",target = "status",qualifiedByName = "learnStatusToByte")
+    })
+    LearningLesson mapToDo(LearningLessonEntity entity);
 
     List<LearningLessonEntity> mapToListEntity(List<LearningLesson> learningLesson);
 }
