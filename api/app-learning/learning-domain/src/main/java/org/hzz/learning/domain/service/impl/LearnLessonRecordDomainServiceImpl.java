@@ -1,6 +1,8 @@
 package org.hzz.learning.domain.service.impl;
 
 import lombok.Setter;
+import org.hzz.core.exception.db.AppDbEntityNotFoundException;
+import org.hzz.core.exception.db.AppDbInsertException;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
@@ -38,8 +40,9 @@ public class LearnLessonRecordDomainServiceImpl extends BaseDomainService<LearnL
     @Override
     public void commitRecord(LearnRecordEntity entity) {
         int i = repository.saveLearnRecord(entity);
-        if(i != 0){
-            logger.info("成功插入{}条记录",i);
+        logger.info("成功插入{}条记录",i);
+        if(i == 0){
+            throw new AppDbInsertException("提交视频播放进度失败");
         }
     }
 
@@ -47,6 +50,9 @@ public class LearnLessonRecordDomainServiceImpl extends BaseDomainService<LearnL
     public void updateRecord(LearnRecordEntity entity) {
         int i = repository.updateRecord(entity);
         logger.info("更新{}条记录",i);
+        if(i == 0){
+            throw new AppDbEntityNotFoundException("更新学习记录失败");
+        }
     }
 
     @Override
