@@ -1,11 +1,11 @@
-package org.hzz.learning.application.service.handler;
+package org.hzz.learning.application.handler;
 
 import lombok.Setter;
 import org.hzz.ddd.core.domain.shared.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
-import org.hzz.learning.application.service.command.LearnLessonRecordCommand;
-import org.hzz.learning.application.service.resp.LearnLessonRecordDto;
-import org.hzz.learning.application.service.resp.LearnRecordDto;
+import org.hzz.learning.application.resp.LearnLessonRecordDto;
+import org.hzz.learning.application.resp.LearnRecordDto;
+import org.hzz.learning.application.command.LearnLessonRecordCommand;
 import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
 import org.hzz.learning.domain.service.LearnLessonRecordDomainService;

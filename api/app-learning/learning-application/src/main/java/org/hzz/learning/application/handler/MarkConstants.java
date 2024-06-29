@@ -1,4 +1,4 @@
-package org.hzz.learning.application.service.handler;
+package org.hzz.learning.application.handler;
 
 /**
  * @author 胖卡

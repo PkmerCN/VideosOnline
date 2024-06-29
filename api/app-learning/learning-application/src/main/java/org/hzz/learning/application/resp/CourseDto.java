@@ -1,4 +1,4 @@
-package org.hzz.learning.application.service.resp;
+package org.hzz.learning.application.resp;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;

@@ -1,11 +1,9 @@
-package org.hzz.learning.application.service.handler;
+package org.hzz.learning.application.handler;
 
 import org.hzz.ddd.core.domain.shared.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
-import org.hzz.learning.application.service.command.LearnRecordCommitCommand;
+import org.hzz.learning.application.command.LearnRecordCommitCommand;
 import org.springframework.stereotype.Component;
-
-import static org.hzz.learning.application.service.handler.MarkConstants.LEARN_LESSON_RECORD_COMMIT;
 
 /**
  * @author 胖卡
@@ -17,7 +15,7 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
         AbstractExecuteStrategy<LearnRecordCommitCommand,Object> {
     @Override
     public String mark() {
-        return LEARN_LESSON_RECORD_COMMIT;
+        return MarkConstants.LEARN_LESSON_RECORD_COMMIT;
     }
 
     @Override

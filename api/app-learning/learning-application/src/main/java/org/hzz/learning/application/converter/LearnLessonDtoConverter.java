@@ -1,8 +1,8 @@
-package org.hzz.learning.application.service.converter;
+package org.hzz.learning.application.converter;
 
 import org.hzz.course.domain.entity.CourseSimpleInfoDto;
-import org.hzz.learning.application.service.resp.CourseDto;
-import org.hzz.learning.application.service.resp.LearnLessonDto;
+import org.hzz.learning.application.resp.CourseDto;
+import org.hzz.learning.application.resp.LearnLessonDto;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

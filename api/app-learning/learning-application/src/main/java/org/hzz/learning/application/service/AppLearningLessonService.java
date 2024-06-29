@@ -1,10 +1,10 @@
 package org.hzz.learning.application.service;
 
 import org.hzz.core.page.PageResponse;
-import org.hzz.learning.application.service.command.LearnLessonRecordCommand;
-import org.hzz.learning.application.service.command.LearnRecordCommitCommand;
-import org.hzz.learning.application.service.command.PageQueryCommand;
-import org.hzz.learning.application.service.resp.LearnLessonRecordDto;
+import org.hzz.learning.application.command.LearnLessonRecordCommand;
+import org.hzz.learning.application.command.LearnRecordCommitCommand;
+import org.hzz.learning.application.command.PageQueryCommand;
+import org.hzz.learning.application.resp.LearnLessonRecordDto;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 
 /**

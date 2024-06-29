@@ -1,10 +1,9 @@
-package org.hzz.learning.application.service.resp;
+package org.hzz.learning.application.resp;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hzz.fastjson2.enums.BaseEnumWriter;
 import org.hzz.learning.domain.enums.LessonStatus;
 import org.hzz.learning.domain.enums.PlanStatus;
