@@ -15,5 +15,6 @@ public interface LearnLessonRepository {
         void saveBath(List<EnrollerLesson> lessonList);
 
         LearningLessonEntity getLearningLesson(Long userId, Long courseId);
+        LearningLessonEntity getLearningLesson(Long lessonId);
 
 }

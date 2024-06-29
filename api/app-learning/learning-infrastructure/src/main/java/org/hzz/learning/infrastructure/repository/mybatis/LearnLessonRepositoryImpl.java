@@ -53,4 +53,15 @@ public class LearnLessonRepositoryImpl implements LearnLessonRepository {
         }
         return null;
     }
+
+    /**
+     * 根据课程id获取课程数据
+     * @param lessonId 课程id
+     * @return 课程
+     */
+    @Override
+    public LearningLessonEntity getLearningLesson(Long lessonId) {
+        LearningLesson learningLesson = learningLessonMapper.selectByPrimaryKey(lessonId);
+        return lessonEntityConverter.mapToEntity(learningLesson);
+    }
 }
