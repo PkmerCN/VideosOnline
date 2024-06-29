@@ -8,6 +8,8 @@ import org.hzz.learning.domain.repository.LearnLessonRecordRepository;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecord;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecordExample;
 import org.hzz.learning.infrastructure.dao.mapper.record.LearningRecordMapper;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -51,4 +53,25 @@ public class LearnLessonRecordRepositoryImpl implements LearnLessonRecordReposit
 
         return learningRecordMapper.insertSelective(learningRecord);
     }
+
+    @Override
+    public int updateRecord(LearnRecordEntity entity) {
+        //LearningRecord record = BeanUtil.copyProperties(entity, LearningRecord.class);
+        LearningRecord record = LearnRecordEntityMapper.INSTANCE.toRecord(entity);
+        return learningRecordMapper.updateByPrimaryKeySelective(record);
+    }
+
+
+    /**
+     * 使用mapstruct而不是hutool的BeanUtil提高性能
+     * 因为hutool是用的反射
+     */
+    @Mapper
+    public interface LearnRecordEntityMapper{
+        LearnRecordEntityMapper INSTANCE = Mappers.getMapper(LearnRecordEntityMapper.class);
+
+        LearningRecord toRecord(LearnRecordEntity entity);
+        LearnRecordEntity toEntity(LearningRecord record);
+    }
+
 }

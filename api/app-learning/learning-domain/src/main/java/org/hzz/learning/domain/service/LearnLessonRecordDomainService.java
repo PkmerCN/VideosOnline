@@ -15,5 +15,7 @@ public interface LearnLessonRecordDomainService {
 
     void commitRecord(LearnRecordEntity entity);
 
+    void updateRecord(LearnRecordEntity entity);
+
     LearnRecordEntity findLearnRecord(Long lessonId,Long sectionId);
 }

@@ -44,6 +44,12 @@ public class LearnLessonRecordDomainServiceImpl extends BaseDomainService<LearnL
     }
 
     @Override
+    public void updateRecord(LearnRecordEntity entity) {
+        int i = repository.updateRecord(entity);
+        logger.info("更新{}条记录",i);
+    }
+
+    @Override
     public LearnRecordEntity findLearnRecord(Long lessonId, Long sectionId) {
         return repository.selectLearnLessonRecord(lessonId,sectionId);
     }

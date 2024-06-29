@@ -49,6 +49,7 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
 
     /**
      * 处理考试记录
+     *
      * @param command 命令
      * @return true 表示已经完成该小节
      */
@@ -68,21 +69,42 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
 
     /**
      * 处理视频记录
+     *
      * @param command
      * @return
      */
-    boolean handeVideoRecord(LearnRecordCommitCommand command){
+    boolean handeVideoRecord(LearnRecordCommitCommand command) {
         // 获取记录lessonId,sectionID
         LearnRecordEntity oldRecord = learnLessonRecordDomainService.findLearnRecord(command.getLessonId(), command.getSectionId());
-
-        if(oldRecord == null){
+        boolean finished = false;
+        if (oldRecord == null) {
             // 插入一条新记录
-        }else{
+            LearnRecordEntity entity = new LearnRecordEntity();
+            entity.setLessonId(command.getLessonId())
+                    .setUserId(command.getUserId())
+                    .setSectionId(command.getSectionId())
+                    .setFinished(finished)
+                    .setMoment(command.getMoment());
+
+            learnLessonRecordDomainService.commitRecord(entity);
+        } else {
             // 更新存在的记录
+            // 判断是否是第一次学完 并且观看视频进度大于50%
+            finished = !oldRecord.getFinished() && command.getMoment() * 2 > command.getDuration();
+            if (finished) {
+                // 第一次学完
+                LearnRecordEntity entity = new LearnRecordEntity();
+                entity.setMoment(command.getMoment())
+                        .setFinished(finished)
+                        .setFinishTime(command.getCommitTime());
+
+                learnLessonRecordDomainService.updateRecord(entity);
+            }
+
         }
 
 
-        return false;
+        return finished;
     }
-    
+
 }
