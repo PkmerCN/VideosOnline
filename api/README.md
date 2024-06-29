@@ -176,6 +176,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | 数据库唯一键约束，幂等性防止消息重复消费                   |
 | 分页逻辑抽离，包含排序和条件过滤                       |
 | 自定义aop切面，基于注解                          |
+| 手动校验分组参数,并实现全局异常处理                     |
 
 
 
