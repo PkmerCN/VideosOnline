@@ -42,4 +42,9 @@ public class LearnLessonRecordDomainServiceImpl extends BaseDomainService<LearnL
             logger.info("成功插入{}条记录",i);
         }
     }
+
+    @Override
+    public LearnRecordEntity findLearnRecord(Long lessonId, Long sectionId) {
+        return repository.selectLearnLessonRecord(lessonId,sectionId);
+    }
 }

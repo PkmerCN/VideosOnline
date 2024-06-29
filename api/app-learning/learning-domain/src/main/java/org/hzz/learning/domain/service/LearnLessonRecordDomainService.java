@@ -14,4 +14,6 @@ public interface LearnLessonRecordDomainService {
     LearningLessonRecordAggregate queryLearnLessonRecord(Long userId, Long courseId);
 
     void commitRecord(LearnRecordEntity entity);
+
+    LearnRecordEntity findLearnRecord(Long lessonId,Long sectionId);
 }

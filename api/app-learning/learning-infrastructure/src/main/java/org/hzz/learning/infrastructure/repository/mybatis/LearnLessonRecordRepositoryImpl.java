@@ -2,6 +2,7 @@ package org.hzz.learning.infrastructure.repository.mybatis;
 
 import cn.hutool.core.bean.BeanUtil;
 import lombok.Setter;
+import org.hzz.common.collection.CollUtil;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
 import org.hzz.learning.domain.repository.LearnLessonRecordRepository;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecord;
@@ -29,6 +30,19 @@ public class LearnLessonRecordRepositoryImpl implements LearnLessonRecordReposit
                 .andLessonIdEqualTo(lessonId);
         List<LearningRecord> learningRecords = learningRecordMapper.selectByExample(example);
         return BeanUtil.copyToList(learningRecords, LearnRecordEntity.class);
+    }
+
+    @Override
+    public LearnRecordEntity selectLearnLessonRecord(Long lessonId, Long sectionId) {
+        LearningRecordExample example = new LearningRecordExample();
+        example.createCriteria()
+                .andLessonIdEqualTo(lessonId)
+                .andSectionIdEqualTo(sectionId);
+        List<LearningRecord> learningRecords = learningRecordMapper.selectByExample(example);
+        if(CollUtil.isNotEmpty(learningRecords)){
+           return BeanUtil.copyProperties(learningRecords.get(0),LearnRecordEntity.class);
+        }
+        return null;
     }
 
     @Override

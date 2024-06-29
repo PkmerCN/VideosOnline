@@ -48,8 +48,7 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
     }
 
     /**
-     * 提交
-     *
+     * 处理考试记录
      * @param command 命令
      * @return true 表示已经完成该小节
      */
@@ -66,4 +65,24 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
         learnLessonRecordDomainService.commitRecord(entity);
         return finished;
     }
+
+    /**
+     * 处理视频记录
+     * @param command
+     * @return
+     */
+    boolean handeVideoRecord(LearnRecordCommitCommand command){
+        // 获取记录lessonId,sectionID
+        LearnRecordEntity oldRecord = learnLessonRecordDomainService.findLearnRecord(command.getLessonId(), command.getSectionId());
+
+        if(oldRecord == null){
+            // 插入一条新记录
+        }else{
+            // 更新存在的记录
+        }
+
+
+        return false;
+    }
+    
 }

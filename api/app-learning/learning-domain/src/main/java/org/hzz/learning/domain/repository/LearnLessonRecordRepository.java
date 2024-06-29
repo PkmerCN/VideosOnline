@@ -13,6 +13,8 @@ public interface LearnLessonRecordRepository {
 
    List<LearnRecordEntity> selectLearnLessonRecords(Long lessonId);
 
+   LearnRecordEntity selectLearnLessonRecord(Long lessonId,Long sectionId);
+
    /**
     * 插入一条记录
     * @param entity 学习记录实体
