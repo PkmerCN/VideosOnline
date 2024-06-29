@@ -16,7 +16,9 @@ public enum AppStatusImpl implements AppStatus {
     TOKEN_INVALID(4004,"Token不合法"),
     INTERNAL_ERROR(5000,"应用异常"),
     DB_ERROR(5001,"数据库异常"),
-    DB_ENTITY_NOT_FOUND(5002,"数据库数据不存在");
+    DB_ENTITY_NOT_FOUND(5002,"数据库不存在该数据"),
+    DB_UPDATE_FAILD(5003,"更新异常"),
+    DB_INSERT_FAILD(5004,"添加数据异常");
 
     private final int code;
     private final String reason;
