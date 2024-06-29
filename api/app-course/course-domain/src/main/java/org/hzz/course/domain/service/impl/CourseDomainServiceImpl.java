@@ -1,8 +1,9 @@
 package org.hzz.course.domain.service.impl;
 
+import org.hzz.common.collection.CollUtil;
 import org.hzz.core.service.BaseAppService;
 import org.hzz.course.domain.aggregate.CourseSimpleInfoListDto;
-import org.hzz.course.domain.entity.CourseSimpleInfoDto;
+import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.repository.CourseRepository;
 import org.hzz.course.domain.service.CourseDomainService;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,19 @@ import java.util.List;
 @Service
 public class CourseDomainServiceImpl extends BaseAppService<CourseRepository> implements CourseDomainService {
     @Override
-    public List<CourseSimpleInfoDto> findCourseSimpleInfoList(CourseSimpleInfoListDto dto) {
+    public List<CourseEntity> findCourses(CourseSimpleInfoListDto dto) {
         return repository.selectCourseSimpleInfoList(dto);
+    }
+
+    @Override
+    public CourseEntity findCourse(Long courseId) {
+        CourseSimpleInfoListDto query = CourseSimpleInfoListDto.builder()
+                .ids(List.of(courseId))
+                .build();
+        List<CourseEntity> courses = findCourses(query);
+        if(CollUtil.isNotEmpty(courses)){
+            return courses.get(0);
+        }
+        return null;
     }
 }

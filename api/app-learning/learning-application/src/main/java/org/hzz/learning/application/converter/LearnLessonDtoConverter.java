@@ -1,6 +1,6 @@
 package org.hzz.learning.application.converter;
 
-import org.hzz.course.domain.entity.CourseSimpleInfoDto;
+import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.learning.application.resp.CourseDto;
 import org.hzz.learning.application.resp.LearnLessonDto;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
@@ -24,7 +24,7 @@ public interface LearnLessonDtoConverter {
     @Mappings({
             @Mapping(source = "sectionNum",target = "sections")
     })
-    CourseDto mapToCourseDto(CourseSimpleInfoDto dto);
+    CourseDto mapToCourseDto(CourseEntity dto);
 
     List<LearnLessonDto> mapToDtos(List<LearningLessonAggregate> sources);
 }

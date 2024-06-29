@@ -1,7 +1,7 @@
 package org.hzz.course.infrastructure.converter;
 
 import org.hzz.common.date.DateUtil;
-import org.hzz.course.domain.entity.CourseSimpleInfoDto;
+import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.infrastructure.dao.po.Course;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -9,7 +9,6 @@ import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -46,13 +45,13 @@ public interface CourseConverter {
             @Mapping(source = "free",target = "free",qualifiedByName = "mapByteToBoolean"),
             @Mapping(source = "purchaseEndTime",target = "purchaseEndTime",qualifiedByName = "mapDateToLocalDateTime")
     })
-    CourseSimpleInfoDto mapToCourseSimpleInfoDto(Course course);
+    CourseEntity mapToCourseSimpleInfoDto(Course course);
 
-    List<CourseSimpleInfoDto> mapToCourseSimpleInfoDtoList(List<Course> courses);
+    List<CourseEntity> mapToCourseSimpleInfoDtoList(List<Course> courses);
 
     @Mappings({
             @Mapping(source = "free",target = "free",qualifiedByName = "mapBooleanToByte"),
             @Mapping(source = "purchaseEndTime",target = "purchaseEndTime",qualifiedByName = "mapLocalDateTimeToDate")
     })
-    Course mapToCourse(CourseSimpleInfoDto dto);
+    Course mapToCourse(CourseEntity dto);
 }

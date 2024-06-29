@@ -2,7 +2,7 @@ package org.hzz.learning.domain.aggregate;
 
 import lombok.Builder;
 import lombok.Data;
-import org.hzz.course.domain.entity.CourseSimpleInfoDto;
+import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.ddd.core.domain.shared.AggregateRoot;
 
 import java.util.List;
@@ -17,5 +17,5 @@ import java.util.List;
 public class EnrollCourseAggregate implements AggregateRoot {
     private Long id;
     private Long userId;
-    List<CourseSimpleInfoDto> courses;
+    List<CourseEntity> courses;
 }

@@ -3,7 +3,7 @@ package org.hzz.learning.domain.aggregate;
 import lombok.Builder;
 import lombok.Data;
 import org.hzz.core.page.query.PageQuery;
-import org.hzz.course.domain.entity.CourseSimpleInfoDto;
+import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.ddd.core.domain.shared.AggregateRoot;
 import org.hzz.learning.domain.enums.LessonStatus;
 import org.hzz.learning.domain.enums.PlanStatus;
@@ -34,5 +34,5 @@ public class LearningLessonAggregate implements AggregateRoot {
 
 
     private PageQuery pageQuery;
-    private CourseSimpleInfoDto course;
+    private CourseEntity course;
 }

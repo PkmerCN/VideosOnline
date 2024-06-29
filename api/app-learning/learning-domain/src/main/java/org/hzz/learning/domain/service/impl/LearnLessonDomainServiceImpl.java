@@ -1,12 +1,16 @@
 package org.hzz.learning.domain.service.impl;
 
+import lombok.Setter;
 import org.hzz.core.service.BaseDomainService;
-import org.hzz.course.domain.entity.CourseSimpleInfoDto;
+import org.hzz.course.domain.entity.CourseEntity;
+import org.hzz.course.domain.service.CourseDomainService;
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
+import org.hzz.learning.domain.aggregate.LearnLessonAggregate;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.repository.LearnLessonRepository;
 import org.hzz.learning.domain.service.LearnLessonDomainService;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -21,6 +25,9 @@ import java.util.List;
 @Service
 public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonRepository> implements LearnLessonDomainService {
 
+    @Setter(onMethod_ = @Autowired)
+    private CourseDomainService courseDomainService;
+
     /**
      * 用户订阅课程
      * @param enrollCourse 用户订阅的课程
@@ -29,7 +36,7 @@ public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonR
     public void enrollCourse(EnrollCourseAggregate enrollCourse) {
         List<EnrollerLesson> enrollerLessonList  = new ArrayList<>();
         Long userId = enrollCourse.getUserId();
-        for(CourseSimpleInfoDto course: enrollCourse.getCourses()){
+        for(CourseEntity course: enrollCourse.getCourses()){
             EnrollerLesson lesson = new EnrollerLesson();
             lesson.setUserId(userId);
             lesson.setCourseId(course.getId());
@@ -47,5 +54,26 @@ public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonR
     @Override
     public LearningLessonEntity queryLesson(Long userId, Long courseId) {
         return repository.getLearningLesson(userId,courseId);
+    }
+
+    @Override
+    public LearningLessonEntity queryLesson(Long lessonId) {
+        return null;
+    }
+
+    /**
+     * 获取聚合根
+     * 包含LearningLesson和Course
+     * @param lessonId
+     * @return
+     */
+    @Override
+    public LearnLessonAggregate getLearnLessonAggregate(Long lessonId) {
+        LearningLessonEntity learningLessonEntity = queryLesson(lessonId);
+        CourseEntity course = courseDomainService.findCourse(learningLessonEntity.getCourseId());
+
+        return new LearnLessonAggregate()
+                .setLearningLesson(learningLessonEntity)
+                .setCourseEntity(course);
     }
 }

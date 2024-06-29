@@ -1,7 +1,7 @@
 package org.hzz.course.domain.service;
 
 import org.hzz.course.domain.aggregate.CourseSimpleInfoListDto;
-import org.hzz.course.domain.entity.CourseSimpleInfoDto;
+import org.hzz.course.domain.entity.CourseEntity;
 
 import java.util.List;
 
@@ -12,5 +12,9 @@ import java.util.List;
  */
 public interface CourseDomainService {
 
-    List<CourseSimpleInfoDto> findCourseSimpleInfoList(CourseSimpleInfoListDto dto);
+    List<CourseEntity> findCourses(CourseSimpleInfoListDto dto);
+
+    CourseEntity findCourse(Long courseId);
+
+
 }

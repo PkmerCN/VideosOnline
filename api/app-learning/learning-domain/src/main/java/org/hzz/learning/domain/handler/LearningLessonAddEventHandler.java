@@ -3,7 +3,7 @@ package org.hzz.learning.domain.handler;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.course.domain.aggregate.CourseSimpleInfoListDto;
-import org.hzz.course.domain.entity.CourseSimpleInfoDto;
+import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.CourseDomainService;
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
 import org.hzz.learning.domain.event.LearningLessonAddEvent;
@@ -38,7 +38,7 @@ public class LearningLessonAddEventHandler {
                 .ids(event.getCouseIds())
                 .build();
 
-        List<CourseSimpleInfoDto> courses = courseDomainService.findCourseSimpleInfoList(dto);
+        List<CourseEntity> courses = courseDomainService.findCourses(dto);
 
         learnLessonDomainService.enrollCourse(EnrollCourseAggregate.builder()
                 .courses(courses)

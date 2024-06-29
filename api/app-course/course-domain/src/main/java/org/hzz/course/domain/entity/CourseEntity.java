@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @date 2024/6/26
  */
 @Data
-public class CourseSimpleInfoDto implements Entity {
+public class CourseEntity implements Entity {
     // 课程草稿id，对应正式草稿id
     private Long id;
 
