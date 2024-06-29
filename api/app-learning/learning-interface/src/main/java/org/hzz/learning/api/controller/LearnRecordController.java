@@ -43,6 +43,7 @@ public class LearnRecordController extends BaseController implements LearnRecord
                 .setMoment(request.getMoment())
                 .setSectionType(request.getSectionType());
 
+        appLearningLessonService.commitLearnLesssonRecord(command);
         return success(null);
     }
 }
