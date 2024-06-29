@@ -14,6 +14,7 @@ public enum AppStatusImpl implements AppStatus {
     PASSWORD_ERROR(4002,"密码不正确"),
     TOKEN_EXPIRED(4003,"Token已过期"),
     TOKEN_INVALID(4004,"Token不合法"),
+    ARG_INVALID(4005,"参数不合法"),
     INTERNAL_ERROR(5000,"应用异常"),
     DB_ERROR(5001,"数据库异常"),
     DB_ENTITY_NOT_FOUND(5002,"数据库不存在该数据"),

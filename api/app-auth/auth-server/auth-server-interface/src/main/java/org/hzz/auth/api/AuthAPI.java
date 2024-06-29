@@ -23,5 +23,4 @@ public interface AuthAPI {
     @PostMapping("/login")
     public Result<Object> login(@Valid @RequestBody LoginUserRequest loginUserRequest);
 
-
 }

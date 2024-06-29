@@ -1,9 +1,11 @@
 package org.hzz.web.advice;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolation;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.core.code.AppStatus;
 import org.hzz.core.exception.AppCommonException;
+import org.hzz.core.exception.arg.AppArgumentNotValidException;
 import org.hzz.core.result.Result;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
@@ -15,10 +17,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -58,7 +57,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(objectBody, status);
     }
 
+    /**
+     * 处理手动校验的异常
+     * @param ex 校验的结果封装
+     */
+    @ExceptionHandler(AppArgumentNotValidException.class)
+    public Result<Map<String,String>> handleAppArgumentNotValidException(AppArgumentNotValidException ex){
+        log.info("处理手动校验的异常");
+        Set<? extends ConstraintViolation<?>> constraintViolationSet = ex.getConstraintViolationSet();
 
+        Map<String,String> body = new HashMap<>();
+        for (ConstraintViolation<?> c: constraintViolationSet){
+            body.put(c.getPropertyPath().toString(),c.getMessage());
+        }
+
+        return Result.error(body,ex.getStatus().code(),ex.getStatus().getReason());
+    }
 
     @ExceptionHandler(AppCommonException.class)
     public Result<String> handleAppException(HttpServletRequest request, AppCommonException ex) throws Exception {

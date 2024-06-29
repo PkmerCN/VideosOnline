@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @RequestMapping("/learning-records")
 @Tag(name = "学习记录API",description = "学习记录相关API")
-@Validated
 public interface LearnRecordApi {
 
     @Operation(description = "查询用户课程的学习记录（也就是课程小节学习进度）")
@@ -29,9 +28,17 @@ public interface LearnRecordApi {
             @Parameter(description = "课程id")
             @PathVariable("courseId") Long courseId);
 
+    /**
+     * 这里不通过方法参数加@Validated
+     * 因为我想实现通用，所以在实现类做手动参数校验
+     * @param request
+     * @return
+     */
     @Operation(description = "提交用户课程的学习记录（也就是课程小节学习进度）")
     @ApiResponse
     @PostMapping
-    Result<Object> commitLearnRecord(@Parameter @Valid @RequestBody LearningRecordFormRequest request);
+    Result<Object> commitLearnRecord(@Parameter
+//                                     @Validated(LearningRecordFormRequest.VideoGroup.class)
+                                     @RequestBody LearningRecordFormRequest request);
 
 }
