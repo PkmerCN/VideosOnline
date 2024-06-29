@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @Accessors(chain = true)
 public class LearnRecordCommitCommand {
+    Long userId;
     Long lessonId;
     Long sectionId;
     SectionType sectionType;

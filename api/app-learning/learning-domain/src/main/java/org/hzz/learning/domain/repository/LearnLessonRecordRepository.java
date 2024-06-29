@@ -12,4 +12,11 @@ import java.util.List;
 public interface LearnLessonRecordRepository {
 
    List<LearnRecordEntity> selectLearnLessonRecords(Long lessonId);
+
+   /**
+    * 插入一条记录
+    * @param entity 学习记录实体
+    * @return 插入条数
+    */
+   int saveLearnRecord(LearnRecordEntity entity);
 }

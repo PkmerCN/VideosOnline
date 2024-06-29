@@ -30,4 +30,11 @@ public class LearnLessonRecordRepositoryImpl implements LearnLessonRecordReposit
         List<LearningRecord> learningRecords = learningRecordMapper.selectByExample(example);
         return BeanUtil.copyToList(learningRecords, LearnRecordEntity.class);
     }
+
+    @Override
+    public int saveLearnRecord(LearnRecordEntity entity) {
+        LearningRecord learningRecord = BeanUtil.copyProperties(entity, LearningRecord.class);
+
+        return learningRecordMapper.insertSelective(learningRecord);
+    }
 }

@@ -34,4 +34,12 @@ public class LearnLessonRecordDomainServiceImpl extends BaseDomainService<LearnL
                 .records(learnRecordEntities)
                 .build();
     }
+
+    @Override
+    public void commitRecord(LearnRecordEntity entity) {
+        int i = repository.saveLearnRecord(entity);
+        if(i != 0){
+            logger.info("成功插入{}条记录",i);
+        }
+    }
 }

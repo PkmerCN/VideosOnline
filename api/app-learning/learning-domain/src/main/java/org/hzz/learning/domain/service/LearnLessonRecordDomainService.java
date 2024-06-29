@@ -1,6 +1,7 @@
 package org.hzz.learning.domain.service;
 
 import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
+import org.hzz.learning.domain.entity.LearnRecordEntity;
 
 /**
  * 课程学习记录领域服务
@@ -11,4 +12,6 @@ import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
 public interface LearnLessonRecordDomainService {
 
     LearningLessonRecordAggregate queryLearnLessonRecord(Long userId, Long courseId);
+
+    void commitRecord(LearnRecordEntity entity);
 }
