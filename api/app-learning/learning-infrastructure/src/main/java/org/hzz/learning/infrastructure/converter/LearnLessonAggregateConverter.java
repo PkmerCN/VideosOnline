@@ -1,6 +1,5 @@
 package org.hzz.learning.infrastructure.converter;
 
-import org.hzz.core.converter.BaseConverter;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 import org.hzz.learning.domain.enums.LessonStatus;
 import org.hzz.learning.domain.enums.PlanStatus;
