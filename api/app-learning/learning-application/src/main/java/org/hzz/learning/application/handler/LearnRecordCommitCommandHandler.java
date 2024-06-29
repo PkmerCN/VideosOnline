@@ -9,6 +9,7 @@ import org.hzz.learning.application.command.LearnRecordCommitCommand;
 import org.hzz.learning.domain.aggregate.LearnLessonAggregate;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
+import org.hzz.learning.domain.enums.LessonStatus;
 import org.hzz.learning.domain.enums.SectionType;
 import org.hzz.learning.domain.service.LearnLessonDomainService;
 import org.hzz.learning.domain.service.LearnLessonRecordDomainService;
@@ -56,22 +57,39 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
         handleLearnLesson(command,finished);
     }
 
+    /**
+     * 处理课程表
+     * 最近学习小节
+     * 最近学习时间
+     * 整个课程是否学完
+     * 已学课程小节数量
+     * @param command 命令参数
+     * @param finished 小节是否学习完成
+     */
     void handleLearnLesson(LearnRecordCommitCommand command,boolean finished){
         // 课程数据
         LearnLessonAggregate learnLessonAggregate = learnLessonDomainService.getLearnLessonAggregate(command.getLessonId());
-        LearningLessonEntity learningLesson = learnLessonAggregate.getLearningLesson();
+        LearningLessonEntity lessonEntity = learnLessonAggregate.getLearningLesson();
         CourseEntity courseEntity = learnLessonAggregate.getCourseEntity();
 
-
         // 最近学习小节
+        lessonEntity.setLatestSectionId(command.getSectionId());
         // 最近学习时间
+        lessonEntity.setLatestLearnTime(command.getCommitTime());
 
         if(finished){
             // 已完成小节数+1
-
-            // 设置课程的状态是否为已学完
-
+            lessonEntity.setSections(lessonEntity.getLearnedSections() + 1);
+            // 设置课程的状态
+            if(lessonEntity.getSections() >= courseEntity.getSectionNum()){
+                // 设置整个课程已经学完
+                lessonEntity.setLessonStatus(LessonStatus.FINISHED);
+            }else{
+                // 正在学习
+                lessonEntity.setLessonStatus(LessonStatus.LEARNING);
+            }
         }
+        learnLessonDomainService.updateLesson(lessonEntity);
     }
 
     /**

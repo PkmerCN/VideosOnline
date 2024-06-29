@@ -6,6 +6,7 @@ import org.hzz.learning.domain.enums.LessonStatus;
 import org.hzz.learning.domain.enums.PlanStatus;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author 胖卡
@@ -23,6 +24,8 @@ public class LearningLessonEntity implements Entity {
     private Integer learnedSections;
     private Integer sections;
     private Long latestSectionId;
+    // 最近一次学习的时间
+    private LocalDateTime latestLearnTime;
     private LocalDateTime createTime;
     private LocalDateTime expireTime;
 }
