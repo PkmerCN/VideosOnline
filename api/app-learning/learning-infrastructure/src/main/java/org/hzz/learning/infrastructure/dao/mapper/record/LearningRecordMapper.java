@@ -1,11 +1,13 @@
 package org.hzz.learning.infrastructure.dao.mapper.record;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecord;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecordExample;
 
 import java.util.List;
 
+@Mapper
 public interface LearningRecordMapper {
     long countByExample(LearningRecordExample example);
 

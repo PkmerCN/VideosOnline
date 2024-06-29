@@ -50,6 +50,10 @@ public class Result<T> {
         return result;
     }
 
+    public static Result<Object> success(){
+         return success(null);
+    }
+
     public static <T> Result<T> error(int code,String msg){
         return new Result<>(null,code,msg);
     }

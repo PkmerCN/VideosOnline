@@ -46,8 +46,6 @@ public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonR
 
     @Override
     public LearningLessonEntity queryLesson(Long userId, Long courseId) {
-
-
-        return null;
+        return repository.getLearningLesson(userId,courseId);
     }
 }
