@@ -35,6 +35,7 @@ public class LearnRecordController extends BaseController implements LearnRecord
     @Override
     public Result<Object> commitLearnRecord(LearningRecordFormRequest request) {
         logger.info("提交学习记录 lessonID = {}",request.getLessonId());
+
         LearnRecordCommitCommand command = new LearnRecordCommitCommand()
                 .setUserId(AppContextHolder.userContextHolder.getUser().getId())
                 .setLessonId(request.getLessonId())
