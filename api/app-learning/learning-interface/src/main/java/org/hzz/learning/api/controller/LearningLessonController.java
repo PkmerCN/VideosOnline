@@ -63,7 +63,8 @@ public class LearningLessonController extends BaseController implements Learning
     @AddUserIdFilterCondition // 添加用户id条件
     public Result<LearnPlansPageResult> queryUserPlans(PageQuery pageQuery) {
 
-        PlanPageQueryCommand planPageQueryCommand = PlanPageQueryCommand.commandOf(pageQuery);
+        PlanPageQueryCommand planPageQueryCommand = PlanPageQueryCommand.commandOf(pageQuery,
+                AppContextHolder.userContextHolder.getUser().getId());
 
         LearnPlansPageResult result = appHandleCmdService.<LearnPlansPageResult>handleComandWithResult(
                 planPageQueryCommand);

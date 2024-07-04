@@ -17,6 +17,7 @@ public class PlanPageQueryCommand implements CommandWithMark {
     public final static String MARK = PlanPageQueryCommand.class.getName();
 
     PageQuery pageQuery;
+    Long userId;
 
     @Override
     public String mark() {
