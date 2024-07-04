@@ -1,7 +1,10 @@
 package org.hzz.core.page.query;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author 胖卡
@@ -9,6 +12,9 @@ import lombok.Data;
  * @date 2024/6/27
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Schema(description = "筛选条件")
 public class FilterCondition {
     @Schema(description = "字段名", example = "user_id")
@@ -26,4 +32,5 @@ public class FilterCondition {
                 field + " " + operator + " " + value +
                 " }";
     }
+
 }

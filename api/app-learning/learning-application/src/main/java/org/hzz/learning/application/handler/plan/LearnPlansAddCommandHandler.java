@@ -1,9 +1,9 @@
-package org.hzz.learning.application.handler;
+package org.hzz.learning.application.handler.plan;
 
 import lombok.Setter;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
-import org.hzz.learning.application.command.LearnPlansAddCommand;
+import org.hzz.learning.application.command.plan.LearnPlansAddCommand;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.enums.PlanStatus;
 import org.hzz.learning.domain.service.LearnLessonDomainService;

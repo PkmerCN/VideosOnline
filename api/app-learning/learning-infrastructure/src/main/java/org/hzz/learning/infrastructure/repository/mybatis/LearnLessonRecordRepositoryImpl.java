@@ -3,16 +3,19 @@ package org.hzz.learning.infrastructure.repository.mybatis;
 import cn.hutool.core.bean.BeanUtil;
 import lombok.Setter;
 import org.hzz.common.collection.CollUtil;
+import org.hzz.learning.domain.entity.IdAndNumEntity;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
 import org.hzz.learning.domain.repository.LearnLessonRecordRepository;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecord;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecordExample;
 import org.hzz.learning.infrastructure.dao.mapper.record.LearningRecordMapper;
+import org.hzz.learning.infrastructure.dao.mapper.record.RecordExtMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -24,6 +27,9 @@ import java.util.List;
 public class LearnLessonRecordRepositoryImpl implements LearnLessonRecordRepository {
     @Setter(onMethod_ = @Autowired)
     private LearningRecordMapper learningRecordMapper;
+
+    @Setter(onMethod_ = @Autowired)
+    private RecordExtMapper recordExtMapper;
 
     @Override
     public List<LearnRecordEntity> selectLearnLessonRecords(Long lessonId) {
@@ -59,6 +65,14 @@ public class LearnLessonRecordRepositoryImpl implements LearnLessonRecordReposit
         //LearningRecord record = BeanUtil.copyProperties(entity, LearningRecord.class);
         LearningRecord record = LearnRecordEntityMapper.INSTANCE.toRecord(entity);
         return learningRecordMapper.updateByPrimaryKeySelective(record);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<IdAndNumEntity> countUserfinishedSections(Long userId, LocalDateTime startTime, LocalDateTime endTime) {
+        return recordExtMapper.countUserFinishedSections(userId,startTime,endTime);
     }
 
 

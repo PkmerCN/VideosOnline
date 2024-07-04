@@ -1,7 +1,9 @@
 package org.hzz.learning.domain.repository;
 
+import org.hzz.learning.domain.entity.IdAndNumEntity;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -28,4 +30,13 @@ public interface LearnLessonRecordRepository {
     * @return 更新条数
     */
    int updateRecord(LearnRecordEntity entity);
+
+   /**
+    * 统计用户用户指定时间范围内对应的课程内的小节数量
+    * @param userId
+    * @param startTime
+    * @param endTime
+    * @return lessonId和对应的小结束
+    */
+   List<IdAndNumEntity> countUserfinishedSections(Long userId, LocalDateTime startTime,LocalDateTime endTime);
 }

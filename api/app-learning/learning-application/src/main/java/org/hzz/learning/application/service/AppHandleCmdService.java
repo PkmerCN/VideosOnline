@@ -29,4 +29,16 @@ public class AppHandleCmdService {
         strategyChoose.chooseAndExecute(command.mark(),
                 command);
     }
+
+    /**
+     * 统一处理处理Command，有返回值
+     * @param command
+     * @return
+     * @param <R> 返回结果
+     */
+    public <R> R handleComandWithResult(CommandWithMark command){
+        log.info("执行：{}",command.getClass().getSimpleName());
+        return strategyChoose.<CommandWithMark,R>chooseAndExecuteWithResp(command.mark(),
+                command);
+    }
 }

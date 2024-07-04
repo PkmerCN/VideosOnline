@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
@@ -14,20 +15,21 @@ import java.util.List;
  * @date 2024/6/27
  */
 @Data
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class PageResponse<T> {
 
     @Schema(description = "总记录数")
-    private Integer total;
+    protected Integer total;
 
     @Schema(description = "总页数")
-    private Integer totalPages;
+    protected Integer totalPages;
 
     @Schema(description = "当前页")
-    private Integer currentPageNo;
+    protected Integer currentPageNo;
 
     @Schema(description = "当前页数据")
-    private List<T> list;
+    protected List<T> list;
 }

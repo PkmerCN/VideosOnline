@@ -1,7 +1,9 @@
 package org.hzz.learning.domain.aggregate;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.ddd.core.domain.shared.AggregateRoot;
@@ -17,6 +19,8 @@ import java.time.LocalDateTime;
  * @date 2024/6/27
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class LearningLessonAggregate implements AggregateRoot {
 
@@ -27,8 +31,9 @@ public class LearningLessonAggregate implements AggregateRoot {
     private PlanStatus planStatus;
     private Byte weekFreq;
     private Integer learnedSections;
-    private Integer sections;
     private Long latestSectionId;
+    // 最近一次学习的时间
+    private LocalDateTime latestLearnTime;
     private LocalDateTime createTime;
     private LocalDateTime expireTime;
 

@@ -1,8 +1,10 @@
 package org.hzz.learning.types.resp.plan;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 import org.hzz.core.page.PageResponse;
 
 /**
@@ -11,6 +13,7 @@ import org.hzz.core.page.PageResponse;
  * @date 2024/7/4
  */
 @Data
+@Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 public class LearnPlansPageResult extends PageResponse<LearnPlanDto> {
     @Schema(description = "本周积分")

@@ -1,7 +1,10 @@
 package org.hzz.learning.domain.service;
 
 import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
+import org.hzz.learning.domain.entity.IdAndNumEntity;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
+
+import java.util.List;
 
 /**
  * 课程学习记录领域服务
@@ -18,4 +21,10 @@ public interface LearnLessonRecordDomainService {
     void updateRecord(LearnRecordEntity entity);
 
     LearnRecordEntity findLearnRecord(Long lessonId,Long sectionId);
+
+    /**
+     * 统计用户周已完成学习记录
+     * @return
+     */
+    List<IdAndNumEntity> countUserWeekLearnSections(Long userId);
 }

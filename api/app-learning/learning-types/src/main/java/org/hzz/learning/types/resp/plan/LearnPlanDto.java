@@ -2,6 +2,7 @@ package org.hzz.learning.types.resp.plan;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
  * @date 2024/7/4
  */
 @Data
+@Accessors(chain = true,fluent = true)
 public class LearnPlanDto {
     @Schema(description = "课程ID")
     private Long courseId;

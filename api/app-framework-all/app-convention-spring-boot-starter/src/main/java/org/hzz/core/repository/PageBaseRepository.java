@@ -38,7 +38,7 @@ public abstract class PageBaseRepository<P extends PageMapper<T>,T,C> extends Ba
 
         int total = mapper.countRecords(pageQuery.getFilters());
         int totalPages = (int) Math.ceil((double) total / pageQuery.getPageSize());
-
+        // todo 有sql注入的风险
         List<T> list = mapper.pageSelect(offset, limit, orderByClause,pageQuery.getFilters());
 
         return PageResponse.<T>builder().totalPages(totalPages)
