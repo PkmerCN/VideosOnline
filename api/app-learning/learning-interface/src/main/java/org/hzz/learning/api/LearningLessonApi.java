@@ -44,5 +44,6 @@ public interface LearningLessonApi {
     Result<Object> createLearnPlans(
             @Parameter(description = "学习计划")
             @Valid
+            @RequestBody
             LearnPlanReq req);
 }
