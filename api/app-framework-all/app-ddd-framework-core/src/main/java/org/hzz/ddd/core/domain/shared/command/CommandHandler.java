@@ -1,4 +1,4 @@
-package org.hzz.ddd.core.domain.shared;
+package org.hzz.ddd.core.domain.shared.command;
 
 /**
  * 事件处理

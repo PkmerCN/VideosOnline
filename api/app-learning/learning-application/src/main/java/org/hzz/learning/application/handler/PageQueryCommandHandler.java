@@ -2,7 +2,7 @@ package org.hzz.learning.application.handler;
 
 import lombok.Setter;
 import org.hzz.core.page.PageResponse;
-import org.hzz.ddd.core.domain.shared.CommandHandler;
+import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.PageQueryCommand;
 import org.hzz.learning.application.converter.LearnLessonDtoConverter;

@@ -4,7 +4,7 @@ import lombok.Setter;
 import org.hzz.auth.command.UserLoginCommand;
 import org.hzz.auth.converter.JWTUserConverter;
 import org.hzz.auth.exception.PasswordException;
-import org.hzz.ddd.core.domain.shared.CommandHandler;
+import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.security.jwt.bo.JWTUserBo;
 import org.hzz.security.jwt.service.JWTService;

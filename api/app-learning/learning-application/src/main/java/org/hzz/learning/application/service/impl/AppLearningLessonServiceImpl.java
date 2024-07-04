@@ -2,7 +2,9 @@ package org.hzz.learning.application.service.impl;
 
 import lombok.Setter;
 import org.hzz.core.page.PageResponse;
+import org.hzz.ddd.core.domain.shared.command.Command;
 import org.hzz.design.pattern.strategy.StrategyChoose;
+import org.hzz.learning.application.command.LearnPlansAddCommand;
 import org.hzz.learning.application.command.LearnRecordCommitCommand;
 import org.hzz.learning.application.command.PageQueryCommand;
 import org.hzz.learning.application.handler.MarkConstants;
@@ -23,6 +25,7 @@ public class AppLearningLessonServiceImpl implements AppLearningLessonService {
     @Setter(onMethod_ = @Autowired)
     private StrategyChoose strategyChoose;
 
+
     @Override
     public PageResponse<LearningLessonAggregate> pageQueryLesson(PageQueryCommand command) {
        return strategyChoose.<PageQueryCommand, PageResponse<LearningLessonAggregate>>
@@ -41,4 +44,5 @@ public class AppLearningLessonServiceImpl implements AppLearningLessonService {
                 MarkConstants.LEARN_LESSON_RECORD_COMMIT
                 ,command);
     }
+
 }

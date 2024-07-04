@@ -16,4 +16,8 @@ public class AppDbEntityNotFoundException extends AppCommonException {
         super(message);
     }
 
+    @Override
+    public AppStatus getStatus() {
+        return appStatus;
+    }
 }

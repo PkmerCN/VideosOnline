@@ -1,6 +1,7 @@
 package org.hzz.learning.domain.service.impl;
 
 import lombok.Setter;
+import org.hzz.core.exception.db.AppDbEntityNotFoundException;
 import org.hzz.core.exception.db.AppDbUpdateException;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.course.domain.entity.CourseEntity;
@@ -53,7 +54,7 @@ public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonR
     }
 
     @Override
-    public void updateLesson(LearningLessonEntity entity) {
+    public void updateLessonSelectiveById(LearningLessonEntity entity) {
         int i = repository.updateLearnLesson(entity);
         logger.info("更新{}条 Success",i);
         if(i == 0){
@@ -63,7 +64,13 @@ public class LearnLessonDomainServiceImpl extends BaseDomainService<LearnLessonR
 
     @Override
     public LearningLessonEntity queryLesson(Long userId, Long courseId) {
-        return repository.getLearningLesson(userId,courseId);
+        LearningLessonEntity learningLesson = repository.getLearningLesson(userId, courseId);
+
+        if(learningLesson == null){
+            throw new AppDbEntityNotFoundException("该用户该课程");
+        }
+
+        return learningLesson;
     }
 
     @Override

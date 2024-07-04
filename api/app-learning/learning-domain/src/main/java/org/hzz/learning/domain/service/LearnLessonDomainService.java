@@ -13,7 +13,12 @@ public interface LearnLessonDomainService{
 
     void enrollCourse(EnrollCourseAggregate enrollCourse);
 
-    void updateLesson(LearningLessonEntity entity);
+    /**
+     * 更新用户课程
+     * 注意需要传递Id
+     * @param entity
+     */
+    void updateLessonSelectiveById(LearningLessonEntity entity);
 
     /**
      * 查询课程

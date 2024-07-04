@@ -3,7 +3,7 @@ package org.hzz.learning.application.handler;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.course.domain.entity.CourseEntity;
-import org.hzz.ddd.core.domain.shared.CommandHandler;
+import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.LearnRecordCommitCommand;
 import org.hzz.learning.domain.aggregate.LearnLessonAggregate;
@@ -89,7 +89,7 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
                 lessonEntity.setLessonStatus(LessonStatus.LEARNING);
             }
         }
-        learnLessonDomainService.updateLesson(lessonEntity);
+        learnLessonDomainService.updateLessonSelectiveById(lessonEntity);
     }
 
     /**

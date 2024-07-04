@@ -7,6 +7,7 @@ package org.hzz.learning.application.handler;
  */
 public interface MarkConstants {
     String PAGE_QUERY = "lesson::PageQueryCommand";
+    String LEARN_PLAN_ADD = "lesson::plans::ADD::LearnPlansAddCommand";
     String LEARN_LESSON_RECORD = "lesson::record::LearnLessonRecordCommand";
     String LEARN_LESSON_RECORD_COMMIT = "lesson::record::commit::LearnLessonRecordCommitCommand";
 }

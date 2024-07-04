@@ -2,7 +2,7 @@ package org.hzz.auth.command;
 
 import lombok.Data;
 import lombok.Value;
-import org.hzz.ddd.core.domain.shared.Command;
+import org.hzz.ddd.core.domain.shared.command.Command;
 
 /**
  * @author 胖卡
