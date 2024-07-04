@@ -9,10 +9,12 @@ import org.hzz.core.result.Result;
 import org.hzz.learning.api.LearningLessonApi;
 import org.hzz.learning.api.req.LearnPlanReq;
 import org.hzz.learning.application.command.LearnPlansAddCommand;
+import org.hzz.learning.application.resp.LearnLessonDto;
 import org.hzz.learning.application.service.AppHandleCmdService;
 import org.hzz.learning.application.service.AppLearningLessonService;
 import org.hzz.learning.application.command.PageQueryCommand;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
+import org.hzz.learning.types.resp.plan.LearnPlansPageResult;
 import org.hzz.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,10 +33,11 @@ public class LearningLessonController extends BaseController implements Learning
     private AppHandleCmdService appHandleCmdService;
     @Override
     @AddUserIdFilterCondition
-    public Result<PageResponse<LearningLessonAggregate>> queryUserLessons(PageQuery pageQuery) {
+    public Result<PageResponse<LearnLessonDto>> queryUserLessons(PageQuery pageQuery) {
         logger.info("分页查询用户课程");
         System.out.println(pageQuery.toString());
         PageQueryCommand pageQueryCommand = PageQueryCommand.commandOf(pageQuery);
+
         return success(appLearningLessonService.pageQueryLesson(pageQueryCommand));
     }
 
@@ -51,5 +54,13 @@ public class LearningLessonController extends BaseController implements Learning
 
         appHandleCmdService.handleCommand(command);
         return success(null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Result<LearnPlansPageResult> queryUserPlans(PageQuery pageQuery) {
+        return null;
     }
 }

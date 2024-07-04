@@ -9,7 +9,9 @@ import org.hzz.core.page.PageResponse;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.req.LearnPlanReq;
+import org.hzz.learning.application.resp.LearnLessonDto;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
+import org.hzz.learning.types.resp.plan.LearnPlansPageResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,11 +29,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface LearningLessonApi {
 
 
+    /**
+     * 分页查询用户课程
+     * @param pageQuery
+     * @return
+     */
     @Operation(summary = "分页查询用户课程",
             description = "分页查询用户课程")
     @GetMapping("/page")
     @ApiResponses
-    Result<PageResponse<LearningLessonAggregate>> queryUserLessons(
+    Result<PageResponse<LearnLessonDto>> queryUserLessons(
             @Valid @RequestBody PageQuery pageQuery);
 
     /**
@@ -46,4 +53,18 @@ public interface LearningLessonApi {
             @Valid
             @RequestBody
             LearnPlanReq req);
+
+
+    /**
+     * 分页查询用户学习计划
+     * @param pageQuery
+     * @return
+     */
+    @ApiResponses
+    @Operation(summary = "分页查询用户学习计划",
+            description = "分页查询用户学习计划")
+    @GetMapping("/plans")
+     Result<LearnPlansPageResult> queryUserPlans(
+            @Valid @RequestBody PageQuery pageQuery
+    );
 }

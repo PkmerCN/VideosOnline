@@ -8,6 +8,7 @@ import org.hzz.learning.application.command.LearnPlansAddCommand;
 import org.hzz.learning.application.command.LearnRecordCommitCommand;
 import org.hzz.learning.application.command.PageQueryCommand;
 import org.hzz.learning.application.handler.MarkConstants;
+import org.hzz.learning.application.resp.LearnLessonDto;
 import org.hzz.learning.application.resp.LearnLessonRecordDto;
 import org.hzz.learning.application.service.AppLearningLessonService;
 import org.hzz.learning.application.command.LearnLessonRecordCommand;
@@ -27,8 +28,8 @@ public class AppLearningLessonServiceImpl implements AppLearningLessonService {
 
 
     @Override
-    public PageResponse<LearningLessonAggregate> pageQueryLesson(PageQueryCommand command) {
-       return strategyChoose.<PageQueryCommand, PageResponse<LearningLessonAggregate>>
+    public PageResponse<LearnLessonDto> pageQueryLesson(PageQueryCommand command) {
+        return strategyChoose.<PageQueryCommand, PageResponse<LearnLessonDto>>
                chooseAndExecuteWithResp(MarkConstants.PAGE_QUERY, command);
     }
 

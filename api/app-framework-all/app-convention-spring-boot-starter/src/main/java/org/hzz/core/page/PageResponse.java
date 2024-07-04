@@ -1,8 +1,10 @@
 package org.hzz.core.page;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -12,6 +14,8 @@ import java.util.List;
  * @date 2024/6/27
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class PageResponse<T> {
 

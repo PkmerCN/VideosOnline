@@ -5,6 +5,7 @@ import org.hzz.learning.application.command.LearnLessonRecordCommand;
 import org.hzz.learning.application.command.LearnPlansAddCommand;
 import org.hzz.learning.application.command.LearnRecordCommitCommand;
 import org.hzz.learning.application.command.PageQueryCommand;
+import org.hzz.learning.application.resp.LearnLessonDto;
 import org.hzz.learning.application.resp.LearnLessonRecordDto;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 
@@ -15,7 +16,7 @@ import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
  */
 public interface AppLearningLessonService {
 
-    PageResponse<LearningLessonAggregate> pageQueryLesson(PageQueryCommand command);
+    PageResponse<LearnLessonDto> pageQueryLesson(PageQueryCommand command);
 
     LearnLessonRecordDto queryLearningRecord(LearnLessonRecordCommand command);
 
