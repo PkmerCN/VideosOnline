@@ -105,10 +105,11 @@ public class PlanPageQueryCommandHandler implements AbstractExecuteStrategy<Plan
         List<FilterCondition> filters = pageQuery.getFilters();
 
         // 添加课程状态以及计划状态
-        filters.add(new FilterCondition("status", "in", String.format("(%d,%d,%d)",
+        filters.add(new FilterCondition("status", "in", List.of(
                 LessonStatus.LEARNING.getValue(),
                 LessonStatus.FINISHED.getValue(),
-                LessonStatus.NOT_BEGIN.getValue())));
+                LessonStatus.NOT_BEGIN.getValue()
+        )));
         filters.add(new FilterCondition("plan_status", "=", PlanStatus.PLAN_RUNNING.getValue()));
 
         // 查询

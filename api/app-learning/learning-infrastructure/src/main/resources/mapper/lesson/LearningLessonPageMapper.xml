@@ -12,7 +12,17 @@
         <where>
             <if test="filters != null">
                 <foreach item="filter" collection="filters" separator=" AND ">
-                    ${filter.field} ${filter.operator} #{filter.value}
+                    <choose>
+                        <when test="filter.operator == 'in'">
+                            ${filter.field} IN
+                            <foreach item="item" collection="filter.value" open="(" separator="," close=")">
+                                #{item}
+                            </foreach>
+                        </when>
+                        <otherwise>
+                            ${filter.field} ${filter.operator} ${filter.value}
+                        </otherwise>
+                    </choose>
                 </foreach>
             </if>
         </where>
@@ -32,7 +42,17 @@
         <where>
             <if test="filters != null">
                 <foreach item="filter" collection="filters" separator=" AND ">
-                    ${filter.field} ${filter.operator} #{filter.value}
+                    <choose>
+                        <when test="filter.operator == 'in'">
+                            ${filter.field} IN
+                            <foreach item="item" collection="filter.value" open="(" separator="," close=")">
+                                #{item}
+                            </foreach>
+                        </when>
+                        <otherwise>
+                            ${filter.field} ${filter.operator} ${filter.value}
+                        </otherwise>
+                    </choose>
                 </foreach>
             </if>
         </where>

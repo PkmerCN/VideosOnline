@@ -79,9 +79,9 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
 
         if(finished){
             // 已完成小节数+1
-            lessonEntity.setSections(lessonEntity.getLearnedSections() + 1);
+            lessonEntity.setLearnedSections(lessonEntity.getLearnedSections() + 1);
             // 设置课程的状态
-            if(lessonEntity.getSections() >= courseEntity.getSectionNum()){
+            if(lessonEntity.getLearnedSections() >= courseEntity.getSectionNum()){
                 // 设置整个课程已经学完
                 lessonEntity.setLessonStatus(LessonStatus.FINISHED);
             }else{

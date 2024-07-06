@@ -21,7 +21,13 @@ public class LearningLessonEntity implements Entity {
     private LessonStatus lessonStatus;
     private PlanStatus planStatus;
     private Byte weekFreq;
+    /**
+     * 已经学习的小节数量
+     */
     private Integer learnedSections;
+    /**
+     * 总小节数量
+     */
     private Integer sections;
     private Long latestSectionId;
     // 最近一次学习的时间
