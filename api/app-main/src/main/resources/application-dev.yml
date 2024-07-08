@@ -24,11 +24,11 @@ spring:
           max-active: 100
           # 连接分配应该阻塞的最大时间
           max-wait: 2000
-  #docker配置
-  docker:
-    compose:
-      lifecycle-management: start_only
-      file: ./compose.yaml
+  #docker配置（目前已经去掉，使得redis生效）
+#  docker:
+#    compose:
+#      lifecycle-management: start_only
+#      file: ./compose.yaml
   thymeleaf:
     cache: false
   flyway:

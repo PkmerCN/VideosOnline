@@ -65,6 +65,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | Docker Compose | v2.24.5-desktop.1 |
 | RabbitMQ       | 3.13.3            |
 | MySQL          | 8.0               |
+| Redis          | 7.2.5             |
 
 # 分模块开发
 
