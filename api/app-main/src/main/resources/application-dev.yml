@@ -1,6 +1,7 @@
 server:
   port: 8080
 spring:
+  #docker配置
   docker:
     compose:
       lifecycle-management: start_only
@@ -58,7 +59,7 @@ app:
       - /auth-test/error
       - /learning-test/*
       - /course-test/*
-      - /test/*
+      - /test/**
       - /error
       - /index
       - /index.html

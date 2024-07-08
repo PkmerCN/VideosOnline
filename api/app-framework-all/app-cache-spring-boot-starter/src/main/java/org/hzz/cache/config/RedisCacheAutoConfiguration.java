@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Import;
  * @version 1.0.0
  * @date 2024/7/8
  */
-@AutoConfiguration
-@Import(RedisConfig.class)
+//@AutoConfiguration
+//@Import(RedisConfig.class)
 public class RedisCacheAutoConfiguration {
 }

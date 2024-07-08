@@ -37,6 +37,11 @@
             <artifactId>app-mybatis-spring-boot-starter</artifactId>
             <version>2.2.2-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.hzz.cache</groupId>
+            <artifactId>app-cache-spring-boot-starter</artifactId>
+            <version>2.2.2-SNAPSHOT</version>
+        </dependency>
         <!--   自身依赖start     -->
         <dependency>
             <groupId>cn.hutool</groupId>
