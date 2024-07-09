@@ -6,6 +6,7 @@ import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.LearnRecordCommitCommand;
+import org.hzz.learning.application.task.impl.RecordDelayTaskHandler;
 import org.hzz.learning.domain.aggregate.LearnLessonAggregate;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
@@ -36,6 +37,9 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
     @Setter(onMethod_ = @Autowired)
     private LearnLessonDomainService learnLessonDomainService;
 
+    @Setter(onMethod_ = @Autowired)
+    private RecordDelayTaskHandler taskHandler;
+
     @Override
     public String mark() {
         return MarkConstants.LEARN_LESSON_RECORD_COMMIT;
@@ -47,14 +51,14 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
         boolean finished = false;
         if (SectionType.EXAM == command.getSectionType()) {
             // 处理考试
-            finished = handleExamRecord(command);
+            handleExamRecord(command);
         } else if (SectionType.VIDEO == command.getSectionType()) {
             // 处理视频
-            finished = handeVideoRecord(command);
+            handeVideoRecord(command);
         }
 
         // 处理课表
-        handleLearnLesson(command,finished);
+        //handleLearnLesson(command,finished);
     }
 
     /**
@@ -98,7 +102,7 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
      * @param command 命令
      * @return true 表示已经完成该小节
      */
-    boolean handleExamRecord(LearnRecordCommitCommand command) {
+    void handleExamRecord(LearnRecordCommitCommand command) {
         boolean finished = true;
         LearnRecordEntity entity = new LearnRecordEntity();
 
@@ -109,7 +113,7 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
                 .setSectionId(command.getSectionId());
 
         learnLessonRecordDomainService.commitRecord(entity);
-        return finished;
+        handleLearnLesson(command,true);
     }
 
     /**
@@ -118,7 +122,7 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
      * @param command
      * @return 是否学完
      */
-    boolean handeVideoRecord(LearnRecordCommitCommand command) {
+    void handeVideoRecord(LearnRecordCommitCommand command) {
         // 获取记录lessonId,sectionID
         LearnRecordEntity oldRecord = learnLessonRecordDomainService.findLearnRecord(command.getLessonId(), command.getSectionId());
         boolean finished = false;
@@ -130,29 +134,39 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
                     .setSectionId(command.getSectionId())
                     .setFinished(finished)
                     .setMoment(command.getMoment());
-
             learnLessonRecordDomainService.commitRecord(entity);
         } else {
+            // 继续学习
             // 更新存在的记录
             if (oldRecord.getFinished()) {
                 // 学习完之后又继续学习，这时候需要保存视频进度
                 oldRecord.setMoment(command.getMoment());
                 learnLessonRecordDomainService.updateRecord(oldRecord);
-                // 不需要在进行课程表的处理
-                return false;
+                handleLearnLesson(command,false);
             }else{
-                // 判断是否是第一次学完 并且观看视频进度大于50%
-                finished = command.getMoment() * 2 > command.getDuration();
-                if(finished){
+                // 判断是否是并且观看视频进度大于90%
+                finished = command.getMoment() * 1.1 > command.getDuration();
+                if(!finished){
+                    // 对于持续提交的,交给延迟任务做缓存判断
+                    oldRecord.setMoment(command.getMoment());
+                    // learnLessonRecordDomainService.updateRecord(oldRecord);
+                    // 添加延迟任务
+                    taskHandler.addLearningRecordTask(oldRecord);
+                    // 直接结束，不更新课表
+                    return;
+                }else{
                     // 第一次学完
                     oldRecord.setMoment(command.getMoment())
                             .setFinished(finished)
                             .setFinishTime(command.getCommitTime());
                     learnLessonRecordDomainService.updateRecord(oldRecord);
+                    // 清除缓存
+                    taskHandler.cleanRecordCache(oldRecord.getLessonId(), oldRecord.getSectionId());
                 }
             }
         }
-        return finished;
+        // 处理课表
+        handleLearnLesson(command,finished);
     }
 
 }

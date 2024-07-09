@@ -1,5 +1,6 @@
 package org.hzz.cache.core;
 
+import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +74,15 @@ public interface RedisCache {
      * @return true=设置成功；false=设置失败
      */
     boolean expire(final String key, final long timeout);
+
+    /**
+     * 设置有效时间
+     *
+     * @param key     Redis键
+     * @param duration 时间
+     * @return true=设置成功；false=设置失败
+     */
+    boolean expire(final String key, final Duration duration);
 
     /**
      * 设置有效时间

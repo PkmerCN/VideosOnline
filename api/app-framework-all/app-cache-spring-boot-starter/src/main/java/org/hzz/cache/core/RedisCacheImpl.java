@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.*;
 
+import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -93,6 +94,15 @@ public class RedisCacheImpl implements RedisCache{
     public boolean expire(String key, long timeout) {
         return Boolean.TRUE.equals(redisTemplate.expire(key, timeout, TimeUnit.SECONDS));
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean expire(String key, Duration duration) {
+        return Boolean.TRUE.equals(redisTemplate.expire(key,duration));
+    }
+
     /**
      * {@inheritDoc}
      */
