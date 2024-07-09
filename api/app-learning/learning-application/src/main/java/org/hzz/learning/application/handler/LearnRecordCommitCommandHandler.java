@@ -118,7 +118,8 @@ public class LearnRecordCommitCommandHandler implements CommandHandler,
 
     /**
      * 处理视频记录
-     *
+     * 如果学习完成直接保存数据库
+     * 持续学习只是更新时长，那么使用redis处理，只保留最后一次即可
      * @param command
      * @return 是否学完
      */
