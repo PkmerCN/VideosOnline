@@ -65,7 +65,7 @@ public class RecordDelayTaskHandler implements DelayTaskHandler {
     public void init(){
         start = true;
         log.info("启动record延迟任务 start = {}",start);
-        CompletableFuture.runAsync(()->{});
+        CompletableFuture.runAsync(this::handleTask);
     }
 
     @PreDestroy
@@ -115,7 +115,7 @@ public class RecordDelayTaskHandler implements DelayTaskHandler {
 
     @Transactional
     public void doSave(LearningLessonEntity learningLesson,LearnRecordEntity learnRecord){
-        learnLessonRecordDomainService.commitRecord(learnRecord);
+        learnLessonRecordDomainService.updateRecord(learnRecord);
         learnLessonDomainService.updateLessonSelectiveById(learningLesson);
     }
 
@@ -219,8 +219,8 @@ public class RecordDelayTaskHandler implements DelayTaskHandler {
         static RecordTaskData createFrom(LearnRecordEntity recordEntity){
             RecordTaskData recordTaskData = new RecordTaskData();
             recordTaskData.setMoment(recordEntity.getMoment())
-                    .setSectionId(recordTaskData.getSectionId())
-                    .setLessonId(recordTaskData.getLessonId());
+                    .setSectionId(recordEntity.getSectionId())
+                    .setLessonId(recordEntity.getLessonId());
             return recordTaskData;
         }
     }
