@@ -88,7 +88,6 @@ public class RecordDelayTaskHandler implements DelayTaskHandler {
                         // 说明用户没有连续在看需要保存记录
                         log.info("存储记录");
                         save(taskData);
-
                     }
 
                 });
