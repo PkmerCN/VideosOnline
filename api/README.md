@@ -179,6 +179,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | 自定义aop切面，基于注解                          |
 | 手动校验分组参数,并实现全局异常处理                     |
 | redis加延迟任务处理高并发业务                      |
+| mybatis typehandler处理枚举                |
 
 
 
