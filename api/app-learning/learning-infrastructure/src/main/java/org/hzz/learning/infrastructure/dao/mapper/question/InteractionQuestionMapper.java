@@ -1,10 +1,13 @@
 package org.hzz.learning.infrastructure.dao.mapper.question;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion;
 import org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestionExample;
 
+@Mapper
 public interface InteractionQuestionMapper {
     long countByExample(InteractionQuestionExample example);
 
