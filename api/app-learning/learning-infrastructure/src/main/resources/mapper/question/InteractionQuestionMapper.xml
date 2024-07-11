@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hzz.learning.infrastructure.dao.mapper.question.InteractionQuestionMapper">
+  <resultMap id="BaseResultMap" type="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="course_id" jdbcType="BIGINT" property="courseId" />
+    <result column="chapter_id" jdbcType="BIGINT" property="chapterId" />
+    <result column="section_id" jdbcType="BIGINT" property="sectionId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="latest_answer_id" jdbcType="BIGINT" property="latestAnswerId" />
+    <result column="answer_times" jdbcType="INTEGER" property="answerTimes" />
+    <result column="anonymity" jdbcType="BIT" property="anonymity" />
+    <result column="hidden" jdbcType="BIT" property="hidden" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, title, description, course_id, chapter_id, section_id, user_id, latest_answer_id, 
+    answer_times, anonymity, hidden, status, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from interaction_question
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from interaction_question
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from interaction_question
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestionExample">
+    delete from interaction_question
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
+    insert into interaction_question (id, title, description, 
+      course_id, chapter_id, section_id, 
+      user_id, latest_answer_id, answer_times, 
+      anonymity, hidden, status, 
+      create_time, update_time)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{courseId,jdbcType=BIGINT}, #{chapterId,jdbcType=BIGINT}, #{sectionId,jdbcType=BIGINT}, 
+      #{userId,jdbcType=BIGINT}, #{latestAnswerId,jdbcType=BIGINT}, #{answerTimes,jdbcType=INTEGER}, 
+      #{anonymity,jdbcType=BIT}, #{hidden,jdbcType=BIT}, #{status,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
+    insert into interaction_question
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="chapterId != null">
+        chapter_id,
+      </if>
+      <if test="sectionId != null">
+        section_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="latestAnswerId != null">
+        latest_answer_id,
+      </if>
+      <if test="answerTimes != null">
+        answer_times,
+      </if>
+      <if test="anonymity != null">
+        anonymity,
+      </if>
+      <if test="hidden != null">
+        hidden,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="chapterId != null">
+        #{chapterId,jdbcType=BIGINT},
+      </if>
+      <if test="sectionId != null">
+        #{sectionId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="latestAnswerId != null">
+        #{latestAnswerId,jdbcType=BIGINT},
+      </if>
+      <if test="answerTimes != null">
+        #{answerTimes,jdbcType=INTEGER},
+      </if>
+      <if test="anonymity != null">
+        #{anonymity,jdbcType=BIT},
+      </if>
+      <if test="hidden != null">
+        #{hidden,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestionExample" resultType="java.lang.Long">
+    select count(*) from interaction_question
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update interaction_question
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.title != null">
+        title = #{row.title,jdbcType=VARCHAR},
+      </if>
+      <if test="row.description != null">
+        description = #{row.description,jdbcType=VARCHAR},
+      </if>
+      <if test="row.courseId != null">
+        course_id = #{row.courseId,jdbcType=BIGINT},
+      </if>
+      <if test="row.chapterId != null">
+        chapter_id = #{row.chapterId,jdbcType=BIGINT},
+      </if>
+      <if test="row.sectionId != null">
+        section_id = #{row.sectionId,jdbcType=BIGINT},
+      </if>
+      <if test="row.userId != null">
+        user_id = #{row.userId,jdbcType=BIGINT},
+      </if>
+      <if test="row.latestAnswerId != null">
+        latest_answer_id = #{row.latestAnswerId,jdbcType=BIGINT},
+      </if>
+      <if test="row.answerTimes != null">
+        answer_times = #{row.answerTimes,jdbcType=INTEGER},
+      </if>
+      <if test="row.anonymity != null">
+        anonymity = #{row.anonymity,jdbcType=BIT},
+      </if>
+      <if test="row.hidden != null">
+        hidden = #{row.hidden,jdbcType=BIT},
+      </if>
+      <if test="row.status != null">
+        status = #{row.status,jdbcType=TINYINT},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update interaction_question
+    set id = #{row.id,jdbcType=BIGINT},
+      title = #{row.title,jdbcType=VARCHAR},
+      description = #{row.description,jdbcType=VARCHAR},
+      course_id = #{row.courseId,jdbcType=BIGINT},
+      chapter_id = #{row.chapterId,jdbcType=BIGINT},
+      section_id = #{row.sectionId,jdbcType=BIGINT},
+      user_id = #{row.userId,jdbcType=BIGINT},
+      latest_answer_id = #{row.latestAnswerId,jdbcType=BIGINT},
+      answer_times = #{row.answerTimes,jdbcType=INTEGER},
+      anonymity = #{row.anonymity,jdbcType=BIT},
+      hidden = #{row.hidden,jdbcType=BIT},
+      status = #{row.status,jdbcType=TINYINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
+    update interaction_question
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="chapterId != null">
+        chapter_id = #{chapterId,jdbcType=BIGINT},
+      </if>
+      <if test="sectionId != null">
+        section_id = #{sectionId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="latestAnswerId != null">
+        latest_answer_id = #{latestAnswerId,jdbcType=BIGINT},
+      </if>
+      <if test="answerTimes != null">
+        answer_times = #{answerTimes,jdbcType=INTEGER},
+      </if>
+      <if test="anonymity != null">
+        anonymity = #{anonymity,jdbcType=BIT},
+      </if>
+      <if test="hidden != null">
+        hidden = #{hidden,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
+    update interaction_question
+    set title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      course_id = #{courseId,jdbcType=BIGINT},
+      chapter_id = #{chapterId,jdbcType=BIGINT},
+      section_id = #{sectionId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      latest_answer_id = #{latestAnswerId,jdbcType=BIGINT},
+      answer_times = #{answerTimes,jdbcType=INTEGER},
+      anonymity = #{anonymity,jdbcType=BIT},
+      hidden = #{hidden,jdbcType=BIT},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
