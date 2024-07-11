@@ -1,8 +1,10 @@
 package org.hzz.learning.infrastructure.repository.mybatis.question;
 
+import cn.hutool.core.bean.BeanUtil;
 import lombok.Setter;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.repository.question.InteractionQuestionRepository;
+import org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion;
 import org.hzz.learning.infrastructure.dao.mapper.question.InteractionQuestionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,10 +20,13 @@ public class InteractionQuestionRepositoryImpl implements InteractionQuestionRep
 
     @Setter(onMethod_ = {@Autowired})
     private InteractionQuestionMapper interactionQuestionMapper;
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int insertSelective(InteractionQuestionEntity entity) {
-
-        return 0;
-
+        InteractionQuestion interactionQuestion = BeanUtil.copyProperties(entity, InteractionQuestion.class);
+        return interactionQuestionMapper.insertSelective(interactionQuestion);
     }
 }

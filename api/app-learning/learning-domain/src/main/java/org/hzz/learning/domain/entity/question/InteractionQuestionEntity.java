@@ -1,12 +1,16 @@
 package org.hzz.learning.domain.entity.question;
 
+import lombok.Data;
 import org.hzz.ddd.core.domain.shared.Entity;
+import org.hzz.learning.types.enums.question.QuestionStatus;
 
 /**
+ * 问题实体
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/11
  */
+@Data
 public class InteractionQuestionEntity implements Entity {
     // 主键，互动问题的id
     private Long id;
@@ -42,5 +46,5 @@ public class InteractionQuestionEntity implements Entity {
     private Boolean hidden;
 
     // 管理端问题状态：0-未查看，1-已查看
-    private Byte status;
+    private QuestionStatus status;
 }

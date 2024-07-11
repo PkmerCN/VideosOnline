@@ -15,4 +15,8 @@ public abstract class BaseController extends AppBase {
     protected <T> Result<T> success(T data){
         return Result.success(data);
     }
+
+    public Result<Object> success(){
+        return Result.success(null);
+    }
 }

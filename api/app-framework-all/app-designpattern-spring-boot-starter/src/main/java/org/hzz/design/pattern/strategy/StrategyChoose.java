@@ -15,9 +15,10 @@ import java.util.Optional;
  * @version 1.0.0
  * @date 2024/6/20
  */
+@SuppressWarnings(value = {"unchecked", "rawtypes"})
 @Slf4j
 public class StrategyChoose implements ApplicationListener<ApplicationInitializingEvent> {
-    private final Map<String,AbstractExecuteStrategy> abstractExecuteStrategyMap = new HashMap<>();
+    private final Map<String,AbstractExecuteStrategy<?,?>> abstractExecuteStrategyMap = new HashMap<>();
 
     public AbstractExecuteStrategy choose(String mark){
         return Optional.ofNullable(abstractExecuteStrategyMap.get(mark))
@@ -25,7 +26,7 @@ public class StrategyChoose implements ApplicationListener<ApplicationInitializi
     }
 
     public <T> void chooseAndExecute(String mark,T command){
-        AbstractExecuteStrategy strategy = choose(mark);
+        AbstractExecuteStrategy<T,?> strategy = choose(mark);
         strategy.execute(command);
     }
 
@@ -40,7 +41,7 @@ public class StrategyChoose implements ApplicationListener<ApplicationInitializi
         log.info("监听到ApplicationInitializingEvent事件,准备添加配置CommandHandler");
         Map<String, AbstractExecuteStrategy> beansOfType = ApplicationContextHolder.getBeansOfType(AbstractExecuteStrategy.class);
         beansOfType.forEach((beanName,bean) -> {
-            AbstractExecuteStrategy stragegy = abstractExecuteStrategyMap.get(bean.mark());
+            AbstractExecuteStrategy<?,?> stragegy = abstractExecuteStrategyMap.get(bean.mark());
             if(stragegy != null){
                 throw new RuntimeException(String.format("[%s] Duplicate execution policy", bean.mark()));
             }else{
@@ -49,8 +50,5 @@ public class StrategyChoose implements ApplicationListener<ApplicationInitializi
             }
         });
     }
-
-
-
 
 }
