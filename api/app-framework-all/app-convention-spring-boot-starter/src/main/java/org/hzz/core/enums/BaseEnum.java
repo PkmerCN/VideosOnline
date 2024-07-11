@@ -6,8 +6,8 @@ package org.hzz.core.enums;
  * @date 2024/6/27
  */
 public interface BaseEnum {
-    Integer getValue();
-    String getDesc();
+    abstract Integer getValue();
+    abstract String getDesc();
 
     default boolean equalsValue(Integer value){
         if(value == null) return false;

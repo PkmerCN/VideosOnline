@@ -29,4 +29,16 @@ public enum QuestionStatus implements BaseEnum {
     public String getDesc() {
         return this.desc;
     }
+
+    public static QuestionStatus fromValue(Byte value) {
+        if (value == null) {
+            return null;
+        }
+        for (QuestionStatus status : QuestionStatus.values()) {
+            if (status.getValue().equals(value.intValue())) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("Unknown enum value: " + value + "in QuestionStatus");
+    }
 }
