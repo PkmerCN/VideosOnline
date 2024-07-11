@@ -36,7 +36,8 @@ public class InteractionQuestionController
                 questionReq.getCourseId(),
                 questionReq.getChapterId(),
                 questionReq.getSectionId(),
-                AppContextHolder.userContextHolder.getUser().getId()
+                AppContextHolder.userContextHolder.getUser().getId(),
+                questionReq.getAnonymity()
         );
 
         cmdService.handleCommand(command);

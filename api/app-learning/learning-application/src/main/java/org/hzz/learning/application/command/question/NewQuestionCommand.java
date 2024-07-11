@@ -31,6 +31,9 @@ public class NewQuestionCommand implements CommandWithMark {
     // 提问学员id
     Long userId;
 
+    // 是否匿名，默认false
+    Boolean anonymity;
+
     public static final String MASK = NewQuestionCommand.class.getName();
     @Override
     public String mark() {

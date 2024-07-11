@@ -32,4 +32,7 @@ public class NewQuestionReq {
     @Schema(description = "所属课程节id",example = "16")
     @NotNull
     Long sectionId;
+
+    @Schema(description = "是否匿名，默认false",example = "false")
+    Boolean anonymity;
 }
