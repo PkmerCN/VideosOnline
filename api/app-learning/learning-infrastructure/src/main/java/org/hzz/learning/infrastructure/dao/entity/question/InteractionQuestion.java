@@ -1,5 +1,7 @@
 package org.hzz.learning.infrastructure.dao.entity.question;
 
+import org.hzz.mybatis.annotation.SnowflakeId;
+
 import java.time.LocalDateTime;
 
 /**
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
  */
 public class InteractionQuestion {
     // 主键，互动问题的id
+    @SnowflakeId
     private Long id;
 
     // 互动问题的标题
