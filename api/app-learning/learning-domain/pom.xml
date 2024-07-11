@@ -18,6 +18,11 @@
     <dependencies>
         <dependency>
             <groupId>org.hzz</groupId>
+            <artifactId>learning-types</artifactId>
+            <version>2.2.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hzz</groupId>
             <artifactId>app-convention-spring-boot-starter</artifactId>
             <version>2.2.3-SNAPSHOT</version>
         </dependency>
