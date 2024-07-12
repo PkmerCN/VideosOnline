@@ -1,5 +1,10 @@
 package org.hzz.user.domain.service.details;
 
+import org.hzz.user.domain.entity.UserDetailEntity;
+
+import java.util.List;
+import java.util.Set;
+
 /**
  * 用户详情领域服务
  * @author 胖卡
@@ -8,5 +13,10 @@ package org.hzz.user.domain.service.details;
  */
 public interface UserDetailDomainService {
 
-
+    /**
+     * 获取用户详情 列表
+     * @param ids id列表
+     * @return {@link UserDetailEntity} 列表
+     */
+    List<UserDetailEntity> getEntities(Set<Long> ids);
 }
