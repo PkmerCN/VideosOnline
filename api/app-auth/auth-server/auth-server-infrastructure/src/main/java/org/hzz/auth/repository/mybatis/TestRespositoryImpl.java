@@ -2,7 +2,6 @@ package org.hzz.auth.repository.mybatis;
 
 import org.hzz.auth.dao.TestConnectionMapper;
 import org.hzz.auth.repository.TestRepository;
-import org.hzz.core.repository.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

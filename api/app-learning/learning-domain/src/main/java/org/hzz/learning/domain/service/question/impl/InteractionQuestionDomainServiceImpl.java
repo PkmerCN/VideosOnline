@@ -3,7 +3,9 @@ package org.hzz.learning.domain.service.question.impl;
 import cn.hutool.core.util.StrUtil;
 import jakarta.xml.bind.DataBindingException;
 import org.hzz.core.exception.db.AppDbEntityNotFoundException;
+import org.hzz.core.page.PageResponse;
 import org.hzz.core.service.BaseDomainService;
+import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.repository.question.InteractionQuestionRepository;
 import org.hzz.learning.domain.service.question.InteractionQuestionDomainService;
@@ -52,5 +54,12 @@ public class InteractionQuestionDomainServiceImpl
             throw new AppDbEntityNotFoundException(msg);
         }
         return entity;
+    }
+
+    @Override
+    public PageResponse<InteractionQuestionEntity> pageQueryEntity(QuestionQueryAggregate aggregate) {
+        PageResponse<InteractionQuestionEntity> results = repository.pageQuery(aggregate);
+        logger.info("分页查询到{}个问题",results.getList().size());
+        return results;
     }
 }

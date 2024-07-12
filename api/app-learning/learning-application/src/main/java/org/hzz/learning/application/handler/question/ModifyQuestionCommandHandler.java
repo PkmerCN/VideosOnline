@@ -33,10 +33,10 @@ public class ModifyQuestionCommandHandler implements CommandHandler,
 
     @Override
     public void execute(ModifyQuestionCommand command) {
-        InteractionQuestionEntity entity = interactionQuestionDomainService.getEntityById(command.id());
+        InteractionQuestionEntity entity = interactionQuestionDomainService.getEntityById(command.getId());
 
-        if(!command.userId().equals(entity.getUserId())){
-            throw new BadRequestException(StrUtil.format("该用户（id = {}）没有权限修改其他人的问题",command.id()));
+        if(!command.getUserId().equals(entity.getUserId())){
+            throw new BadRequestException(StrUtil.format("该用户（id = {}）没有权限修改其他人的问题",command.getId()));
         }
 
         InteractionQuestionEntity newEntity = Converter.INSTANCE.toEntity(command);

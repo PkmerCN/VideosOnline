@@ -1,24 +1,19 @@
-package org.hzz.core.repository;
+package org.hzz.core.repository.nomapper;
 
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.mapper.PageMapper;
-import org.hzz.core.page.query.PageQuery;
 import org.hzz.core.page.PageResponse;
+import org.hzz.core.page.query.PageQuery;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 封装通用分页逻辑
- * p 代表mapper
- * T 代表返回的类型
- * C 代表Converter
  * @author 胖卡
  * @version 1.0.0
- * @date 2024/6/27
+ * @date 2024/7/12
  */
-public abstract class PageBaseRepository<P extends PageMapper<T>,T,C> extends BaseRepository<P,C> {
-
+public abstract class PageBaseRepository< M extends PageMapper<T>,T> extends BaseRepository<M> {
     public PageResponse<T> pageQuery(PageQuery pageQuery){
         // LIMIT #{limit} OFFSET #{offset}
         // 查询的记录数据
@@ -46,5 +41,4 @@ public abstract class PageBaseRepository<P extends PageMapper<T>,T,C> extends Ba
                 .total(total)
                 .list(list).build();
     }
-
 }

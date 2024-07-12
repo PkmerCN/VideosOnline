@@ -1,7 +1,7 @@
 package org.hzz.course.infrastructure.repository.mybatis;
 
 import org.hzz.common.collection.CollUtil;
-import org.hzz.core.repository.BaseRepository;
+import org.hzz.core.repository.withmapper.BaseRepository;
 import org.hzz.course.domain.aggregate.CourseSimpleInfoListDto;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.repository.CourseRepository;

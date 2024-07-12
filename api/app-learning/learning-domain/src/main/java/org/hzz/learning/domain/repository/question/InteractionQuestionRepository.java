@@ -1,5 +1,7 @@
 package org.hzz.learning.domain.repository.question;
 
+import org.hzz.core.page.PageResponse;
+import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 
 /**
@@ -33,5 +35,14 @@ public interface InteractionQuestionRepository {
      */
     default int updateSelective(InteractionQuestionEntity entity){
         return 0;
+    }
+
+    /**
+     * 分页查询
+     * @param aggregate 聚合根
+     * @return 分页
+     */
+    default PageResponse<InteractionQuestionEntity> pageQuery(QuestionQueryAggregate aggregate){
+        throw new UnsupportedOperationException("未实现");
     }
 }

@@ -50,11 +50,11 @@ public class InteractionQuestionController
     public Result<Object> modifyQuestion(Long id, ModifyQuestionReq modifyQuestionReq) {
         logger.info("修改问题");
         ModifyQuestionCommand command = new ModifyQuestionCommand();
-        command.id(id)
-                .title(modifyQuestionReq.getTitle())
-                .description(modifyQuestionReq.getDescription())
-                .anonymity(modifyQuestionReq.getAnonymity())
-                .userId(AppContextHolder.userContextHolder.getUser().getId());
+        command.setId(id)
+                .setTitle(modifyQuestionReq.getTitle())
+                .setDescription(modifyQuestionReq.getDescription())
+                .setAnonymity(modifyQuestionReq.getAnonymity())
+                .setUserId(AppContextHolder.userContextHolder.getUser().getId());
         cmdService.handleCommand(command);
         return success();
     }

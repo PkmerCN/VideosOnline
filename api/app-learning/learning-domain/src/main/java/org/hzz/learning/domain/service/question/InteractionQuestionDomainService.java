@@ -1,6 +1,8 @@
 package org.hzz.learning.domain.service.question;
 
+import org.hzz.core.page.PageResponse;
 import org.hzz.ddd.core.domain.shared.service.DomainService;
+import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 
 /**
@@ -34,6 +36,16 @@ public interface InteractionQuestionDomainService extends DomainService {
      */
     default InteractionQuestionEntity getEntityById(Long id){
         throw new UnsupportedOperationException("未实现getEntityById");
+    }
+
+
+    /**
+     * 分页查询问题
+     * @param aggregate 聚合根
+     * @return 分页
+     */
+    default PageResponse<InteractionQuestionEntity> pageQueryEntity(QuestionQueryAggregate aggregate){
+        throw new UnsupportedOperationException("未实现pageQueryEntity");
     }
 
 }

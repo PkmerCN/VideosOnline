@@ -1,4 +1,4 @@
-package org.hzz.core.repository;
+package org.hzz.core.repository.withmapper;
 
 import lombok.Setter;
 import org.hzz.core.base.AppBase;

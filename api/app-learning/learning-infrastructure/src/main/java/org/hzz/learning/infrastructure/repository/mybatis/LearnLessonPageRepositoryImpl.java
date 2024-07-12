@@ -1,7 +1,7 @@
 package org.hzz.learning.infrastructure.repository.mybatis;
 
 import org.hzz.core.page.PageResponse;
-import org.hzz.core.repository.PageBaseRepository;
+import org.hzz.core.repository.withmapper.PageBaseRepository;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 import org.hzz.learning.domain.repository.LearnLessonPageRepository;
 import org.hzz.learning.infrastructure.converter.LearnLessonAggregateConverter;

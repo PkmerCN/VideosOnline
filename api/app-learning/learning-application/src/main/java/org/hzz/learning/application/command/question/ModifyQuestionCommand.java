@@ -11,7 +11,7 @@ import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
  * @date 2024/7/12
  */
 @Data
-@Accessors(chain = true,fluent = true)
+@Accessors(chain = true)
 public class ModifyQuestionCommand implements CommandWithMark {
     public static final String MASK = ModifyQuestionCommand.class.getName();
 

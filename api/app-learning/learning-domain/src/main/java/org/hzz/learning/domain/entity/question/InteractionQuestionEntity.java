@@ -4,6 +4,8 @@ import lombok.Data;
 import org.hzz.ddd.core.domain.shared.Entity;
 import org.hzz.learning.types.enums.question.QuestionStatus;
 
+import java.time.LocalDateTime;
+
 /**
  * 问题实体
  * @author 胖卡
@@ -47,4 +49,7 @@ public class InteractionQuestionEntity implements Entity {
 
     // 管理端问题状态：0-未查看，1-已查看
     private QuestionStatus status;
+
+    // 提问时间
+    private LocalDateTime createTime;
 }

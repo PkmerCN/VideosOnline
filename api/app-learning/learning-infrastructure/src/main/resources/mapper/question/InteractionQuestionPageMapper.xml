@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hzz.learning.infrastructure.dao.mapper.question.InteractionQuestionPageMapper">
+    <sql id="Base_Column_List">
+        id, user_id, course_id, status, week_freq, plan_status, learned_sections, latest_section_id,
+    latest_learn_time, create_time, expire_time, update_time
+    </sql>
+    <select id="pageSelect" resultType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
+        select
+        <include refid="Base_Column_List"/>
+        from interaction_question
+        <where>
+            <if test="filters != null">
+                <foreach item="filter" collection="filters" separator=" AND ">
+                    <choose>
+                        <when test="filter.operator == 'in'">
+                            ${filter.field} IN
+                            <foreach item="item" collection="filter.value" open="(" separator="," close=")">
+                                #{item}
+                            </foreach>
+                        </when>
+                        <otherwise>
+                            ${filter.field} ${filter.operator} ${filter.value}
+                        </otherwise>
+                    </choose>
+                </foreach>
+            </if>
+        </where>
+        <if test="orderByClause != null and orderByClause != ''">
+            ORDER BY ${orderByClause}
+        </if>
+        <if test="orderByClause == null or orderByClause == ''">
+            ORDER BY create_time DESC
+        </if>
+        <if test="limit != null and offset != null">
+            LIMIT #{limit} OFFSET #{offset}
+        </if>
+    </select>
+
+    <select id="countRecords" resultType="int">
+        SELECT COUNT(*) FROM interaction_question
+        <where>
+            <if test="filters != null">
+                <foreach item="filter" collection="filters" separator=" AND ">
+                    <choose>
+                        <when test="filter.operator == 'in'">
+                            ${filter.field} IN
+                            <foreach item="item" collection="filter.value" open="(" separator="," close=")">
+                                #{item}
+                            </foreach>
+                        </when>
+                        <otherwise>
+                            ${filter.field} ${filter.operator} ${filter.value}
+                        </otherwise>
+                    </choose>
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+</mapper>
