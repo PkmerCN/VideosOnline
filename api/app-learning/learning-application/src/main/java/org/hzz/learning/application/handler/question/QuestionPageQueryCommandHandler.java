@@ -138,6 +138,7 @@ public class QuestionPageQueryCommandHandler implements CommandHandler,
             QuestionDto dto = Converter.INSTANCE.toQuestionDto(entity);
             handleQuestionUser(dto,entity,userDetailEntityMap);
             handleReply(dto,entity,answersMap,userDetailEntityMap);
+            dtos.add(dto);
         }
         return dtos;
     }

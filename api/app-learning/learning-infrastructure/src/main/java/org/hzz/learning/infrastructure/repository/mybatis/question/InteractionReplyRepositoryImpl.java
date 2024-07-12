@@ -28,8 +28,6 @@ public class InteractionReplyRepositoryImpl extends BaseRepository<InteractionRe
     @Override
     public List<InteractionReplyEntity> selectBatchIds(Set<Long> ids) {
         List<Long> idList = new ArrayList<>(ids);
-        InteractionReply interactionReply = mapper.selectByPrimaryKey(1588110148121956353L);
-        System.out.println(interactionReply);
         InteractionReplyExample example = new InteractionReplyExample();
         example.createCriteria()
                 .andIdIn(idList);
