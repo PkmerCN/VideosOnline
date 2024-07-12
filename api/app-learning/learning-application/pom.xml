@@ -36,10 +36,6 @@
             <artifactId>app-fastjson2-spring-boot-starter</artifactId>
             <version>2.2.3-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-core</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

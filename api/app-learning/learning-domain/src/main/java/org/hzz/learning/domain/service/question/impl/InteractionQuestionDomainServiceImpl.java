@@ -1,5 +1,8 @@
 package org.hzz.learning.domain.service.question.impl;
 
+import cn.hutool.core.util.StrUtil;
+import jakarta.xml.bind.DataBindingException;
+import org.hzz.core.exception.db.AppDbEntityNotFoundException;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.repository.question.InteractionQuestionRepository;
@@ -42,6 +45,12 @@ public class InteractionQuestionDomainServiceImpl
      */
     @Override
     public InteractionQuestionEntity getEntityById(Long id) {
-        return repository.selectById(id);
+        InteractionQuestionEntity entity = repository.selectById(id);
+        if(entity == null){
+            String msg = StrUtil.format("问题record 对应的id = {} 不存在",id);
+            logger.info(msg);
+            throw new AppDbEntityNotFoundException(msg);
+        }
+        return entity;
     }
 }
