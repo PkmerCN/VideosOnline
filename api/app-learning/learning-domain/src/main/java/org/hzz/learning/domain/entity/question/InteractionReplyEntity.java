@@ -1,5 +1,6 @@
 package org.hzz.learning.domain.entity.question;
 
+import lombok.Data;
 import org.hzz.ddd.core.domain.shared.Entity;
 
 /**
@@ -7,6 +8,7 @@ import org.hzz.ddd.core.domain.shared.Entity;
  * @version 1.0.0
  * @date 2024/7/11
  */
+@Data
 public class InteractionReplyEntity implements Entity {
     // 互动问题的回答id
     private Long id;

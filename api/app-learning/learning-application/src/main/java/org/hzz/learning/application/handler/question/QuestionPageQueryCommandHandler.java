@@ -8,13 +8,18 @@ import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.question.QuestionPageQueryCommand;
 import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
+import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.service.question.InteractionQuestionDomainService;
+import org.hzz.learning.domain.service.question.InteractionReplyDomainService;
 import org.hzz.learning.types.resp.question.QuestionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author 胖卡
@@ -27,6 +32,10 @@ public class QuestionPageQueryCommandHandler implements CommandHandler,
 
     @Setter(onMethod_ = @Autowired)
     private InteractionQuestionDomainService interactionQuestionDomainService;
+
+    @Setter(onMethod_ = @Autowired)
+    private InteractionReplyDomainService interactionReplyDomainService;
+
 
     @Override
     public String mark() {
@@ -42,28 +51,35 @@ public class QuestionPageQueryCommandHandler implements CommandHandler,
 
         // 问题的列表去查
         PageResponse<InteractionQuestionEntity> results = interactionQuestionDomainService.pageQueryEntity(aggregate);
-        if(results == null || CollUtil.isEmpty(results.getList())){
+        if (results == null || CollUtil.isEmpty(results.getList())) {
             return pageResponse;
         }
 
         // 获取用户id
         Set<Long> userIds = new HashSet<>();
         Set<Long> answerIds = new HashSet<>();
-        for (InteractionQuestionEntity entity: results.getList()){
+        for (InteractionQuestionEntity entity : results.getList()) {
             // 在这次循环的过程中顺便把回答的给统计了
-            if(entity.getLatestAnswerId() != null){
+            if (entity.getLatestAnswerId() != null) {
                 answerIds.add(entity.getLatestAnswerId());
             }
             // 过滤匿名提问和隐藏
-            if(entity.getAnonymity() || entity.getHidden()){
+            if (entity.getAnonymity() || entity.getHidden()) {
                 continue;
             }
             userIds.add(entity.getUserId());
         }
 
 
+        // 评论
+        List<InteractionReplyEntity> replyEntities = interactionReplyDomainService.getEntityByIds(answerIds);
+        Map<Long, String> answersMap = replyEntities.stream()
+                .collect(Collectors.toMap(
+                        InteractionReplyEntity::getId,
+                        InteractionReplyEntity::getContent));
 
-        // 获取问题
+        // 用户
+
 
         return pageResponse;
     }
