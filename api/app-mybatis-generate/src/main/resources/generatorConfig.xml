@@ -21,9 +21,9 @@
             <property name="useJSR310Types" value="true" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="org.hzz.learning.infrastructure.dao.entity.question" targetProject="src/main/java" />
+        <javaModelGenerator targetPackage="org.hzz.user.infrastructure.dao.entity.details" targetProject="src/main/java" />
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.learning.infrastructure.dao.mapper.question" targetProject="src/main/java"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.user.infrastructure.dao.mapper.details" targetProject="src/main/java"/>
 
 <!--   属性domainObjectName     -->
 <!--   https://mybatis.org/generator/configreference/xmlconfig.html     -->
@@ -32,10 +32,15 @@
 <!--        <table tableName="learning_lesson"/>-->
 <!--        <table tableName="course"/>-->
 <!--        <table tableName="learning_record"/>-->
-        <table tableName="interaction_question">
-            <columnOverride column="status" javaType="org.hzz.learning.types.enums.question.QuestionStatus"/>
+<!--        <table tableName="interaction_question">-->
+<!--            <columnOverride column="status" javaType="org.hzz.learning.types.enums.question.QuestionStatus"/>-->
+<!--        </table>-->
+<!--        <table tableName="interaction_reply"/>-->
+        <table tableName="user_detail">
+            <columnOverride column="gender" javaType="org.hzz.user.types.enums.Gender"/>
         </table>
-        <table tableName="interaction_reply"/>
+
+
     </context>
 
 </generatorConfiguration>
