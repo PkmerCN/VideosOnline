@@ -7,6 +7,7 @@ import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
 import org.hzz.learning.types.req.question.QuestionPageQuery;
 import org.hzz.security.context.AppContextHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class QuestionPageQueryCommand implements CommandWithMark {
         PageQuery pageQuery = new PageQuery();
         pageQuery.setPageSize(questionPageQuery.getPageSize());
         pageQuery.setPageNo(questionPageQuery.getPageNo());
-        List<FilterCondition> filters = pageQuery.getFilters();
+        List<FilterCondition> filters = new ArrayList<>();
 
         // 添加过滤条件
         if(questionPageQuery.getOnlyMine()){
@@ -42,12 +43,12 @@ public class QuestionPageQueryCommand implements CommandWithMark {
 
         // 处理隐藏的问题
         filters.add(new FilterCondition("hidden","=",false));
-
+        pageQuery.setFilters(filters);
        return new QuestionPageQueryCommand(pageQuery);
     }
 
     private QuestionPageQueryCommand(PageQuery pageQuery){
-
+        this.pageQuery = pageQuery;
     }
 
     @Override

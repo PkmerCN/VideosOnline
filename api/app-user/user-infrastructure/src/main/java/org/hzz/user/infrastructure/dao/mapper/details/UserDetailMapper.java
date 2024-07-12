@@ -1,10 +1,13 @@
 package org.hzz.user.infrastructure.dao.mapper.details;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.hzz.user.infrastructure.dao.entity.details.UserDetail;
 import org.hzz.user.infrastructure.dao.entity.details.UserDetailExample;
 
+@Mapper
 public interface UserDetailMapper {
     long countByExample(UserDetailExample example);
 

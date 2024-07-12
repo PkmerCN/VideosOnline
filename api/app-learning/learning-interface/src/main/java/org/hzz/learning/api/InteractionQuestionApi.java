@@ -11,10 +11,7 @@ import org.hzz.learning.api.req.question.ModifyQuestionReq;
 import org.hzz.learning.api.req.question.NewQuestionReq;
 import org.hzz.learning.types.req.question.QuestionPageQuery;
 import org.hzz.learning.types.resp.question.QuestionDto;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 问答api
@@ -41,6 +38,7 @@ public interface InteractionQuestionApi {
 
     @Operation(description = "分页查询问题")
     @ApiResponse
+    @GetMapping("/page")
     Result<PageResponse<QuestionDto>> questionPageQuery(
             @RequestBody QuestionPageQuery questionPageQuery);
 }

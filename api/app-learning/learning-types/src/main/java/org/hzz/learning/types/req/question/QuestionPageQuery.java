@@ -14,10 +14,10 @@ import org.hzz.core.page.query.PageQuery;
 @EqualsAndHashCode(callSuper = true)
 @Schema(description = "问题分页查询")
 public class QuestionPageQuery extends PageQuery {
-    @Schema(description = "是否只查看自己的问题",example = "后台默认为false")
+    @Schema(description = "是否只查看自己的问题，后台默认为false",example = "false")
     Boolean onlyMine = false;
-    @Schema(description = "课程id")
+    @Schema(description = "课程id",example = "2")
     Long courseId;
-    @Schema(description = "小节id")
+    @Schema(description = "小节id",example = "16")
     Long sectionId;
 }

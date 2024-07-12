@@ -93,7 +93,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from interaction_reply
     where id = #{id,jdbcType=BIGINT}
@@ -109,16 +109,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReply">
-    insert into interaction_reply (id, question_id, answer_id, 
-      user_id, content, target_user_id, 
-      target_reply_id, reply_times, liked_times, 
-      hidden, anonymity, create_time, 
-      update_time)
-    values (#{id,jdbcType=BIGINT}, #{questionId,jdbcType=BIGINT}, #{answerId,jdbcType=BIGINT}, 
-      #{userId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{targetUserId,jdbcType=BIGINT}, 
-      #{targetReplyId,jdbcType=BIGINT}, #{replyTimes,jdbcType=INTEGER}, #{likedTimes,jdbcType=INTEGER}, 
-      #{hidden,jdbcType=BIT}, #{anonymity,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+    insert into interaction_reply (id, question_id, answer_id,
+                                   user_id, content, target_user_id,
+                                   target_reply_id, reply_times, liked_times,
+                                   hidden, anonymity, create_time,
+                                   update_time)
+    values (#{id,jdbcType=BIGINT}, #{questionId,jdbcType=BIGINT}, #{answerId,jdbcType=BIGINT},
+            #{userId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{targetUserId,jdbcType=BIGINT},
+            #{targetReplyId,jdbcType=BIGINT}, #{replyTimes,jdbcType=INTEGER}, #{likedTimes,jdbcType=INTEGER},
+            #{hidden,jdbcType=BIT}, #{anonymity,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReply">
     insert into interaction_reply
@@ -261,18 +261,18 @@
   <update id="updateByExample" parameterType="map">
     update interaction_reply
     set id = #{row.id,jdbcType=BIGINT},
-      question_id = #{row.questionId,jdbcType=BIGINT},
-      answer_id = #{row.answerId,jdbcType=BIGINT},
-      user_id = #{row.userId,jdbcType=BIGINT},
-      content = #{row.content,jdbcType=VARCHAR},
-      target_user_id = #{row.targetUserId,jdbcType=BIGINT},
-      target_reply_id = #{row.targetReplyId,jdbcType=BIGINT},
-      reply_times = #{row.replyTimes,jdbcType=INTEGER},
-      liked_times = #{row.likedTimes,jdbcType=INTEGER},
-      hidden = #{row.hidden,jdbcType=BIT},
-      anonymity = #{row.anonymity,jdbcType=BIT},
-      create_time = #{row.createTime,jdbcType=TIMESTAMP},
-      update_time = #{row.updateTime,jdbcType=TIMESTAMP}
+    question_id = #{row.questionId,jdbcType=BIGINT},
+    answer_id = #{row.answerId,jdbcType=BIGINT},
+    user_id = #{row.userId,jdbcType=BIGINT},
+    content = #{row.content,jdbcType=VARCHAR},
+    target_user_id = #{row.targetUserId,jdbcType=BIGINT},
+    target_reply_id = #{row.targetReplyId,jdbcType=BIGINT},
+    reply_times = #{row.replyTimes,jdbcType=INTEGER},
+    liked_times = #{row.likedTimes,jdbcType=INTEGER},
+    hidden = #{row.hidden,jdbcType=BIT},
+    anonymity = #{row.anonymity,jdbcType=BIT},
+    create_time = #{row.createTime,jdbcType=TIMESTAMP},
+    update_time = #{row.updateTime,jdbcType=TIMESTAMP}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -322,17 +322,17 @@
   <update id="updateByPrimaryKey" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReply">
     update interaction_reply
     set question_id = #{questionId,jdbcType=BIGINT},
-      answer_id = #{answerId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT},
-      content = #{content,jdbcType=VARCHAR},
-      target_user_id = #{targetUserId,jdbcType=BIGINT},
-      target_reply_id = #{targetReplyId,jdbcType=BIGINT},
-      reply_times = #{replyTimes,jdbcType=INTEGER},
-      liked_times = #{likedTimes,jdbcType=INTEGER},
-      hidden = #{hidden,jdbcType=BIT},
-      anonymity = #{anonymity,jdbcType=BIT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+        answer_id = #{answerId,jdbcType=BIGINT},
+        user_id = #{userId,jdbcType=BIGINT},
+        content = #{content,jdbcType=VARCHAR},
+        target_user_id = #{targetUserId,jdbcType=BIGINT},
+        target_reply_id = #{targetReplyId,jdbcType=BIGINT},
+        reply_times = #{replyTimes,jdbcType=INTEGER},
+        liked_times = #{likedTimes,jdbcType=INTEGER},
+        hidden = #{hidden,jdbcType=BIT},
+        anonymity = #{anonymity,jdbcType=BIT},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
