@@ -5,9 +5,12 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.hzz.core.page.PageResponse;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.req.question.ModifyQuestionReq;
 import org.hzz.learning.api.req.question.NewQuestionReq;
+import org.hzz.learning.types.req.question.QuestionPageQuery;
+import org.hzz.learning.types.resp.question.QuestionDto;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,4 +38,9 @@ public interface InteractionQuestionApi {
             @Parameter(description = "问题id",example = "7217189651637997568")
             @PathVariable  Long id,
             @Valid @RequestBody ModifyQuestionReq modifyQuestionReq);
+
+    @Operation(description = "分页查询问题")
+    @ApiResponse
+    Result<PageResponse<QuestionDto>> questionPageQuery(
+            @RequestBody QuestionPageQuery questionPageQuery);
 }
