@@ -3,6 +3,7 @@ package org.hzz.user.domain.service.details;
 import org.hzz.user.domain.entity.UserDetailEntity;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -19,4 +20,11 @@ public interface UserDetailDomainService {
      * @return {@link UserDetailEntity} 列表
      */
     List<UserDetailEntity> getEntities(Set<Long> ids);
+
+    /**
+     * 获取用户详情 列表
+     * @param ids id列表
+     * @return Map key为id value为{@link UserDetailEntity}
+     */
+    Map<Long,UserDetailEntity> getMapEntites(Set<Long> ids);
 }

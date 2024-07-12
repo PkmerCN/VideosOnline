@@ -1,9 +1,9 @@
 package org.hzz.learning.domain.aggregate.question;
 
 import lombok.Data;
+import org.hzz.core.page.query.PageQuery;
 import org.hzz.ddd.core.domain.shared.AggregateRoot;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
-import org.hzz.learning.types.req.question.QuestionPageQuery;
 
 /**
  * @author 胖卡
@@ -13,5 +13,5 @@ import org.hzz.learning.types.req.question.QuestionPageQuery;
 @Data
 public class QuestionQueryAggregate implements AggregateRoot {
     private InteractionQuestionEntity entity;
-    private QuestionPageQuery pageQuery;
+    private PageQuery pageQuery;
 }

@@ -1,13 +1,17 @@
 package org.hzz.user.domain.service.details.impl;
 
+import org.hzz.common.collection.CollUtil;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.repository.UserDetailRepository;
 import org.hzz.user.domain.service.details.UserDetailDomainService;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author 胖卡
@@ -27,6 +31,25 @@ public class UserDetailDomainServiceImpl
     public List<UserDetailEntity> getEntities(Set<Long> ids) {
         List<UserDetailEntity> entities = repository.selectBatchByIds(ids);
         logger.info("查询到{}个用户详情",entities.size());
+        if(CollUtil.isEmpty(entities)){
+            return Collections.emptyList();
+        }
         return entities;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Map<Long, UserDetailEntity> getMapEntites(Set<Long> ids) {
+
+        List<UserDetailEntity> entities = this.getEntities(ids);
+        if(CollUtil.isEmpty(entities)){
+            return Collections.emptyMap();
+        }
+        return entities.stream().collect(Collectors.toMap(
+                UserDetailEntity::getId,
+                e -> e
+        ));
     }
 }
