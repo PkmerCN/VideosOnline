@@ -10,7 +10,7 @@ import org.hzz.security.jwt.bo.JWTUserBo;
 import org.hzz.security.jwt.service.JWTService;
 import org.hzz.security.password.AppPasswordEncoder;
 import org.hzz.user.domain.common.UserLoginTypeEnum;
-import org.hzz.user.domain.model.User;
+import org.hzz.user.domain.entity.User;
 import org.hzz.user.domain.service.UserDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

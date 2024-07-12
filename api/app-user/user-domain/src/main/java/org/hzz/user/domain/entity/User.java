@@ -1,4 +1,4 @@
-package org.hzz.user.domain.model;
+package org.hzz.user.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package org.hzz.user.infrastructure.converter;
 
-import org.hzz.user.domain.model.User;
+import org.hzz.user.domain.entity.User;
 import org.hzz.user.infrastructure.dao.entity.AppUser;
 import org.mapstruct.Mapper;
 

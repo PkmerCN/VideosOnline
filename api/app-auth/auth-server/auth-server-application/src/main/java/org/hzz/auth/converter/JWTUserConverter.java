@@ -1,7 +1,7 @@
 package org.hzz.auth.converter;
 
 import org.hzz.security.jwt.bo.JWTUserBo;
-import org.hzz.user.domain.model.User;
+import org.hzz.user.domain.entity.User;
 import org.mapstruct.Mapper;
 
 /**

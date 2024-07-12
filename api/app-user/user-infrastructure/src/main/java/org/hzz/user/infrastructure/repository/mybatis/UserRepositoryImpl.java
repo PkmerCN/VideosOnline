@@ -1,7 +1,7 @@
 package org.hzz.user.infrastructure.repository.mybatis;
 
 import org.hzz.core.repository.withmapper.BaseRepository;
-import org.hzz.user.domain.model.User;
+import org.hzz.user.domain.entity.User;
 import org.hzz.user.domain.repository.UserRepository;
 import org.hzz.user.infrastructure.converter.UserConverter;
 import org.hzz.user.infrastructure.dao.entity.AppUser;

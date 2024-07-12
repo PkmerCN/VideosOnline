@@ -1,6 +1,6 @@
 package org.hzz.user.domain.repository;
 
-import org.hzz.user.domain.model.User;
+import org.hzz.user.domain.entity.User;
 
 /**
  * @author 胖卡
