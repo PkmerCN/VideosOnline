@@ -1,4 +1,4 @@
-package org.hzz.learning.api.req;
+package org.hzz.learning.api.req.question;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

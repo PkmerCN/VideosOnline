@@ -4,7 +4,9 @@ import lombok.Setter;
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.InteractionQuestionApi;
-import org.hzz.learning.api.req.NewQuestionReq;
+import org.hzz.learning.api.req.question.ModifyQuestionReq;
+import org.hzz.learning.api.req.question.NewQuestionReq;
+import org.hzz.learning.application.command.question.ModifyQuestionCommand;
 import org.hzz.learning.application.command.question.NewQuestionCommand;
 import org.hzz.learning.application.service.AppHandleCmdService;
 import org.hzz.security.context.AppContextHolder;
@@ -40,6 +42,19 @@ public class InteractionQuestionController
                 questionReq.getAnonymity()
         );
 
+        cmdService.handleCommand(command);
+        return success();
+    }
+
+    @Override
+    public Result<Object> modifyQuestion(Long id, ModifyQuestionReq modifyQuestionReq) {
+        logger.info("修改问题");
+        ModifyQuestionCommand command = new ModifyQuestionCommand();
+        command.id(id)
+                .title(modifyQuestionReq.getTitle())
+                .description(modifyQuestionReq.getDescription())
+                .anonymity(modifyQuestionReq.getAnonymity())
+                .userId(AppContextHolder.userContextHolder.getUser().getId());
         cmdService.handleCommand(command);
         return success();
     }
