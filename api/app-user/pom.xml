@@ -14,6 +14,7 @@
         <module>user-domain</module>
         <module>user-interface</module>
         <module>user-infrastructure</module>
+        <module>user-types</module>
     </modules>
 
     <properties>
