@@ -25,4 +25,23 @@ public class InteractionQuestionDomainServiceImpl
         int i = repository.insertSelective(entity);
         logger.info("提交{}个问题",i);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void modifyQuestion(InteractionQuestionEntity newEntity) {
+        int i = repository.updateSelective(newEntity);
+        if(i != 0){
+            logger.info("成功修改问题 {} {}个",newEntity.getTitle(),i);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public InteractionQuestionEntity getEntityById(Long id) {
+        return repository.selectById(id);
+    }
 }

@@ -15,5 +15,25 @@ public interface InteractionQuestionDomainService extends DomainService {
      * 新增问题
      * @param entity 问题
      */
-    default void newQuestion(InteractionQuestionEntity entity){}
+    default void newQuestion(InteractionQuestionEntity entity){
+        throw new UnsupportedOperationException("未实现newQuestion");
+    }
+
+    /**
+     * 修改问题
+     * @param newEntity 问题新数据
+     */
+    default void modifyQuestion(InteractionQuestionEntity newEntity){
+        throw new UnsupportedOperationException("modifyQuestion");
+    }
+
+    /**
+     * 根据id获取问题
+     * @param id 问题id
+     * @return entity
+     */
+    default InteractionQuestionEntity getEntityById(Long id){
+        throw new UnsupportedOperationException("未实现getEntityById");
+    }
+
 }
