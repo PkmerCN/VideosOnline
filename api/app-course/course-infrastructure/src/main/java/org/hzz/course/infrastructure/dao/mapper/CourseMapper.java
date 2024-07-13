@@ -2,8 +2,8 @@ package org.hzz.course.infrastructure.dao.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.hzz.course.infrastructure.dao.po.Course;
-import org.hzz.course.infrastructure.dao.po.CourseExample;
+import org.hzz.course.infrastructure.dao.model.Course;
+import org.hzz.course.infrastructure.dao.model.CourseExample;
 
 import java.util.List;
 @Mapper

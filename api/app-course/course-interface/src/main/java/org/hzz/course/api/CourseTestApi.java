@@ -1,7 +1,7 @@
 package org.hzz.course.api;
 
 import org.hzz.core.result.Result;
-import org.hzz.course.infrastructure.dao.po.Course;
+import org.hzz.course.infrastructure.dao.model.Course;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 

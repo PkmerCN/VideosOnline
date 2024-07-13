@@ -1,4 +1,4 @@
-package org.hzz.course.infrastructure.dao.po;
+package org.hzz.course.infrastructure.dao.model;
 
 import java.util.ArrayList;
 import java.util.Date;

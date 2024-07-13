@@ -5,7 +5,7 @@ import org.hzz.core.result.Result;
 import org.hzz.course.api.CourseTestApi;
 import org.hzz.course.infrastructure.dao.mapper.CourseMapper;
 import org.hzz.course.infrastructure.dao.mapper.CourseTestMapper;
-import org.hzz.course.infrastructure.dao.po.Course;
+import org.hzz.course.infrastructure.dao.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

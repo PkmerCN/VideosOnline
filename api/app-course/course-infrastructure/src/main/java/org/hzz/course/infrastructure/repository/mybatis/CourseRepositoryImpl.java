@@ -7,8 +7,8 @@ import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.repository.CourseRepository;
 import org.hzz.course.infrastructure.converter.CourseConverter;
 import org.hzz.course.infrastructure.dao.mapper.CourseMapper;
-import org.hzz.course.infrastructure.dao.po.Course;
-import org.hzz.course.infrastructure.dao.po.CourseExample;
+import org.hzz.course.infrastructure.dao.model.Course;
+import org.hzz.course.infrastructure.dao.model.CourseExample;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

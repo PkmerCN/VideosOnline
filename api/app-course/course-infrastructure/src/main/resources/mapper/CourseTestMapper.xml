@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.hzz.course.infrastructure.dao.mapper.CourseTestMapper">
 
-    <select id="selectOne" resultType="org.hzz.course.infrastructure.dao.po.Course">
+    <select id="selectOne" resultType="org.hzz.course.infrastructure.dao.model.Course">
         select * from course where id = #{id}
     </select>
 </mapper>

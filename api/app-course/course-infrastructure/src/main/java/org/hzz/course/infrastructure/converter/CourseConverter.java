@@ -2,7 +2,7 @@ package org.hzz.course.infrastructure.converter;
 
 import org.hzz.common.date.DateUtil;
 import org.hzz.course.domain.entity.CourseEntity;
-import org.hzz.course.infrastructure.dao.po.Course;
+import org.hzz.course.infrastructure.dao.model.Course;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
