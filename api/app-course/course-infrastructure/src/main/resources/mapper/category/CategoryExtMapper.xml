@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hzz.course.infrastructure.dao.mapper.category.CategoryExtMapper">
+    <sql id="Base_Column_List">
+        id, name, parent_id, level, priority, status, create_time, update_time, creater_id,
+    updater_id, deleted
+    </sql>
+
+    <resultMap id="BaseResultMap" type="org.hzz.course.infrastructure.dao.model.category.Category">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+        <result column="level" jdbcType="INTEGER" property="level" />
+        <result column="priority" jdbcType="INTEGER" property="priority" />
+        <result column="status" jdbcType="TINYINT" property="status" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="creater_id" jdbcType="BIGINT" property="createrId" />
+        <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+        <result column="deleted" jdbcType="TINYINT" property="deleted" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from category
+    </select>
+    <select id="selectAllByFilterDeleted"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from category
+        <where>
+            <if test="deleted != null">
+               and deleted = #{deleted}
+            </if>
+        </where>
+    </select>
+</mapper>

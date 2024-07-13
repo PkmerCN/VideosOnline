@@ -23,6 +23,10 @@ import java.util.Set;
 public class CategoryRepositoryImpl
         extends BaseRepository<CategoryMapper>
         implements CategoryRepository {
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<CategoryEntity> selectByIds(Set<Long> ids) {
 
