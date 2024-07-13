@@ -1,10 +1,13 @@
 package org.hzz.course.infrastructure.dao.mapper.category;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.hzz.course.infrastructure.dao.model.category.Category;
 import org.hzz.course.infrastructure.dao.model.category.CategoryExample;
 
+@Mapper
 public interface CategoryMapper {
     long countByExample(CategoryExample example);
 
