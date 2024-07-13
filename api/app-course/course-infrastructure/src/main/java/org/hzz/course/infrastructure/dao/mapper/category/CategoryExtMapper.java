@@ -15,9 +15,7 @@ import java.util.List;
  */
 @Mapper
 public interface CategoryExtMapper {
-
     List<Category> selectAll();
-
 
     /**
      * 查询逻辑未删除或删除的记录

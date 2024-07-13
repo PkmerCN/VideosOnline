@@ -19,4 +19,17 @@ public interface CategoryDomainService {
      * @return List
      */
     List<CategoryEntity> getCategoryEntities(Set<Long> ids);
+
+    /**
+     * 获取系统中所有的分类
+     * @return 包括可用和禁用的分类
+     */
+    List<CategoryEntity> getAllCategoryEntities();
+
+    /**
+     * 获取系统中所有可用的分类
+     * @return 可用的分类
+     */
+    List<CategoryEntity> getAvailableCategoryEntities();
+
 }

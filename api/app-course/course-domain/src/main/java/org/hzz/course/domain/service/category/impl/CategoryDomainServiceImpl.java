@@ -1,6 +1,7 @@
 package org.hzz.course.domain.service.category.impl;
 
 import org.hzz.common.collection.CollUtil;
+import org.hzz.core.enums.delete.Deleted;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.course.domain.entity.CategoryEntity;
 import org.hzz.course.domain.repository.category.CategoryRepository;
@@ -21,6 +22,9 @@ public class CategoryDomainServiceImpl
         extends BaseDomainService<CategoryRepository>
         implements CategoryDomainService
 {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<CategoryEntity> getCategoryEntities(Set<Long> ids) {
         if(CollUtil.isEmpty(ids)){
@@ -30,6 +34,30 @@ public class CategoryDomainServiceImpl
         List<CategoryEntity> categoryEntities = repository.selectByIds(ids);
         if(CollUtil.isNotEmpty(categoryEntities)){
             logger.info("查询到{}个分类",categoryEntities.size());
+        }
+        return categoryEntities;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<CategoryEntity> getAllCategoryEntities() {
+        List<CategoryEntity> categoryEntities = repository.selectAll();
+        if(CollUtil.isNotEmpty(categoryEntities)){
+            logger.info("查询到{}个分类",categoryEntities.size());
+        }
+        return categoryEntities;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<CategoryEntity> getAvailableCategoryEntities() {
+        List<CategoryEntity> categoryEntities = repository.selectEnableAll(Deleted.NO);
+        if(CollUtil.isNotEmpty(categoryEntities)){
+            logger.info("查询到可用的{}个分类",categoryEntities.size());
         }
         return categoryEntities;
     }
