@@ -18,4 +18,12 @@ public interface InteractionReplyRepository {
      * @return {@link InteractionReplyEntity} 列表
      */
     List<InteractionReplyEntity> selectBatchIds(Set<Long> ids);
+
+
+    /**
+     * 根据问题id删除评论
+     * @param questionId 问题id
+     * @return 删除数目
+     */
+    int deleteByQuestionId(Long questionId);
 }

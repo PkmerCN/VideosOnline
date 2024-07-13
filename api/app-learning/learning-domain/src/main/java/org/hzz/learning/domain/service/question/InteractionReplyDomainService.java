@@ -18,4 +18,10 @@ public interface InteractionReplyDomainService {
      * @return {@link InteractionReplyEntity}列表
      */
     List<InteractionReplyEntity> getEntityByIds(Set<Long> ids);
+
+    /**
+     * 删除问题下的所有评论回复
+     * @param questionId 问题id
+     */
+    void deleteReplyByQuestionId(Long questionId);
 }

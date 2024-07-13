@@ -2,17 +2,13 @@ package org.hzz.learning.api.controller.question;
 
 import lombok.Setter;
 import org.hzz.core.controller.BaseController;
-import org.hzz.core.exception.arg.AppArgumentNotValidException;
 import org.hzz.core.exception.request.BadRequestException;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.InteractionQuestionApi;
 import org.hzz.learning.api.req.question.ModifyQuestionReq;
 import org.hzz.learning.api.req.question.NewQuestionReq;
-import org.hzz.learning.application.command.question.GetQuestionCommand;
-import org.hzz.learning.application.command.question.ModifyQuestionCommand;
-import org.hzz.learning.application.command.question.NewQuestionCommand;
-import org.hzz.learning.application.command.question.QuestionPageQueryCommand;
+import org.hzz.learning.application.command.question.*;
 import org.hzz.learning.application.service.AppHandleCmdService;
 import org.hzz.learning.types.req.question.QuestionPageQuery;
 import org.hzz.learning.types.resp.question.QuestionDetailDto;
@@ -95,5 +91,17 @@ public class InteractionQuestionController
 
         QuestionDetailDto questionDetail = cmdService.<QuestionDetailDto>handleComandWithResult(command);
         return success(questionDetail);
+    }
+
+    @Override
+    public Result<Object> deleteQuestionById(Long id) {
+        logger.info("删除问题");
+        DeleteQuestionCommand command =  DeleteQuestionCommand.builder()
+                .questionId(id)
+                .userId(AppContextHolder.userContextHolder.getUser().getId())
+                .build();
+
+        cmdService.handleCommand(command);
+        return success();
     }
 }

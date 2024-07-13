@@ -56,6 +56,20 @@ public class InteractionQuestionDomainServiceImpl
         return entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void deleteQuestionById(Long id) {
+        int i = repository.deleteById(id);
+        if(i > 0){
+            logger.info("成功删除 id = {}的问题 {}个",id,i);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public PageResponse<InteractionQuestionEntity> pageQueryEntity(QuestionQueryAggregate aggregate) {
         PageResponse<InteractionQuestionEntity> results = repository.pageQuery(aggregate);

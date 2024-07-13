@@ -20,7 +20,9 @@ import java.util.Set;
  * @date 2024/7/12
  */
 @Repository
-public class InteractionReplyRepositoryImpl extends BaseRepository<InteractionReplyMapper> implements InteractionReplyRepository {
+public class InteractionReplyRepositoryImpl
+        extends BaseRepository<InteractionReplyMapper>
+        implements InteractionReplyRepository {
 
     /**
      * {@inheritDoc}
@@ -35,11 +37,23 @@ public class InteractionReplyRepositoryImpl extends BaseRepository<InteractionRe
         return Converter.INSTANCE.toEntities(interactionReplies);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int deleteByQuestionId(Long questionId) {
+        InteractionReplyExample example = new InteractionReplyExample();
+        example.createCriteria().andQuestionIdEqualTo(questionId);
+        return mapper.deleteByExample(example);
+    }
+
 
     @Mapper
-    interface Converter{
+    interface Converter {
         Converter INSTANCE = Mappers.getMapper(Converter.class);
+
         List<InteractionReplyEntity> toEntities(List<InteractionReply> records);
+
         InteractionReplyEntity toEntity(InteractionReply record);
 
         InteractionReply toRecord(InteractionReplyEntity entity);

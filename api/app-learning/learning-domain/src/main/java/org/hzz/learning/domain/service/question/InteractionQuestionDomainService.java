@@ -38,6 +38,14 @@ public interface InteractionQuestionDomainService extends DomainService {
         throw new UnsupportedOperationException("未实现getEntityById");
     }
 
+    /**
+     * 删除问题
+     * @param id 问题id
+     */
+    default void deleteQuestionById(Long id){
+        throw new UnsupportedOperationException("未实现deleteQuestionById");
+    }
+
 
     /**
      * 分页查询问题

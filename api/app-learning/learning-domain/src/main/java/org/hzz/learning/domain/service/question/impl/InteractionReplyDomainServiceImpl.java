@@ -35,4 +35,15 @@ public class InteractionReplyDomainServiceImpl
         }
         return Collections.emptyList();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void deleteReplyByQuestionId(Long questionId) {
+        int i = repository.deleteByQuestionId(questionId);
+        if(i != 0){
+            logger.info("成功删除{}条回复",i);
+        }
+    }
 }

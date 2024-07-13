@@ -21,6 +21,15 @@ public interface InteractionQuestionRepository {
     }
 
     /**
+     * 删除问题
+     * @param id 问题id
+     * @return 删除数目
+     */
+    default int deleteById(Long id){
+        throw new UnsupportedOperationException("deleteById未实现");
+    }
+
+    /**
      * 选择性插入数据
      * @param entity 问题
      * @return 插入记录数

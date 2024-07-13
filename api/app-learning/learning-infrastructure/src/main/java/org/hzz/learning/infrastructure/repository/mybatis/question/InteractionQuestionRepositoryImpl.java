@@ -53,6 +53,14 @@ public class InteractionQuestionRepositoryImpl
      * {@inheritDoc}
      */
     @Override
+    public int deleteById(Long id) {
+        return interactionQuestionMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public int updateSelective(InteractionQuestionEntity entity) {
         InteractionQuestion record = Converter.INSTANCE.toRecord(entity);
         return interactionQuestionMapper.updateByPrimaryKeySelective(record);

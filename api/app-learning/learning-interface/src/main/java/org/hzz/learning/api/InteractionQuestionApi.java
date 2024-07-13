@@ -48,7 +48,16 @@ public interface InteractionQuestionApi {
     @ApiResponse
     @GetMapping("/{id}")
     Result<QuestionDetailDto> getQuestionById(
-            @Parameter(description = "问题详情")
+            @Parameter(description = "问题id")
             @PathVariable Long id
     );
+
+    @Operation(description = "删除问题")
+    @ApiResponse
+    @DeleteMapping("/{id}")
+    Result<Object> deleteQuestionById(
+            @Parameter(description = "问题id")
+            @PathVariable Long id
+    );
+
 }
