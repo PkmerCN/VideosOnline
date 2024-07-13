@@ -42,6 +42,7 @@
         <table tableName="category">
             <columnOverride column="status" javaType="org.hzz.course.types.enums.CategoryStatus"/>
             <columnOverride column="level" javaType="org.hzz.course.types.enums.CategoryLevel"/>
+            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted"/>
         </table>
 
     </context>

@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, parent_id, level, priority, status, create_time, update_time, creater_id, 
+    id, name, parent_id, level, priority, status, create_time, update_time, creater_id,
     updater_id, deleted
   </sql>
   <select id="selectByExample" parameterType="org.hzz.course.infrastructure.dao.model.category.CategoryExample" resultMap="BaseResultMap">
@@ -91,7 +91,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from category
     where id = #{id,jdbcType=BIGINT}
@@ -107,14 +107,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.hzz.course.infrastructure.dao.model.category.Category">
-    insert into category (id, name, parent_id, 
-      level, priority, status, 
-      create_time, update_time, creater_id, 
-      updater_id, deleted)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT}, 
-      #{level,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT}, 
-      #{updaterId,jdbcType=BIGINT}, #{deleted,jdbcType=TINYINT})
+    insert into category (id, name, parent_id,
+                          level, priority, status,
+                          create_time, update_time, creater_id,
+                          updater_id, deleted)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT},
+            #{level,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, #{status,jdbcType=TINYINT},
+            #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT},
+            #{updaterId,jdbcType=BIGINT}, #{deleted,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="org.hzz.course.infrastructure.dao.model.category.Category">
     insert into category
@@ -239,16 +239,16 @@
   <update id="updateByExample" parameterType="map">
     update category
     set id = #{row.id,jdbcType=BIGINT},
-      name = #{row.name,jdbcType=VARCHAR},
-      parent_id = #{row.parentId,jdbcType=BIGINT},
-      level = #{row.level,jdbcType=INTEGER},
-      priority = #{row.priority,jdbcType=INTEGER},
-      status = #{row.status,jdbcType=TINYINT},
-      create_time = #{row.createTime,jdbcType=TIMESTAMP},
-      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
-      creater_id = #{row.createrId,jdbcType=BIGINT},
-      updater_id = #{row.updaterId,jdbcType=BIGINT},
-      deleted = #{row.deleted,jdbcType=TINYINT}
+    name = #{row.name,jdbcType=VARCHAR},
+    parent_id = #{row.parentId,jdbcType=BIGINT},
+    level = #{row.level,jdbcType=INTEGER},
+    priority = #{row.priority,jdbcType=INTEGER},
+    status = #{row.status,jdbcType=TINYINT},
+    create_time = #{row.createTime,jdbcType=TIMESTAMP},
+    update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+    creater_id = #{row.createrId,jdbcType=BIGINT},
+    updater_id = #{row.updaterId,jdbcType=BIGINT},
+    deleted = #{row.deleted,jdbcType=TINYINT}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -292,15 +292,15 @@
   <update id="updateByPrimaryKey" parameterType="org.hzz.course.infrastructure.dao.model.category.Category">
     update category
     set name = #{name,jdbcType=VARCHAR},
-      parent_id = #{parentId,jdbcType=BIGINT},
-      level = #{level,jdbcType=INTEGER},
-      priority = #{priority,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      creater_id = #{createrId,jdbcType=BIGINT},
-      updater_id = #{updaterId,jdbcType=BIGINT},
-      deleted = #{deleted,jdbcType=TINYINT}
+        parent_id = #{parentId,jdbcType=BIGINT},
+        level = #{level,jdbcType=INTEGER},
+        priority = #{priority,jdbcType=INTEGER},
+        status = #{status,jdbcType=TINYINT},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        creater_id = #{createrId,jdbcType=BIGINT},
+        updater_id = #{updaterId,jdbcType=BIGINT},
+        deleted = #{deleted,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -3,6 +3,7 @@ package org.hzz.course.infrastructure.dao.model.category;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.hzz.core.enums.delete.Deleted;
 import org.hzz.course.types.enums.CategoryLevel;
 import org.hzz.course.types.enums.CategoryStatus;
 
@@ -727,52 +728,52 @@ public class CategoryExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedEqualTo(Byte value) {
+        public Criteria andDeletedEqualTo(Deleted value) {
             addCriterion("deleted =", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotEqualTo(Byte value) {
+        public Criteria andDeletedNotEqualTo(Deleted value) {
             addCriterion("deleted <>", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThan(Byte value) {
+        public Criteria andDeletedGreaterThan(Deleted value) {
             addCriterion("deleted >", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThanOrEqualTo(Byte value) {
+        public Criteria andDeletedGreaterThanOrEqualTo(Deleted value) {
             addCriterion("deleted >=", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThan(Byte value) {
+        public Criteria andDeletedLessThan(Deleted value) {
             addCriterion("deleted <", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThanOrEqualTo(Byte value) {
+        public Criteria andDeletedLessThanOrEqualTo(Deleted value) {
             addCriterion("deleted <=", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedIn(List<Byte> values) {
+        public Criteria andDeletedIn(List<Deleted> values) {
             addCriterion("deleted in", values, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotIn(List<Byte> values) {
+        public Criteria andDeletedNotIn(List<Deleted> values) {
             addCriterion("deleted not in", values, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedBetween(Byte value1, Byte value2) {
+        public Criteria andDeletedBetween(Deleted value1, Deleted value2) {
             addCriterion("deleted between", value1, value2, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotBetween(Byte value1, Byte value2) {
+        public Criteria andDeletedNotBetween(Deleted value1, Deleted value2) {
             addCriterion("deleted not between", value1, value2, "deleted");
             return (Criteria) this;
         }
