@@ -9,11 +9,13 @@ import org.hzz.core.result.Result;
 import org.hzz.learning.api.InteractionQuestionApi;
 import org.hzz.learning.api.req.question.ModifyQuestionReq;
 import org.hzz.learning.api.req.question.NewQuestionReq;
+import org.hzz.learning.application.command.question.GetQuestionCommand;
 import org.hzz.learning.application.command.question.ModifyQuestionCommand;
 import org.hzz.learning.application.command.question.NewQuestionCommand;
 import org.hzz.learning.application.command.question.QuestionPageQueryCommand;
 import org.hzz.learning.application.service.AppHandleCmdService;
 import org.hzz.learning.types.req.question.QuestionPageQuery;
+import org.hzz.learning.types.resp.question.QuestionDetailDto;
 import org.hzz.learning.types.resp.question.QuestionDto;
 import org.hzz.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,5 +84,16 @@ public class InteractionQuestionController
 
         PageResponse<QuestionDto> pageResponse = cmdService.<PageResponse<QuestionDto>>handleComandWithResult(command);
         return success(pageResponse);
+    }
+
+    @Override
+    public Result<QuestionDetailDto> getQuestionById(Long id) {
+        logger.info("查询问题 id = {}",id);
+        GetQuestionCommand command = GetQuestionCommand.builder()
+                .id(id)
+                .build();
+
+        QuestionDetailDto questionDetail = cmdService.<QuestionDetailDto>handleComandWithResult(command);
+        return success(questionDetail);
     }
 }

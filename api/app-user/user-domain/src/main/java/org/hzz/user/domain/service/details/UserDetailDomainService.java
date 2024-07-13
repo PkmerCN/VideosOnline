@@ -15,6 +15,13 @@ import java.util.Set;
 public interface UserDetailDomainService {
 
     /**
+     * 根据id获取用户详情
+     * @param id 用户id
+     * @return 用户详情
+     */
+
+    UserDetailEntity getEntityById(Long id);
+    /**
      * 获取用户详情 列表
      * @param ids id列表
      * @return {@link UserDetailEntity} 列表

@@ -14,6 +14,14 @@ import java.util.Set;
 public interface UserDetailRepository {
 
     /**
+     * 查询用户详情
+     * @param id 用户id
+     * @return 用户详情
+     */
+    UserDetailEntity selectById(Long id);
+
+
+    /**
      * 根据id查询用户详情
      * @param ids 用户详情ids
      */

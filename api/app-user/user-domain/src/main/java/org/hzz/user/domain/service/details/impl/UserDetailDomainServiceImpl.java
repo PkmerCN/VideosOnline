@@ -28,6 +28,19 @@ public class UserDetailDomainServiceImpl
      * {@inheritDoc}
      */
     @Override
+    public UserDetailEntity getEntityById(Long id) {
+        UserDetailEntity userDetailEntity = repository.selectById(id);
+        if(userDetailEntity != null){
+            logger.info("查询出用户 {}",userDetailEntity.getName());
+            return userDetailEntity;
+        }
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<UserDetailEntity> getEntities(Set<Long> ids) {
         List<UserDetailEntity> entities = repository.selectBatchByIds(ids);
         logger.info("查询到{}个用户详情",entities.size());

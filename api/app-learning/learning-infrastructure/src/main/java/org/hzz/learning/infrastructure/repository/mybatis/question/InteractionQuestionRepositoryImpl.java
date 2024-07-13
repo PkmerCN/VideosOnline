@@ -24,7 +24,9 @@ import java.util.List;
  * @date 2024/7/11
  */
 @Repository
-public class InteractionQuestionRepositoryImpl extends PageBaseRepository<InteractionQuestionPageMapper,InteractionQuestion> implements InteractionQuestionRepository {
+public class InteractionQuestionRepositoryImpl
+        extends PageBaseRepository<InteractionQuestionPageMapper,InteractionQuestion>
+        implements InteractionQuestionRepository {
 
     @Setter(onMethod_ = {@Autowired})
     private InteractionQuestionMapper interactionQuestionMapper;

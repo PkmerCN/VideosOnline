@@ -26,6 +26,14 @@ public class UserDetailRepositoryImpl
         implements UserDetailRepository
 {
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public UserDetailEntity selectById(Long id) {
+        UserDetail userDetail = mapper.selectByPrimaryKey(id);
+        return Converter.INSTANCE.toEntity(userDetail);
+    }
 
     /**
      * {@inheritDoc}
