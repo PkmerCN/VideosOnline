@@ -94,7 +94,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from interaction_question
     where id = #{id,jdbcType=BIGINT}
@@ -110,16 +110,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
-    insert into interaction_question (id, title, description, 
-      course_id, chapter_id, section_id, 
-      user_id, latest_answer_id, answer_times, 
-      anonymity, hidden, status, 
-      create_time, update_time)
-    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{courseId,jdbcType=BIGINT}, #{chapterId,jdbcType=BIGINT}, #{sectionId,jdbcType=BIGINT}, 
-      #{userId,jdbcType=BIGINT}, #{latestAnswerId,jdbcType=BIGINT}, #{answerTimes,jdbcType=INTEGER}, 
-      #{anonymity,jdbcType=BIT}, #{hidden,jdbcType=BIT}, #{status,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    insert into interaction_question (id, title, description,
+                                      course_id, chapter_id, section_id,
+                                      user_id, latest_answer_id, answer_times,
+                                      anonymity, hidden, status,
+                                      create_time, update_time)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+            #{courseId,jdbcType=BIGINT}, #{chapterId,jdbcType=BIGINT}, #{sectionId,jdbcType=BIGINT},
+            #{userId,jdbcType=BIGINT}, #{latestAnswerId,jdbcType=BIGINT}, #{answerTimes,jdbcType=INTEGER},
+            #{anonymity,jdbcType=BIT}, #{hidden,jdbcType=BIT}, #{status,jdbcType=TINYINT},
+            #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
     insert into interaction_question
@@ -271,19 +271,19 @@
   <update id="updateByExample" parameterType="map">
     update interaction_question
     set id = #{row.id,jdbcType=BIGINT},
-      title = #{row.title,jdbcType=VARCHAR},
-      description = #{row.description,jdbcType=VARCHAR},
-      course_id = #{row.courseId,jdbcType=BIGINT},
-      chapter_id = #{row.chapterId,jdbcType=BIGINT},
-      section_id = #{row.sectionId,jdbcType=BIGINT},
-      user_id = #{row.userId,jdbcType=BIGINT},
-      latest_answer_id = #{row.latestAnswerId,jdbcType=BIGINT},
-      answer_times = #{row.answerTimes,jdbcType=INTEGER},
-      anonymity = #{row.anonymity,jdbcType=BIT},
-      hidden = #{row.hidden,jdbcType=BIT},
-      status = #{row.status,jdbcType=TINYINT},
-      create_time = #{row.createTime,jdbcType=TIMESTAMP},
-      update_time = #{row.updateTime,jdbcType=TIMESTAMP}
+    title = #{row.title,jdbcType=VARCHAR},
+    description = #{row.description,jdbcType=VARCHAR},
+    course_id = #{row.courseId,jdbcType=BIGINT},
+    chapter_id = #{row.chapterId,jdbcType=BIGINT},
+    section_id = #{row.sectionId,jdbcType=BIGINT},
+    user_id = #{row.userId,jdbcType=BIGINT},
+    latest_answer_id = #{row.latestAnswerId,jdbcType=BIGINT},
+    answer_times = #{row.answerTimes,jdbcType=INTEGER},
+    anonymity = #{row.anonymity,jdbcType=BIT},
+    hidden = #{row.hidden,jdbcType=BIT},
+    status = #{row.status,jdbcType=TINYINT},
+    create_time = #{row.createTime,jdbcType=TIMESTAMP},
+    update_time = #{row.updateTime,jdbcType=TIMESTAMP}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -336,18 +336,18 @@
   <update id="updateByPrimaryKey" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
     update interaction_question
     set title = #{title,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      course_id = #{courseId,jdbcType=BIGINT},
-      chapter_id = #{chapterId,jdbcType=BIGINT},
-      section_id = #{sectionId,jdbcType=BIGINT},
-      user_id = #{userId,jdbcType=BIGINT},
-      latest_answer_id = #{latestAnswerId,jdbcType=BIGINT},
-      answer_times = #{answerTimes,jdbcType=INTEGER},
-      anonymity = #{anonymity,jdbcType=BIT},
-      hidden = #{hidden,jdbcType=BIT},
-      status = #{status,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+        description = #{description,jdbcType=VARCHAR},
+        course_id = #{courseId,jdbcType=BIGINT},
+        chapter_id = #{chapterId,jdbcType=BIGINT},
+        section_id = #{sectionId,jdbcType=BIGINT},
+        user_id = #{userId,jdbcType=BIGINT},
+        latest_answer_id = #{latestAnswerId,jdbcType=BIGINT},
+        answer_times = #{answerTimes,jdbcType=INTEGER},
+        anonymity = #{anonymity,jdbcType=BIT},
+        hidden = #{hidden,jdbcType=BIT},
+        status = #{status,jdbcType=TINYINT},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

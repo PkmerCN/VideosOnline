@@ -32,10 +32,10 @@
 <!--        <table tableName="learning_lesson"/>-->
 <!--        <table tableName="course"/>-->
 <!--        <table tableName="learning_record"/>-->
-<!--        <table tableName="interaction_question">-->
-<!--            <columnOverride column="status" javaType="org.hzz.learning.types.enums.question.QuestionStatus"/>-->
-<!--        </table>-->
-        <table tableName="interaction_reply"/>
+        <table tableName="interaction_question">
+            <columnOverride column="status" javaType="org.hzz.learning.types.enums.question.QuestionStatus"/>
+        </table>
+<!--        <table tableName="interaction_reply"/>-->
 <!--        <table tableName="user_detail">-->
 <!--            <columnOverride column="gender" javaType="org.hzz.user.types.enums.Gender"/>-->
 <!--        </table>-->
