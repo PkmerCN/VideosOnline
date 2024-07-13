@@ -33,4 +33,14 @@ public class FilterCondition {
                 " }";
     }
 
+
+    public static interface Operation{
+        String Equal = "=";
+        String GreaterOrEqual = ">=";
+
+        String LessOrEqual = "<=";
+
+
+    }
+
 }

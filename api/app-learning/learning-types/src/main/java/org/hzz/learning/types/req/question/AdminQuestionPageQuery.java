@@ -26,8 +26,10 @@ public class AdminQuestionPageQuery extends PageQuery {
     @Schema(description = "问题查看状态 0（未查看）1已查看")
     @JSONField(deserializeUsing = BaseEnumReader.class)
     QuestionStatus status;
+
     @Schema(description = "提问最小时间")
     LocalDateTime beginTime;
+
     @Schema(description = "提问最大时间")
     LocalDateTime endTime;
 }
