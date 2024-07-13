@@ -12,6 +12,7 @@ import java.lang.reflect.Type;
  * @version 1.0.0
  * @date 2024/6/28
  */
+@SuppressWarnings("rawtypes")
 public class BaseEnumWriter implements ObjectWriter {
     @Override
     public void write(JSONWriter jsonWriter, Object object, Object fieldName, Type fieldType, long features) {

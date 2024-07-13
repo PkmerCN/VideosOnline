@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hzz.core.page.query.PageQuery;
-import org.hzz.fastjson2.enums.BaseEnumWriter;
+import org.hzz.fastjson2.enums.BaseEnumReader;
 import org.hzz.learning.types.enums.question.QuestionStatus;
 
 import java.time.LocalDateTime;
@@ -24,11 +24,10 @@ public class AdminQuestionPageQuery extends PageQuery {
     String courseName;
 
     @Schema(description = "问题查看状态 0（未查看）1已查看")
-    @JSONField(serializeUsing = BaseEnumWriter.class)
+    @JSONField(deserializeUsing = BaseEnumReader.class)
     QuestionStatus status;
     @Schema(description = "提问最小时间")
     LocalDateTime beginTime;
     @Schema(description = "提问最大时间")
     LocalDateTime endTime;
-
 }

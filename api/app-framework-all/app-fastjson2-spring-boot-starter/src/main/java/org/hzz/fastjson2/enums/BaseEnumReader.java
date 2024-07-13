@@ -12,6 +12,7 @@ import java.lang.reflect.Type;
  * @version 1.0.0
  * @date 2024/6/28
  */
+@SuppressWarnings("rawtypes")
 public class BaseEnumReader implements ObjectReader {
     /**
      * 读取json中的status字段，转换为枚举类型
