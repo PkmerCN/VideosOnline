@@ -2,7 +2,7 @@ package org.hzz.course.infrastructure.repository.mybatis;
 
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.repository.withmapper.BaseRepository;
-import org.hzz.course.domain.aggregate.CourseSimpleInfoListDto;
+import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.repository.CourseRepository;
 import org.hzz.course.infrastructure.converter.CourseConverter;
@@ -22,7 +22,7 @@ import java.util.List;
 @Component
 public class CourseRepositoryImpl extends BaseRepository<CourseMapper, CourseConverter> implements CourseRepository {
     @Override
-    public List<CourseEntity> selectCourseSimpleInfoList(CourseSimpleInfoListDto dto) {
+    public List<CourseEntity> selectCourseSimpleInfoList(CourseIdAggregate dto) {
         CourseExample courseExample = new CourseExample();
         CourseExample.Criteria criteria = courseExample.createCriteria();
 

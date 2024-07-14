@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hzz.ddd.core.domain.shared.Entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author 胖卡
@@ -45,4 +46,12 @@ public class CourseEntity implements Entity {
 
     // 课程学习有效期，单位：月
     private Integer validDuration;
+
+    /**
+     * 获取该课程的分类List
+     * @return List 元素顺序为 一级分类，二级分类，三级分类
+     */
+    public List<Long> getCategoryIds(){
+        return List.of(firstCateId,secondCateId,thirdCateId);
+    }
 }

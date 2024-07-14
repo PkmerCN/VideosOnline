@@ -1,6 +1,6 @@
 package org.hzz.course.domain.repository;
 
-import org.hzz.course.domain.aggregate.CourseSimpleInfoListDto;
+import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
 
 import java.util.List;
@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface CourseRepository {
 
-    List<CourseEntity> selectCourseSimpleInfoList(CourseSimpleInfoListDto dto);
+    List<CourseEntity> selectCourseSimpleInfoList(CourseIdAggregate dto);
 }

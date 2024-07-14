@@ -5,6 +5,8 @@ import org.hzz.common.collection.CollUtil;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.page.query.FilterCondition;
 import org.hzz.core.page.query.PageQuery;
+import org.hzz.course.domain.aggregate.CourseIdAggregate;
+import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.CourseDomainService;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
@@ -37,6 +39,7 @@ public class AdminQuestionPageQueryCommandHandler
     @Setter(onMethod_ = @Autowired)
     private UserDetailDomainService userDetailDomainService;
 
+    @Setter(onMethod_ = @Autowired)
     private CourseDomainService courseDomainService;
 
     @Override
@@ -48,6 +51,7 @@ public class AdminQuestionPageQueryCommandHandler
         if(CollUtil.isEmpty(questionEntities)){
             return null;
         }
+
         // 处理用户
         Set<Long> userIds = new HashSet<>();
         Set<Long> courseIds = new HashSet<>();
@@ -59,16 +63,18 @@ public class AdminQuestionPageQueryCommandHandler
             catalogueIds.add(entity.getSectionId());
         }
 
-        Map<Long, UserDetailEntity> mapEntites = userDetailDomainService.getMapEntites(userIds);
+        Map<Long, UserDetailEntity> mapUserDetailEntites = userDetailDomainService.getMapEntites(userIds);
+        Map<Long, CourseEntity> mapCourseEntities = courseDomainService.getMapCourseEntities(courseIds);
+
 
         // 处理课程相关
+        // todo 课程分类
+        // todo 章节的处理
         return null;
     }
 
 
     private PageResponse<InteractionQuestionEntity> pageQuery(AdminQuestionPageQueryCommand command){
-
-
 
         PageQuery pageQuery = command.getPageQuery();
         List<FilterCondition> filters = new ArrayList<>();

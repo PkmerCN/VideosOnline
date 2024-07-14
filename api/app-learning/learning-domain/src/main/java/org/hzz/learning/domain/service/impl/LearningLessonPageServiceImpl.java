@@ -4,7 +4,7 @@ import lombok.Setter;
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.service.BaseDomainService;
-import org.hzz.course.domain.aggregate.CourseSimpleInfoListDto;
+import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.CourseDomainService;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
@@ -47,7 +47,7 @@ public class LearningLessonPageServiceImpl extends BaseDomainService<LearnLesson
     }
 
     private Map<Long, CourseEntity> queryCourseInfo(List<Long> courseIds) {
-        List<CourseEntity> courses = courseDomainService.findCourses(CourseSimpleInfoListDto.builder().ids(courseIds).build());
+        List<CourseEntity> courses = courseDomainService.findCourses(CourseIdAggregate.builder().ids(courseIds).build());
 
         if (CollUtil.isEmpty(courses)) {
             throw new RuntimeException("课程信息不存在");

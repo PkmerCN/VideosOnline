@@ -2,13 +2,14 @@ package org.hzz.course.domain.service.impl;
 
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.service.BaseAppService;
-import org.hzz.course.domain.aggregate.CourseSimpleInfoListDto;
+import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.repository.CourseRepository;
 import org.hzz.course.domain.service.CourseDomainService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * course领域服务
@@ -19,13 +20,30 @@ import java.util.List;
 @Service
 public class CourseDomainServiceImpl extends BaseAppService<CourseRepository> implements CourseDomainService {
     @Override
-    public List<CourseEntity> findCourses(CourseSimpleInfoListDto dto) {
+    public List<CourseEntity> findCourses(CourseIdAggregate dto) {
         return repository.selectCourseSimpleInfoList(dto);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Map<Long, CourseEntity> getMapCourseEntities(Set<Long> ids) {
+        CourseIdAggregate aggregate = CourseIdAggregate.builder().ids(new ArrayList<>(ids)).build();
+        List<CourseEntity> courses = findCourses(aggregate);
+
+        if(CollUtil.isEmpty(courses)){
+            return Collections.emptyMap();
+        }
+
+        return courses.stream().collect(
+                Collectors.toMap(CourseEntity::getId,c -> c)
+        );
     }
 
     @Override
     public CourseEntity findCourse(Long courseId) {
-        CourseSimpleInfoListDto query = CourseSimpleInfoListDto.builder()
+        CourseIdAggregate query = CourseIdAggregate.builder()
                 .ids(List.of(courseId))
                 .build();
         List<CourseEntity> courses = findCourses(query);
