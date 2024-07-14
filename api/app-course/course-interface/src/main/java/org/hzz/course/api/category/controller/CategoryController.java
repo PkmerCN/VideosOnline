@@ -29,6 +29,9 @@ public class CategoryController extends BaseController implements CategoryApi {
     @Setter(onMethod_ = @Autowired)
     private CategoryCmdService categoryCmdService;
 
+    /**
+     * 为了方便测试这里我直接将CategoryExtMapper注入到了Controller
+     */
     @Setter(onMethod_ = @Autowired)
     private CategoryExtMapper extMapper;
 
@@ -46,6 +49,9 @@ public class CategoryController extends BaseController implements CategoryApi {
         return success(categoryTreeVos);
     }
 
+    /**
+     * 为了方便测试这里我直接使用了CategoryExtMapper
+     */
     @Override
     public Result<String> updateDeleted(Boolean isDelete, Long id) {
 
