@@ -23,4 +23,6 @@ public interface CategoryExtMapper {
      * @return 列表
      */
     List<Category> selectAllByFilterDeleted(@Param("deleted") Deleted deleted);
+
+    int updateDeleted(@Param("deleted") Deleted deleted,@Param("id") Long id);
 }

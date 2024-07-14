@@ -6,6 +6,7 @@
     updater_id, deleted
     </sql>
 
+
     <resultMap id="BaseResultMap" type="org.hzz.course.infrastructure.dao.model.category.Category">
         <id column="id" jdbcType="BIGINT" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
@@ -38,4 +39,10 @@
         </where>
         order by priority asc,id desc
     </select>
+
+    <update id="updateDeleted">
+        update category
+        set deleted = #{deleted}
+        where id = #{id}
+    </update>
 </mapper>

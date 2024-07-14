@@ -4,6 +4,7 @@ import org.hzz.core.enums.BaseEnum;
 
 /**
  * 是否逻辑删除
+ * {@link }
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/13

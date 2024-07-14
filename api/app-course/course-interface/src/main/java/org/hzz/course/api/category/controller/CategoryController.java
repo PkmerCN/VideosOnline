@@ -3,11 +3,13 @@ package org.hzz.course.api.category.controller;
 import lombok.Setter;
 import org.hzz.common.tree.BaseConverter;
 import org.hzz.core.controller.BaseController;
+import org.hzz.core.enums.delete.Deleted;
 import org.hzz.core.result.Result;
 import org.hzz.course.api.category.CategoryApi;
 import org.hzz.course.application.command.category.GetAllTreeCategoryCommand;
 import org.hzz.course.application.dto.CategoryTreeDto;
 import org.hzz.course.application.service.category.CategoryCmdService;
+import org.hzz.course.infrastructure.dao.mapper.category.CategoryExtMapper;
 import org.hzz.course.types.resp.CategoryTreeVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -27,6 +29,9 @@ public class CategoryController extends BaseController implements CategoryApi {
     @Setter(onMethod_ = @Autowired)
     private CategoryCmdService categoryCmdService;
 
+    @Setter(onMethod_ = @Autowired)
+    private CategoryExtMapper extMapper;
+
     /**
      * {@inheritDoc}
      */
@@ -39,6 +44,21 @@ public class CategoryController extends BaseController implements CategoryApi {
         List<CategoryTreeVo> categoryTreeVos = CategoryTreeVoConvert.INSTANCE.covertToList(categoryTreeDtos);
 
         return success(categoryTreeVos);
+    }
+
+    @Override
+    public Result<String> updateDeleted(Boolean isDelete, Long id) {
+
+        int i;
+        if(Boolean.TRUE.equals(isDelete)){
+            logger.info("设置为禁用");
+           i =  extMapper.updateDeleted(Deleted.YES,id);
+        }else{
+            logger.info("设置为可用");
+           i = extMapper.updateDeleted(Deleted.NO,id);
+        }
+
+        return success("成功更新"+i+"条记录");
     }
 
 

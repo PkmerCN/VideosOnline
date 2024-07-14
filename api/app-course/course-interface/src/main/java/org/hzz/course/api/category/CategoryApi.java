@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.hzz.core.result.Result;
 import org.hzz.course.types.resp.CategoryTreeVo;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,7 +25,15 @@ public interface CategoryApi {
     @Operation(description = "获取所有的课程分类信息，只包含id,名称，课程分类关系")
     @GetMapping("/all")
     Result<List<CategoryTreeVo>> all(
-            @RequestParam(value = "admin",required = false,defaultValue = "0")
+            @RequestParam(value = "admin",required = false,defaultValue = "false")
             Boolean isAdmin
+    );
+
+    @Operation(description = "是否禁用目录")
+    @GetMapping("/{id}")
+    Result<String> updateDeleted(
+            @RequestParam(value = "delete",required = false,defaultValue = "false")
+            Boolean isDelete,
+            @PathVariable Long id
     );
 }
