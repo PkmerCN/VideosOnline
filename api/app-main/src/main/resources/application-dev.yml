@@ -89,3 +89,4 @@ app:
       - /index.htm
       - /css/*.css
       - /favicon.ico
+      - /categorys/**

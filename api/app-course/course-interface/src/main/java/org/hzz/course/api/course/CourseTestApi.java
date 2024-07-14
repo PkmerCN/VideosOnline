@@ -1,4 +1,4 @@
-package org.hzz.course.api;
+package org.hzz.course.api.course;
 
 import org.hzz.core.result.Result;
 import org.hzz.course.infrastructure.dao.model.Course;

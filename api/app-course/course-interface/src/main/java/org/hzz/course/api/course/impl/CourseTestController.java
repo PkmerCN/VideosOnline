@@ -1,8 +1,8 @@
-package org.hzz.course.api.controller;
+package org.hzz.course.api.course.impl;
 
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.result.Result;
-import org.hzz.course.api.CourseTestApi;
+import org.hzz.course.api.course.CourseTestApi;
 import org.hzz.course.infrastructure.dao.mapper.CourseMapper;
 import org.hzz.course.infrastructure.dao.mapper.CourseTestMapper;
 import org.hzz.course.infrastructure.dao.model.Course;
