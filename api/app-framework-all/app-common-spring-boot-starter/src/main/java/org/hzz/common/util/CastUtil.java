@@ -11,11 +11,11 @@ import java.util.List;
 public class CastUtil {
 
     /**
-     * todo 进行一个强转工具抽象
-     * @param obj
-     * @param clazz
-     * @return
-     * @param <T>
+     * 转换成List
+     * @param obj 原始类
+     * @param clazz Class类型
+     * @return 目标类List
+     * @param <T> 目标类
      */
     @SuppressWarnings("unchecked")
     public static <T> List<T> castList(Object obj, Class<T> clazz) {
