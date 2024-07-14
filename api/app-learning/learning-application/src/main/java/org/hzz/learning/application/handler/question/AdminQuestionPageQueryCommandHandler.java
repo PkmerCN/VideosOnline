@@ -5,9 +5,8 @@ import org.hzz.common.collection.CollUtil;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.page.query.FilterCondition;
 import org.hzz.core.page.query.PageQuery;
-import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
-import org.hzz.course.domain.service.CourseDomainService;
+import org.hzz.course.domain.service.course.CourseDomainService;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.question.AdminQuestionPageQueryCommand;
@@ -69,6 +68,7 @@ public class AdminQuestionPageQueryCommandHandler
 
         // 处理课程相关
         // todo 课程分类
+        // todo 缓存
         // todo 章节的处理
         return null;
     }

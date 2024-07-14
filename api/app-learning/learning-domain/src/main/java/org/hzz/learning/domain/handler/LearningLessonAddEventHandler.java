@@ -4,7 +4,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
-import org.hzz.course.domain.service.CourseDomainService;
+import org.hzz.course.domain.service.course.CourseDomainService;
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
 import org.hzz.learning.domain.event.LearningLessonAddEvent;
 import org.hzz.learning.domain.service.LearnLessonDomainService;

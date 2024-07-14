@@ -17,6 +17,7 @@
         <module>course-infrastructure</module>
         <module>course-domain</module>
         <module>course-types</module>
+        <module>course-cache</module>
     </modules>
 
     <properties>

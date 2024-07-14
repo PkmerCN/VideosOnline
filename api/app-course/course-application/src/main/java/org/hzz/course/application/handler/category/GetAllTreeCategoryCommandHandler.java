@@ -76,7 +76,7 @@ public class GetAllTreeCategoryCommandHandler
     /**
      * 用于{@link TreeDataUtils}进行树形转换
      */
-    class CategoryDataProcess implements TreeDataUtils.DataProcessor<CategoryTreeDto,CategoryEntity>{
+    static class CategoryDataProcess implements TreeDataUtils.DataProcessor<CategoryTreeDto,CategoryEntity>{
 
         @Override
         public Object getParentKey(CategoryEntity categoryEntity) {

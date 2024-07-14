@@ -6,7 +6,7 @@ import org.hzz.core.page.PageResponse;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
-import org.hzz.course.domain.service.CourseDomainService;
+import org.hzz.course.domain.service.course.CourseDomainService;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 import org.hzz.learning.domain.repository.LearnLessonPageRepository;
 import org.hzz.learning.domain.service.LearningLessonPageService;

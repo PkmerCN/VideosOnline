@@ -1,4 +1,4 @@
-package org.hzz.course.domain.service;
+package org.hzz.course.domain.service.course;
 
 import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;

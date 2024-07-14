@@ -1,11 +1,11 @@
-package org.hzz.course.domain.service.impl;
+package org.hzz.course.domain.service.course.impl;
 
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.service.BaseAppService;
 import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.repository.CourseRepository;
-import org.hzz.course.domain.service.CourseDomainService;
+import org.hzz.course.domain.service.course.CourseDomainService;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
