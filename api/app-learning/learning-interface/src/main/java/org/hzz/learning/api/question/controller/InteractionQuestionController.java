@@ -1,11 +1,11 @@
-package org.hzz.learning.api.controller.question;
+package org.hzz.learning.api.question.controller;
 
 import lombok.Setter;
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.exception.request.BadRequestException;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.result.Result;
-import org.hzz.learning.api.InteractionQuestionApi;
+import org.hzz.learning.api.question.InteractionQuestionApi;
 import org.hzz.learning.api.req.question.ModifyQuestionReq;
 import org.hzz.learning.api.req.question.NewQuestionReq;
 import org.hzz.learning.application.command.question.*;

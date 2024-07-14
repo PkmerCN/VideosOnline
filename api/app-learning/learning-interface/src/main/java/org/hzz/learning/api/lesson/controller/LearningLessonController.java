@@ -1,4 +1,4 @@
-package org.hzz.learning.api.controller;
+package org.hzz.learning.api.lesson.controller;
 
 import lombok.Setter;
 import org.hzz.aop.annotations.AddUserIdFilterCondition;
@@ -6,7 +6,7 @@ import org.hzz.core.controller.BaseController;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.core.result.Result;
-import org.hzz.learning.api.LearningLessonApi;
+import org.hzz.learning.api.lesson.LearningLessonApi;
 import org.hzz.learning.api.req.LearnPlanReq;
 import org.hzz.learning.application.command.plan.LearnPlansAddCommand;
 import org.hzz.learning.application.command.plan.PlanPageQueryCommand;

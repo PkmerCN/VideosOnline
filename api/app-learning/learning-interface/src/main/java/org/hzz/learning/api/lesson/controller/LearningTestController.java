@@ -1,10 +1,10 @@
-package org.hzz.learning.api.controller;
+package org.hzz.learning.api.lesson.controller;
 
 import com.alibaba.fastjson2.JSON;
 import lombok.Setter;
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.result.Result;
-import org.hzz.learning.api.LearningTestApi;
+import org.hzz.learning.api.lesson.LearningTestApi;
 import org.hzz.learning.domain.event.LearningLessonAddEvent;
 import org.hzz.learning.infrastructure.mq.rabbitmq.model.TestData;
 import org.hzz.rabbitmq.core.RabbitMQHelper;

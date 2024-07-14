@@ -1,9 +1,9 @@
-package org.hzz.learning.api.controller.question;
+package org.hzz.learning.api.question.controller;
 
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.result.Result;
-import org.hzz.learning.api.AdminQuestionApi;
+import org.hzz.learning.api.question.AdminQuestionApi;
 import org.hzz.learning.types.req.question.AdminQuestionPageQuery;
 import org.hzz.learning.types.resp.question.AdminQuestionDetailVo;
 import org.springframework.web.bind.annotation.RestController;

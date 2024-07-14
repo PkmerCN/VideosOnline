@@ -1,4 +1,4 @@
-package org.hzz.learning.api.controller;
+package org.hzz.learning.api.lesson.controller;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
@@ -7,7 +7,7 @@ import org.hzz.common.collection.CollUtil;
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.exception.arg.AppArgumentNotValidException;
 import org.hzz.core.result.Result;
-import org.hzz.learning.api.LearnRecordApi;
+import org.hzz.learning.api.lesson.LearnRecordApi;
 import org.hzz.learning.api.req.LearningRecordFormRequest;
 import org.hzz.learning.application.service.AppLearningLessonService;
 import org.hzz.learning.application.command.LearnLessonRecordCommand;
@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.HashSet;
 import java.util.Set;
 
 
