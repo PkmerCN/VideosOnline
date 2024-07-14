@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 使用策略模式统一处理{@link CommandWithMark}
+ * 子类使用
+ * // @Service
+ * // public class CourseCmdService extends CmdService {}
+ *
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/14
@@ -22,7 +26,7 @@ public abstract class CmdService {
 
     /**
      * 统一处理command
-     * @param command
+     * @param command 命令
      */
     public void handleCommand(CommandWithMark command){
         log.info("执行：{}",command.getClass().getSimpleName());
