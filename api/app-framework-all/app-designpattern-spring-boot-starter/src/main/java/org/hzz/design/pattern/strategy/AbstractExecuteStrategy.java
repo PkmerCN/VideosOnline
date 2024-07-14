@@ -2,7 +2,7 @@ package org.hzz.design.pattern.strategy;
 
 /**
  * 策略执行抽象
- * T Command
+ * @param <T>  Command
  * R 返回结果
  * @author 胖卡
  * @version 1.0.0

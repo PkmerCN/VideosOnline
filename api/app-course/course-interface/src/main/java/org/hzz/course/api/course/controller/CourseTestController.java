@@ -1,4 +1,4 @@
-package org.hzz.course.api.course.impl;
+package org.hzz.course.api.course.controller;
 
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.result.Result;
