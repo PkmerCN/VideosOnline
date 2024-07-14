@@ -1,4 +1,4 @@
-package org.hzz.course.application;
+package org.hzz.course.application.service.category;
 
 import org.hzz.ddd.core.domain.shared.service.CmdService;
 import org.springframework.stereotype.Service;
@@ -9,5 +9,5 @@ import org.springframework.stereotype.Service;
  * @date 2024/7/14
  */
 @Service
-public class CourseCmdService extends CmdService {
+public class CategoryCmdService extends CmdService {
 }

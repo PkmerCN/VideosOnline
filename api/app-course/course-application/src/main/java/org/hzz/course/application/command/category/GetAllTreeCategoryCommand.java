@@ -1,6 +1,7 @@
 package org.hzz.course.application.command.category;
 
 import lombok.Data;
+import lombok.Value;
 import org.hzz.course.application.handler.category.GetAllTreeCategoryCommandHandler;
 import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
 
@@ -12,6 +13,7 @@ import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
  * @date 2024/7/14
  */
 @Data
+@Value(staticConstructor = "commandOf")
 public class GetAllTreeCategoryCommand implements CommandWithMark {
     public static final String MARK = GetAllTreeCategoryCommand.class.getName();
     Boolean isAdmin;

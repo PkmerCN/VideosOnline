@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Data
 @Schema(description = "所有课程分类数据")
-public class CategoryVo {
+public class CategoryTreeVo {
     @Schema(description = "课程分类id")
     private Long id;
 
@@ -30,5 +30,5 @@ public class CategoryVo {
     private CategoryLevel level;
 
     @Schema(description = "子分类")
-    List<CategoryVo> children;
+    List<CategoryTreeVo> children;
 }

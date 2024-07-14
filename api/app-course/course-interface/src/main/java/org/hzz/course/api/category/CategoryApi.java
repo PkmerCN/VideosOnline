@@ -2,7 +2,7 @@ package org.hzz.course.api.category;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.hzz.core.result.Result;
-import org.hzz.course.types.resp.CategoryVo;
+import org.hzz.course.types.resp.CategoryTreeVo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +23,7 @@ public interface CategoryApi {
      */
     @Operation(description = "获取所有的课程分类信息，只包含id,名称，课程分类关系")
     @GetMapping("/all")
-    Result<List<CategoryVo>> all(
+    Result<List<CategoryTreeVo>> all(
             @RequestParam(value = "admin",required = false,defaultValue = "0")
             Boolean isAdmin
     );
