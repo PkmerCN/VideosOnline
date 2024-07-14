@@ -183,6 +183,14 @@ It allows you to specify which modules in your multi-module project you want to 
 
 
 
+# 业务与技术特设
+
+
+| 业务     | 技术              |
+| ------ | --------------- |
+| 视频提交记录 | redis+延迟任务      |
+| 分类层级   | List转Tree层级算法设计 |
+
 
 # 附录
 
