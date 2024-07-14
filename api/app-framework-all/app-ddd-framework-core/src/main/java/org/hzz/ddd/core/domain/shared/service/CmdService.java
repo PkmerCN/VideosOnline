@@ -40,7 +40,7 @@ public abstract class CmdService {
      * @return R
      * @param <R> 返回结果
      */
-    public <R> R handleComandWithResult(CommandWithMark command){
+    public <R> R handleCommandWithResult(CommandWithMark command){
         log.info("执行：{}",command.getClass().getSimpleName());
         return strategyChoose.<CommandWithMark,R>chooseAndExecuteWithResp(command.mark(),
                 command);
