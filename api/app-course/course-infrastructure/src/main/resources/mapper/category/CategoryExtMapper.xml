@@ -24,6 +24,7 @@
         select
         <include refid="Base_Column_List" />
         from category
+        order by priority asc,id desc
     </select>
     <select id="selectAllByFilterDeleted"
             resultMap="BaseResultMap">
@@ -35,5 +36,6 @@
                and deleted = #{deleted}
             </if>
         </where>
+        order by priority asc,id desc
     </select>
 </mapper>
