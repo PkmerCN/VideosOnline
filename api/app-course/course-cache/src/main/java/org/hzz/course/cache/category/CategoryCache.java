@@ -5,6 +5,7 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.common.collection.CollUtil;
 import org.hzz.common.tree.TreeDataUtils;
 import org.hzz.common.util.CastUtil;
 import org.hzz.course.domain.entity.CategoryEntity;
@@ -13,7 +14,10 @@ import org.hzz.course.types.dto.CategoryTreeDto;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 分类的一个缓存
@@ -66,6 +70,19 @@ public class CategoryCache {
     }
 
     /**
+     * 获取所有分类的map
+     * @return 分类map key -> id value -> {@link CategoryEntity}
+     */
+    public Map<Long,CategoryEntity> categoryAsMap(){
+        // 用全部的分类
+        List<CategoryEntity> entities = getAllCategoryEntities();
+        if(entities == null || entities.isEmpty()){
+            return Collections.emptyMap();
+        }
+        return entities.stream().collect(Collectors.toMap(CategoryEntity::getId,e -> e));
+    }
+
+    /**
      * 获取所有可用的分类
      * @return 分类列表
      */
@@ -108,6 +125,29 @@ public class CategoryCache {
     public void invalidateCache(){
         log.info("invalidate all category cache");
         cache.invalidateAll();
+    }
+
+    /**
+     * 获取分类名称
+     * @param ids 分类id
+     * @return 一级分类/二级分类/三级分类
+     */
+    public String getCategoryName(List<Long> ids){
+        if(CollUtil.isEmpty(ids)){
+            return "";
+        }
+        Map<Long, CategoryEntity> categoryEntityMap = categoryAsMap();
+        StringBuilder strContainer = new StringBuilder();
+        for (Long id: ids){
+            CategoryEntity categoryEntity = categoryEntityMap.get(id);
+            if(categoryEntity == null){
+                break;
+            }
+            String name = categoryEntity.getName();
+            strContainer.append(name);
+            strContainer.append("/");
+        }
+        return strContainer.deleteCharAt(strContainer.length() - 1).toString();
     }
 
     public enum Key{

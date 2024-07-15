@@ -2,9 +2,11 @@ package org.hzz.learning.application.handler.question;
 
 import lombok.Setter;
 import org.hzz.common.collection.CollUtil;
+import org.hzz.common.tree.BaseConverter;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.page.query.FilterCondition;
 import org.hzz.core.page.query.PageQuery;
+import org.hzz.course.cache.category.CategoryCache;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.course.CourseDomainService;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
@@ -16,6 +18,8 @@ import org.hzz.learning.domain.service.question.InteractionQuestionDomainService
 import org.hzz.learning.types.resp.question.AdminQuestionDetailVo;
 import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.service.details.UserDetailDomainService;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.hzz.core.page.query.FilterCondition.Operation;
@@ -41,14 +45,26 @@ public class AdminQuestionPageQueryCommandHandler
     @Setter(onMethod_ = @Autowired)
     private CourseDomainService courseDomainService;
 
+    @Setter(onMethod_ = @Autowired)
+    private CategoryCache categoryCache;
+
+
     @Override
     public PageResponse<AdminQuestionDetailVo> executeWithResp(AdminQuestionPageQueryCommand command) {
+
+        PageResponse<AdminQuestionDetailVo> result = new PageResponse<>();
+
         // 分页查询
         PageResponse<InteractionQuestionEntity> questionPage = pageQuery(command);
+        result.setTotalPages(questionPage.getTotalPages())
+                .setTotal(questionPage.getTotal())
+                .setCurrentPageNo(questionPage.getCurrentPageNo());
+
 
         List<InteractionQuestionEntity> questionEntities = questionPage.getList();
         if(CollUtil.isEmpty(questionEntities)){
-            return null;
+            result.setList(new ArrayList<>());
+            return result;
         }
 
         // 处理用户
@@ -65,12 +81,28 @@ public class AdminQuestionPageQueryCommandHandler
         Map<Long, UserDetailEntity> mapUserDetailEntites = userDetailDomainService.getMapEntites(userIds);
         Map<Long, CourseEntity> mapCourseEntities = courseDomainService.getMapCourseEntities(courseIds);
 
+        List<AdminQuestionDetailVo> voList = new ArrayList<>();
+        for (InteractionQuestionEntity entity: questionEntities){
+            AdminQuestionDetailVo vo = AdminQuestionDetailVoConverter.INSTANCE.convert(entity);
+            // 处理用户
+            UserDetailEntity userDetailEntity = mapUserDetailEntites.get(entity.getUserId());
+            vo.setUsername(userDetailEntity.getName());
 
-        // 处理课程相关
-        // todo 课程分类
-        // todo 缓存
-        // todo 章节的处理
-        return null;
+            // 处理课程
+            CourseEntity course = mapCourseEntities.get(entity.getCourseId());
+            // 课程名称
+            vo.setCourseName(course.getName());
+            // 分类名称
+            String categoryName = categoryCache.getCategoryName(course.getCategoryIds());
+            vo.setCategoryName(categoryName);
+            // 处理章节
+            // todo 章节的处理
+
+            voList.add(vo);
+        }
+
+        result.setList(voList);
+        return result;
     }
 
 
@@ -116,6 +148,11 @@ public class AdminQuestionPageQueryCommandHandler
     @Override
     public String mark() {
         return AdminQuestionPageQueryCommand.MARK;
+    }
+
+    @Mapper
+    interface AdminQuestionDetailVoConverter extends BaseConverter<AdminQuestionDetailVo,InteractionQuestionEntity>{
+        AdminQuestionDetailVoConverter INSTANCE = Mappers.getMapper(AdminQuestionDetailVoConverter.class);
     }
 
 }
