@@ -34,6 +34,6 @@ public enum TrailerType implements BaseEnum {
     }
 
     public static TrailerType fromValue(Byte value){
-        return BaseEnumTemplate.fromValue(TrailerType.class,value);
+        return BaseEnumTemplate.fromByteValue(TrailerType.class,value);
     }
 }

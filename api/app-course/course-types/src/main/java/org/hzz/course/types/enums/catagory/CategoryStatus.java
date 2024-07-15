@@ -1,6 +1,7 @@
 package org.hzz.course.types.enums.catagory;
 
 import org.hzz.core.enums.BaseEnum;
+import org.hzz.core.enums.BaseEnumTemplate;
 
 /**
  * 分类状态
@@ -32,14 +33,6 @@ public enum CategoryStatus implements BaseEnum {
     }
 
     public static CategoryStatus fromValue(Byte value){
-        if(value == null){
-            return null;
-        }
-        for (CategoryStatus status: CategoryStatus.values()){
-            if(status.getValue().equals(value.intValue())){
-                return status;
-            }
-        }
-        throw new IllegalArgumentException("Unknown enum value: " + value + "in CategoryStatus");
+        return BaseEnumTemplate.fromByteValue(CategoryStatus.class,value);
     }
 }
