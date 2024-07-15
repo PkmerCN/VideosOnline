@@ -17,6 +17,11 @@
     <dependencies>
         <dependency>
             <groupId>org.hzz.course</groupId>
+            <artifactId>course-cache</artifactId>
+            <version>2.2.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hzz.course</groupId>
             <artifactId>course-infrastructure</artifactId>
             <version>2.2.3-SNAPSHOT</version>
         </dependency>

@@ -4,11 +4,12 @@ import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.common.tree.TreeDataUtils;
 import org.hzz.common.util.CastUtil;
 import org.hzz.course.domain.entity.CategoryEntity;
 import org.hzz.course.domain.service.category.CategoryDomainService;
+import org.hzz.course.types.dto.CategoryTreeDto;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -22,7 +23,6 @@ import java.util.List;
  * @date 2024/7/15
  */
 @Component
-@RequiredArgsConstructor
 @Slf4j
 public class CategoryCache {
     /**
@@ -30,14 +30,23 @@ public class CategoryCache {
      * {@code value} -> Map,Tree,List
      */
     private Cache<Key, Object> cache;
+    private final CategoryDataProcess categoryDataProcess = new CategoryDataProcess();
     private final CategoryDomainService categoryDomainService;
+    private final CategoryConvert categoryConvert;
 
+    public CategoryCache(CategoryDomainService categoryDomainService,
+                         CategoryConvert categoryConvert){
+        this.categoryDomainService = categoryDomainService;
+        this.categoryConvert = categoryConvert;
+    }
 
     @PostConstruct
     public void init() {
+
         cache = Caffeine.newBuilder()
                 .maximumSize(10)
-                .expireAfterWrite(Duration.ofMinutes(10))
+                .removalListener(new CacheRemovalListener())
+                .expireAfterWrite(Duration.ofMinutes(30)) // 缓存30分钟
                 .build();
     }
 
@@ -66,14 +75,45 @@ public class CategoryCache {
     }
 
 
+    /**
+     * 获取可用分类的树形结构,只包含没有被禁用的分类
+     * @return 树形列表，其中列表都是一级目录，一级目录的属性children是二级目录，依次类推
+     */
+    public List<CategoryTreeDto> getAvailableTreeCategory(){
+        log.info("从CategoryCache获取所有可用分类的树形结构");
+        Object o = cache.get(Key.ALL_AVAILABLE_Tree, key -> {
+            List<CategoryEntity> entities = getAvailableCategoryEntities();
+            return TreeDataUtils.parseToTree(entities, categoryConvert, categoryDataProcess);
+        });
+        return CastUtil.castList(o, CategoryTreeDto.class);
+    }
+
+    /**
+     * 获取所有分类的树形结构
+     * @return 树形列表，其中列表都是一级目录，一级目录的属性children是二级目录，依次类推
+     */
+    public List<CategoryTreeDto>  getAllTreeCategory(){
+        log.info("从CategoryCache获取所有分类的树形结构");
+        Object o = cache.get(Key.ALL_Tree, key -> {
+            List<CategoryEntity> entities = getAllCategoryEntities();
+            return TreeDataUtils.parseToTree(entities, categoryConvert, categoryDataProcess);
+        });
+        return CastUtil.castList(o, CategoryTreeDto.class);
+    }
+
+
+    /**
+     * 缓存失效
+     */
     public void invalidateCache(){
         log.info("invalidate all category cache");
         cache.invalidateAll();
     }
 
-    enum Key{
+    public enum Key{
         ALL("全部分类List"),
         ALL_AVAILABLE("可用的全部分类List"),
+        ALL_Tree("全部分类层级树状"),
         ALL_AVAILABLE_Tree("可用的全部分类层级树状");
 
         Key(String desc){}

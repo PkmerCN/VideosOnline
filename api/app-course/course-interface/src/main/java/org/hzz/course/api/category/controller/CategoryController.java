@@ -7,7 +7,7 @@ import org.hzz.core.enums.delete.Deleted;
 import org.hzz.core.result.Result;
 import org.hzz.course.api.category.CategoryApi;
 import org.hzz.course.application.command.category.GetAllTreeCategoryCommand;
-import org.hzz.course.application.dto.CategoryTreeDto;
+import org.hzz.course.types.dto.CategoryTreeDto;
 import org.hzz.course.application.service.category.CategoryCmdService;
 import org.hzz.course.infrastructure.dao.mapper.category.CategoryExtMapper;
 import org.hzz.course.types.resp.CategoryTreeVo;

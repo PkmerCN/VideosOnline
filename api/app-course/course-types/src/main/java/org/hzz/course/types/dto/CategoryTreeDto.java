@@ -1,4 +1,4 @@
-package org.hzz.course.application.dto;
+package org.hzz.course.types.dto;
 
 import lombok.Data;
 import org.hzz.course.types.enums.CategoryLevel;
