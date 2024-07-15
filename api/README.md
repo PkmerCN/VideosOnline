@@ -182,6 +182,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | 手动校验分组参数,并实现全局异常处理                     |
 | redis加延迟任务处理高并发业务                      |
 | mybatis typehandler处理枚举                |
+| 模版抽离：BaseEnum枚举以及mybatis typehandler   |
 
 
 
