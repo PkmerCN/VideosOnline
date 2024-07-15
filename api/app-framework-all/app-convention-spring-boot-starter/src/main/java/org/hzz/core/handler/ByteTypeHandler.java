@@ -12,6 +12,7 @@ import java.sql.SQLException;
 
 /**
  * 数据库类型为tinyint对应的类型枚举处理模版
+ * @param <T> 对应的具体枚举类型
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/15
