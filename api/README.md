@@ -66,6 +66,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | RabbitMQ       | 3.13.3            |
 | MySQL          | 8.0               |
 | Redis          | 7.2.5             |
+| Caffeine       | 3.1.8             |
 
 # 分模块开发
 
@@ -119,14 +120,15 @@ It allows you to specify which modules in your multi-module project you want to 
 
 
 
-| DDD业务模块        |                 |
-| -------------- | --------------- |
-| interface      | 接口层             |
-| application    | 应用层             |
-| domain         | 领域层             |
-| infrastructure | 基础层             |
-| trigger        | 触发层,如微服务，mq消费者  |
-| types          | 通用类型，如constants |
+| DDD业务模块        |                   |
+|----------------|-------------------|
+| interface      | 接口层               |
+| application    | 应用层               |
+| domain         | 领域层               |
+| infrastructure | 基础层               |
+| trigger        | 触发层,如微服务，mq消费者    |
+| types          | 通用类型，如constants   |
+| cache          | 缓存层,目前的话是Caffeine |
 
 
 
@@ -186,11 +188,17 @@ It allows you to specify which modules in your multi-module project you want to 
 # 业务与技术特设
 
 
-| 业务     | 技术              |
-| ------ | --------------- |
-| 视频提交记录 | redis+延迟任务      |
-| 分类层级   | List转Tree层级算法设计 |
+| 业务             | 技术              |
+|----------------|-----------------|
+| 视频提交记录         | redis+延迟任务      |
+| 分类层级           | List转Tree层级算法设计 |
+| 缓存caffeine分类信息 | JVM级别的缓存        |
 
+## 缓存技术
+
+1. JVM级别使用了Caffeine
+2. redis做了客户端的封装
+3. 引入了springboot-cache对接是redis
 
 # 附录
 
