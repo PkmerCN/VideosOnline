@@ -30,6 +30,7 @@ public class GetAllTreeCategoryCommandHandler
 
     @Override
     public List<CategoryTreeDto> executeWithResp(GetAllTreeCategoryCommand command) {
+        // 从caffeine缓存中获取数据
         if(command.getIsAdmin()){
             // 获取所有分类
             return categoryCache.getAllTreeCategory();
