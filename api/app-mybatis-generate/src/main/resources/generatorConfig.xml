@@ -40,8 +40,8 @@
 <!--            <columnOverride column="gender" javaType="org.hzz.user.types.enums.Gender"/>-->
 <!--        </table>-->
         <table tableName="category">
-            <columnOverride column="status" javaType="org.hzz.course.types.enums.CategoryStatus"/>
-            <columnOverride column="level" javaType="org.hzz.course.types.enums.CategoryLevel"/>
+            <columnOverride column="status" javaType="org.hzz.course.types.enums.catagory.CategoryStatus"/>
+            <columnOverride column="level" javaType="org.hzz.course.types.enums.catagory.CategoryLevel"/>
             <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted"/>
         </table>
 

@@ -1,7 +1,7 @@
 package org.hzz.course.types.dto;
 
 import lombok.Data;
-import org.hzz.course.types.enums.CategoryLevel;
+import org.hzz.course.types.enums.catagory.CategoryLevel;
 
 import java.util.List;
 

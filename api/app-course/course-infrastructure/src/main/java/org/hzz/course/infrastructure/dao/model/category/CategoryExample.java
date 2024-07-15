@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.hzz.core.enums.delete.Deleted;
-import org.hzz.course.types.enums.CategoryLevel;
-import org.hzz.course.types.enums.CategoryStatus;
+import org.hzz.course.types.enums.catagory.CategoryLevel;
+import org.hzz.course.types.enums.catagory.CategoryStatus;
 
 public class CategoryExample {
     protected String orderByClause;

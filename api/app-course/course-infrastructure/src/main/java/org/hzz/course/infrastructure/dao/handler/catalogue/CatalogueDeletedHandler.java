@@ -1,4 +1,4 @@
-package org.hzz.course.infrastructure.dao.handler;
+package org.hzz.course.infrastructure.dao.handler.catalogue;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
@@ -10,12 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * mybatis处理逻辑删除{@link Deleted}枚举
+ * 章节是否逻辑删除处理
  * @author 胖卡
  * @version 1.0.0
- * @date 2024/7/13
+ * @date 2024/7/15
  */
-public class CategoryDeletedHandler extends BaseTypeHandler<Deleted> {
+public class CatalogueDeletedHandler  extends BaseTypeHandler<Deleted> {
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, Deleted parameter, JdbcType jdbcType) throws SQLException {
         ps.setByte(i,parameter.getValue().byteValue());

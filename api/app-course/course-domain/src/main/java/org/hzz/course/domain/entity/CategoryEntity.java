@@ -2,8 +2,8 @@ package org.hzz.course.domain.entity;
 
 import lombok.Data;
 import org.hzz.core.enums.delete.Deleted;
-import org.hzz.course.types.enums.CategoryLevel;
-import org.hzz.course.types.enums.CategoryStatus;
+import org.hzz.course.types.enums.catagory.CategoryLevel;
+import org.hzz.course.types.enums.catagory.CategoryStatus;
 import org.hzz.ddd.core.domain.shared.Entity;
 
 import java.time.LocalDateTime;

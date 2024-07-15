@@ -1,8 +1,8 @@
-package org.hzz.course.infrastructure.dao.handler;
+package org.hzz.course.infrastructure.dao.handler.category;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
-import org.hzz.course.types.enums.CategoryStatus;
+import org.hzz.course.types.enums.catagory.CategoryStatus;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

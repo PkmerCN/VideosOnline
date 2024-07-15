@@ -1,4 +1,4 @@
-package org.hzz.course.types.enums;
+package org.hzz.course.types.enums.catagory;
 
 import org.hzz.core.enums.BaseEnum;
 
