@@ -43,5 +43,5 @@ public abstract class ByteTypeHandler<T extends BaseEnum> extends BaseTypeHandle
         return cs.wasNull() ? null: fromValue(status);
     }
 
-    abstract T fromValue(Byte value);
+    protected abstract T fromValue(Byte value);
 }
