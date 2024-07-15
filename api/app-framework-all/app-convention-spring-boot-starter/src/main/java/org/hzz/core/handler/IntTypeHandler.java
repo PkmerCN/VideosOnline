@@ -42,5 +42,5 @@ public abstract class IntTypeHandler<T extends BaseEnum> extends BaseTypeHandler
         return cs.wasNull() ? null: fromValue(value);
     }
 
-    abstract T fromValue(Integer value);
+    protected abstract T fromValue(Integer value);
 }
