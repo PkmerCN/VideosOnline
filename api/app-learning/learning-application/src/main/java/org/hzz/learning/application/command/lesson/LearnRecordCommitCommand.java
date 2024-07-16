@@ -1,4 +1,4 @@
-package org.hzz.learning.application.command;
+package org.hzz.learning.application.command.lesson;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

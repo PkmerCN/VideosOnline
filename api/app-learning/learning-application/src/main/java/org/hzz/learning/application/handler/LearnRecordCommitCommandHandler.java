@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
-import org.hzz.learning.application.command.LearnRecordCommitCommand;
+import org.hzz.learning.application.command.lesson.LearnRecordCommitCommand;
 import org.hzz.learning.application.task.impl.RecordDelayTaskHandler;
 import org.hzz.learning.domain.aggregate.LearnLessonAggregate;
 import org.hzz.learning.domain.entity.LearnRecordEntity;

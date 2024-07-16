@@ -3,13 +3,13 @@ package org.hzz.learning.application.service.impl;
 import lombok.Setter;
 import org.hzz.core.page.PageResponse;
 import org.hzz.design.pattern.strategy.StrategyChoose;
-import org.hzz.learning.application.command.LearnRecordCommitCommand;
-import org.hzz.learning.application.command.PageQueryCommand;
+import org.hzz.learning.application.command.lesson.LearnRecordCommitCommand;
+import org.hzz.learning.application.command.lesson.PageQueryCommand;
 import org.hzz.learning.application.handler.MarkConstants;
 import org.hzz.learning.application.resp.LearnLessonDto;
 import org.hzz.learning.application.resp.LearnLessonRecordDto;
 import org.hzz.learning.application.service.AppLearningLessonService;
-import org.hzz.learning.application.command.LearnLessonRecordCommand;
+import org.hzz.learning.application.command.lesson.LearnLessonRecordCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

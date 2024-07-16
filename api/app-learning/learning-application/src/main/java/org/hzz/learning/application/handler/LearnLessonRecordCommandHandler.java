@@ -5,7 +5,7 @@ import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.resp.LearnLessonRecordDto;
 import org.hzz.learning.application.resp.LearnRecordDto;
-import org.hzz.learning.application.command.LearnLessonRecordCommand;
+import org.hzz.learning.application.command.lesson.LearnLessonRecordCommand;
 import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
 import org.hzz.learning.domain.service.lesson.LearnLessonRecordDomainService;

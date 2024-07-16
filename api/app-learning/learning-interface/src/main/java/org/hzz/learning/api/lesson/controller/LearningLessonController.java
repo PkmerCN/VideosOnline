@@ -13,7 +13,7 @@ import org.hzz.learning.application.command.plan.PlanPageQueryCommand;
 import org.hzz.learning.application.resp.LearnLessonDto;
 import org.hzz.learning.application.service.AppHandleCmdService;
 import org.hzz.learning.application.service.AppLearningLessonService;
-import org.hzz.learning.application.command.PageQueryCommand;
+import org.hzz.learning.application.command.lesson.PageQueryCommand;
 import org.hzz.learning.types.resp.plan.LearnPlansPageResult;
 import org.hzz.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
