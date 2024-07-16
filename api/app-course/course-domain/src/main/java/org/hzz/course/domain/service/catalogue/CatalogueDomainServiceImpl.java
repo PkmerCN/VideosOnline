@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author 胖卡
@@ -31,5 +33,16 @@ public class CatalogueDomainServiceImpl
         }
         logger.info("查询到 {} 条数据",courseCatalogueEntities.size());
         return courseCatalogueEntities;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Map<Long, CourseCatalogueEntity> getMapEntities(Set<Long> ids) {
+        return getEntities(ids).stream().collect(Collectors.toMap(
+                CourseCatalogueEntity::getId,
+                e -> e
+        ));
     }
 }

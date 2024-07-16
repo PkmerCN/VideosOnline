@@ -4,6 +4,7 @@ import org.hzz.course.domain.entity.CourseCatalogueEntity;
 
 import java.util.List;
 import java.util.Set;
+import java.util.Map;
 
 /**
  * 章节领域服务
@@ -19,4 +20,11 @@ public interface CatalogueDomainService{
      * @return 根据id获取章节 List
      */
     List<CourseCatalogueEntity> getEntities(Set<Long> ids);
+
+    /**
+     * 获取章节数据
+     * @param ids id 列表
+     * @return Map key -> id value -> {@link CourseCatalogueEntity}
+     */
+    Map<Long,CourseCatalogueEntity> getMapEntities(Set<Long> ids);
 }
