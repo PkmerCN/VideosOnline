@@ -1,4 +1,4 @@
-package org.hzz.learning.domain.service.impl;
+package org.hzz.learning.domain.service.lesson.impl;
 
 import lombok.Setter;
 import org.hzz.core.exception.db.AppDbEntityNotFoundException;
@@ -10,7 +10,7 @@ import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
 import org.hzz.learning.domain.aggregate.LearnLessonAggregate;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.repository.LearnLessonRepository;
-import org.hzz.learning.domain.service.LearnLessonDomainService;
+import org.hzz.learning.domain.service.lesson.LearnLessonDomainService;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

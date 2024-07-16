@@ -11,7 +11,7 @@ import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.service.question.InteractionQuestionDomainService;
-import org.hzz.learning.domain.service.question.InteractionReplyDomainService;
+import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;
 import org.hzz.learning.types.resp.question.QuestionDto;
 import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.service.details.UserDetailDomainService;

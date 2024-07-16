@@ -1,4 +1,4 @@
-package org.hzz.learning.domain.service;
+package org.hzz.learning.domain.service.lesson;
 
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
 import org.hzz.learning.domain.aggregate.LearnLessonAggregate;

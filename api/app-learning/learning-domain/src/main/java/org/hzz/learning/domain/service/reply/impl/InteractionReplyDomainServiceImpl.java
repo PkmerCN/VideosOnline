@@ -1,10 +1,10 @@
-package org.hzz.learning.domain.service.question.impl;
+package org.hzz.learning.domain.service.reply.impl;
 
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.repository.question.InteractionReplyRepository;
-import org.hzz.learning.domain.service.question.InteractionReplyDomainService;
+import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;

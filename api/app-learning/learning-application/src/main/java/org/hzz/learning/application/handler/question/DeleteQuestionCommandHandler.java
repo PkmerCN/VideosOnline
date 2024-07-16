@@ -7,7 +7,7 @@ import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.question.DeleteQuestionCommand;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.service.question.InteractionQuestionDomainService;
-import org.hzz.learning.domain.service.question.InteractionReplyDomainService;
+import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

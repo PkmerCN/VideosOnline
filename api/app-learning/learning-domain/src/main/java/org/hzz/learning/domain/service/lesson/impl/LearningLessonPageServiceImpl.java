@@ -1,4 +1,4 @@
-package org.hzz.learning.domain.service.impl;
+package org.hzz.learning.domain.service.lesson.impl;
 
 import lombok.Setter;
 import org.hzz.common.collection.CollUtil;
@@ -9,7 +9,7 @@ import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.course.CourseDomainService;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 import org.hzz.learning.domain.repository.LearnLessonPageRepository;
-import org.hzz.learning.domain.service.LearningLessonPageService;
+import org.hzz.learning.domain.service.lesson.LearningLessonPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

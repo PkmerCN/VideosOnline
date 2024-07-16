@@ -7,7 +7,7 @@ import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.course.CourseDomainService;
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
 import org.hzz.learning.domain.event.LearningLessonAddEvent;
-import org.hzz.learning.domain.service.LearnLessonDomainService;
+import org.hzz.learning.domain.service.lesson.LearnLessonDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;

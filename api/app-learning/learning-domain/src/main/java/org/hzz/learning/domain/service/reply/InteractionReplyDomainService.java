@@ -1,4 +1,4 @@
-package org.hzz.learning.domain.service.question;
+package org.hzz.learning.domain.service.reply;
 
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 

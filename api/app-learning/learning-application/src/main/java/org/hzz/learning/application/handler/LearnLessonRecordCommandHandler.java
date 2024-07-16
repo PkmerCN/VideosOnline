@@ -8,7 +8,7 @@ import org.hzz.learning.application.resp.LearnRecordDto;
 import org.hzz.learning.application.command.LearnLessonRecordCommand;
 import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
-import org.hzz.learning.domain.service.LearnLessonRecordDomainService;
+import org.hzz.learning.domain.service.lesson.LearnLessonRecordDomainService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
