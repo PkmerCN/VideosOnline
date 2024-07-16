@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hzz.course.infrastructure.dao.mapper.catalogue.CourseCatalogueMapper">
+  <resultMap id="BaseResultMap" type="org.hzz.course.infrastructure.dao.model.catalogue.CourseCatalogue">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="trailer" jdbcType="TINYINT" property="trailer" />
+    <result column="course_id" jdbcType="BIGINT" property="courseId" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="parent_catalogue_id" jdbcType="BIGINT" property="parentCatalogueId" />
+    <result column="media_id" jdbcType="BIGINT" property="mediaId" />
+    <result column="video_id" jdbcType="BIGINT" property="videoId" />
+    <result column="video_name" jdbcType="VARCHAR" property="videoName" />
+    <result column="living_start_time" jdbcType="TIMESTAMP" property="livingStartTime" />
+    <result column="living_end_time" jdbcType="TIMESTAMP" property="livingEndTime" />
+    <result column="play_back" jdbcType="TINYINT" property="playBack" />
+    <result column="media_duration" jdbcType="INTEGER" property="mediaDuration" />
+    <result column="c_index" jdbcType="INTEGER" property="cIndex" />
+    <result column="dep_id" jdbcType="BIGINT" property="depId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="creater_id" jdbcType="BIGINT" property="createrId" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+    <result column="deleted" jdbcType="TINYINT" property="deleted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, trailer, course_id, type, parent_catalogue_id, media_id, video_id, video_name, 
+    living_start_time, living_end_time, play_back, media_duration, c_index, dep_id, create_time, 
+    update_time, creater_id, updater_id, deleted
+  </sql>
+  <select id="selectByExample" parameterType="org.hzz.course.infrastructure.dao.model.catalogue.CourseCatalogueExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course_catalogue
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from course_catalogue
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from course_catalogue
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.hzz.course.infrastructure.dao.model.catalogue.CourseCatalogueExample">
+    delete from course_catalogue
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.hzz.course.infrastructure.dao.model.catalogue.CourseCatalogue">
+    insert into course_catalogue (id, name, trailer, 
+      course_id, type, parent_catalogue_id, 
+      media_id, video_id, video_name, 
+      living_start_time, living_end_time, play_back, 
+      media_duration, c_index, dep_id, 
+      create_time, update_time, creater_id, 
+      updater_id, deleted)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{trailer,jdbcType=TINYINT}, 
+      #{courseId,jdbcType=BIGINT}, #{type,jdbcType=TINYINT}, #{parentCatalogueId,jdbcType=BIGINT}, 
+      #{mediaId,jdbcType=BIGINT}, #{videoId,jdbcType=BIGINT}, #{videoName,jdbcType=VARCHAR}, 
+      #{livingStartTime,jdbcType=TIMESTAMP}, #{livingEndTime,jdbcType=TIMESTAMP}, #{playBack,jdbcType=TINYINT}, 
+      #{mediaDuration,jdbcType=INTEGER}, #{cIndex,jdbcType=INTEGER}, #{depId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT}, 
+      #{updaterId,jdbcType=BIGINT}, #{deleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="org.hzz.course.infrastructure.dao.model.catalogue.CourseCatalogue">
+    insert into course_catalogue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="trailer != null">
+        trailer,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="parentCatalogueId != null">
+        parent_catalogue_id,
+      </if>
+      <if test="mediaId != null">
+        media_id,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="videoName != null">
+        video_name,
+      </if>
+      <if test="livingStartTime != null">
+        living_start_time,
+      </if>
+      <if test="livingEndTime != null">
+        living_end_time,
+      </if>
+      <if test="playBack != null">
+        play_back,
+      </if>
+      <if test="mediaDuration != null">
+        media_duration,
+      </if>
+      <if test="cIndex != null">
+        c_index,
+      </if>
+      <if test="depId != null">
+        dep_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createrId != null">
+        creater_id,
+      </if>
+      <if test="updaterId != null">
+        updater_id,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trailer != null">
+        #{trailer,jdbcType=TINYINT},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="parentCatalogueId != null">
+        #{parentCatalogueId,jdbcType=BIGINT},
+      </if>
+      <if test="mediaId != null">
+        #{mediaId,jdbcType=BIGINT},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=BIGINT},
+      </if>
+      <if test="videoName != null">
+        #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="livingStartTime != null">
+        #{livingStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="livingEndTime != null">
+        #{livingEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playBack != null">
+        #{playBack,jdbcType=TINYINT},
+      </if>
+      <if test="mediaDuration != null">
+        #{mediaDuration,jdbcType=INTEGER},
+      </if>
+      <if test="cIndex != null">
+        #{cIndex,jdbcType=INTEGER},
+      </if>
+      <if test="depId != null">
+        #{depId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterId != null">
+        #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.hzz.course.infrastructure.dao.model.catalogue.CourseCatalogueExample" resultType="java.lang.Long">
+    select count(*) from course_catalogue
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update course_catalogue
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
+      </if>
+      <if test="row.trailer != null">
+        trailer = #{row.trailer,jdbcType=TINYINT},
+      </if>
+      <if test="row.courseId != null">
+        course_id = #{row.courseId,jdbcType=BIGINT},
+      </if>
+      <if test="row.type != null">
+        type = #{row.type,jdbcType=TINYINT},
+      </if>
+      <if test="row.parentCatalogueId != null">
+        parent_catalogue_id = #{row.parentCatalogueId,jdbcType=BIGINT},
+      </if>
+      <if test="row.mediaId != null">
+        media_id = #{row.mediaId,jdbcType=BIGINT},
+      </if>
+      <if test="row.videoId != null">
+        video_id = #{row.videoId,jdbcType=BIGINT},
+      </if>
+      <if test="row.videoName != null">
+        video_name = #{row.videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.livingStartTime != null">
+        living_start_time = #{row.livingStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.livingEndTime != null">
+        living_end_time = #{row.livingEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.playBack != null">
+        play_back = #{row.playBack,jdbcType=TINYINT},
+      </if>
+      <if test="row.mediaDuration != null">
+        media_duration = #{row.mediaDuration,jdbcType=INTEGER},
+      </if>
+      <if test="row.cIndex != null">
+        c_index = #{row.cIndex,jdbcType=INTEGER},
+      </if>
+      <if test="row.depId != null">
+        dep_id = #{row.depId,jdbcType=BIGINT},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.createrId != null">
+        creater_id = #{row.createrId,jdbcType=BIGINT},
+      </if>
+      <if test="row.updaterId != null">
+        updater_id = #{row.updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="row.deleted != null">
+        deleted = #{row.deleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update course_catalogue
+    set id = #{row.id,jdbcType=BIGINT},
+      name = #{row.name,jdbcType=VARCHAR},
+      trailer = #{row.trailer,jdbcType=TINYINT},
+      course_id = #{row.courseId,jdbcType=BIGINT},
+      type = #{row.type,jdbcType=TINYINT},
+      parent_catalogue_id = #{row.parentCatalogueId,jdbcType=BIGINT},
+      media_id = #{row.mediaId,jdbcType=BIGINT},
+      video_id = #{row.videoId,jdbcType=BIGINT},
+      video_name = #{row.videoName,jdbcType=VARCHAR},
+      living_start_time = #{row.livingStartTime,jdbcType=TIMESTAMP},
+      living_end_time = #{row.livingEndTime,jdbcType=TIMESTAMP},
+      play_back = #{row.playBack,jdbcType=TINYINT},
+      media_duration = #{row.mediaDuration,jdbcType=INTEGER},
+      c_index = #{row.cIndex,jdbcType=INTEGER},
+      dep_id = #{row.depId,jdbcType=BIGINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      creater_id = #{row.createrId,jdbcType=BIGINT},
+      updater_id = #{row.updaterId,jdbcType=BIGINT},
+      deleted = #{row.deleted,jdbcType=TINYINT}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.hzz.course.infrastructure.dao.model.catalogue.CourseCatalogue">
+    update course_catalogue
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trailer != null">
+        trailer = #{trailer,jdbcType=TINYINT},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="parentCatalogueId != null">
+        parent_catalogue_id = #{parentCatalogueId,jdbcType=BIGINT},
+      </if>
+      <if test="mediaId != null">
+        media_id = #{mediaId,jdbcType=BIGINT},
+      </if>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=BIGINT},
+      </if>
+      <if test="videoName != null">
+        video_name = #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="livingStartTime != null">
+        living_start_time = #{livingStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="livingEndTime != null">
+        living_end_time = #{livingEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playBack != null">
+        play_back = #{playBack,jdbcType=TINYINT},
+      </if>
+      <if test="mediaDuration != null">
+        media_duration = #{mediaDuration,jdbcType=INTEGER},
+      </if>
+      <if test="cIndex != null">
+        c_index = #{cIndex,jdbcType=INTEGER},
+      </if>
+      <if test="depId != null">
+        dep_id = #{depId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        creater_id = #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterId != null">
+        updater_id = #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.hzz.course.infrastructure.dao.model.catalogue.CourseCatalogue">
+    update course_catalogue
+    set name = #{name,jdbcType=VARCHAR},
+      trailer = #{trailer,jdbcType=TINYINT},
+      course_id = #{courseId,jdbcType=BIGINT},
+      type = #{type,jdbcType=TINYINT},
+      parent_catalogue_id = #{parentCatalogueId,jdbcType=BIGINT},
+      media_id = #{mediaId,jdbcType=BIGINT},
+      video_id = #{videoId,jdbcType=BIGINT},
+      video_name = #{videoName,jdbcType=VARCHAR},
+      living_start_time = #{livingStartTime,jdbcType=TIMESTAMP},
+      living_end_time = #{livingEndTime,jdbcType=TIMESTAMP},
+      play_back = #{playBack,jdbcType=TINYINT},
+      media_duration = #{mediaDuration,jdbcType=INTEGER},
+      c_index = #{cIndex,jdbcType=INTEGER},
+      dep_id = #{depId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      creater_id = #{createrId,jdbcType=BIGINT},
+      updater_id = #{updaterId,jdbcType=BIGINT},
+      deleted = #{deleted,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
