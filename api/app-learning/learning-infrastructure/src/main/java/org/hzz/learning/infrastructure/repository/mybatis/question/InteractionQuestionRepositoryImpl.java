@@ -8,6 +8,7 @@ import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.repository.question.InteractionQuestionRepository;
 import org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion;
+import org.hzz.learning.infrastructure.dao.mapper.question.InteractionQuestionExtMapper;
 import org.hzz.learning.infrastructure.dao.mapper.question.InteractionQuestionMapper;
 import org.hzz.learning.infrastructure.dao.mapper.question.InteractionQuestionPageMapper;
 import org.mapstruct.Mapper;
@@ -28,8 +29,13 @@ public class InteractionQuestionRepositoryImpl
         extends PageBaseRepository<InteractionQuestionPageMapper,InteractionQuestion>
         implements InteractionQuestionRepository {
 
+
+
     @Setter(onMethod_ = {@Autowired})
     private InteractionQuestionMapper interactionQuestionMapper;
+
+    @Setter(onMethod_ = {@Autowired})
+    private InteractionQuestionExtMapper interactionQuestionExtMapper;
 
     /**
      * {@inheritDoc}

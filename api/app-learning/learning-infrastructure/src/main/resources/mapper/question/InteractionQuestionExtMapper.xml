@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hzz.learning.infrastructure.dao.mapper.question.InteractionQuestionExtMapper">
+
+    <update id="updateAnswer">
+        update interaction_question
+        set answer_times = answer_times + 1,
+        latest_answer_id = #{answerId}
+        where id = #{id}
+    </update>
+
+</mapper>
