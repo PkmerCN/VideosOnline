@@ -30,6 +30,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ *
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/13
@@ -56,6 +57,43 @@ public class AdminQuestionPageQueryCommandHandler
     private CatalogueDomainService catalogueDomainService;
 
 
+    /** 测试效果
+     * "data": {
+     *     "currentPageNo": 1,
+     *     "total": 6,
+     *     "totalPages": 1,
+     *     "list": [
+     *       {
+     *         "answerTimes": 0,
+     *         "categoryName": "IT·互联网/互联网运营/产品运营",
+     *         "chapterName": "第一章 带你玩",
+     *         "courseName": "课程2",
+     *         "createTime": "2024-07-11 15:54:19",
+     *         "description": "打铁没样，边打边像",
+     *         "hidden": false,
+     *         "id": 7217194505039122000,
+     *         "sectionName": "第一章 带你玩-第1课",
+     *         "status": 0,
+     *         "title": "Java顶级开发",
+     *         "username": "壮哥"
+     *       },
+     *       {
+     *         "answerTimes": 0,
+     *         "categoryName": "IT·互联网/互联网运营/产品运营",
+     *         "chapterName": "第一章 带你玩",
+     *         "courseName": "课程2",
+     *         "createTime": "2024-07-11 15:35:01",
+     *         "description": "DDD开发",
+     *         "hidden": false,
+     *         "id": 7217189651637998000,
+     *         "sectionName": "第一章 带你玩-第3课",
+     *         "status": 0,
+     *         "title": "Java顶级开发",
+     *         "username": "壮哥"
+     *       },
+     *       ...
+     *   }
+     */
     @Override
     public PageResponse<AdminQuestionDetailVo> executeWithResp(AdminQuestionPageQueryCommand command) {
 
