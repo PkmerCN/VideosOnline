@@ -5,6 +5,7 @@ import org.hzz.core.controller.BaseController;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.question.AdminQuestionApi;
+import org.hzz.learning.application.command.question.admin.AdminGetQuestionDetailCommand;
 import org.hzz.learning.application.command.question.admin.AdminHiddenQuestionCommand;
 import org.hzz.learning.application.command.question.admin.AdminQuestionPageQueryCommand;
 import org.hzz.learning.application.service.AppHandleCmdService;
@@ -53,5 +54,14 @@ public class AdminQuestionController extends BaseController
         cmd.setId(id).setHidden(hidden);
         cmdService.handleCommand(cmd);
         return success(null);
+    }
+
+    @Override
+    public Result<AdminQuestionDetailVo> getQuestionDetail(Long questionId) {
+        logger.info("获取问题详情 id = {}",questionId);
+        AdminGetQuestionDetailCommand cmd = new AdminGetQuestionDetailCommand();
+        cmd.setQuestionId(questionId);
+        AdminQuestionDetailVo vo = cmdService.<AdminQuestionDetailVo>handleComandWithResult(cmd);
+        return success(vo);
     }
 }

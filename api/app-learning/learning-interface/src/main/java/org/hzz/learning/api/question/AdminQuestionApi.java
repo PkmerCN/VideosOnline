@@ -2,6 +2,7 @@ package org.hzz.learning.api.question;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.result.Result;
@@ -20,12 +21,14 @@ import org.springframework.web.bind.annotation.*;
 public interface AdminQuestionApi {
 
     @Operation(description = "分页查询")
+    @ApiResponse
     @GetMapping("/page")
     Result<PageResponse<AdminQuestionDetailVo>> questionPageQuery(
             @RequestBody
             AdminQuestionPageQuery pageQuery);
 
     @Operation(description = "设置问题隐藏")
+    @ApiResponse
     @PutMapping("/{id}/hidden/{hidden}")
     Result<Void> hiddenQuestion(
             @Parameter(name = "问题id")
@@ -33,5 +36,12 @@ public interface AdminQuestionApi {
             @Parameter(name = "是否隐藏问题")
             @PathVariable("hidden") Boolean hidden
     );
+
+    @Operation(description = "获取问题详情")
+    @ApiResponse
+    @GetMapping("/{questionId}")
+    Result<AdminQuestionDetailVo> getQuestionDetail(
+            @Parameter(description = "问题id")
+            @PathVariable("questionId") Long questionId);
 
 }
