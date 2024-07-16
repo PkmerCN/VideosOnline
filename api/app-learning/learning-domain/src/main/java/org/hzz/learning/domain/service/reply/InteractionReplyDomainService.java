@@ -20,6 +20,13 @@ public interface InteractionReplyDomainService {
     List<InteractionReplyEntity> getEntityByIds(Set<Long> ids);
 
     /**
+     * 获取评论
+     * @param id 评论id
+     * @return 评论
+     */
+    InteractionReplyEntity getEntityById(Long id);
+
+    /**
      * 删除问题下的所有评论回复
      * @param questionId 问题id
      */
@@ -30,4 +37,11 @@ public interface InteractionReplyDomainService {
      * @param entity 评论
      */
     void commitReply(InteractionReplyEntity entity);
+
+    /**
+     * 增加该评论的评论次数
+     * @param id 评论主键id
+     */
+    void incrReplyTimes(Long id);
+
 }

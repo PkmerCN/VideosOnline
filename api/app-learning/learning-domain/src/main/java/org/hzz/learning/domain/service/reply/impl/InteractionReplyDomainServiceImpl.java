@@ -40,6 +40,18 @@ public class InteractionReplyDomainServiceImpl
      * {@inheritDoc}
      */
     @Override
+    public InteractionReplyEntity getEntityById(Long id) {
+        InteractionReplyEntity entity = repository.selectById(id);
+        if (entity != null && logger.isInfoEnabled()) {
+            logger.info("成功获取到评论");
+        }
+        return entity;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void deleteReplyByQuestionId(Long questionId) {
         int i = repository.deleteByQuestionId(questionId);
         if (i != 0) {
@@ -56,7 +68,24 @@ public class InteractionReplyDomainServiceImpl
         if (logger.isInfoEnabled() && insert != 0) {
             String msg = Boolean.TRUE.equals(entity.isComment()) ?
                     "评论" : "回答";
-            logger.info("成功提交{}个{}",insert,msg);
+            logger.info("成功提交{}个{}", insert, msg);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void incrReplyTimes(Long id) {
+        InteractionReplyEntity entity = this.getEntityById(id);
+
+        Integer older = entity.getReplyTimes();
+        entity.setReplyTimes(older + 1);
+
+        int i = repository.updateSelective(entity);
+
+        if (logger.isInfoEnabled() && i != 0) {
+            logger.info("成功增加评论次数 {} -> {}", older, entity.getReplyTimes());
         }
     }
 }

@@ -39,6 +39,13 @@ public interface InteractionQuestionDomainService extends DomainService {
     }
 
     /**
+     * 该问题下有新的回答，处理该问题下最新回答id和总回答次数
+     * @param questionId 问题id
+     * @param answerId 回答id
+     */
+    void addAnswer(Long questionId,Long answerId);
+
+    /**
      * 删除问题
      * @param id 问题id
      */

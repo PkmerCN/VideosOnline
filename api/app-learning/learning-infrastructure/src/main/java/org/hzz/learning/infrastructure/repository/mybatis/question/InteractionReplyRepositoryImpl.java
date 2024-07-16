@@ -43,6 +43,15 @@ public class InteractionReplyRepositoryImpl
      * {@inheritDoc}
      */
     @Override
+    public InteractionReplyEntity selectById(Long id) {
+        InteractionReply interactionReply = mapper.selectByPrimaryKey(id);
+        return Converter.INSTANCE.toEntity(interactionReply);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public int deleteByQuestionId(Long questionId) {
         InteractionReplyExample example = new InteractionReplyExample();
         example.createCriteria().andQuestionIdEqualTo(questionId);
@@ -55,7 +64,18 @@ public class InteractionReplyRepositoryImpl
     @Override
     public int insertSelective(InteractionReplyEntity entity) {
         InteractionReply record = Converter.INSTANCE.toRecord(entity);
-        return mapper.insertSelective(record);
+        int i = mapper.insertSelective(record);
+        // 做id处理
+        entity.setId(record.getId());
+        return i;
+    }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int updateSelective(InteractionReplyEntity entity) {
+        InteractionReply record = Converter.INSTANCE.toRecord(entity);
+        return mapper.updateByPrimaryKeySelective(record);
     }
 
 

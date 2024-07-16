@@ -21,6 +21,13 @@ public interface InteractionReplyRepository {
 
 
     /**
+     * 根据id查询评论或者回复
+     * @param id id主键
+     * @return 评论
+     */
+    InteractionReplyEntity selectById(Long id);
+
+    /**
      * 根据问题id删除评论
      * @param questionId 问题id
      * @return 删除数目
@@ -33,4 +40,13 @@ public interface InteractionReplyRepository {
      * @return 保存的记录数据
      */
     int insertSelective(InteractionReplyEntity entity);
+
+    /**
+     * 更新评论或者回复
+     * @param entity 实体
+     * @return 更新数目
+     */
+    int updateSelective(InteractionReplyEntity entity);
+
+
 }

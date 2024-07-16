@@ -1,6 +1,7 @@
 package org.hzz.learning.domain.entity.question;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 import org.hzz.ddd.core.domain.shared.Entity;
 
 /**
@@ -9,6 +10,7 @@ import org.hzz.ddd.core.domain.shared.Entity;
  * @date 2024/7/11
  */
 @Data
+@Accessors(chain = true)
 public class InteractionReplyEntity implements Entity {
     // 互动问题的回答id
     private Long id;

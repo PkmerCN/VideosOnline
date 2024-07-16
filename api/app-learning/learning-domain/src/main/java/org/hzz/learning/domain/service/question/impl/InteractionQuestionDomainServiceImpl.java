@@ -60,6 +60,23 @@ public class InteractionQuestionDomainServiceImpl
      * {@inheritDoc}
      */
     @Override
+    public void addAnswer(Long questionId, Long answerId) {
+        InteractionQuestionEntity entity = getEntityById(questionId);
+        Integer older = entity.getAnswerTimes();
+        // todo 这里set times = newTimes 与 set times = times + 1 还是不一样的，
+        //  多用户同时在该问题下评论的话，可能会有数据丢失
+        entity.setAnswerTimes(older + 1);
+
+        entity.setLatestAnswerId(answerId);
+
+        this.modifyQuestion(entity);
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void deleteQuestionById(Long id) {
         int i = repository.deleteById(id);
         if(i > 0){
