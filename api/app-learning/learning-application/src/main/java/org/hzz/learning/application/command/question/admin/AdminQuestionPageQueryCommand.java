@@ -1,9 +1,9 @@
-package org.hzz.learning.application.command.question;
+package org.hzz.learning.application.command.question.admin;
 
 import lombok.Data;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
-import org.hzz.learning.application.handler.question.AdminQuestionPageQueryCommandHandler;
+import org.hzz.learning.application.handler.question.admin.AdminQuestionPageQueryCommandHandler;
 import org.hzz.learning.types.enums.question.QuestionStatus;
 
 import java.time.LocalDateTime;

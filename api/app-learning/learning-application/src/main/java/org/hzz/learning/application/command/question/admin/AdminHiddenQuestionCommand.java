@@ -1,9 +1,9 @@
-package org.hzz.learning.application.command.question;
+package org.hzz.learning.application.command.question.admin;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
-import org.hzz.learning.application.handler.question.AdminHiddenQuestionCommandHandler;
+import org.hzz.learning.application.handler.question.admin.AdminHiddenQuestionCommandHandler;
 
 /**
  * Admin隐藏问题

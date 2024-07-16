@@ -54,7 +54,7 @@ public class UserDetailDomainServiceImpl
      * {@inheritDoc}
      */
     @Override
-    public Map<Long, UserDetailEntity> getMapEntites(Set<Long> ids) {
+    public Map<Long, UserDetailEntity> getMapEntities(Set<Long> ids) {
 
         List<UserDetailEntity> entities = this.getEntities(ids);
         if(CollUtil.isEmpty(entities)){

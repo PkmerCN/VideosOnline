@@ -12,7 +12,6 @@ import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.service.question.InteractionQuestionDomainService;
 import org.hzz.learning.domain.service.question.InteractionReplyDomainService;
-import org.hzz.learning.types.req.question.QuestionPageQuery;
 import org.hzz.learning.types.resp.question.QuestionDto;
 import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.service.details.UserDetailDomainService;
@@ -22,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * 分页查询问题
@@ -130,7 +128,7 @@ public class QuestionPageQueryCommandHandler implements CommandHandler,
                               Map<Long, InteractionReplyEntity> answersMap,
                               Set<Long> userIds){
         // 用户
-        Map<Long, UserDetailEntity> userDetailEntityMap = userDetailDomainService.getMapEntites(userIds);
+        Map<Long, UserDetailEntity> userDetailEntityMap = userDetailDomainService.getMapEntities(userIds);
 
         // 组装数据
         List<QuestionDto> dtos = new ArrayList<>(questions.size());

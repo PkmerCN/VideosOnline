@@ -45,4 +45,15 @@ public class CatalogueDomainServiceImpl
                 e -> e
         ));
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Map<Long, String> getMapIdAndName(Set<Long> ids) {
+        return getMapEntities(ids).entrySet().stream().collect(Collectors.toMap(
+                Map.Entry::getKey,
+                entry -> entry.getValue().getName()
+        ));
+    }
 }

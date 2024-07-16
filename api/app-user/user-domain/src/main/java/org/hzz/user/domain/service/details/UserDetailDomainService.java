@@ -33,5 +33,5 @@ public interface UserDetailDomainService {
      * @param ids id列表
      * @return Map key为id value为{@link UserDetailEntity}
      */
-    Map<Long,UserDetailEntity> getMapEntites(Set<Long> ids);
+    Map<Long,UserDetailEntity> getMapEntities(Set<Long> ids);
 }

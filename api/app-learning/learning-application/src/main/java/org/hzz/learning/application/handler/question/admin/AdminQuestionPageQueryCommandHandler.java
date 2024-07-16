@@ -1,33 +1,29 @@
-package org.hzz.learning.application.handler.question;
+package org.hzz.learning.application.handler.question.admin;
 
 import lombok.Setter;
 import org.hzz.common.collection.CollUtil;
-import org.hzz.common.tree.BaseConverter;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.page.query.FilterCondition;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.course.cache.category.CategoryCache;
-import org.hzz.course.domain.entity.CourseCatalogueEntity;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.catalogue.CatalogueDomainService;
 import org.hzz.course.domain.service.course.CourseDomainService;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
-import org.hzz.learning.application.command.question.AdminQuestionPageQueryCommand;
+import org.hzz.learning.application.command.question.admin.AdminQuestionPageQueryCommand;
+import org.hzz.learning.application.converter.AdminQuestionDetailVoConverter;
 import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.service.question.InteractionQuestionDomainService;
 import org.hzz.learning.types.resp.question.AdminQuestionDetailVo;
 import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.service.details.UserDetailDomainService;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.hzz.core.page.query.FilterCondition.Operation;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -55,6 +51,9 @@ public class AdminQuestionPageQueryCommandHandler
 
     @Setter(onMethod_ = @Autowired)
     private CatalogueDomainService catalogueDomainService;
+
+    @Setter(onMethod_ = @Autowired)
+    private AdminQuestionDetailVoConverter converter;
 
 
     /** 测试效果
@@ -134,14 +133,14 @@ public class AdminQuestionPageQueryCommandHandler
             catalogueIds.add(entity.getSectionId());
         }
 
-        Map<Long, UserDetailEntity> mapUserDetailEntities = userDetailDomainService.getMapEntites(userIds);
+        Map<Long, UserDetailEntity> mapUserDetailEntities = userDetailDomainService.getMapEntities(userIds);
         Map<Long, CourseEntity> mapCourseEntities = courseDomainService.getMapCourseEntities(courseIds);
         Map<Long, String> mapCatalogue = getCatagolueInfo(catalogueIds);
 
 
         List<AdminQuestionDetailVo> voList = new ArrayList<>();
         for (InteractionQuestionEntity entity: questionEntities){
-            AdminQuestionDetailVo vo = AdminQuestionDetailVoConverter.INSTANCE.convert(entity);
+            AdminQuestionDetailVo vo = converter.convert(entity);
             // 处理用户
             handleUserInfo(entity,vo,mapUserDetailEntities);
 
@@ -196,13 +195,7 @@ public class AdminQuestionPageQueryCommandHandler
      * 获取章节数据
      */
     private Map<Long,String> getCatagolueInfo(Set<Long> catalogueIds){
-        Map<Long, CourseCatalogueEntity> mapCatalogueEntities = catalogueDomainService
-                .getMapEntities(catalogueIds);
-
-        return mapCatalogueEntities.entrySet().stream().collect(Collectors.toMap(
-                Map.Entry::getKey,
-                entry -> entry.getValue().getName()
-        ));
+        return catalogueDomainService.getMapIdAndName(catalogueIds);
     }
 
 
@@ -251,11 +244,6 @@ public class AdminQuestionPageQueryCommandHandler
     @Override
     public String mark() {
         return AdminQuestionPageQueryCommand.MARK;
-    }
-
-    @Mapper
-    interface AdminQuestionDetailVoConverter extends BaseConverter<AdminQuestionDetailVo,InteractionQuestionEntity>{
-        AdminQuestionDetailVoConverter INSTANCE = Mappers.getMapper(AdminQuestionDetailVoConverter.class);
     }
 
 }

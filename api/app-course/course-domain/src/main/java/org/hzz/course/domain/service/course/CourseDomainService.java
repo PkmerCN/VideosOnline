@@ -24,6 +24,7 @@ public interface CourseDomainService {
     Map<Long,CourseEntity> getMapCourseEntities(Set<Long> ids);
 
     CourseEntity findCourse(Long courseId);
+    
 
 
 }

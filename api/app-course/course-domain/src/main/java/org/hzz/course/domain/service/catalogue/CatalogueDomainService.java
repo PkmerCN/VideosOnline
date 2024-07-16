@@ -27,4 +27,11 @@ public interface CatalogueDomainService{
      * @return Map key -> id value -> {@link CourseCatalogueEntity}
      */
     Map<Long,CourseCatalogueEntity> getMapEntities(Set<Long> ids);
+
+    /**
+     * 获取章节简单数据，只包含id和name
+     * @param ids id 列表
+     * @return Map key -> id value -> 章节名字
+     */
+    Map<Long,String> getMapIdAndName(Set<Long> ids);
 }
