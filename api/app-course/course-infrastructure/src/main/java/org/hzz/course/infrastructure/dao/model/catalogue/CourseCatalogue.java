@@ -3,6 +3,7 @@ package org.hzz.course.infrastructure.dao.model.catalogue;
 import org.hzz.core.enums.delete.Deleted;
 import org.hzz.course.types.enums.catalogue.CatalogueType;
 import org.hzz.course.types.enums.catalogue.TrailerType;
+import org.hzz.mybatis.annotation.SnowflakeId;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
  */
 public class CourseCatalogue {
     // 课程目录id
+    @SnowflakeId
     private Long id;
 
     // 目录名称

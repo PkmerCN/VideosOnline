@@ -14,7 +14,7 @@ import java.util.Set;
 public interface CatalogueRepository {
 
     /**
-     * 获取章节数据
+     * 获取章节数据,只包含可用的数据
      * @param ids id
      * @return 根据id获取章节 List
      */
