@@ -3,6 +3,8 @@ package org.hzz.course.infrastructure.dao.model.teacher;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.hzz.core.enums.delete.Deleted;
+import org.hzz.course.types.enums.teacher.IsShow;
 
 public class CourseTeacherExample {
     protected String orderByClause;
@@ -295,52 +297,52 @@ public class CourseTeacherExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsShowEqualTo(Byte value) {
+        public Criteria andIsShowEqualTo(IsShow value) {
             addCriterion("is_show =", value, "isShow");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowNotEqualTo(Byte value) {
+        public Criteria andIsShowNotEqualTo(IsShow value) {
             addCriterion("is_show <>", value, "isShow");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowGreaterThan(Byte value) {
+        public Criteria andIsShowGreaterThan(IsShow value) {
             addCriterion("is_show >", value, "isShow");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowGreaterThanOrEqualTo(Byte value) {
+        public Criteria andIsShowGreaterThanOrEqualTo(IsShow value) {
             addCriterion("is_show >=", value, "isShow");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowLessThan(Byte value) {
+        public Criteria andIsShowLessThan(IsShow value) {
             addCriterion("is_show <", value, "isShow");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowLessThanOrEqualTo(Byte value) {
+        public Criteria andIsShowLessThanOrEqualTo(IsShow value) {
             addCriterion("is_show <=", value, "isShow");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowIn(List<Byte> values) {
+        public Criteria andIsShowIn(List<IsShow> values) {
             addCriterion("is_show in", values, "isShow");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowNotIn(List<Byte> values) {
+        public Criteria andIsShowNotIn(List<IsShow> values) {
             addCriterion("is_show not in", values, "isShow");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowBetween(Byte value1, Byte value2) {
+        public Criteria andIsShowBetween(IsShow value1, IsShow value2) {
             addCriterion("is_show between", value1, value2, "isShow");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowNotBetween(Byte value1, Byte value2) {
+        public Criteria andIsShowNotBetween(IsShow value1, IsShow value2) {
             addCriterion("is_show not between", value1, value2, "isShow");
             return (Criteria) this;
         }
@@ -715,52 +717,52 @@ public class CourseTeacherExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedEqualTo(Byte value) {
+        public Criteria andDeletedEqualTo(Deleted value) {
             addCriterion("deleted =", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotEqualTo(Byte value) {
+        public Criteria andDeletedNotEqualTo(Deleted value) {
             addCriterion("deleted <>", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThan(Byte value) {
+        public Criteria andDeletedGreaterThan(Deleted value) {
             addCriterion("deleted >", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThanOrEqualTo(Byte value) {
+        public Criteria andDeletedGreaterThanOrEqualTo(Deleted value) {
             addCriterion("deleted >=", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThan(Byte value) {
+        public Criteria andDeletedLessThan(Deleted value) {
             addCriterion("deleted <", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThanOrEqualTo(Byte value) {
+        public Criteria andDeletedLessThanOrEqualTo(Deleted value) {
             addCriterion("deleted <=", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedIn(List<Byte> values) {
+        public Criteria andDeletedIn(List<Deleted> values) {
             addCriterion("deleted in", values, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotIn(List<Byte> values) {
+        public Criteria andDeletedNotIn(List<Deleted> values) {
             addCriterion("deleted not in", values, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedBetween(Byte value1, Byte value2) {
+        public Criteria andDeletedBetween(Deleted value1, Deleted value2) {
             addCriterion("deleted between", value1, value2, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotBetween(Byte value1, Byte value2) {
+        public Criteria andDeletedNotBetween(Deleted value1, Deleted value2) {
             addCriterion("deleted not between", value1, value2, "deleted");
             return (Criteria) this;
         }

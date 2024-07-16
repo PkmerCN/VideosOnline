@@ -1,11 +1,11 @@
 package org.hzz.course.infrastructure.dao.mapper.teacher;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher;
 import org.hzz.course.infrastructure.dao.model.teacher.CourseTeacherExample;
-
-import java.util.List;
 
 @Mapper
 public interface CourseTeacherMapper {
