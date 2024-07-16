@@ -53,4 +53,7 @@ public class AdminQuestionDetailVo {
 
     @Schema(description = "小节名称")
     private String sectionName;
+
+    @Schema(description = "教师名称")
+    private String teacherName;
 }

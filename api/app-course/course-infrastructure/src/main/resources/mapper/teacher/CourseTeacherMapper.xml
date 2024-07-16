@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hzz.course.infrastructure.dao.mapper.teacher.CourseTeacherMapper">
+  <resultMap id="BaseResultMap" type="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="course_id" jdbcType="BIGINT" property="courseId" />
+    <result column="teacher_id" jdbcType="BIGINT" property="teacherId" />
+    <result column="is_show" jdbcType="TINYINT" property="isShow" />
+    <result column="c_index" jdbcType="INTEGER" property="cIndex" />
+    <result column="dep_id" jdbcType="BIGINT" property="depId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="creater_id" jdbcType="BIGINT" property="createrId" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+    <result column="deleted" jdbcType="TINYINT" property="deleted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, course_id, teacher_id, is_show, c_index, dep_id, create_time, update_time, creater_id, 
+    updater_id, deleted
+  </sql>
+  <select id="selectByExample" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacherExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    from course_teacher
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from course_teacher
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from course_teacher
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacherExample">
+    delete from course_teacher
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
+    insert into course_teacher (id, course_id, teacher_id, 
+      is_show, c_index, dep_id, 
+      create_time, update_time, creater_id, 
+      updater_id, deleted)
+    values (#{id,jdbcType=BIGINT}, #{courseId,jdbcType=BIGINT}, #{teacherId,jdbcType=BIGINT}, 
+      #{isShow,jdbcType=TINYINT}, #{cIndex,jdbcType=INTEGER}, #{depId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT}, 
+      #{updaterId,jdbcType=BIGINT}, #{deleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
+    insert into course_teacher
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="teacherId != null">
+        teacher_id,
+      </if>
+      <if test="isShow != null">
+        is_show,
+      </if>
+      <if test="cIndex != null">
+        c_index,
+      </if>
+      <if test="depId != null">
+        dep_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createrId != null">
+        creater_id,
+      </if>
+      <if test="updaterId != null">
+        updater_id,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=BIGINT},
+      </if>
+      <if test="isShow != null">
+        #{isShow,jdbcType=TINYINT},
+      </if>
+      <if test="cIndex != null">
+        #{cIndex,jdbcType=INTEGER},
+      </if>
+      <if test="depId != null">
+        #{depId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterId != null">
+        #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacherExample" resultType="java.lang.Long">
+    select count(*) from course_teacher
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update course_teacher
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.courseId != null">
+        course_id = #{row.courseId,jdbcType=BIGINT},
+      </if>
+      <if test="row.teacherId != null">
+        teacher_id = #{row.teacherId,jdbcType=BIGINT},
+      </if>
+      <if test="row.isShow != null">
+        is_show = #{row.isShow,jdbcType=TINYINT},
+      </if>
+      <if test="row.cIndex != null">
+        c_index = #{row.cIndex,jdbcType=INTEGER},
+      </if>
+      <if test="row.depId != null">
+        dep_id = #{row.depId,jdbcType=BIGINT},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.createrId != null">
+        creater_id = #{row.createrId,jdbcType=BIGINT},
+      </if>
+      <if test="row.updaterId != null">
+        updater_id = #{row.updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="row.deleted != null">
+        deleted = #{row.deleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update course_teacher
+    set id = #{row.id,jdbcType=BIGINT},
+      course_id = #{row.courseId,jdbcType=BIGINT},
+      teacher_id = #{row.teacherId,jdbcType=BIGINT},
+      is_show = #{row.isShow,jdbcType=TINYINT},
+      c_index = #{row.cIndex,jdbcType=INTEGER},
+      dep_id = #{row.depId,jdbcType=BIGINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      creater_id = #{row.createrId,jdbcType=BIGINT},
+      updater_id = #{row.updaterId,jdbcType=BIGINT},
+      deleted = #{row.deleted,jdbcType=TINYINT}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
+    update course_teacher
+    <set>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="teacherId != null">
+        teacher_id = #{teacherId,jdbcType=BIGINT},
+      </if>
+      <if test="isShow != null">
+        is_show = #{isShow,jdbcType=TINYINT},
+      </if>
+      <if test="cIndex != null">
+        c_index = #{cIndex,jdbcType=INTEGER},
+      </if>
+      <if test="depId != null">
+        dep_id = #{depId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrId != null">
+        creater_id = #{createrId,jdbcType=BIGINT},
+      </if>
+      <if test="updaterId != null">
+        updater_id = #{updaterId,jdbcType=BIGINT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
+    update course_teacher
+    set course_id = #{courseId,jdbcType=BIGINT},
+      teacher_id = #{teacherId,jdbcType=BIGINT},
+      is_show = #{isShow,jdbcType=TINYINT},
+      c_index = #{cIndex,jdbcType=INTEGER},
+      dep_id = #{depId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      creater_id = #{createrId,jdbcType=BIGINT},
+      updater_id = #{updaterId,jdbcType=BIGINT},
+      deleted = #{deleted,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

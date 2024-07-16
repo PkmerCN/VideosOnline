@@ -21,9 +21,9 @@
             <property name="useJSR310Types" value="true" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="org.hzz.course.infrastructure.dao.model.catalogue" targetProject="src/main/java" />
+        <javaModelGenerator targetPackage="org.hzz.course.infrastructure.dao.model.teacher" targetProject="src/main/java" />
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.course.infrastructure.dao.mapper.catalogue" targetProject="src/main/java"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.course.infrastructure.dao.mapper.teacher" targetProject="src/main/java"/>
 
 <!--   属性domainObjectName     -->
 <!--   https://mybatis.org/generator/configreference/xmlconfig.html     -->
@@ -44,11 +44,13 @@
 <!--            <columnOverride column="level" javaType="org.hzz.course.types.enums.catagory.CategoryLevel"/>-->
 <!--            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted"/>-->
 <!--        </table>-->
-        <table tableName="course_catalogue">
-            <columnOverride column="type" javaType="org.hzz.course.types.enums.catalogue.CatalogueType"/>
-            <columnOverride column="trailer" javaType="org.hzz.course.types.enums.catalogue.TrailerType"/>
-            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted"/>
-        </table>
+<!--        <table tableName="course_catalogue">-->
+<!--            <columnOverride column="type" javaType="org.hzz.course.types.enums.catalogue.CatalogueType"/>-->
+<!--            <columnOverride column="trailer" javaType="org.hzz.course.types.enums.catalogue.TrailerType"/>-->
+<!--            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted"/>-->
+<!--        </table>-->
+
+        <table tableName="course_teacher" />
 
     </context>
 
