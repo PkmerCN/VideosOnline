@@ -14,6 +14,7 @@ import org.hzz.core.enums.BaseEnumTemplate;
 public enum IsShow implements BaseEnum {
     NO(0,"不展示"),
     YES(1,"展示");
+
     private final Integer value;
     private final String desc;
 
