@@ -1,11 +1,15 @@
 package org.hzz.learning.api.question.controller;
 
+import lombok.Setter;
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.question.AdminQuestionApi;
+import org.hzz.learning.application.command.question.AdminQuestionPageQueryCommand;
+import org.hzz.learning.application.service.AppHandleCmdService;
 import org.hzz.learning.types.req.question.AdminQuestionPageQuery;
 import org.hzz.learning.types.resp.question.AdminQuestionDetailVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,8 +22,25 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminQuestionController extends BaseController
     implements AdminQuestionApi
 {
+
+    @Setter(onMethod_ = @Autowired)
+    private AppHandleCmdService cmdService;
+
     @Override
     public Result<PageResponse<AdminQuestionDetailVo>> questionPageQuery(AdminQuestionPageQuery pageQuery) {
-        return null;
+
+        AdminQuestionPageQueryCommand command = AdminQuestionPageQueryCommand.commandOf(
+                pageQuery.getCourseName(),
+                pageQuery.getStatus(),
+                pageQuery.getBeginTime(),
+                pageQuery.getEndTime(),
+                pageQuery
+        );
+
+        PageResponse<AdminQuestionDetailVo> result = cmdService
+                .<PageResponse<AdminQuestionDetailVo>>handleComandWithResult(command);
+
+
+        return success(result);
     }
 }
