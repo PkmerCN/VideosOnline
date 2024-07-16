@@ -8,6 +8,7 @@
     </parent>
 
     <artifactId>learning-interface</artifactId>
+    <description>问答系统，课程学习</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

@@ -5,6 +5,7 @@ import org.hzz.core.controller.BaseController;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.question.AdminQuestionApi;
+import org.hzz.learning.application.command.question.AdminHiddenQuestionCommand;
 import org.hzz.learning.application.command.question.AdminQuestionPageQueryCommand;
 import org.hzz.learning.application.service.AppHandleCmdService;
 import org.hzz.learning.types.req.question.AdminQuestionPageQuery;
@@ -42,5 +43,13 @@ public class AdminQuestionController extends BaseController
 
 
         return success(result);
+    }
+
+    @Override
+    public Result<Void> hiddenQuestion(Long id, Boolean hidden) {
+        AdminHiddenQuestionCommand cmd = new AdminHiddenQuestionCommand();
+        cmd.setId(id).setHidden(hidden);
+        cmdService.handleCommand(cmd);
+        return success(null);
     }
 }
