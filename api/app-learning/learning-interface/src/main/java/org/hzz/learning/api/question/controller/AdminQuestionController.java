@@ -47,6 +47,8 @@ public class AdminQuestionController extends BaseController
 
     @Override
     public Result<Void> hiddenQuestion(Long id, Boolean hidden) {
+        logger.info("设置 id = {} 的问题，的隐藏状态为: {}",id,hidden);
+
         AdminHiddenQuestionCommand cmd = new AdminHiddenQuestionCommand();
         cmd.setId(id).setHidden(hidden);
         cmdService.handleCommand(cmd);
