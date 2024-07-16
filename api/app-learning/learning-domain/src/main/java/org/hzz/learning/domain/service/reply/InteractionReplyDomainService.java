@@ -24,4 +24,10 @@ public interface InteractionReplyDomainService {
      * @param questionId 问题id
      */
     void deleteReplyByQuestionId(Long questionId);
+
+    /**
+     * 提交回答或者评论
+     * @param entity 评论
+     */
+    void commitReply(InteractionReplyEntity entity);
 }

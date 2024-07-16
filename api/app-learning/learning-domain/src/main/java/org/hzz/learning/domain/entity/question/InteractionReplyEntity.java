@@ -42,4 +42,13 @@ public class InteractionReplyEntity implements Entity {
 
     // 是否匿名，默认false
     private Boolean anonymity;
+
+
+    /**
+     * 是评论还是回答
+     * @return true 评论; false 回答
+     */
+    public Boolean isComment(){
+        return answerId != null && answerId != 0;
+    }
 }

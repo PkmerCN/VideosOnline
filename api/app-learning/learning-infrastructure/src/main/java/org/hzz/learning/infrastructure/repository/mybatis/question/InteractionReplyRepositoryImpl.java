@@ -53,7 +53,7 @@ public class InteractionReplyRepositoryImpl
      * {@inheritDoc}
      */
     @Override
-    public int insert(InteractionReplyEntity entity) {
+    public int insertSelective(InteractionReplyEntity entity) {
         InteractionReply record = Converter.INSTANCE.toRecord(entity);
         return mapper.insertSelective(record);
     }

@@ -13,6 +13,7 @@ import java.util.Set;
 
 /**
  * 评论领域服务
+ *
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/12
@@ -20,8 +21,7 @@ import java.util.Set;
 @Service
 public class InteractionReplyDomainServiceImpl
         extends BaseDomainService<InteractionReplyRepository>
-        implements InteractionReplyDomainService
-{
+        implements InteractionReplyDomainService {
 
     /**
      * {@inheritDoc}
@@ -29,8 +29,8 @@ public class InteractionReplyDomainServiceImpl
     @Override
     public List<InteractionReplyEntity> getEntityByIds(Set<Long> ids) {
         List<InteractionReplyEntity> entities = repository.selectBatchIds(ids);
-        if(CollUtil.isNotEmpty(entities)){
-            logger.info("查询到评论回复{}条",entities.size());
+        if (CollUtil.isNotEmpty(entities)) {
+            logger.info("查询到评论回复{}条", entities.size());
             return entities;
         }
         return Collections.emptyList();
@@ -42,8 +42,21 @@ public class InteractionReplyDomainServiceImpl
     @Override
     public void deleteReplyByQuestionId(Long questionId) {
         int i = repository.deleteByQuestionId(questionId);
-        if(i != 0){
-            logger.info("成功删除{}条回复",i);
+        if (i != 0) {
+            logger.info("成功删除{}条回复", i);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void commitReply(InteractionReplyEntity entity) {
+        int insert = repository.insertSelective(entity);
+        if (logger.isInfoEnabled() && insert != 0) {
+            String msg = Boolean.TRUE.equals(entity.isComment()) ?
+                    "评论" : "回答";
+            logger.info("成功提交{}个{}",insert,msg);
         }
     }
 }

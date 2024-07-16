@@ -32,5 +32,5 @@ public interface InteractionReplyRepository {
      * @param entity 评论或者回复实体
      * @return 保存的记录数据
      */
-    int insert(InteractionReplyEntity entity);
+    int insertSelective(InteractionReplyEntity entity);
 }
