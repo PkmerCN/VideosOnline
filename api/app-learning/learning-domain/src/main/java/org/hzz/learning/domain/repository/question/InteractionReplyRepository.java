@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 评论Repository
+ * 回答或者评论Repository
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/12
@@ -26,4 +26,11 @@ public interface InteractionReplyRepository {
      * @return 删除数目
      */
     int deleteByQuestionId(Long questionId);
+
+    /**
+     * 插入评论
+     * @param entity 评论或者回复实体
+     * @return 保存的记录数据
+     */
+    int insert(InteractionReplyEntity entity);
 }

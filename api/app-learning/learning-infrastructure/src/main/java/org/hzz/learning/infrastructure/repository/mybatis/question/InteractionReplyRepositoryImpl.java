@@ -1,5 +1,7 @@
 package org.hzz.learning.infrastructure.repository.mybatis.question;
 
+import org.hzz.common.tree.BaseConverter;
+import org.hzz.core.converter.RecordAndEntityConverter;
 import org.hzz.core.repository.nomapper.BaseRepository;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.repository.question.InteractionReplyRepository;
@@ -47,15 +49,18 @@ public class InteractionReplyRepositoryImpl
         return mapper.deleteByExample(example);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int insert(InteractionReplyEntity entity) {
+        InteractionReply record = Converter.INSTANCE.toRecord(entity);
+        return mapper.insertSelective(record);
+    }
+
 
     @Mapper
-    interface Converter {
+    interface Converter extends RecordAndEntityConverter<InteractionReply,InteractionReplyEntity> {
         Converter INSTANCE = Mappers.getMapper(Converter.class);
-
-        List<InteractionReplyEntity> toEntities(List<InteractionReply> records);
-
-        InteractionReplyEntity toEntity(InteractionReply record);
-
-        InteractionReply toRecord(InteractionReplyEntity entity);
     }
 }
