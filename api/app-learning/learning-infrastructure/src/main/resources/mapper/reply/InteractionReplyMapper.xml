@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.hzz.learning.infrastructure.dao.mapper.question.InteractionReplyMapper">
-  <resultMap id="BaseResultMap" type="org.hzz.learning.infrastructure.dao.entity.question.InteractionReply">
+<mapper namespace="org.hzz.learning.infrastructure.dao.mapper.reply.InteractionReplyMapper">
+  <resultMap id="BaseResultMap" type="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="question_id" jdbcType="BIGINT" property="questionId" />
     <result column="answer_id" jdbcType="BIGINT" property="answerId" />
@@ -78,7 +78,7 @@
     id, question_id, answer_id, user_id, content, target_user_id, target_reply_id, reply_times, 
     liked_times, hidden, anonymity, create_time, update_time
   </sql>
-  <select id="selectByExample" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReplyExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReplyExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -102,13 +102,13 @@
     delete from interaction_reply
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReplyExample">
+  <delete id="deleteByExample" parameterType="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReplyExample">
     delete from interaction_reply
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReply">
+  <insert id="insert" parameterType="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply">
     insert into interaction_reply (id, question_id, answer_id,
                                    user_id, content, target_user_id,
                                    target_reply_id, reply_times, liked_times,
@@ -120,7 +120,7 @@
             #{hidden,jdbcType=BIT}, #{anonymity,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP},
             #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReply">
+  <insert id="insertSelective" parameterType="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply">
     insert into interaction_reply
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -205,7 +205,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReplyExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReplyExample" resultType="java.lang.Long">
     select count(*) from interaction_reply
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -277,7 +277,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReply">
+  <update id="updateByPrimaryKeySelective" parameterType="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply">
     update interaction_reply
     <set>
       <if test="questionId != null">
@@ -319,7 +319,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.hzz.learning.infrastructure.dao.entity.question.InteractionReply">
+  <update id="updateByPrimaryKey" parameterType="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply">
     update interaction_reply
     set question_id = #{questionId,jdbcType=BIGINT},
         answer_id = #{answerId,jdbcType=BIGINT},

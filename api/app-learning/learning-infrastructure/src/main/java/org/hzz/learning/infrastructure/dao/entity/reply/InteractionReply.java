@@ -1,4 +1,4 @@
-package org.hzz.learning.infrastructure.dao.entity.question;
+package org.hzz.learning.infrastructure.dao.entity.reply;
 
 import java.time.LocalDateTime;
 
