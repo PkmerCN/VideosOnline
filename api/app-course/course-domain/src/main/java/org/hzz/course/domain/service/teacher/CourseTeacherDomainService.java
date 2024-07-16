@@ -18,4 +18,12 @@ public interface CourseTeacherDomainService {
      * @return 老师列表 因为一个可能会有多个老师
      */
     List<CourseTeacherEntity> getTeachersOfCourse(Long courseId);
+
+
+    /**
+     * 获取课程对应的老师id
+     * @param courseId 课程id
+     * @return 老师id列表 因为一个可能会有多个老师
+     */
+    List<Long> getTeacherIds(Long courseId);
 }

@@ -7,6 +7,7 @@ import org.hzz.course.domain.service.teacher.CourseTeacherDomainService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author 胖卡
@@ -26,5 +27,15 @@ public class CourseTeacherDomainServiceImpl
         List<CourseTeacherEntity> teachers = repository.getTeachersByCourseId(courseId);
         logger.info("查询到课程 id = {} 对应的老师有{}位",courseId,teachers.size());
         return teachers;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Long> getTeacherIds(Long courseId) {
+        return getTeachersOfCourse(courseId).stream()
+                .map(CourseTeacherEntity::getTeacherId)
+                .collect(Collectors.toList());
     }
 }
