@@ -3,6 +3,7 @@ package org.hzz.learning.infrastructure.repository.mybatis.question;
 import lombok.Setter;
 import org.hzz.core.converter.RecordAndEntityConverter;
 import org.hzz.core.repository.nomapper.BaseRepository;
+import org.hzz.core.repository.nomapper.PageBaseRepository;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.repository.question.InteractionReplyRepository;
 import org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply;
@@ -25,11 +26,14 @@ import java.util.Set;
  */
 @Repository
 public class InteractionReplyRepositoryImpl
-        extends BaseRepository<InteractionReplyMapper>
+         extends PageBaseRepository<InteractionReplyExtMapper,InteractionReply>
         implements InteractionReplyRepository {
 
     @Setter(onMethod_ = @Autowired)
     private InteractionReplyExtMapper replyExtMapper;
+
+    @Setter(onMethod_ = @Autowired)
+    private InteractionReplyMapper replyMapper;
 
     /**
      * {@inheritDoc}
@@ -40,7 +44,7 @@ public class InteractionReplyRepositoryImpl
         InteractionReplyExample example = new InteractionReplyExample();
         example.createCriteria()
                 .andIdIn(idList);
-        List<InteractionReply> interactionReplies = mapper.selectByExample(example);
+        List<InteractionReply> interactionReplies = replyMapper.selectByExample(example);
         return Converter.INSTANCE.toEntities(interactionReplies);
     }
 
@@ -49,7 +53,7 @@ public class InteractionReplyRepositoryImpl
      */
     @Override
     public InteractionReplyEntity selectById(Long id) {
-        InteractionReply interactionReply = mapper.selectByPrimaryKey(id);
+        InteractionReply interactionReply = replyMapper.selectByPrimaryKey(id);
         return Converter.INSTANCE.toEntity(interactionReply);
     }
 
@@ -60,7 +64,7 @@ public class InteractionReplyRepositoryImpl
     public int deleteByQuestionId(Long questionId) {
         InteractionReplyExample example = new InteractionReplyExample();
         example.createCriteria().andQuestionIdEqualTo(questionId);
-        return mapper.deleteByExample(example);
+        return replyMapper.deleteByExample(example);
     }
 
     /**
@@ -69,7 +73,7 @@ public class InteractionReplyRepositoryImpl
     @Override
     public int insertSelective(InteractionReplyEntity entity) {
         InteractionReply record = Converter.INSTANCE.toRecord(entity);
-        int i = mapper.insertSelective(record);
+        int i = replyMapper.insertSelective(record);
         // 做id处理
         entity.setId(record.getId());
         return i;
@@ -80,7 +84,7 @@ public class InteractionReplyRepositoryImpl
     @Override
     public int updateSelective(InteractionReplyEntity entity) {
         InteractionReply record = Converter.INSTANCE.toRecord(entity);
-        return mapper.updateByPrimaryKeySelective(record);
+        return replyMapper.updateByPrimaryKeySelective(record);
     }
 
     /**
