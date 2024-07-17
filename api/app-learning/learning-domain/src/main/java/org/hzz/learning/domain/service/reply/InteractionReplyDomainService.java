@@ -1,5 +1,7 @@
 package org.hzz.learning.domain.service.reply;
 
+import org.hzz.core.page.PageResponse;
+import org.hzz.core.page.query.PageQuery;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 
 import java.util.List;
@@ -43,5 +45,26 @@ public interface InteractionReplyDomainService {
      * @param id 评论主键id
      */
     void incrReplyTimes(Long id);
+
+    /**
+     * 分页查询回答
+     * @param questionId 问题id
+     * @param pageQuery 分页查询条件
+     * @return 分页结果
+     */
+    PageResponse<InteractionReplyEntity> selectReplyPage(
+            Long questionId,
+            PageQuery pageQuery);
+
+    /**
+     * 分页查询回答
+     * @param answerId 回复id
+     * @param pageQuery 分页查询条件
+     * @return 分页查询
+     */
+    PageResponse<InteractionReplyEntity> selectCommentPage(
+            Long answerId,
+            PageQuery pageQuery
+    );
 
 }

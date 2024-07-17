@@ -1,4 +1,4 @@
-package org.hzz.learning.domain.repository;
+package org.hzz.learning.domain.repository.lesson;
 
 import org.hzz.core.page.PageResponse;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;

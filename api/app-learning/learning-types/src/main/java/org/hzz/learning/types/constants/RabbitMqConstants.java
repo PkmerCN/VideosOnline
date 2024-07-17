@@ -1,11 +1,11 @@
-package org.hzz.learning.types.constant;
+package org.hzz.learning.types.constants;
 
 /**
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/25
  */
-public interface Constants {
+public interface RabbitMqConstants {
     interface Exchange{
         String LEARNING_EXCHANGE = "learning.direct";
     }

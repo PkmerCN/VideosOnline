@@ -1,4 +1,4 @@
-package org.hzz.learning.domain.repository.question;
+package org.hzz.learning.domain.repository.reply;
 
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.page.query.PageQuery;

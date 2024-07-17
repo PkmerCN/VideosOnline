@@ -1,7 +1,9 @@
 package org.hzz.core.page.query;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author 胖卡
@@ -9,6 +11,8 @@ import lombok.Data;
  * @date 2024/6/27
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Schema(description = "排序字段和顺序")
 public class SortOrder{
     @Schema(description = "排序方式",example = "id")

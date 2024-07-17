@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.hzz.common.collection.CollUtil;
 import org.hzz.learning.domain.entity.IdAndNumEntity;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
-import org.hzz.learning.domain.repository.LearnLessonRecordRepository;
+import org.hzz.learning.domain.repository.lesson.LearnLessonRecordRepository;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecord;
 import org.hzz.learning.infrastructure.dao.entity.record.LearningRecordExample;
 import org.hzz.learning.infrastructure.dao.mapper.record.LearningRecordMapper;

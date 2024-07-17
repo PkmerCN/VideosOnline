@@ -1,12 +1,18 @@
 package org.hzz.learning.domain.service.reply.impl;
 
 import org.hzz.common.collection.CollUtil;
+import org.hzz.core.page.PageResponse;
+import org.hzz.core.page.query.FilterCondition;
+import org.hzz.core.page.query.FilterCondition.Operation;
+import org.hzz.core.page.query.PageQuery;
+import org.hzz.core.page.query.SortOrder;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
-import org.hzz.learning.domain.repository.question.InteractionReplyRepository;
+import org.hzz.learning.domain.repository.reply.InteractionReplyRepository;
 import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -94,5 +100,42 @@ public class InteractionReplyDomainServiceImpl
         if (logger.isInfoEnabled() && i != 0) {
             logger.info("成功增加评论次数 {} -> {}", oldTimes,newTimes);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public PageResponse<InteractionReplyEntity> selectReplyPage(Long questionId, PageQuery pageQuery) {
+        final Long TopAnswerId = 0L;
+        List<FilterCondition> filters = new ArrayList<>();
+        // todo freemark 生成一个常量类。字段名称
+
+        // question_id
+        filters.add(new FilterCondition("question_id",Operation.Equal,questionId));
+        // 一级评论
+        filters.add(new FilterCondition("answer_id",Operation.Equal,TopAnswerId));
+
+        // 按照点赞，创建时间
+        List<SortOrder> sortOrders = new ArrayList<>();
+        sortOrders.add(new SortOrder("liked_times",false));
+        sortOrders.add(new SortOrder("create_time",false));
+
+
+
+
+        pageQuery.setFilters(filters);
+        pageQuery.setSortOrders(sortOrders);
+
+        repository.selectPage(pageQuery);
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public PageResponse<InteractionReplyEntity> selectCommentPage(Long answerId, PageQuery pageQuery) {
+        return null;
     }
 }

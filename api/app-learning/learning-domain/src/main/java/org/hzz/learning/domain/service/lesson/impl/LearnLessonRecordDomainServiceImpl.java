@@ -9,7 +9,7 @@ import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
 import org.hzz.learning.domain.entity.IdAndNumEntity;
 import org.hzz.learning.domain.entity.LearnRecordEntity;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
-import org.hzz.learning.domain.repository.LearnLessonRecordRepository;
+import org.hzz.learning.domain.repository.lesson.LearnLessonRecordRepository;
 import org.hzz.learning.domain.service.lesson.LearnLessonDomainService;
 import org.hzz.learning.domain.service.lesson.LearnLessonRecordDomainService;
 import org.springframework.beans.factory.annotation.Autowired;

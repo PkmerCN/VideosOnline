@@ -16,7 +16,7 @@ import java.util.List;
 
 import static org.hzz.learning.infrastructure.mq.rabbitmq.constants.RabbitmqConstants.Exchange.*;
 import static org.hzz.learning.infrastructure.mq.rabbitmq.constants.RabbitmqConstants.RoutingKey.*;
-import static org.hzz.learning.types.constant.Constants.Key.*;
+import static org.hzz.learning.types.constants.RabbitMqConstants.Key.*;
 import static org.hzz.order.types.constant.Constants.Exchange.*;
 /**
  * @author 胖卡

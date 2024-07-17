@@ -20,8 +20,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-import static org.hzz.learning.types.constant.Constants.Queue.*;
-import static org.hzz.learning.types.constant.Constants.Key.*;
+import static org.hzz.learning.types.constants.RabbitMqConstants.Queue.*;
+import static org.hzz.learning.types.constants.RabbitMqConstants.Key.*;
 import static org.hzz.order.types.constant.Constants.Exchange.*;
 
 /**
