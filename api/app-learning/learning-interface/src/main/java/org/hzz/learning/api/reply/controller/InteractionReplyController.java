@@ -12,6 +12,7 @@ import org.hzz.learning.api.reply.InteractionReplyApi;
 import org.hzz.learning.application.command.reply.CommitReplyCommand;
 import org.hzz.learning.application.service.LessonCmdService;
 import org.hzz.learning.types.req.reply.ReplyReq;
+import org.hzz.security.context.AppContextHolder;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +42,8 @@ public class InteractionReplyController
         validateReplyReq(replyReq);
 
         CommitReplyCommand cmd = Converter.INSTANCE.convert(replyReq);
-
+        // user_id
+        cmd.setUserId(AppContextHolder.userContextHolder.getUser().getId());
         cmdService.handleCommand(cmd);
         return success(null);
     }

@@ -31,7 +31,7 @@ public class ReplyReq {
     @NotNull(groups = {ReplyGroup.class,CommentGroup.class})
     private Boolean anonymity = false;
 
-    @Schema(description = "回复的上级回答id 针对的是评论")
+    @Schema(description = "回复的上级回答id 针对的是回复")
     @NotNull(groups = {CommentGroup.class})
     private Long answerId;
 
