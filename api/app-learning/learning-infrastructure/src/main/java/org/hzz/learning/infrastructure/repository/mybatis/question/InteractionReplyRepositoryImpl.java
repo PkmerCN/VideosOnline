@@ -78,6 +78,14 @@ public class InteractionReplyRepositoryImpl
         return mapper.updateByPrimaryKeySelective(record);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int incrReplyTimes(Long id) {
+        return 0;
+    }
+
 
     @Mapper
     interface Converter extends RecordAndEntityConverter<InteractionReply,InteractionReplyEntity> {

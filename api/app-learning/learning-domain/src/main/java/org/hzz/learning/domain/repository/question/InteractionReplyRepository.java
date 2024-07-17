@@ -49,6 +49,12 @@ public interface InteractionReplyRepository {
     int updateSelective(InteractionReplyEntity entity);
 
 
+    /**
+     * 处理回复的评论数量+1
+     * @param id 评论的回复id
+     * @return 影响的行
+     */
+    int incrReplyTimes(Long id);
 
 
 

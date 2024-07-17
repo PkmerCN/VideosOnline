@@ -77,15 +77,22 @@ public class InteractionReplyDomainServiceImpl
      */
     @Override
     public void incrReplyTimes(Long id) {
-        InteractionReplyEntity entity = this.getEntityById(id);
+        InteractionReplyEntity oldEntity = this.getEntityById(id);
+        Integer oldTimes = oldEntity.getReplyTimes();
 
-        Integer older = entity.getReplyTimes();
-        entity.setReplyTimes(older + 1);
+        // 通过数据库update reply_times = reply_times + 1
+        int i = repository.incrReplyTimes(id);
 
-        int i = repository.updateSelective(entity);
+        InteractionReplyEntity newEntity = this.getEntityById(id);
+        Integer newTimes = newEntity.getReplyTimes();
+
+        // todo 有并发问题，所以用数据库的update reply_times = reply_times + 1,
+        // entity.setReplyTimes(older + 1);
+        // int i = repository.updateSelective(entity);
+
 
         if (logger.isInfoEnabled() && i != 0) {
-            logger.info("成功增加评论次数 {} -> {}", older, entity.getReplyTimes());
+            logger.info("成功增加评论次数 {} -> {}", oldTimes,newTimes);
         }
     }
 }
