@@ -76,6 +76,14 @@ public class InteractionQuestionRepositoryImpl
      * {@inheritDoc}
      */
     @Override
+    public int incrAnswerTimes(Long questionId, Long answerId) {
+        return interactionQuestionExtMapper.updateAnswer(questionId, answerId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public PageResponse<InteractionQuestionEntity> pageQuery(QuestionQueryAggregate aggregate) {
         PageResponse<InteractionQuestion> results = super.pageQuery(aggregate.getPageQuery());
         return PageResponse.<InteractionQuestionEntity>builder()

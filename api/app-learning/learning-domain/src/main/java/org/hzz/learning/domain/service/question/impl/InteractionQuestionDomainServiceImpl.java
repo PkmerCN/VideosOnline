@@ -61,15 +61,22 @@ public class InteractionQuestionDomainServiceImpl
      */
     @Override
     public void addAnswer(Long questionId, Long answerId) {
-        InteractionQuestionEntity entity = getEntityById(questionId);
-        Integer older = entity.getAnswerTimes();
-        // todo 这里set times = newTimes 与 set times = times + 1 还是不一样的，
-        //  多用户同时在该问题下评论的话，可能会有数据丢失
-        entity.setAnswerTimes(older + 1);
+        int i = repository.incrAnswerTimes(questionId,answerId);
+        if(logger.isInfoEnabled() && i != 0){
+            logger.info("成功更新问题下的回答次数");
+        }
 
-        entity.setLatestAnswerId(answerId);
+        /**
+            InteractionQuestionEntity entity = getEntityById(questionId);
+            Integer older = entity.getAnswerTimes();
+            // todo 这里set times = newTimes 与 set times = times + 1 还是不一样的，
+            //  多用户同时在该问题下评论的话，可能会有数据丢失
+            entity.setAnswerTimes(older + 1);
 
-        this.modifyQuestion(entity);
+            entity.setLatestAnswerId(answerId);
+            // todo update
+            this.modifyQuestion(entity);
+         */
     }
 
 

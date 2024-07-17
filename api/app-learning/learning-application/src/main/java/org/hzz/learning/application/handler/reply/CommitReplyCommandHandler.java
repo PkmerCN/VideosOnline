@@ -55,7 +55,7 @@ public class CommitReplyCommandHandler
             self.handleComment(entity);
         }else{
             // 回答
-
+            self.handleReply(entity);
         }
 
 
@@ -81,11 +81,14 @@ public class CommitReplyCommandHandler
     /**
      * 处理回复
      */
-    private void handleReply(InteractionReplyEntity currentReply,Long questionId){
+    @Transactional
+    public void handleReply(InteractionReplyEntity currentReply){
+        log.info("插入数据库之前，当前回答Id = {}",currentReply.getId());
         // todo 能拿到id吗
         replyDomainService.commitReply(currentReply);
+        log.info("插入数据库后，当前回答Id = {}",currentReply.getId());
         // 更新问题 todo 用sql更新，不要在代码里面做。
-        questionDomainService.addAnswer(questionId,currentReply.getId());
+        questionDomainService.addAnswer(currentReply.getQuestionId(),currentReply.getId());
     }
 
 

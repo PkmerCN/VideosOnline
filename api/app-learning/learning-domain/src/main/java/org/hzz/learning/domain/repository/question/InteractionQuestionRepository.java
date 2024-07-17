@@ -47,6 +47,13 @@ public interface InteractionQuestionRepository {
     }
 
     /**
+     * 增加问题的回答次数
+     * @param questionId 问题id
+     * @param answerId 回答id
+     */
+    int incrAnswerTimes(Long questionId,Long answerId);
+
+    /**
      * 分页查询
      * @param aggregate 聚合根
      * @return 分页
