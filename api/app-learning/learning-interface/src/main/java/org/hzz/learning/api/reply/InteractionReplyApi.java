@@ -20,6 +20,11 @@ public interface InteractionReplyApi {
 
     /**
      * 评论api
+     * {
+     *  "code": 2000,
+     *  "msg": "成功",
+     *  "data": null
+     * }
      */
     @Operation(description = "提交评论")
     @PostMapping
