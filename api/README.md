@@ -213,8 +213,11 @@ It allows you to specify which modules in your multi-module project you want to 
 ![app](./imgs/app.png)
 
 
-# 今日目标（我的课表）
+# 项目核心业务
 
-1. 数据库表建好
-2. 接口
-3. 业务功能
+
+| 业务  |     |
+| --- | --- |
+| 评论  |     |
+| 问题  |     |
+| 课程  |     |
