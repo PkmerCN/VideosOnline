@@ -189,13 +189,14 @@ It allows you to specify which modules in your multi-module project you want to 
 # 业务与技术特设
 
 
-| 业务                 | 技术                         |
-|--------------------|----------------------------|
-| 视频提交记录             | redis+延迟任务                 |
-| 分类层级               | List转Tree层级算法设计            |
-| 缓存caffeine分类信息     | JVM级别的缓存                   |
-| admin分页查询问题        | 因为需要分类信息，在分类领域前面加了一层缓存     |
-| 视频记录提交与admin查看用户问答 | CompletableFuture.runAsync |
+| 业务                 | 技术                                      |
+|--------------------|-----------------------------------------|
+| 视频提交记录             | redis+延迟任务                              |
+| 分类层级               | List转Tree层级算法设计                         |
+| 缓存caffeine分类信息     | JVM级别的缓存                                |
+| admin分页查询问题        | 因为需要分类信息，在分类领域前面加了一层缓存                  |
+| 视频记录提交与admin查看用户问答 | CompletableFuture.runAsync              |
+| 更新评论数量解决并发         | update table replyTimes = relyTimes + 1 |
 
 ## 缓存技术
 
