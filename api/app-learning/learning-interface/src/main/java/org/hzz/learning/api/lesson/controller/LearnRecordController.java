@@ -8,7 +8,7 @@ import org.hzz.core.controller.BaseController;
 import org.hzz.core.exception.arg.AppArgumentNotValidException;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.lesson.LearnRecordApi;
-import org.hzz.learning.api.req.LearningRecordFormRequest;
+import org.hzz.learning.types.req.lesson.LearningRecordFormRequest;
 import org.hzz.learning.application.service.AppLearningLessonService;
 import org.hzz.learning.application.command.lesson.LearnLessonRecordCommand;
 import org.hzz.learning.application.command.lesson.LearnRecordCommitCommand;

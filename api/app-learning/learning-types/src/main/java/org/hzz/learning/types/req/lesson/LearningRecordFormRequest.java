@@ -1,4 +1,4 @@
-package org.hzz.learning.api.req;
+package org.hzz.learning.types.req.lesson;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 import io.swagger.v3.oas.annotations.media.Schema;

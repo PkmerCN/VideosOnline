@@ -58,7 +58,6 @@ public class CommitReplyCommandHandler
             self.handleReply(entity);
         }
 
-
         if(command.getIsStudent()){
             // todo 发送积分rabbit
         }
