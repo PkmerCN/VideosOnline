@@ -1,15 +1,17 @@
 package org.hzz.learning.infrastructure.repository.mybatis.question;
 
-import org.hzz.common.tree.BaseConverter;
+import lombok.Setter;
 import org.hzz.core.converter.RecordAndEntityConverter;
 import org.hzz.core.repository.nomapper.BaseRepository;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.repository.question.InteractionReplyRepository;
 import org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply;
 import org.hzz.learning.infrastructure.dao.entity.reply.InteractionReplyExample;
+import org.hzz.learning.infrastructure.dao.mapper.reply.InteractionReplyExtMapper;
 import org.hzz.learning.infrastructure.dao.mapper.reply.InteractionReplyMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -25,6 +27,9 @@ import java.util.Set;
 public class InteractionReplyRepositoryImpl
         extends BaseRepository<InteractionReplyMapper>
         implements InteractionReplyRepository {
+
+    @Setter(onMethod_ = @Autowired)
+    private InteractionReplyExtMapper replyExtMapper;
 
     /**
      * {@inheritDoc}
@@ -83,7 +88,7 @@ public class InteractionReplyRepositoryImpl
      */
     @Override
     public int incrReplyTimes(Long id) {
-        return 0;
+        return replyExtMapper.incrReplyTimes(id);
     }
 
 
