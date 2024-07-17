@@ -83,10 +83,16 @@ public class CommitReplyCommandHandler
     @Transactional
     public void handleReply(InteractionReplyEntity currentReply){
         log.info("插入数据库之前，当前回答Id = {}",currentReply.getId());
-        // todo 能拿到id吗
+        /**
+         *  能拿到id吗? 能：因为 {@link org.hzz.mybatis.core.SnowflakeIdPlugin}通过反射设置id
+         */
         replyDomainService.commitReply(currentReply);
         log.info("插入数据库后，当前回答Id = {}",currentReply.getId());
-        // 更新问题 todo 用sql更新，不要在代码里面做。
+        /**
+         * 更新问题
+         * 用sql更新 update replyTimes = replyTimes + 1，
+         * 不要在java代码里面做 replyTimes + 1。
+         */
         questionDomainService.addAnswer(currentReply.getQuestionId(),currentReply.getId());
     }
 
