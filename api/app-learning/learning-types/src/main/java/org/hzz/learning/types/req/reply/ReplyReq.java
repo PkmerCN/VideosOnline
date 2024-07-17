@@ -1,7 +1,9 @@
 package org.hzz.learning.types.req.reply;
 
+import com.alibaba.fastjson2.annotation.JSONField;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 /**
  * 评论
@@ -10,11 +12,12 @@ import jakarta.validation.constraints.NotNull;
  * @date 2024/7/17
  */
 @Schema(description = "评论")
+@Data
 public class ReplyReq {
     // 评论分组
-    interface CommentGroup{}
+    public interface CommentGroup{}
     // 回复分组
-    interface ReplyGroup{}
+    public interface ReplyGroup{}
 
     @Schema(description = "互动问题问题id")
     @NotNull(groups = {ReplyGroup.class,CommentGroup.class})
@@ -43,4 +46,12 @@ public class ReplyReq {
     @Schema(description = "是否是学生")
     @NotNull(groups = {ReplyGroup.class,CommentGroup.class})
     private Boolean isStudent;
+
+    /**
+     * 是评论还是回复
+     * @return true 评论；false 回复
+     */
+    public Boolean isComment(){
+        return answerId != null && answerId != 0;
+    }
 }

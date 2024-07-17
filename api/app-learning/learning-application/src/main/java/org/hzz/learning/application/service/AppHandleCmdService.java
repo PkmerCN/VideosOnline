@@ -8,13 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * 统一注册CommandWithMark
+ * 统一处理注册的CommandWithMark
+ * @deprecated
+ * 新的使用 {@link LessonCmdService}
+ * This class is deprecated and will be removed in future releases. Use {@link LessonCmdService} instead.
+ *
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/4
  */
 @Service
 @Slf4j
+@Deprecated
 public class AppHandleCmdService {
 
     @Setter(onMethod_ = @Autowired)
@@ -22,7 +27,7 @@ public class AppHandleCmdService {
 
     /**
      * 统一处理command
-     * @param command
+     * @param command 命令
      */
     public void handleCommand(CommandWithMark command){
         log.info("执行：{}",command.getClass().getSimpleName());
@@ -32,8 +37,8 @@ public class AppHandleCmdService {
 
     /**
      * 统一处理处理Command，有返回值
-     * @param command
-     * @return
+     * @param command 命令
+     * @return 处理结果
      * @param <R> 返回结果
      */
     public <R> R handleComandWithResult(CommandWithMark command){
