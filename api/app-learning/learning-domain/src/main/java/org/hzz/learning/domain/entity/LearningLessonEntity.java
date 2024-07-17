@@ -2,11 +2,10 @@ package org.hzz.learning.domain.entity;
 
 import lombok.Data;
 import org.hzz.ddd.core.domain.shared.Entity;
-import org.hzz.learning.domain.enums.LessonStatus;
-import org.hzz.learning.domain.enums.PlanStatus;
+import org.hzz.learning.types.enums.lesson.LessonStatus;
+import org.hzz.learning.types.enums.lesson.PlanStatus;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @author 胖卡

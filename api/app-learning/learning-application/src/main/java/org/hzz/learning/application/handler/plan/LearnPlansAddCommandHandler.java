@@ -5,7 +5,7 @@ import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.plan.LearnPlansAddCommand;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
-import org.hzz.learning.domain.enums.PlanStatus;
+import org.hzz.learning.types.enums.lesson.PlanStatus;
 import org.hzz.learning.domain.service.lesson.LearnLessonDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

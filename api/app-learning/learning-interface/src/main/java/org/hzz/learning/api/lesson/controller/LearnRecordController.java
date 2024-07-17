@@ -13,7 +13,7 @@ import org.hzz.learning.application.service.AppLearningLessonService;
 import org.hzz.learning.application.command.lesson.LearnLessonRecordCommand;
 import org.hzz.learning.application.command.lesson.LearnRecordCommitCommand;
 import org.hzz.learning.application.resp.LearnLessonRecordDto;
-import org.hzz.learning.domain.enums.SectionType;
+import org.hzz.learning.types.enums.lesson.SectionType;
 import org.hzz.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;

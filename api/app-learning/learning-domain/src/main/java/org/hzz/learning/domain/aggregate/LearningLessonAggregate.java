@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.ddd.core.domain.shared.AggregateRoot;
-import org.hzz.learning.domain.enums.LessonStatus;
-import org.hzz.learning.domain.enums.PlanStatus;
+import org.hzz.learning.types.enums.lesson.LessonStatus;
+import org.hzz.learning.types.enums.lesson.PlanStatus;
 
 import java.time.LocalDateTime;
 

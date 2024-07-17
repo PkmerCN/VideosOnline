@@ -2,7 +2,7 @@ package org.hzz.learning.application.command.lesson;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.hzz.learning.domain.enums.SectionType;
+import org.hzz.learning.types.enums.lesson.SectionType;
 
 import java.time.LocalDateTime;
 

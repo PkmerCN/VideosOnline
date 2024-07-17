@@ -1,4 +1,4 @@
-package org.hzz.learning.domain.enums;
+package org.hzz.learning.types.enums.lesson;
 
 import org.hzz.core.enums.BaseEnum;
 

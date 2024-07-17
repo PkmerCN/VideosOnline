@@ -2,12 +2,10 @@ package org.hzz.learning.types.req.lesson;
 
 import com.alibaba.fastjson2.annotation.JSONField;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hzz.fastjson2.enums.BaseEnumReader;
-import org.hzz.learning.domain.enums.SectionType;
-import org.springframework.validation.annotation.Validated;
+import org.hzz.learning.types.enums.lesson.SectionType;
 
 import java.time.LocalDateTime;
 

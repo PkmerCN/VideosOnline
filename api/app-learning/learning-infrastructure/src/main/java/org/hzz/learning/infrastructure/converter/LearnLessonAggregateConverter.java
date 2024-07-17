@@ -1,8 +1,8 @@
 package org.hzz.learning.infrastructure.converter;
 
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
-import org.hzz.learning.domain.enums.LessonStatus;
-import org.hzz.learning.domain.enums.PlanStatus;
+import org.hzz.learning.types.enums.lesson.LessonStatus;
+import org.hzz.learning.types.enums.lesson.PlanStatus;
 import org.hzz.learning.infrastructure.dao.entity.lesson.LearningLesson;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
