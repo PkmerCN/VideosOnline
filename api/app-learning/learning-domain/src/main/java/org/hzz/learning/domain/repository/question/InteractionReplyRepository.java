@@ -1,5 +1,7 @@
 package org.hzz.learning.domain.repository.question;
 
+import org.hzz.core.page.PageResponse;
+import org.hzz.core.page.query.PageQuery;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 
 import java.util.List;
@@ -55,6 +57,13 @@ public interface InteractionReplyRepository {
      * @return 影响的行
      */
     int incrReplyTimes(Long id);
+
+    /**
+     * 分页查询
+     * @param pageQuery
+     * @return
+     */
+    PageResponse<InteractionReplyEntity> selectPage(PageQuery pageQuery);
 
 
 

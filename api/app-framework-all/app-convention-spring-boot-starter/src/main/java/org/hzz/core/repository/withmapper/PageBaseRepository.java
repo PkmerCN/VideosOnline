@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 
 /**
  * 封装通用分页逻辑
- * p 代表mapper
- * T 代表返回的类型
- * C 代表Converter
+ * @param <P>  代表mapper
+ * @param <T> 代表返回的类型
+ * @param <C> 代表Converter
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/27

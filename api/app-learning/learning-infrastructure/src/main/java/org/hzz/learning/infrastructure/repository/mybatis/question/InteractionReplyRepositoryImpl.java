@@ -2,6 +2,8 @@ package org.hzz.learning.infrastructure.repository.mybatis.question;
 
 import lombok.Setter;
 import org.hzz.core.converter.RecordAndEntityConverter;
+import org.hzz.core.page.PageResponse;
+import org.hzz.core.page.query.PageQuery;
 import org.hzz.core.repository.nomapper.BaseRepository;
 import org.hzz.core.repository.nomapper.PageBaseRepository;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
@@ -95,9 +97,18 @@ public class InteractionReplyRepositoryImpl
         return replyExtMapper.incrReplyTimes(id);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public PageResponse<InteractionReplyEntity> selectPage(PageQuery pageQuery){
+        PageResponse<InteractionReply> interactionReplyPageResponse = super.pageQuery(pageQuery);
+        return Converter.INSTANCE.convertToEntityPage(interactionReplyPageResponse);
+    }
 
     @Mapper
     interface Converter extends RecordAndEntityConverter<InteractionReply,InteractionReplyEntity> {
         Converter INSTANCE = Mappers.getMapper(Converter.class);
     }
+
 }

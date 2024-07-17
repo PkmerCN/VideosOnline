@@ -1,5 +1,6 @@
 package org.hzz.core.converter;
 
+import org.hzz.core.page.PageResponse;
 import java.util.List;
 
 /**
@@ -15,6 +16,17 @@ public interface RecordAndEntityConverter<R,E> {
     E toEntity(R r);
 
     List<E> toEntities(List<R> list);
+
     R toRecord(E e);
     List<E> toRecords(List<E> list);
+
+    /**
+     * 分页转化
+     */
+    PageResponse<R> convertToRecordPage(PageResponse<E> pageResponse);
+
+    /**
+     * 分页转化
+     */
+    PageResponse<E> convertToEntityPage(PageResponse<R> pageResponse);
 }
