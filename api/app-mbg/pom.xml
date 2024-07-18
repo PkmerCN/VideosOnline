@@ -7,7 +7,7 @@
         <version>2.2.3-SNAPSHOT</version>
     </parent>
 
-    <artifactId>app-mybatis-generate</artifactId>
+    <artifactId>app-mbg</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

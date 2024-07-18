@@ -10,7 +10,7 @@
     <modules>
         <module>app-main</module>
         <module>app-auth</module>
-        <module>app-mybatis-generate</module>
+        <module>app-mbg</module>
         <module>app-user</module>
         <module>app-framework-all</module>
         <module>app-learning</module>
@@ -57,6 +57,7 @@
         <java.version>17</java.version>
         <hutool.version>5.8.28</hutool.version>
         <fastjson2.version>2.0.51</fastjson2.version>
+        <freemarker.version>2.3.33</freemarker.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -184,6 +185,14 @@
                 <artifactId>mapstruct</artifactId>
                 <version>${org.mapstruct.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

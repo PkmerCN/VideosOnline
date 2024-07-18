@@ -4,6 +4,10 @@
 <generatorConfiguration>
 
     <context id="MySQLTables" targetRuntime="MyBatis3">
+        
+        <plugin type="">
+
+        </plugin>
 
         <!--   使用自己的注释类     -->
         <commentGenerator type="org.hzz.mybatis.common.MyCommentGenerator">
