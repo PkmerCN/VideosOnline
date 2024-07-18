@@ -17,6 +17,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>app-mybatis-spring-boot-starter</artifactId>
+            <version>2.2.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
