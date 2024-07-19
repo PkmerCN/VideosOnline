@@ -67,6 +67,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | MySQL          | 8.0               |
 | Redis          | 7.2.5             |
 | Caffeine       | 3.1.8             |
+| freemarker     | 2.3.33            |
 
 # 分模块开发
 
@@ -85,16 +86,16 @@ It allows you to specify which modules in your multi-module project you want to 
 开发完一个模块如app-auth需要install到本地。
 
 
-| 模块                   |                              |
-| -------------------- |------------------------------|
-| app-main             | 程序入口                         |
-| app-auth             | 认证父模块                        |
-| auth-server          | 认证服务                         |
-| app-framework-all    | 项目通用框架集合                     |
-| app-mybatis-generate | mybatis逆向工程生成代码              |
-| app-user             | 用户相关                         |
-| app-learning         | 学习课程相关                       |
-| attachment           | docker的挂载目录，目前是配置了rabbitmq插件 |
+| 模块                |                              |
+|-------------------|------------------------------|
+| app-main          | 程序入口                         |
+| app-auth          | 认证父模块                        |
+| auth-server       | 认证服务                         |
+| app-framework-all | 项目通用框架集合                     |
+| app-mbg           | mybatis逆向工程生成代码              |
+| app-user          | 用户相关                         |
+| app-learning      | 学习课程相关                       |
+| attachment        | docker的挂载目录，目前是配置了rabbitmq插件 |
 
 
 ## app-framework-all子模块
@@ -108,7 +109,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-convention-spring-boot-starter    | 项目的约定，比如异常，Result返回结果等                |
 | app-security-spring-boot-starter      | JWT与password加密以及全局获取UserContext       |
 | app-web-spring-boot-starter           | 封装了全局异常处理等                            |
-| app-mybatis-spring-boot-starter       | 目前封装了逆向生成代码时的注释处理，雪花算法的主键生成           |
+| app-mybatis-spring-boot-starter       | 目前封装了逆向生成代码时的注释处理，雪花算法的主键生成,字段常量类插件   |
 | app-designpattern-spring-boot-starter | 封装用到的设计模式的通用类                         |
 | app-base-spring-boot-starter          | 目前扩展了spring的事件                        |
 | app-rabbitmq-spring-boot-starter      | 封装了rabbitmq基础功能(序列化使用fastjson2)       |
@@ -183,6 +184,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | redis加延迟任务处理高并发业务                      |
 | mybatis typehandler处理枚举                |
 | 模版抽离：BaseEnum枚举以及mybatis typehandler   |
+| mybatis-generator结合freemarker生成字段常量类   |
 
 
 
