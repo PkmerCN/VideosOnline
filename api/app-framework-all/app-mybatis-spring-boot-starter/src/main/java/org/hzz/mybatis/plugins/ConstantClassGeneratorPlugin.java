@@ -12,6 +12,7 @@ import org.mybatis.generator.api.PluginAdapter;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -24,10 +25,18 @@ import java.util.*;
 @Slf4j
 public class ConstantClassGeneratorPlugin extends PluginAdapter {
     private static final String path = "TableFieldsTemplate.properties";
-    // 配置一个properties
+    // 模板位置
+    private static final String templateFtlDir = "templates/ftl";
+    private static final String fullQualify = "%s.%sFields";
+
+    /**
+     * 通过配置文件赋值
+     * TableFieldsTemplate.properties
+     * generatorConfig.xml
+     */
     private static String templateFile;
     private static String targetPackage;
-    private static  String fullQualify = "%s.%sFields";
+    private static String author;
 
     @Override
     public boolean validate(List<String> warnings) {
@@ -41,6 +50,7 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
 
             // 配置在TableFieldsTemplate.properties文件，直接撼死
             templateFile = properties.getProperty("templateFile");
+            author = properties.getProperty("author");
             // 有包名不断变化，我配置在generatorConfig.xml以它为优先级
             targetPackage = properties.getProperty("targetPackage");
         } catch (IOException e) {
@@ -62,7 +72,7 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
             Configuration cfg = new Configuration(Configuration.VERSION_2_3_33);
             cfg.setClassLoaderForTemplateLoading(
                     Thread.currentThread().getContextClassLoader(),
-                    "templates/ftl"
+                    templateFtlDir
             );
             cfg.setDefaultEncoding("UTF-8");
 
@@ -70,6 +80,8 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
             // 处理数据
             Map<String,Object> root = new HashMap<>();
             root.put("targetPackage",targetPackage);
+            root.put("author", author);
+            root.put("data", LocalDate.now().toString());
             root.put("tableName",tableName);
             root.put("templateFile", templateFile);
             List<IntrospectedColumn> columns = introspectedTable.getAllColumns();

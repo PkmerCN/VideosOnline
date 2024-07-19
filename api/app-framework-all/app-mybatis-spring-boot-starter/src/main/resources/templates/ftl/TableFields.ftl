@@ -3,6 +3,9 @@ package ${targetPackage};
 /**
 * This class contains the database column names for the ${tableName} table.
 * Generator by ${templateFile}
+*
+* @author ${author}
+* @date ${data}
 */
 public class ${className}Fields {
 <#list columns as column>

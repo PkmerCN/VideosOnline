@@ -3,6 +3,9 @@ package org.hzz.course.types.constants;
 /**
  * This class contains the database column names for the course_teacher table.
  * Generator by TableFields.ftl
+ *
+ * @author 胖卡
+ * @date 2024-07-19
  */
 public class CourseTeacherFields {
 
