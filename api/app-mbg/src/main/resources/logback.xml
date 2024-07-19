@@ -8,7 +8,7 @@
     </appender>
 
     <!-- 根日志记录器配置 -->
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

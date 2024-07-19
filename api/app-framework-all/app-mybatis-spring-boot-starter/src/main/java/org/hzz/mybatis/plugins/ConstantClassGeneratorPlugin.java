@@ -9,10 +9,6 @@ import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
-import org.mybatis.generator.api.dom.DefaultJavaFormatter;
-import org.mybatis.generator.api.dom.java.CompilationUnit;
-import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
-import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
@@ -35,11 +31,17 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
 
     @Override
     public boolean validate(List<String> warnings) {
+        // 这个properties来自generatorConfig.xml的解析<plugin>
+        log.info("你好: {}.这是我自己写的插件",properties.get("pkmer"));
         try {
             ClassPathResource resource = new ClassPathResource(path);
-            Properties properties = new Properties();
+            // 合并我们自定义的配置TableFieldsTemplate.properties
             properties.load(resource.getInputStream());
+            // 确定优先级以TableFieldsTemplate.properties > generatorConfig.xml为优先级
+
+            // 配置在TableFieldsTemplate.properties文件，直接撼死
             templateFile = properties.getProperty("templateFile");
+            // 有包名不断变化，我配置在generatorConfig.xml以它为优先级
             targetPackage = properties.getProperty("targetPackage");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -49,7 +51,6 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
 
     @Override
     public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles(IntrospectedTable introspectedTable) {
-        List<GeneratedJavaFile> generatedJavaFiles = new ArrayList<>();
 
         // 获取到generatorConfig.xml配置的信息
         String targetProject = context.getJavaModelGeneratorConfiguration().getTargetProject();
@@ -64,7 +65,7 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
                     "templates/ftl"
             );
             cfg.setDefaultEncoding("UTF-8");
-            // 获取模版
+
 
             // 处理数据
             Map<String,Object> root = new HashMap<>();
@@ -75,24 +76,14 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
             root.put("columns",columns);
             root.put("className", className);
 
+            // 获取模版
             Template template = cfg.getTemplate(templateFile);
-            // 输出到控制台
-//            Writer writer = new OutputStreamWriter(System.out);
-//            template.process(root,writer);
-//
-//            return Collections.emptyList();
+            // 输出到控制台，一边测试
+            // Writer writer = new OutputStreamWriter(System.out);
 
             // 生成模版数据
             template.process(root,out);
-            // 创建Java类
-//            TopLevelClass javaClass = new TopLevelClass(new FullyQualifiedJavaType(
-//                    String.format(fullQualify,targetPackage,className)
-//            ));
-//            // 填充内容
-//            javaClass.addFileCommentLine(out.toString());
 
-
-            // Write content to a file
 
             File dir = new File(targetProject + "/" + targetPackage.replace('.', '/'));
             // 插件生成的路径 D:\gitee\challenges\videos-online\api\app-mbg\src\main\java\org\hzz\types
@@ -101,15 +92,14 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
             if (!dir.exists()) {
                 dir.mkdirs();
             }
+            // 创建Java文件
             File file = new File(dir, className + "Fields.java");
             try (FileWriter fileWriter = new FileWriter(file)) {
+                // Write content to a file
                 fileWriter.write(out.toString());
             }
-//            javaClass.addFileCommentLine("// Hello");
-//            GeneratedJavaFile generatedJavaFile = new GeneratedJavaFile(javaClass, targetProject, new DefaultJavaFormatter());
-//            generatedJavaFiles.add(generatedJavaFile);
-
-            return generatedJavaFiles;
+            // 这里使用freemark来生成
+            return Collections.emptyList();
         } catch (IOException | TemplateException e) {
             throw new RuntimeException(e);
         }

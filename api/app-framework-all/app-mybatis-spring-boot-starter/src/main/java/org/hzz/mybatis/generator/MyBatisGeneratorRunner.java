@@ -1,6 +1,5 @@
-package com.hzz.generator;
+package org.hzz.mybatis.generator;
 
-import lombok.extern.slf4j.Slf4j;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
@@ -12,15 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 手动处理代码生成
+ * 代码生成
  * @author 胖卡
  * @version 1.0.0
- * @date 2024/7/18
+ * @date 2024/7/19
  */
-@Slf4j
 public class MyBatisGeneratorRunner {
-    public static void main(String[] args){
-        log.info("start");
+
+    public static void genCode(){
         try{
             ClassPathResource resource = new ClassPathResource("generatorConfig.xml");
             File configFile = resource.getFile();
@@ -49,6 +47,5 @@ public class MyBatisGeneratorRunner {
             e.printStackTrace();
             System.out.println("Code generation failed.");
         }
-        log.info("End");
     }
 }

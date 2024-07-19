@@ -6,6 +6,8 @@
     <context id="MySQLTables" targetRuntime="MyBatis3">
         
         <plugin type="org.hzz.mybatis.plugins.ConstantClassGeneratorPlugin">
+            <property name="pkmer" value="hzz"/>
+            <property name="targetPackage" value="org.hzz.course.types.constants"/>
         </plugin>
 
         <!--   使用自己的注释类     -->
