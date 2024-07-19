@@ -10,15 +10,13 @@ import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.DefaultJavaFormatter;
+import org.mybatis.generator.api.dom.java.CompilationUnit;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.springframework.core.io.ClassPathResource;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 
 /**
  * 用于生成表对应的常量类
@@ -29,13 +27,23 @@ import java.util.Map;
  */
 @Slf4j
 public class ConstantClassGeneratorPlugin extends PluginAdapter {
-    // todo 配置一个properties
-    private static final String templateFile = "TableFields.ftl";
-    private static final String targetPackage = "targetPackage";
+    private static final String path = "TableFieldsTemplate.properties";
+    // 配置一个properties
+    private static String templateFile;
+    private static String targetPackage;
     private static  String fullQualify = "%s.%sFields";
 
     @Override
     public boolean validate(List<String> warnings) {
+        try {
+            ClassPathResource resource = new ClassPathResource(path);
+            Properties properties = new Properties();
+            properties.load(resource.getInputStream());
+            templateFile = properties.getProperty("templateFile");
+            targetPackage = properties.getProperty("targetPackage");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return true;
     }
 
@@ -57,32 +65,46 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
             );
             cfg.setDefaultEncoding("UTF-8");
             // 获取模版
-            Template template = cfg.getTemplate(templateFile);
 
             // 处理数据
             Map<String,Object> root = new HashMap<>();
+            root.put("targetPackage",targetPackage);
             root.put("tableName",tableName);
+            root.put("templateFile", templateFile);
             List<IntrospectedColumn> columns = introspectedTable.getAllColumns();
             root.put("columns",columns);
-            root.put("targetPackage",targetPackage);
             root.put("className", className);
+
+            Template template = cfg.getTemplate(templateFile);
+            // 输出到控制台
+//            Writer writer = new OutputStreamWriter(System.out);
+//            template.process(root,writer);
+//
+//            return Collections.emptyList();
 
             // 生成模版数据
             template.process(root,out);
-
             // 创建Java类
-            TopLevelClass javaClass = new TopLevelClass(new FullyQualifiedJavaType(
-                    String.format(fullQualify,targetPackage,className)
-            ));
-            // 填充内容
-            javaClass.addFileCommentLine(out.toString());
+//            TopLevelClass javaClass = new TopLevelClass(new FullyQualifiedJavaType(
+//                    String.format(fullQualify,targetPackage,className)
+//            ));
+//            // 填充内容
+//            javaClass.addFileCommentLine(out.toString());
 
-            // 创建 GeneratedJavaFile 对象
-            GeneratedJavaFile generatedJavaFile = new GeneratedJavaFile(
-                    javaClass,targetProject,new DefaultJavaFormatter()
-            );
 
-            generatedJavaFiles.add(generatedJavaFile);
+            // Write content to a file
+
+            File dir = new File(targetProject + "/" + targetPackage.replace('.', '/'));
+            // 插件生成的路径 D:\gitee\challenges\videos-online\api\app-mbg\src\main\java\org\hzz\types
+            log.info(dir.getAbsolutePath());
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File file = new File(dir, className + ".java");
+            try (FileWriter fileWriter = new FileWriter(file)) {
+                fileWriter.write(out.toString());
+            }
+//            generatedJavaFiles.add(generatedJavaFile);
 
             return generatedJavaFiles;
         } catch (IOException | TemplateException e) {

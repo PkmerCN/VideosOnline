@@ -8,6 +8,7 @@
     </parent>
 
     <artifactId>app-mbg</artifactId>
+    <description>mybatis generator</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -33,6 +34,11 @@
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.4.2</version>
+                <configuration>
+                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
                 <executions>
                     <execution>
                         <id>Generate MyBatis Artifacts</id>
@@ -41,11 +47,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
-                    <verbose>true</verbose>
-                    <overwrite>true</overwrite>
-                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>mysql</groupId>
