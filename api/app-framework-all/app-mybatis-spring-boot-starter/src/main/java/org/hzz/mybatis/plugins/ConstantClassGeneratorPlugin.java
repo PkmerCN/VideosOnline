@@ -96,14 +96,17 @@ public class ConstantClassGeneratorPlugin extends PluginAdapter {
 
             File dir = new File(targetProject + "/" + targetPackage.replace('.', '/'));
             // 插件生成的路径 D:\gitee\challenges\videos-online\api\app-mbg\src\main\java\org\hzz\types
+            // 代码运行生成的路径: D:\gitee\challenges\videos-online\api\src\main\java\org\hzz\types
             log.info(dir.getAbsolutePath());
             if (!dir.exists()) {
                 dir.mkdirs();
             }
-            File file = new File(dir, className + ".java");
+            File file = new File(dir, className + "Fields.java");
             try (FileWriter fileWriter = new FileWriter(file)) {
                 fileWriter.write(out.toString());
             }
+//            javaClass.addFileCommentLine("// Hello");
+//            GeneratedJavaFile generatedJavaFile = new GeneratedJavaFile(javaClass, targetProject, new DefaultJavaFormatter());
 //            generatedJavaFiles.add(generatedJavaFile);
 
             return generatedJavaFiles;

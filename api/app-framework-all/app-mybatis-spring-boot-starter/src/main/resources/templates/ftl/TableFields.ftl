@@ -6,9 +6,10 @@ package ${targetPackage};
 */
 public class ${className}Fields {
 <#list columns as column>
+
     /**
-    * ${column.remarks}
-    */
+     * ${column.remarks}
+     */
     public static final String ${column.actualColumnName?upper_case} = "${column.actualColumnName}";
 </#list>
 }
