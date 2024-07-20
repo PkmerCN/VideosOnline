@@ -35,5 +35,7 @@ public class ReplyResp {
     @Schema(description = "回答问题的用户信息，匿名用户没有用户信息 返回为null")
     private ReplyUserResp replyUser;
 
+    @Schema(description = "评论时的目标用户，也就是说回复的是谁（只有评论才有，回复没有）")
+    private String targetUserName;
 
 }

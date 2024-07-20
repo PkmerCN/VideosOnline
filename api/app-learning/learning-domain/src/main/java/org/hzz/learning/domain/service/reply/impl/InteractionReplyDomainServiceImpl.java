@@ -12,12 +12,12 @@ import org.hzz.learning.domain.repository.reply.InteractionReplyRepository;
 import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;
 import org.springframework.stereotype.Service;
 
-import static org.hzz.learning.types.constants.InteractionReplyFields.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+
+import static org.hzz.learning.types.constants.InteractionReplyFields.*;
 
 /**
  * 评论领域服务
@@ -100,7 +100,7 @@ public class InteractionReplyDomainServiceImpl
 
 
         if (logger.isInfoEnabled() && i != 0) {
-            logger.info("成功增加评论次数 {} -> {}", oldTimes,newTimes);
+            logger.info("成功增加评论次数 {} -> {}", oldTimes, newTimes);
         }
     }
 
@@ -110,32 +110,61 @@ public class InteractionReplyDomainServiceImpl
     @Override
     public PageResponse<InteractionReplyEntity> selectReplyPage(Long questionId, PageQuery pageQuery) {
         final Long TopAnswerId = 0L;
-        List<FilterCondition> filters = new ArrayList<>();
 
-        // question_id
-        filters.add(new FilterCondition(QUESTION_ID,Operation.Equal,questionId));
-        // 一级评论
-        filters.add(new FilterCondition(ANSWER_ID,Operation.Equal,TopAnswerId));
-        // 只查询没有隐藏的回复
-        filters.add(new FilterCondition(HIDDEN,Operation.Equal,false));
-
-        // 按照点赞，创建时间
-        List<SortOrder> sortOrders = new ArrayList<>();
-        sortOrders.add(new SortOrder(LIKED_TIMES,false));
-        sortOrders.add(new SortOrder(CREATE_TIME,false));
-
-
-        pageQuery.setFilters(filters);
-        pageQuery.setSortOrders(sortOrders);
+        setDefaulPageSelecttFiltersAndSortOrder(
+                questionId,
+                TopAnswerId,
+                pageQuery);
 
         return repository.selectPage(pageQuery);
     }
+
+
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public PageResponse<InteractionReplyEntity> selectCommentPage(Long answerId, PageQuery pageQuery) {
-        return null;
+    public PageResponse<InteractionReplyEntity> selectCommentPage(Long questionId,
+                                                                  Long answerId,
+                                                                  PageQuery pageQuery) {
+        setDefaulPageSelecttFiltersAndSortOrder(
+                questionId,
+                answerId,
+                pageQuery
+        );
+        return repository.selectPage(pageQuery);
+    }
+
+
+    /**
+     * 设置分页查询默认条件过滤以及排序
+     *
+     * @param questionId 问题ID
+     * @param answerId 问题id
+     * @param pageQuery 分页
+     */
+    private PageQuery setDefaulPageSelecttFiltersAndSortOrder(Long questionId,
+                                                         Long answerId,
+                                                         PageQuery pageQuery) {
+        List<FilterCondition> filters = new ArrayList<>();
+
+        // question_id
+        filters.add(new FilterCondition(QUESTION_ID, Operation.Equal, questionId));
+        // 一级评论
+        filters.add(new FilterCondition(ANSWER_ID, Operation.Equal, answerId));
+        // 只查询没有隐藏的回复
+        filters.add(new FilterCondition(HIDDEN, Operation.Equal, false));
+
+        // 按照点赞，创建时间
+        List<SortOrder> sortOrders = new ArrayList<>();
+        sortOrders.add(new SortOrder(LIKED_TIMES, false));
+        sortOrders.add(new SortOrder(CREATE_TIME, false));
+
+        // 设置
+        pageQuery.setFilters(filters);
+        pageQuery.setSortOrders(sortOrders);
+
+        return pageQuery;
     }
 }

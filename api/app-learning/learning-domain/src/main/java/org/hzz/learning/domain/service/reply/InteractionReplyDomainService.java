@@ -63,6 +63,7 @@ public interface InteractionReplyDomainService {
      * @return 分页查询
      */
     PageResponse<InteractionReplyEntity> selectCommentPage(
+            Long questionId,
             Long answerId,
             PageQuery pageQuery
     );
