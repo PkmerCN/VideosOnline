@@ -7,7 +7,7 @@
         
         <plugin type="org.hzz.mybatis.plugins.ConstantClassGeneratorPlugin">
             <property name="pkmer" value="hzz"/>
-            <property name="targetPackage" value="org.hzz.course.types.constants"/>
+            <property name="targetPackage" value="org.hzz.learning.types.constants"/>
         </plugin>
 
         <!--   使用自己的注释类     -->
@@ -40,7 +40,7 @@
 <!--        <table tableName="interaction_question">-->
 <!--            <columnOverride column="status" javaType="org.hzz.learning.types.enums.question.QuestionStatus"/>-->
 <!--        </table>-->
-<!--        <table tableName="interaction_reply"/>-->
+        <table tableName="interaction_reply"/>
 <!--        <table tableName="user_detail">-->
 <!--            <columnOverride column="gender" javaType="org.hzz.user.types.enums.Gender"/>-->
 <!--        </table>-->
@@ -55,10 +55,10 @@
 <!--            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted"/>-->
 <!--        </table>-->
 
-        <table tableName="course_teacher">
-            <columnOverride column="is_show" javaType="org.hzz.course.types.enums.teacher.IsShow" />
-            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted" />
-        </table>
+<!--        <table tableName="course_teacher">-->
+<!--            <columnOverride column="is_show" javaType="org.hzz.course.types.enums.teacher.IsShow" />-->
+<!--            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted" />-->
+<!--        </table>-->
 
     </context>
 

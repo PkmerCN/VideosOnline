@@ -47,7 +47,7 @@ public interface InteractionReplyDomainService {
     void incrReplyTimes(Long id);
 
     /**
-     * 分页查询回答
+     * 分页查询问题下的回答
      * @param questionId 问题id
      * @param pageQuery 分页查询条件
      * @return 分页结果
@@ -57,7 +57,7 @@ public interface InteractionReplyDomainService {
             PageQuery pageQuery);
 
     /**
-     * 分页查询回答
+     * 分页查询某个回答下的评论
      * @param answerId 回复id
      * @param pageQuery 分页查询条件
      * @return 分页查询

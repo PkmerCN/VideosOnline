@@ -12,6 +12,8 @@ import org.hzz.learning.domain.repository.reply.InteractionReplyRepository;
 import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;
 import org.springframework.stereotype.Service;
 
+import static org.hzz.learning.types.constants.InteractionReplyFields.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -112,23 +114,20 @@ public class InteractionReplyDomainServiceImpl
         // todo freemark 生成一个常量类。字段名称
 
         // question_id
-        filters.add(new FilterCondition("question_id",Operation.Equal,questionId));
+        filters.add(new FilterCondition(QUESTION_ID,Operation.Equal,questionId));
         // 一级评论
-        filters.add(new FilterCondition("answer_id",Operation.Equal,TopAnswerId));
+        filters.add(new FilterCondition(ANSWER_ID,Operation.Equal,TopAnswerId));
 
         // 按照点赞，创建时间
         List<SortOrder> sortOrders = new ArrayList<>();
-        sortOrders.add(new SortOrder("liked_times",false));
-        sortOrders.add(new SortOrder("create_time",false));
-
-
+        sortOrders.add(new SortOrder(LIKED_TIMES,false));
+        sortOrders.add(new SortOrder(CREATE_TIME,false));
 
 
         pageQuery.setFilters(filters);
         pageQuery.setSortOrders(sortOrders);
 
-        repository.selectPage(pageQuery);
-        return null;
+        return repository.selectPage(pageQuery);
     }
 
     /**
