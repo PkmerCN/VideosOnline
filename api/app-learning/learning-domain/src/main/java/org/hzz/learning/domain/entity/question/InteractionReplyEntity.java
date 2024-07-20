@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hzz.ddd.core.domain.shared.Entity;
 
+import java.time.LocalDateTime;
+
 /**
  * @author 胖卡
  * @version 1.0.0
@@ -44,6 +46,9 @@ public class InteractionReplyEntity implements Entity {
 
     // 是否匿名，默认false
     private Boolean anonymity;
+
+    // 创建时间
+    private LocalDateTime createTime;
 
 
     /**

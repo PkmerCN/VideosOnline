@@ -5,8 +5,7 @@ import org.hzz.core.page.PageResponse;
 import java.util.List;
 
 /**
- * 用于Mapstruct的具体转换继承
- * 可以进行扩展丰富 如{@link RecordAndEntityConverter}
+ * 通用各层转换，于Mapstruct的具体转换继承
  * @param <T> 转换成的目标
  * @param <S> 原始类
  * @author 胖卡

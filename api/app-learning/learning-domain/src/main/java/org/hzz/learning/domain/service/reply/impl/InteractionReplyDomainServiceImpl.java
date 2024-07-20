@@ -111,12 +111,13 @@ public class InteractionReplyDomainServiceImpl
     public PageResponse<InteractionReplyEntity> selectReplyPage(Long questionId, PageQuery pageQuery) {
         final Long TopAnswerId = 0L;
         List<FilterCondition> filters = new ArrayList<>();
-        // todo freemark 生成一个常量类。字段名称
 
         // question_id
         filters.add(new FilterCondition(QUESTION_ID,Operation.Equal,questionId));
         // 一级评论
         filters.add(new FilterCondition(ANSWER_ID,Operation.Equal,TopAnswerId));
+        // 只查询没有隐藏的回复
+        filters.add(new FilterCondition(HIDDEN,Operation.Equal,false));
 
         // 按照点赞，创建时间
         List<SortOrder> sortOrders = new ArrayList<>();
