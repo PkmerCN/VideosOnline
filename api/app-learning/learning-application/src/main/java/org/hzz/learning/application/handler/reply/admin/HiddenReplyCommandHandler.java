@@ -1,6 +1,7 @@
 package org.hzz.learning.application.handler.reply.admin;
 
 import lombok.Setter;
+import org.hzz.core.exception.request.BadRequestException;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.reply.admin.HiddenReplyCommand;
@@ -32,7 +33,8 @@ public class HiddenReplyCommandHandler
         InteractionReplyEntity replyEntity = replyDomainService.getEntityById(command.getId());
         if(replyEntity != null){
             replyEntity.setHidden(command.getHidden());
+            replyDomainService.updateEntity(replyEntity);
         }
-        replyDomainService.updateEntity(replyEntity);
+        throw new BadRequestException("id = "+command.getId() + "错误，不存在");
     }
 }
