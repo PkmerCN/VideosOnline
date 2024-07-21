@@ -6,6 +6,7 @@ import org.hzz.core.page.PageResponse;
 import org.hzz.core.result.Result;
 import org.hzz.learning.api.reply.AdminInteractionReplyApi;
 import org.hzz.learning.application.command.reply.PageQueryReplyCommand;
+import org.hzz.learning.application.command.reply.admin.HiddenReplyCommand;
 import org.hzz.learning.application.service.LessonCmdService;
 import org.hzz.learning.types.req.reply.ReplyPage;
 import org.hzz.learning.types.resp.reply.ReplyResp;
@@ -41,6 +42,12 @@ public class AdminInteractionReplyController
 
     @Override
     public Result<Void> hiddenReply(Long id, Boolean hidden) {
-        return null;
+
+        HiddenReplyCommand cmd = new HiddenReplyCommand();
+        cmd.setHidden(hidden)
+                .setId(id);
+        cmdService.handleCommand(cmd);
+
+        return success(null);
     }
 }
