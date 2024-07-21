@@ -85,8 +85,6 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
                     command.getAnswerId(),
                     command.getPageQuery()
             );
-
-
         } else {
             log.info("分页查询回答");
             pageEntities = replyDomainService.selectReplyPage(
@@ -111,20 +109,18 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
 
         if(isComment) {
             log.info("处理评论中的目标用户");
-
             // 回复的目标用户是一个匿名用户
             final Long replyAnonyUserId = 0L;
             for (InteractionReplyEntity e : entities){
-                Long targetReplyId = e.getTargetReplyId();
-                if(!replyAnonyUserId.equals(targetReplyId)){
+                Long targetUserId = e.getTargetUserId();
+                if(!replyAnonyUserId.equals(targetUserId)){
                     // 只查询回复的目标非匿名的用户
-                    userIds.add(targetReplyId);
+                    userIds.add(targetUserId);
                 }
             }
-
         }
 
-        Map<Long, UserDetailEntity> mapEntities = userDetailDomainService.getMapEntities(userIds);
+        Map<Long, UserDetailEntity> mapUserEntities = userDetailDomainService.getMapEntities(userIds);
 
         List<ReplyResp> results = new ArrayList<>();
         for (InteractionReplyEntity e : entities) {
@@ -134,7 +130,7 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
                 log.info("匿名用户不进行处理 userId = {}", e.getUserId());
             } else {
                 // 处理用户信息
-                UserDetailEntity userDetailEntity = mapEntities.get(e.getUserId());
+                UserDetailEntity userDetailEntity = mapUserEntities.get(e.getUserId());
                 ReplyUserResp replyUserResp = new ReplyUserResp();
 
                 replyUserResp.setId(userDetailEntity.getId());
@@ -146,7 +142,7 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
 
             if(isComment){
                 // 处理评论的目标用户
-                UserDetailEntity userDetailEntity = mapEntities.get(e.getTargetReplyId());
+                UserDetailEntity userDetailEntity = mapUserEntities.get(e.getTargetUserId());
                 if(userDetailEntity != null){
                     target.setTargetUserName(userDetailEntity.getName());
                 }else{
