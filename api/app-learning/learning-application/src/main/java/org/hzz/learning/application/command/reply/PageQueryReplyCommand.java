@@ -21,6 +21,8 @@ public class PageQueryReplyCommand implements CommandWithMark {
 
     private Long questionId;
     private Long answerId;
+    // 标记是否用于admin分页查询（true），还是用户端查询(false)。
+    private Boolean forAdmin = false;
 
     private PageQuery pageQuery;
 

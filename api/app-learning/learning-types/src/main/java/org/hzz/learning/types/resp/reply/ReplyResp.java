@@ -32,6 +32,9 @@ public class ReplyResp {
     @Schema(description = "回答时间")
     private LocalDateTime createTime;
 
+    @Schema(description = "是否被隐藏，默认false,主要用户与admin端，用户端查询出来的都是false")
+    private Boolean hidden = false;
+
     @Schema(description = "回答问题的用户信息，匿名用户没有用户信息 返回为null")
     private ReplyUserResp replyUser;
 

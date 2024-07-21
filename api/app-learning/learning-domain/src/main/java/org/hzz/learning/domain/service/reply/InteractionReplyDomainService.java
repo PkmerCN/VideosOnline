@@ -14,6 +14,13 @@ import java.util.Set;
  * @date 2024/7/12
  */
 public interface InteractionReplyDomainService {
+
+    /**
+     * 根据id更新属性，id放在InteractionReplyEntity
+     * @param entity 要更新的实体
+     */
+    void updateEntity(InteractionReplyEntity entity);
+
     /**
      * 获取评论
      * @param ids id列表
@@ -50,21 +57,25 @@ public interface InteractionReplyDomainService {
      * 分页查询问题下的回答
      * @param questionId 问题id
      * @param pageQuery 分页查询条件
+     * @param isForAdmin 是否是admin端查询 true admin的分页。false 用户端的查询
      * @return 分页结果
      */
     PageResponse<InteractionReplyEntity> selectReplyPage(
             Long questionId,
+            Boolean isForAdmin,
             PageQuery pageQuery);
 
     /**
      * 分页查询某个回答下的评论
      * @param answerId 回复id
      * @param pageQuery 分页查询条件
+     * @param isForAdmin 是否是admin端查询 true admin的分页。false 用户端的查询
      * @return 分页查询
      */
     PageResponse<InteractionReplyEntity> selectCommentPage(
             Long questionId,
             Long answerId,
+            Boolean isForAdmin,
             PageQuery pageQuery
     );
 

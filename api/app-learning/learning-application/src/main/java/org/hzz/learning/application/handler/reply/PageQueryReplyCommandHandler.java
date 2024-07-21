@@ -64,7 +64,8 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
         } else {
             List<ReplyResp> replyResp = handleUserInfo(
                     entities,
-                    command.isComment());
+                    command.isComment(),
+                    command.getForAdmin());
             pageResp.setList(replyResp);
         }
 
@@ -83,12 +84,14 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
             pageEntities = replyDomainService.selectCommentPage(
                     command.getQuestionId(),
                     command.getAnswerId(),
+                    command.getForAdmin(),
                     command.getPageQuery()
             );
         } else {
             log.info("分页查询回答");
             pageEntities = replyDomainService.selectReplyPage(
                     command.getQuestionId(),
+                    command.getForAdmin(),
                     command.getPageQuery()
             );
         }
@@ -100,9 +103,13 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
      * 处理用户信息
      *
      * @param entities 具体数据
-     * @param isComment 是否是评论 true处理评论，false处理回答
+     * @param isComment true 评论；false 回复
+     * @param isForAdmin true admin端处理，false 用户端处理
      */
-    public List<ReplyResp> handleUserInfo(List<InteractionReplyEntity> entities,boolean isComment) {
+    public List<ReplyResp> handleUserInfo(List<InteractionReplyEntity> entities,
+                                          boolean isComment,
+                                          boolean isForAdmin) {
+
         // 收集回答用户id
         Set<Long> userIds = entities.stream().map(InteractionReplyEntity::getUserId)
                 .collect(Collectors.toSet());
@@ -110,14 +117,8 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
         if(isComment) {
             log.info("处理评论中的目标用户");
             // 回复的目标用户是一个匿名用户
-            final Long replyAnonyUserId = 0L;
-            for (InteractionReplyEntity e : entities){
-                Long targetUserId = e.getTargetUserId();
-                if(!replyAnonyUserId.equals(targetUserId)){
-                    // 只查询回复的目标非匿名的用户
-                    userIds.add(targetUserId);
-                }
-            }
+            Set<Long> targetUserIds = getTargetUserIds(entities);
+            userIds.addAll(targetUserIds);
         }
 
         Map<Long, UserDetailEntity> mapUserEntities = userDetailDomainService.getMapEntities(userIds);
@@ -125,35 +126,69 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
         List<ReplyResp> results = new ArrayList<>();
         for (InteractionReplyEntity e : entities) {
             ReplyResp target = Converter.INSTANCE.toTarget(e);
-            // 匿名回答，不处理
-            if (e.getAnonymity()) {
-                log.info("匿名用户不进行处理 userId = {}", e.getUserId());
+            // 用户端匿名回答，不处理。只处理非匿名回答或者是admin的查询
+            if (e.getAnonymity() && !isForAdmin) {
+                log.info("匿名用户用户端不进行处理 userId = {}", e.getUserId());
             } else {
                 // 处理用户信息
-                UserDetailEntity userDetailEntity = mapUserEntities.get(e.getUserId());
-                ReplyUserResp replyUserResp = new ReplyUserResp();
-
-                replyUserResp.setId(userDetailEntity.getId());
-                replyUserResp.setName(userDetailEntity.getName());
-                replyUserResp.setIcon(userDetailEntity.getIcon());
-
-                target.setReplyUser(replyUserResp);
+                handleUserInfo(e,target,mapUserEntities);
             }
 
             if(isComment){
                 // 处理评论的目标用户
-                UserDetailEntity userDetailEntity = mapUserEntities.get(e.getTargetUserId());
-                if(userDetailEntity != null){
-                    target.setTargetUserName(userDetailEntity.getName());
-                }else{
-                    log.info("该评论针对的是匿名用户");
-                    target.setTargetUserName("匿名用户");
-                }
+                handleTargetUser(e,target,mapUserEntities);
             }
             results.add(target);
         }
         return results;
     }
+
+
+    private Set<Long> getTargetUserIds(List<InteractionReplyEntity> entities){
+        Set<Long> targetUserIds = new HashSet<>();
+        final Long replyAnonyUserId = 0L;
+        for (InteractionReplyEntity e : entities){
+            Long targetUserId = e.getTargetUserId();
+            if(!replyAnonyUserId.equals(targetUserId)){
+                // 只查询回复的目标非匿名的用户
+                targetUserIds.add(targetUserId);
+            }
+        }
+        return targetUserIds;
+    }
+
+
+    /**
+     * 处理评论或者回复的用户信息
+     */
+    private void handleUserInfo(InteractionReplyEntity e,
+                               ReplyResp target,
+                               Map<Long, UserDetailEntity> mapUserEntities){
+        UserDetailEntity userDetailEntity = mapUserEntities.get(e.getUserId());
+        ReplyUserResp replyUserResp = new ReplyUserResp();
+
+        replyUserResp.setId(userDetailEntity.getId());
+        replyUserResp.setName(userDetailEntity.getName());
+        replyUserResp.setIcon(userDetailEntity.getIcon());
+
+        target.setReplyUser(replyUserResp);
+    }
+
+    /**
+     * 处理评论的目标用户
+     */
+    private void handleTargetUser(InteractionReplyEntity e,
+                                  ReplyResp target,
+                                  Map<Long, UserDetailEntity> mapUserEntities){
+        UserDetailEntity userDetailEntity = mapUserEntities.get(e.getTargetUserId());
+        if(userDetailEntity != null){
+            target.setTargetUserName(userDetailEntity.getName());
+        }else{
+            log.info("该评论针对的是匿名用户");
+            target.setTargetUserName("匿名用户");
+        }
+    }
+
 
     @Mapper
     interface Converter extends TargetAndSourceConverter<ReplyResp, InteractionReplyEntity> {

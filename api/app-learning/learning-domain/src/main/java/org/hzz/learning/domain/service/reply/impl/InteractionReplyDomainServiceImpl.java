@@ -35,6 +35,15 @@ public class InteractionReplyDomainServiceImpl
      * {@inheritDoc}
      */
     @Override
+    public void updateEntity(InteractionReplyEntity entity) {
+        int i = repository.updateSelective(entity);
+        logger.info("更新{}条数据",i);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<InteractionReplyEntity> getEntityByIds(Set<Long> ids) {
         List<InteractionReplyEntity> entities = repository.selectBatchIds(ids);
         if (CollUtil.isNotEmpty(entities)) {
@@ -108,12 +117,16 @@ public class InteractionReplyDomainServiceImpl
      * {@inheritDoc}
      */
     @Override
-    public PageResponse<InteractionReplyEntity> selectReplyPage(Long questionId, PageQuery pageQuery) {
+    public PageResponse<InteractionReplyEntity> selectReplyPage(
+            Long questionId,
+            Boolean isForAdmin,
+            PageQuery pageQuery) {
         final Long TopAnswerId = 0L;
 
         setDefaulPageSelecttFiltersAndSortOrder(
                 questionId,
                 TopAnswerId,
+                isForAdmin,
                 pageQuery);
 
         return repository.selectPage(pageQuery);
@@ -127,10 +140,12 @@ public class InteractionReplyDomainServiceImpl
     @Override
     public PageResponse<InteractionReplyEntity> selectCommentPage(Long questionId,
                                                                   Long answerId,
+                                                                  Boolean isForAdmin,
                                                                   PageQuery pageQuery) {
         setDefaulPageSelecttFiltersAndSortOrder(
                 questionId,
                 answerId,
+                isForAdmin,
                 pageQuery
         );
         return repository.selectPage(pageQuery);
@@ -146,6 +161,7 @@ public class InteractionReplyDomainServiceImpl
      */
     private PageQuery setDefaulPageSelecttFiltersAndSortOrder(Long questionId,
                                                          Long answerId,
+                                                         Boolean isForAdmin,
                                                          PageQuery pageQuery) {
         List<FilterCondition> filters = new ArrayList<>();
 
@@ -153,8 +169,12 @@ public class InteractionReplyDomainServiceImpl
         filters.add(new FilterCondition(QUESTION_ID, Operation.Equal, questionId));
         // 一级评论
         filters.add(new FilterCondition(ANSWER_ID, Operation.Equal, answerId));
-        // 只查询没有隐藏的回复
-        filters.add(new FilterCondition(HIDDEN, Operation.Equal, false));
+        if(!isForAdmin){
+            // admin端全部查询，就没有这个条件
+            // 用户端只查询没有隐藏的回复
+            filters.add(new FilterCondition(HIDDEN, Operation.Equal, false));
+        }
+
 
         // 按照点赞，创建时间
         List<SortOrder> sortOrders = new ArrayList<>();
