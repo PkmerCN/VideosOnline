@@ -39,6 +39,9 @@ public class InteractionReplyController
     private final Validator validator;
     private final LessonCmdService cmdService;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Result<Void> saveReply(ReplyReq replyReq) {
         logger.info("处理提交评论");
@@ -51,6 +54,9 @@ public class InteractionReplyController
         return success(null);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Result<PageResponse<ReplyResp>> page(ReplyPage replyPage) {
 

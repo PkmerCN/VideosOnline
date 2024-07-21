@@ -6,6 +6,7 @@ import org.hzz.core.page.query.FilterCondition;
 import java.util.List;
 
 /**
+ * 分页查询mapper
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/27
