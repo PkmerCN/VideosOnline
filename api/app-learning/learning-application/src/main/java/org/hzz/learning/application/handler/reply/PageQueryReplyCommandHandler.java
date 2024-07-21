@@ -45,6 +45,49 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
         return PageQueryReplyCommand.MARK;
     }
 
+    /**
+     * {
+     * 	"code": 2000,
+     * 	"msg": "成功",
+     * 	"data": {
+     * 		"currentPageNo": 1,
+     * 		"list": [
+     * 			            {
+     * 				"anonymity": true,
+     * 				"content": "评论用户的评论: Java 17DJK",
+     * 				"createTime": "2024-07-17 07:51:50",
+     * 				"hidden": false,
+     * 				"id": 7219247414723612672,
+     * 				"likedTimes": 0,
+     * 				"replyTimes": 0,
+     * 				"replyUser": {
+     * 					"icon": "/img-tx/1.jpg",
+     * 					"id": 1,
+     * 					"name": "壮哥"
+     *                },
+     * 				"targetUserName": "匿名用户"
+     *            },
+     *            {
+     * 				"anonymity": false,
+     * 				"content": "评论回复 Love Java yeah",
+     * 				"createTime": "2024-07-17 07:41:08",
+     * 				"hidden": false,
+     * 				"id": 7219244721317744640,
+     * 				"likedTimes": 0,
+     * 				"replyTimes": 0,
+     * 				"replyUser": {
+     * 					"icon": "/img-tx/3.jpg",
+     * 					"id": 3,
+     * 					"name": "胖卡"
+     *                },
+     * 				"targetUserName": "壮哥"
+     *            }
+     * 		],
+     * 		"total": 2,
+     * 		"totalPages": 1
+     * 	}
+     * }
+     */
     @Override
     public PageResponse<ReplyResp> executeWithResp(PageQueryReplyCommand command) {
 

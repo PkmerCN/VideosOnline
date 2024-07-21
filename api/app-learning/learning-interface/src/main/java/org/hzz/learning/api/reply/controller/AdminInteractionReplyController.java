@@ -26,6 +26,9 @@ public class AdminInteractionReplyController
     @Setter(onMethod_ = @Autowired)
     private LessonCmdService cmdService;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Result<PageResponse<ReplyResp>> page(ReplyPage replyPage) {
         PageQueryReplyCommand cmd = new PageQueryReplyCommand();
@@ -40,6 +43,9 @@ public class AdminInteractionReplyController
         return success(replyRespPageResponse);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Result<Void> hiddenReply(Long id, Boolean hidden) {
 
