@@ -1,6 +1,7 @@
 package org.hzz.learning.application.handler.reply.admin;
 
 import lombok.Setter;
+import org.hzz.core.exception.db.AppDbEntityNotFoundException;
 import org.hzz.core.exception.request.BadRequestException;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
@@ -35,6 +36,6 @@ public class HiddenReplyCommandHandler
             replyEntity.setHidden(command.getHidden());
             replyDomainService.updateEntity(replyEntity);
         }
-        throw new BadRequestException("id = "+command.getId() + "错误，不存在");
+        throw new AppDbEntityNotFoundException("id = "+command.getId() + "错误，不存在");
     }
 }

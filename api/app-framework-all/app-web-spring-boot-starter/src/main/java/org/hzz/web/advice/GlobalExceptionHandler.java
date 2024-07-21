@@ -74,12 +74,23 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return Result.error(body,ex.getStatus().code(),ex.getStatus().getReason());
     }
 
+
     @ExceptionHandler(AppCommonException.class)
     public Result<String> handleAppException(HttpServletRequest request, AppCommonException ex) throws Exception {
         AppStatus appStatus = ex.getStatus();
-        log.info("自定义异常 -> {} , 状态码：{}, 异常原因：{} ",ex.getClass().getName(),appStatus.code(),appStatus.getReason());
+        String reason = null;
+        if(ex.getMessage() != null){
+            reason = ex.getMessage();
+        }else{
+            // 设置一个默认的reason
+            reason = appStatus.getReason();
+        }
+
+        log.info("自定义异常 -> {} , 状态码：{}, 异常原因：{} ",ex.getClass().getName(),appStatus.code(),reason);
         checkBrowser(request,ex);
-        return Result.error(appStatus);
+
+//        return Result.error(appStatus);
+        return Result.error(appStatus.code(),reason);
     }
 
     @ExceptionHandler(RuntimeException.class)
