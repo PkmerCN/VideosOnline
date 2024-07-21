@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.hzz</groupId>
         <artifactId>app-framework-all</artifactId>
-        <version>2.2.3</version>
+        <version>2.2.4-SNAPSHOT</version>
     </parent>
 
     <artifactId>app-web-spring-boot-starter</artifactId>
@@ -12,7 +12,7 @@
         <dependency>
             <groupId>org.hzz</groupId>
             <artifactId>app-convention-spring-boot-starter</artifactId>
-            <version>2.2.3</version>
+            <version>2.2.4-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
