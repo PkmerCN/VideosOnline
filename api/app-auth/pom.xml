@@ -4,11 +4,11 @@
     <parent>
         <groupId>org.hzz</groupId>
         <artifactId>api</artifactId>
-        <version>2.2.3-SNAPSHOT</version>
+        <version>2.2.3</version>
     </parent>
 
     <artifactId>app-auth</artifactId>
-    <version>2.2.3-SNAPSHOT</version>
+    <version>2.2.3</version>
 
     <packaging>pom</packaging>
 
