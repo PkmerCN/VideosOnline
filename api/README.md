@@ -200,6 +200,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | 视频记录提交与admin查看用户问答 | CompletableFuture.runAsync              |
 | 更新评论数量解决并发         | update table replyTimes = relyTimes + 1 |
 | mapstruct优化解耦ddd层  | 如分页查询的结果                                |
+| 添加用户课程，课程点赞        | 数据库唯一主键，实现幂等性                                |
 
 ## 缓存技术
 
