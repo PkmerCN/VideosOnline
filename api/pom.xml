@@ -16,6 +16,7 @@
         <module>app-learning</module>
         <module>app-order</module>
         <module>app-course</module>
+        <module>app-remark</module>
     </modules>
 
     <name>VideosOnline</name>
