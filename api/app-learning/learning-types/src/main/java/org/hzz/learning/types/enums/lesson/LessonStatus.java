@@ -7,7 +7,7 @@ import org.hzz.core.enums.BaseEnum;
  * @version 1.0.0
  * @date 2024/6/27
  */
-public enum LessonStatus implements BaseEnum {
+public enum LessonStatus implements BaseEnum<Integer> {
     NOT_BEGIN(0,"未学习"),
     LEARNING(1,"学习中"),
     FINISHED(2,"已学完"),

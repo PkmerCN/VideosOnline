@@ -12,7 +12,7 @@ import org.hzz.core.enums.BaseEnumTemplate;
  * @date 2024/7/13
  */
 @Getter
-public enum Deleted implements BaseEnum {
+public enum Deleted implements BaseEnum<Integer> {
     NO(0,"未删除"),
     YES(1,"已删除");
 

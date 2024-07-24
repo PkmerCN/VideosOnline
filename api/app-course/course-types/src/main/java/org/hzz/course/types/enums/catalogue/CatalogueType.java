@@ -11,7 +11,7 @@ import org.hzz.core.enums.BaseEnumTemplate;
  * @date 2024/7/15
  */
 @Getter
-public enum CatalogueType implements BaseEnum {
+public enum CatalogueType implements BaseEnum<Integer> {
     CHAPTER(1,"章"),
     SECTION(2,"节"),
     EXAM(3,"测试");

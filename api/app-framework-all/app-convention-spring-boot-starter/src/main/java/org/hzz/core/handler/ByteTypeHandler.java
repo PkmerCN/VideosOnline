@@ -18,7 +18,7 @@ import java.sql.SQLException;
  * @date 2024/7/15
  */
 @MappedJdbcTypes(JdbcType.TINYINT)
-public abstract class ByteTypeHandler<T extends BaseEnum> extends BaseTypeHandler<T> {
+public abstract class ByteTypeHandler<T extends BaseEnum<Integer>> extends BaseTypeHandler<T> {
 
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, T parameter, JdbcType jdbcType) throws SQLException {

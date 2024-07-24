@@ -8,11 +8,11 @@ package org.hzz.core.enums;
  * @version 1.0.0
  * @date 2024/6/27
  */
-public interface BaseEnum {
-    abstract Integer getValue();
+public interface BaseEnum<T> {
+    abstract T getValue();
     abstract String getDesc();
 
-    default boolean equalsValue(Integer value){
+    default boolean equalsValue(T value){
         if(value == null) return false;
         return getValue().equals(value);
     }

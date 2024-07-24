@@ -11,7 +11,7 @@ import org.hzz.core.enums.BaseEnumTemplate;
  * @date 2024/7/16
  */
 @Getter
-public enum IsShow implements BaseEnum {
+public enum IsShow implements BaseEnum<Integer> {
     NO(0,"不展示"),
     YES(1,"展示");
 

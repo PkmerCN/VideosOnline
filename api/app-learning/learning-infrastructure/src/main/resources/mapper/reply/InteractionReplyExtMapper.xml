@@ -58,7 +58,7 @@
                             </foreach>
                         </when>
                         <otherwise>
-                            ${filter.field} ${filter.operator} ${filter.value}
+                            ${filter.field} ${filter.operator} #{filter.value}
                         </otherwise>
                     </choose>
                 </foreach>

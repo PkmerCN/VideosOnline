@@ -11,7 +11,7 @@ import org.hzz.core.enums.BaseEnum;
  * @date 2024/7/15
  */
 @Getter
-public enum TrailerType implements BaseEnum {
+public enum TrailerType implements BaseEnum<Integer> {
     NO(0,"不支持试看"),
     YES(1,"支持试看");
 

@@ -17,8 +17,12 @@ public class BaseEnumWriter implements ObjectWriter {
     @Override
     public void write(JSONWriter jsonWriter, Object object, Object fieldName, Type fieldType, long features) {
         if(object == null) jsonWriter.writeNull();
-        if(object instanceof BaseEnum){
-            jsonWriter.writeInt32(((BaseEnum)object).getValue());
+        if(object instanceof BaseEnum baseEnum){
+            Object value = baseEnum.getValue();
+            if(value instanceof Integer){
+                jsonWriter.writeInt32((Integer) value);
+            }
+
         }else{
             throw new RuntimeException("not support type"+object.getClass().getName());
         }

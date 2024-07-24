@@ -8,7 +8,7 @@ import org.hzz.core.enums.BaseEnum;
  * @version 1.0.0
  * @date 2024/7/13
  */
-public enum CategoryLevel implements BaseEnum {
+public enum CategoryLevel implements BaseEnum<Integer> {
     FIRST(1,"一级分类"),
     SECOND(2,"二级分类"),
     THIRD(3,"三级分类");

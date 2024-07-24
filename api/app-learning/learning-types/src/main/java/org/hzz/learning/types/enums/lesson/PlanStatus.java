@@ -7,7 +7,7 @@ import org.hzz.core.enums.BaseEnum;
  * @version 1.0.0
  * @date 2024/6/27
  */
-public enum PlanStatus implements BaseEnum {
+public enum PlanStatus implements BaseEnum<Integer> {
     NOT_PLAN(0,"没有计划"),
     PLAN_RUNNING(1,"计划进行中");
 

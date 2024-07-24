@@ -8,7 +8,7 @@ import org.hzz.core.enums.BaseEnum;
  * @version 1.0.0
  * @date 2024/7/11
  */
-public enum QuestionStatus implements BaseEnum {
+public enum QuestionStatus implements BaseEnum<Integer> {
     UN_CHECK(0, "未查看"),
     CHECKED(1, "已查看");
     private final Integer value;

@@ -12,7 +12,7 @@ import org.hzz.core.enums.BaseEnumTemplate;
  * @date 2024/7/13
  */
 @Getter
-public enum CategoryStatus implements BaseEnum {
+public enum CategoryStatus implements BaseEnum<Integer> {
     NORMAL(1,"正常"),
     DISABLE(2,"禁用");
 
