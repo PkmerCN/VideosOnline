@@ -6,6 +6,7 @@ import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.remark.application.command.liked.LikedCommand;
 import org.hzz.remark.domain.service.LikedRecordDomainService;
+import org.hzz.remark.types.BizType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,19 +32,20 @@ public class LikedCommandHandler implements CommandHandler,
     public void execute(LikedCommand command) {
         Long userId = command.getUserId();
         Long bizId = command.getBizId();
-
+        BizType bizType = command.getBizType();
         if (command.getLiked()) {
             log.info("点赞");
             likedRecordDomainService.like(
                     userId,
                     bizId,
-                    command.getBizType()
+                    bizType
             );
         } else {
             log.info("取消点赞");
             likedRecordDomainService.cancel(
                     userId,
-                    bizId
+                    bizId,
+                    bizType
             );
         }
     }

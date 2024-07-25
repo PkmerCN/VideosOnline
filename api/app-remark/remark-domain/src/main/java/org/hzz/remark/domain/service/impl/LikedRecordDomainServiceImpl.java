@@ -1,14 +1,17 @@
 package org.hzz.remark.domain.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.Setter;
 import org.hzz.core.code.impl.AppStatusImpl;
 import org.hzz.core.exception.request.BadRequestException;
 import org.hzz.core.service.BaseDomainService;
+import org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants;
 import org.hzz.rabbitmq.core.RabbitMQHelper;
 import org.hzz.remark.domain.entity.LikedRecordEntity;
 import org.hzz.remark.domain.repository.LikedRecordRepository;
 import org.hzz.remark.domain.service.LikedRecordDomainService;
 import org.hzz.remark.types.BizType;
+import org.hzz.remark.types.LikedTimesDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +32,9 @@ public class LikedRecordDomainServiceImpl
 
     /**
      * {@inheritDoc}
-     * @param userId 用户
-     * @param bizId 业务id
+     *
+     * @param userId  用户
+     * @param bizId   业务id
      * @param bizType 业务类型
      */
     @Override
@@ -42,17 +46,18 @@ public class LikedRecordDomainServiceImpl
             logger.info("插入点赞成功");
         }
 
-        // todo rabbitmq
+        // rabbitmq
+        updateLikedTimes(bizId, bizType);
     }
 
     /**
      * {@inheritDoc}
+     *
      * @param userId 用户id
-     * @param bizId 业务id
+     * @param bizId  业务id
      */
-
     @Override
-    public void cancel(Long userId, Long bizId) {
+    public void cancel(Long userId, Long bizId, BizType bizType) {
         Optional<LikedRecordEntity> entityOptional = repository.selectOne(userId, bizId);
 
         LikedRecordEntity entity = entityOptional.orElseThrow(
@@ -63,6 +68,25 @@ public class LikedRecordDomainServiceImpl
             logger.info("删除点赞记录{}条", delete);
         }
 
-        // todo rabbitmq
+        // rabbitmq
+        updateLikedTimes(bizId, bizType);
+    }
+
+    /**
+     * rabbitMQ异步更新数据
+     *
+     * @param bizId   业务id
+     * @param bizType 业务类型
+     */
+    private void updateLikedTimes(Long bizId, BizType bizType) {
+        long likedTimes = repository.count(bizId);
+        LikedTimesDto msgBody = new LikedTimesDto();
+        msgBody.setLikeTimes(likedTimes)
+                .setBizId(bizId);
+        rabbitMQHelper.sendAsync(
+                VideoMqConstants.Exchange.LIKE_RECORD_EXCHANGE,
+                StrUtil.format(VideoMqConstants.Key.LIKED_TIMES_KEY_TEMPLATE, bizType.getValue()),
+                msgBody
+        );
     }
 }

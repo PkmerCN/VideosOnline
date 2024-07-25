@@ -23,6 +23,7 @@ public interface LikedRecordDomainService extends DomainService {
      * 取消点赞
      * @param userId 用户id
      * @param bizId 业务id
+     * @param bizType 业务类型
      */
-    void cancel(Long userId,Long bizId);
+    void cancel(Long userId,Long bizId,BizType bizType);
 }
