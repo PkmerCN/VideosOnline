@@ -19,6 +19,9 @@ public class LikedCommand implements CommandWithMark {
     // 业务id
     Long bizId;
     // 业务类型
+    // 用户id
+    Long userId;
+    // 业务类型
     BizType bizType;
     // 点赞（true）还是取消点赞(false)，
     Boolean liked;
