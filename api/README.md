@@ -54,6 +54,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | Maven               | 3.9.0   |
 | MyBatis Spring Boot | 3.0.3   |
 | MyBatis Generate    | 1.4.2   |
+| MyBatis Dynamic SQL | 1.5.2   |
 | hutool              | 5.8.28  |
 
 
