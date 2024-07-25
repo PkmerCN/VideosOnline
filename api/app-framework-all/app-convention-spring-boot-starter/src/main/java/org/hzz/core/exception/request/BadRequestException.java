@@ -11,14 +11,22 @@ import org.hzz.core.exception.AppCommonException;
  * @date 2024/7/12
  */
 public class BadRequestException extends AppCommonException {
-    private static final AppStatus appStatus = AppStatusImpl.NO_PERMISSION;
+    private final AppStatus appStatus;
 
     public BadRequestException(){
-        super(appStatus.getReason());
+        super(AppStatusImpl.NO_PERMISSION.getReason());
+        this.appStatus = AppStatusImpl.NO_PERMISSION;
     }
 
     public BadRequestException(String message){
         super(message);
+        this.appStatus = AppStatusImpl.NO_PERMISSION;
+    }
+
+
+    public BadRequestException(AppStatus appStatus){
+        super(appStatus.getReason());
+        this.appStatus = appStatus;
     }
 
     @Override

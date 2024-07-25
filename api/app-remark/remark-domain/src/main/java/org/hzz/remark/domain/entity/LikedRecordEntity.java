@@ -1,5 +1,7 @@
 package org.hzz.remark.domain.entity;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.hzz.ddd.core.domain.shared.Entity;
 import org.hzz.remark.types.BizType;
 
@@ -10,6 +12,8 @@ import java.time.LocalDateTime;
  * @version 1.0.0
  * @date 2024/7/25
  */
+@Data
+@Accessors(chain = true)
 public class LikedRecordEntity implements Entity {
     // 主键id
     private Long id;
