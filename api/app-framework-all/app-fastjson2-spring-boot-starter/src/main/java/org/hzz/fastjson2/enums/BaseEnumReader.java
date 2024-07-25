@@ -25,7 +25,7 @@ public class BaseEnumReader implements ObjectReader {
     @Override
     public Object readObject(JSONReader jsonReader, Type fieldType, Object fieldName, long features) {
         // 读取json中的status字段，转换为枚举类型
-        Integer code = jsonReader.read(Integer.class);
+        Object code = jsonReader.read(Object.class);
         if(code == null) return null;
 
         // 从class转变为枚举类型

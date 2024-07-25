@@ -16,6 +16,7 @@ public enum AppStatusImpl implements AppStatus {
     TOKEN_INVALID(4004,"Token不合法"),
     ARG_INVALID(4005,"参数不合法"),
     NO_PERMISSION(4006,"没有权限"),
+    REPEAT_OPERATION(4007,"重复操作"),
     INTERNAL_ERROR(5000,"应用异常"),
     DB_ERROR(5001,"数据库异常"),
     DB_ENTITY_NOT_FOUND(5002,"数据库不存在该数据"),

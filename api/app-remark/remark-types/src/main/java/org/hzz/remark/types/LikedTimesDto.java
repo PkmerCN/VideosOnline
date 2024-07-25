@@ -12,5 +12,5 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class LikedTimesDto {
     Long bizId;
-    Long likeTimes;
+    Long likedTimes;
 }

@@ -17,8 +17,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import static org.hzz.remark.infrastructure.dao.mapper.liked.LikedRecordDynamicSqlSupport.*;
+
+import static org.hzz.remark.infrastructure.dao.mapper.liked.LikedRecordDynamicSqlSupport.bizId;
 import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
+
 /**
  * @author 胖卡
  * @version 1.0.0
@@ -36,11 +38,12 @@ public class LikedRecordRepositoryImpl
      * 统计数量，
      * 这里使用dynamic sql来做
      * todo 运行时查看sql
+     *
      * @param _bizId 业务id
      * @return 统计数量
      */
     @Override
-    public long count(Long _bizId){
+    public long count(Long _bizId) {
         return dynamicMapper.count(c -> c.where(bizId, isEqualTo(_bizId)));
     }
 
@@ -50,7 +53,7 @@ public class LikedRecordRepositoryImpl
     @Override
     public int insert(LikedRecordEntity entity) {
         LikedRecord record = Converter.INSTANCE.toRecord(entity);
-        return mapper.insert(record);
+        return mapper.insertSelective(record);
     }
 
 
@@ -70,18 +73,18 @@ public class LikedRecordRepositoryImpl
         LikedRecordExample example = new LikedRecordExample();
         example.createCriteria()
                 .andUserIdEqualTo(userId)
-                        .andBizIdEqualTo(bizId);
+                .andBizIdEqualTo(bizId);
         List<LikedRecord> likedRecords = mapper.selectByExample(example);
-        if(CollUtil.isEmpty(likedRecords)){
+        if (CollUtil.isEmpty(likedRecords)) {
             return Optional.<LikedRecordEntity>empty();
-        }else{
+        } else {
             LikedRecordEntity entity = Converter.INSTANCE.toEntity(likedRecords.get(0));
             return Optional.of(entity);
         }
     }
 
     @Mapper
-    interface Converter extends RecordAndEntityConverter<LikedRecord,LikedRecordEntity> {
+    interface Converter extends RecordAndEntityConverter<LikedRecord, LikedRecordEntity> {
         Converter INSTANCE = Mappers.getMapper(Converter.class);
     }
 }

@@ -13,6 +13,7 @@ import org.hzz.remark.domain.service.LikedRecordDomainService;
 import org.hzz.remark.types.BizType;
 import org.hzz.remark.types.LikedTimesDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -39,15 +40,19 @@ public class LikedRecordDomainServiceImpl
      */
     @Override
     public void like(Long userId, Long bizId, BizType bizType) {
-        LikedRecordEntity entity = new LikedRecordEntity();
-        entity.setBizId(bizId).setBizType(bizType).setUserId(userId);
-        int insert = repository.insert(entity);
-        if (insert == 1) {
-            logger.info("插入点赞成功");
+        try {
+            LikedRecordEntity entity = new LikedRecordEntity();
+            entity.setBizId(bizId).setBizType(bizType).setUserId(userId);
+            int insert = repository.insert(entity);
+            if (insert == 1) {
+                logger.info("插入点赞成功");
+                // rabbitmq
+                updateLikedTimes(bizId, bizType);
+            }
+        } catch (DuplicateKeyException e) {
+            logger.info(e.getMessage());
+            throw new BadRequestException(AppStatusImpl.REPEAT_OPERATION);
         }
-
-        // rabbitmq
-        updateLikedTimes(bizId, bizType);
     }
 
     /**
@@ -66,10 +71,9 @@ public class LikedRecordDomainServiceImpl
         int delete = repository.delete(entity.getId());
         if (delete == 1) {
             logger.info("删除点赞记录{}条", delete);
+            // rabbitmq
+            updateLikedTimes(bizId, bizType);
         }
-
-        // rabbitmq
-        updateLikedTimes(bizId, bizType);
     }
 
     /**
@@ -81,7 +85,7 @@ public class LikedRecordDomainServiceImpl
     private void updateLikedTimes(Long bizId, BizType bizType) {
         long likedTimes = repository.count(bizId);
         LikedTimesDto msgBody = new LikedTimesDto();
-        msgBody.setLikeTimes(likedTimes)
+        msgBody.setLikedTimes(likedTimes)
                 .setBizId(bizId);
         rabbitMQHelper.sendAsync(
                 VideoMqConstants.Exchange.LIKE_RECORD_EXCHANGE,
