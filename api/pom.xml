@@ -49,6 +49,7 @@
         <spring.boot.version>3.3.0</spring.boot.version>
         <springdoc.version>2.5.0</springdoc.version>
         <mybatis.spring.boot.version>3.0.3</mybatis.spring.boot.version>
+        <mybatis.dynamic.sql.version>1.5.2</mybatis.dynamic.sql.version>
         <lombok.version>1.18.32</lombok.version>
         <junit.version>5.9.3</junit.version>
         <mysql.version>8.0.28</mysql.version>
@@ -157,6 +158,11 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.dynamic-sql</groupId>
+                <artifactId>mybatis-dynamic-sql</artifactId>
+                <version>${mybatis.dynamic.sql.version}</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>

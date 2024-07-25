@@ -1,4 +1,4 @@
-package org.hzz.remark.infrastructure.dao.handler.liked;
+package org.hzz.remark.infrastructure.dao.handler;
 
 import org.hzz.core.handler.StringTypeHandler;
 import org.hzz.remark.types.BizType;
@@ -11,6 +11,6 @@ import org.hzz.remark.types.BizType;
 public class BizTypeHandler extends StringTypeHandler<BizType> {
     @Override
     protected BizType fromValue(String value) {
-        return null;
+        return BizType.fromValue(value);
     }
 }

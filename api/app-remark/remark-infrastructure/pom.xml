@@ -24,5 +24,9 @@
             <artifactId>remark-domain</artifactId>
             <version>2.2.4-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis.dynamic-sql</groupId>
+            <artifactId>mybatis-dynamic-sql</artifactId>
+        </dependency>
     </dependencies>
 </project>

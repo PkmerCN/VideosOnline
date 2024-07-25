@@ -18,6 +18,14 @@ public interface LikedRecordRepository {
     int insert(LikedRecordEntity entity);
 
     /**
+     * 统计数量
+     * @param _bizId 业务id
+     * @return 数量
+     */
+
+    long count(Long _bizId);
+
+    /**
      * 点赞记录id
      * @param id 点赞记录id
      */
