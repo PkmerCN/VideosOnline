@@ -1,6 +1,5 @@
 package org.hzz.remark.types;
 
-import lombok.Data;
 import lombok.Getter;
 
 /**
