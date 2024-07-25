@@ -1,6 +1,7 @@
 package org.hzz.remark.application.handler.liked;
 
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.remark.application.command.liked.LikedCommand;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
  * @date 2024/7/25
  */
 @Component
+@Slf4j
 public class LikedCommandHandler implements CommandHandler,
         AbstractExecuteStrategy<LikedCommand, Void> {
 
@@ -29,14 +31,16 @@ public class LikedCommandHandler implements CommandHandler,
     public void execute(LikedCommand command) {
         Long userId = command.getUserId();
         Long bizId = command.getBizId();
-        Boolean liked = command.getLiked();
-        if (liked) {
+
+        if (command.getLiked()) {
+            log.info("点赞");
             likedRecordDomainService.like(
                     userId,
                     bizId,
                     command.getBizType()
             );
         } else {
+            log.info("取消点赞");
             likedRecordDomainService.cancel(
                     userId,
                     bizId
