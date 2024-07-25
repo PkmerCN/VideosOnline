@@ -20,9 +20,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-import static org.hzz.learning.types.constants.RabbitMqConstants.Queue.*;
-import static org.hzz.learning.types.constants.RabbitMqConstants.Key.*;
-import static org.hzz.order.types.constant.Constants.Exchange.*;
+import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Queue.*;
+import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Key.*;
+import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Exchange.*;
 
 /**
  * @author 胖卡

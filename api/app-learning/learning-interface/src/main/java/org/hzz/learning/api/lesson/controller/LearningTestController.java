@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.hzz.learning.infrastructure.mq.rabbitmq.constants.RabbitmqConstants.Exchange.*;
-import static org.hzz.learning.infrastructure.mq.rabbitmq.constants.RabbitmqConstants.RoutingKey.*;
-import static org.hzz.learning.types.constants.RabbitMqConstants.Key.*;
-import static org.hzz.order.types.constant.Constants.Exchange.*;
+import static org.hzz.learning.infrastructure.mq.rabbitmq.constants.RabbitmqConstants.RoutingKey.LEARNING_TEST_KEY;
+import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Key.*;
+import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Exchange.*;
 /**
  * @author 胖卡
  * @version 1.0.0
