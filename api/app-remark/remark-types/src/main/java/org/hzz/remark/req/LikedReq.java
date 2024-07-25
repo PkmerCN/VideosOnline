@@ -17,6 +17,7 @@ import org.hzz.remark.types.BizType;
 @Schema(description = "点赞请求")
 public class LikedReq {
     @Schema(description = "业务id")
+    @NotNull
     Long bizId;
 
     @Schema(description = "业务类型",example = "QA")
