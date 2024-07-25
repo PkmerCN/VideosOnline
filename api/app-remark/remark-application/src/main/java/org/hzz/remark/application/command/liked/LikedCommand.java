@@ -1,6 +1,7 @@
 package org.hzz.remark.application.command.liked;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
 import org.hzz.remark.application.handler.liked.LikedCommandHandler;
 import org.hzz.remark.types.BizType;
@@ -13,6 +14,7 @@ import org.hzz.remark.types.BizType;
  * @date 2024/7/25
  */
 @Data
+@Accessors(chain = true)
 public class LikedCommand implements CommandWithMark {
 
     public static final String MARK = LikedCommand.class.getName();
