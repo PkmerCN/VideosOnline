@@ -18,11 +18,15 @@ public interface VideoMqConstants {
     }
     interface Queue{
         String LEARNING_LESSON_PAY_QUEUE = "learning.lesson.pay.queue";
+        /** 问答点赞队列 */
+        String AQ_LIKED_TIMES_QUEUE = "qa.liked.times.queue";
     }
     interface Key{
         String LESSON_PAY_KEY = "lesson.pay";
 
-        /** 点赞的RoutingKey */
+        /** 点赞的RoutingKey 模版 */
         String LIKED_TIMES_KEY_TEMPLATE = "{}.times.changed";
+        /** 问答系统点赞 */
+        String QA_LIKED_TIMES_KEY = "QA.times.changed";
     }
 }

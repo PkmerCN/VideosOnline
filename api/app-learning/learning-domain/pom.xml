@@ -42,7 +42,11 @@
             <artifactId>app-ddd-framework-core</artifactId>
             <version>2.2.4-SNAPSHOT</version>
         </dependency>
-        <!--  引入自身依赖end      -->
+        <dependency>
+            <groupId>org.hzz.remark.types</groupId>
+            <artifactId>remark-types</artifactId>
+            <version>2.2.4-SNAPSHOT</version>
+        </dependency><!--  引入自身依赖end      -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>

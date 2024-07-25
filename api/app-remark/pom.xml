@@ -19,7 +19,6 @@
         <module>remark-types</module>
         <module>remark-domain</module>
         <module>remark-infrastructure</module>
-        <module>remark-trigger</module>
     </modules>
 
     <properties>
