@@ -6,8 +6,10 @@
     <context id="MySQLTables" targetRuntime="MyBatis3">
         
         <plugin type="org.hzz.mybatis.plugins.ConstantClassGeneratorPlugin">
+            <!--    其他扩展信息        -->
             <property name="pkmer" value="hzz"/>
-            <property name="targetPackage" value="org.hzz.learning.types.constants"/>
+            <!--    修改生成的文件夹        -->
+            <property name="targetPackage" value="org.hzz.remark.types.constants"/>
         </plugin>
 
         <!--   使用自己的注释类     -->
@@ -59,7 +61,9 @@
 <!--            <columnOverride column="is_show" javaType="org.hzz.course.types.enums.teacher.IsShow" />-->
 <!--            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted" />-->
 <!--        </table>-->
-        <table tableName="liked_record"/>
+        <table tableName="liked_record">
+            <columnOverride column="biz_type" javaType="org.hzz.remark.types.BizType"/>
+        </table>
 
     </context>
 

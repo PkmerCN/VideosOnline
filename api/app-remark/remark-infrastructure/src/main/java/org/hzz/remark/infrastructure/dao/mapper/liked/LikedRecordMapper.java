@@ -1,11 +1,11 @@
 package org.hzz.remark.infrastructure.dao.mapper.liked;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.hzz.remark.infrastructure.dao.model.liked.LikedRecord;
 import org.hzz.remark.infrastructure.dao.model.liked.LikedRecordExample;
-
-import java.util.List;
 
 @Mapper
 public interface LikedRecordMapper {

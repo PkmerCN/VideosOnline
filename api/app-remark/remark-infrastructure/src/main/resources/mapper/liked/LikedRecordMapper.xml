@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.hzz.remark.infrastructure.dao.mapper.liked.LikedRecordMapper">
     <resultMap id="BaseResultMap" type="org.hzz.remark.infrastructure.dao.model.liked.LikedRecord">
-        <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="user_id" jdbcType="BIGINT" property="userId"/>
-        <result column="biz_id" jdbcType="BIGINT" property="bizId"/>
-        <result column="biz_type" jdbcType="VARCHAR" property="bizType"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="biz_id" jdbcType="BIGINT" property="bizId" />
+        <result column="biz_type" jdbcType="VARCHAR" property="bizType" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -27,8 +27,7 @@
                                 </when>
                                 <when test="criterion.listValue">
                                     and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
-                                             separator=",">
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
                                 </when>
@@ -57,8 +56,7 @@
                                 </when>
                                 <when test="criterion.listValue">
                                     and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
-                                             separator=",">
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
                                 </when>
@@ -70,19 +68,17 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-        id
-        , user_id, biz_id, biz_type, create_time, update_time
+        id, user_id, biz_id, biz_type, create_time, update_time
     </sql>
-    <select id="selectByExample" parameterType="org.hzz.remark.infrastructure.dao.model.liked.LikedRecordExample"
-            resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="org.hzz.remark.infrastructure.dao.model.liked.LikedRecordExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
         </if>
-        <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List" />
         from liked_record
         <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
+            <include refid="Example_Where_Clause" />
         </if>
         <if test="orderByClause != null">
             order by ${orderByClause}
@@ -90,26 +86,27 @@
     </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List" />
         from liked_record
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete
-        from liked_record
+        delete from liked_record
         where id = #{id,jdbcType=BIGINT}
     </delete>
     <delete id="deleteByExample" parameterType="org.hzz.remark.infrastructure.dao.model.liked.LikedRecordExample">
         delete from liked_record
         <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
+            <include refid="Example_Where_Clause" />
         </if>
     </delete>
     <insert id="insert" parameterType="org.hzz.remark.infrastructure.dao.model.liked.LikedRecord">
         insert into liked_record (id, user_id, biz_id,
-                                  biz_type, create_time, update_time)
+                                  biz_type, create_time, update_time
+        )
         values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{bizId,jdbcType=BIGINT},
-                #{bizType,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+                #{bizType,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+               )
     </insert>
     <insert id="insertSelective" parameterType="org.hzz.remark.infrastructure.dao.model.liked.LikedRecord">
         insert into liked_record
@@ -154,11 +151,10 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="org.hzz.remark.infrastructure.dao.model.liked.LikedRecordExample"
-            resultType="java.lang.Long">
+    <select id="countByExample" parameterType="org.hzz.remark.infrastructure.dao.model.liked.LikedRecordExample" resultType="java.lang.Long">
         select count(*) from liked_record
         <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
+            <include refid="Example_Where_Clause" />
         </if>
     </select>
     <update id="updateByExampleSelective" parameterType="map">
@@ -184,7 +180,7 @@
             </if>
         </set>
         <if test="example != null">
-            <include refid="Update_By_Example_Where_Clause"/>
+            <include refid="Update_By_Example_Where_Clause" />
         </if>
     </update>
     <update id="updateByExample" parameterType="map">
@@ -196,7 +192,7 @@
         create_time = #{row.createTime,jdbcType=TIMESTAMP},
         update_time = #{row.updateTime,jdbcType=TIMESTAMP}
         <if test="example != null">
-            <include refid="Update_By_Example_Where_Clause"/>
+            <include refid="Update_By_Example_Where_Clause" />
         </if>
     </update>
     <update id="updateByPrimaryKeySelective" parameterType="org.hzz.remark.infrastructure.dao.model.liked.LikedRecord">
@@ -222,9 +218,9 @@
     </update>
     <update id="updateByPrimaryKey" parameterType="org.hzz.remark.infrastructure.dao.model.liked.LikedRecord">
         update liked_record
-        set user_id     = #{userId,jdbcType=BIGINT},
-            biz_id      = #{bizId,jdbcType=BIGINT},
-            biz_type    = #{bizType,jdbcType=VARCHAR},
+        set user_id = #{userId,jdbcType=BIGINT},
+            biz_id = #{bizId,jdbcType=BIGINT},
+            biz_type = #{bizType,jdbcType=VARCHAR},
             create_time = #{createTime,jdbcType=TIMESTAMP},
             update_time = #{updateTime,jdbcType=TIMESTAMP}
         where id = #{id,jdbcType=BIGINT}

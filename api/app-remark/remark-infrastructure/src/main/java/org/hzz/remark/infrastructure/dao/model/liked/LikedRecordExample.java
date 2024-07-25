@@ -3,6 +3,7 @@ package org.hzz.remark.infrastructure.dao.model.liked;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.hzz.remark.types.BizType;
 
 public class LikedRecordExample {
     protected String orderByClause;
@@ -295,62 +296,62 @@ public class LikedRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeEqualTo(String value) {
+        public Criteria andBizTypeEqualTo(BizType value) {
             addCriterion("biz_type =", value, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeNotEqualTo(String value) {
+        public Criteria andBizTypeNotEqualTo(BizType value) {
             addCriterion("biz_type <>", value, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeGreaterThan(String value) {
+        public Criteria andBizTypeGreaterThan(BizType value) {
             addCriterion("biz_type >", value, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeGreaterThanOrEqualTo(String value) {
+        public Criteria andBizTypeGreaterThanOrEqualTo(BizType value) {
             addCriterion("biz_type >=", value, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeLessThan(String value) {
+        public Criteria andBizTypeLessThan(BizType value) {
             addCriterion("biz_type <", value, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeLessThanOrEqualTo(String value) {
+        public Criteria andBizTypeLessThanOrEqualTo(BizType value) {
             addCriterion("biz_type <=", value, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeLike(String value) {
+        public Criteria andBizTypeLike(BizType value) {
             addCriterion("biz_type like", value, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeNotLike(String value) {
+        public Criteria andBizTypeNotLike(BizType value) {
             addCriterion("biz_type not like", value, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeIn(List<String> values) {
+        public Criteria andBizTypeIn(List<BizType> values) {
             addCriterion("biz_type in", values, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeNotIn(List<String> values) {
+        public Criteria andBizTypeNotIn(List<BizType> values) {
             addCriterion("biz_type not in", values, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeBetween(String value1, String value2) {
+        public Criteria andBizTypeBetween(BizType value1, BizType value2) {
             addCriterion("biz_type between", value1, value2, "bizType");
             return (Criteria) this;
         }
 
-        public Criteria andBizTypeNotBetween(String value1, String value2) {
+        public Criteria andBizTypeNotBetween(BizType value1, BizType value2) {
             addCriterion("biz_type not between", value1, value2, "bizType");
             return (Criteria) this;
         }
