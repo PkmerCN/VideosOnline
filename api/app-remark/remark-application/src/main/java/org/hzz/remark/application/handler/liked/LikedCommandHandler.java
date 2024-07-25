@@ -1,8 +1,11 @@
 package org.hzz.remark.application.handler.liked;
 
+import lombok.Setter;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.remark.application.command.liked.LikedCommand;
+import org.hzz.remark.domain.service.LikedRecordDomainService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,7 +15,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class LikedCommandHandler implements CommandHandler,
-        AbstractExecuteStrategy<LikedCommand,Void> {
+        AbstractExecuteStrategy<LikedCommand, Void> {
+
+    @Setter(onMethod_ = @Autowired)
+    private LikedRecordDomainService likedRecordDomainService;
+
     @Override
     public String mark() {
         return LikedCommand.MARK;
@@ -20,5 +27,20 @@ public class LikedCommandHandler implements CommandHandler,
 
     @Override
     public void execute(LikedCommand command) {
+        Long userId = command.getUserId();
+        Long bizId = command.getBizId();
+        Boolean liked = command.getLiked();
+        if (liked) {
+            likedRecordDomainService.like(
+                    userId,
+                    bizId,
+                    command.getBizType()
+            );
+        } else {
+            likedRecordDomainService.cancel(
+                    userId,
+                    bizId
+            );
+        }
     }
 }
