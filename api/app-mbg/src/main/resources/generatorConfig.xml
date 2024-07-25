@@ -26,9 +26,9 @@
             <property name="useJSR310Types" value="true" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="org.hzz.course.infrastructure.dao.model.teacher" targetProject="src/main/java" />
+        <javaModelGenerator targetPackage="org.hzz.remark.infrastructure.dao.model.liked" targetProject="src/main/java" />
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.course.infrastructure.dao.mapper.teacher" targetProject="src/main/java"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.remark.infrastructure.dao.mapper.liked" targetProject="src/main/java"/>
 
 <!--   属性domainObjectName     -->
 <!--   https://mybatis.org/generator/configreference/xmlconfig.html     -->
@@ -40,7 +40,7 @@
 <!--        <table tableName="interaction_question">-->
 <!--            <columnOverride column="status" javaType="org.hzz.learning.types.enums.question.QuestionStatus"/>-->
 <!--        </table>-->
-        <table tableName="interaction_reply"/>
+<!--        <table tableName="interaction_reply"/>-->
 <!--        <table tableName="user_detail">-->
 <!--            <columnOverride column="gender" javaType="org.hzz.user.types.enums.Gender"/>-->
 <!--        </table>-->
@@ -59,6 +59,7 @@
 <!--            <columnOverride column="is_show" javaType="org.hzz.course.types.enums.teacher.IsShow" />-->
 <!--            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted" />-->
 <!--        </table>-->
+        <table tableName="liked_record"/>
 
     </context>
 

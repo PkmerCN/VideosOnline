@@ -1,4 +1,4 @@
-package org.hzz.remark.infrastructure.dao.handler;
+package org.hzz.remark.infrastructure.dao.handler.liked;
 
 import org.hzz.core.handler.StringTypeHandler;
 import org.hzz.remark.types.BizType;
