@@ -6,6 +6,7 @@ package org.hzz.core.enums;
  * @version 1.0.0
  * @date 2024/7/15
  */
+@SuppressWarnings(value = {"rawtypes"})
 public abstract class BaseEnumTemplate{
 
     /**
@@ -41,6 +42,25 @@ public abstract class BaseEnumTemplate{
         }
 
         for (T type: enumClass.getEnumConstants()){
+            if(type.getValue().equals(value)){
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Unknown enum value: " + value + "in " + enumClass.getSimpleName());
+    }
+
+
+    /**
+     * 处理String对应的枚举
+     * @param enumClass 枚举类型
+     * @param value value
+     * @return 枚举
+     * @param <T> 枚举类型
+     */
+    public static <T extends Enum<T> & BaseEnum> T fromStringValue(Class<T> enumClass,String value){
+        if(value == null || value.isBlank()) return null;
+
+        for(T type: enumClass.getEnumConstants()){
             if(type.getValue().equals(value)){
                 return type;
             }
