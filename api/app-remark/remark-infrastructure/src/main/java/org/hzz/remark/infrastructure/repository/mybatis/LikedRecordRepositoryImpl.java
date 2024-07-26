@@ -12,14 +12,18 @@ import org.hzz.remark.infrastructure.dao.model.liked.LikedRecord;
 import org.hzz.remark.infrastructure.dao.model.liked.LikedRecordExample;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.mybatis.dynamic.sql.render.RenderingStrategies;
+import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-import static org.hzz.remark.infrastructure.dao.mapper.liked.LikedRecordDynamicSqlSupport.bizId;
-import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
+import static org.hzz.remark.infrastructure.dao.mapper.liked.LikedRecordDynamicSqlSupport.*;
+import static org.mybatis.dynamic.sql.SqlBuilder.*;
 
 /**
  * @author 胖卡
@@ -81,6 +85,24 @@ public class LikedRecordRepositoryImpl
             LikedRecordEntity entity = Converter.INSTANCE.toEntity(likedRecords.get(0));
             return Optional.of(entity);
         }
+    }
+
+    @Override
+    public Set<Long> checkUserLikeBizId(Long _userId, Set<Long> _bizIds) {
+        SelectStatementProvider selectStatement = select(bizId)
+                .from(likedRecord)
+                .where(userId, isEqualTo(_userId))
+                .and(bizId, isIn(_bizIds))
+                .build()
+                .render(RenderingStrategies.MYBATIS3);
+
+        logger.info("执行的sql {}",selectStatement.getSelectStatement());
+
+        List<LikedRecord> likedRecords = dynamicMapper.selectMany(
+                selectStatement
+        );
+
+        return likedRecords.stream().map(LikedRecord::getBizId).collect(Collectors.toSet());
     }
 
     @Mapper

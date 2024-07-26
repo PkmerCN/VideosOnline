@@ -3,6 +3,7 @@ package org.hzz.remark.domain.repository;
 import org.hzz.remark.domain.entity.LikedRecordEntity;
 
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author 胖卡
@@ -38,4 +39,12 @@ public interface LikedRecordRepository {
      * @return 点赞记录
      */
     Optional<LikedRecordEntity> selectOne(Long userId, Long bizId);
+
+    /**
+     * 查询校验用户点赞的业务
+     * @param _userId 用户id
+     * @param _bizIds 业务id集合
+     * @return 用户已经在bizIds中点赞过的业务id集合
+     */
+    Set<Long> checkUserLikeBizId(Long _userId,Set<Long> _bizIds);
 }
