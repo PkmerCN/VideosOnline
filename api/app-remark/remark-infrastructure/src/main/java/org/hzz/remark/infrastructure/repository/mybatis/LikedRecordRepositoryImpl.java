@@ -87,6 +87,17 @@ public class LikedRecordRepositoryImpl
         }
     }
 
+    /**
+     * dynamic sql 实际执行的sql
+     * SELECT biz_id
+     * FROM liked_record
+     * WHERE user_id = 1
+     * 	AND biz_id IN (7219247414723612672, 1585180460118519809)
+     *
+     * @param _userId 用户id
+     * @param _bizIds 业务id集合
+     * @return
+     */
     @Override
     public Set<Long> checkUserLikeBizId(Long _userId, Set<Long> _bizIds) {
         SelectStatementProvider selectStatement = select(bizId)
