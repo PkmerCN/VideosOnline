@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hzz.core.page.query.FilterCondition;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import org.hzz.learning.application.handler.question.QuestionPageQueryCommandHandler;
 import org.hzz.learning.types.req.question.QuestionPageQuery;
 import org.hzz.security.context.AppContextHolder;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 /**
  * 问题分页查询
+ * {@link QuestionPageQueryCommandHandler}
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/12

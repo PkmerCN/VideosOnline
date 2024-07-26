@@ -12,6 +12,8 @@ import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;
 import org.hzz.learning.types.resp.reply.ReplyResp;
 import org.hzz.learning.types.resp.reply.ReplyUserResp;
+import org.hzz.remark.domain.service.LikedRecordDomainService;
+import org.hzz.security.context.AppContextHolder;
 import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.service.details.UserDetailDomainService;
 import org.mapstruct.Mapper;
@@ -39,6 +41,9 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
 
     @Setter(onMethod_ = @Autowired)
     private UserDetailDomainService userDetailDomainService;
+
+    @Setter(onMethod_ = @Autowired)
+    private LikedRecordDomainService likedRecordDomainService;
 
     @Override
     public String mark() {
@@ -164,6 +169,8 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
             userIds.addAll(targetUserIds);
         }
 
+        // 处理当前登录用户的点赞情况
+        Set<Long> likedBizIds = getCurrentUserLikedBizIds(entities);
         Map<Long, UserDetailEntity> mapUserEntities = userDetailDomainService.getMapEntities(userIds);
 
         List<ReplyResp> results = new ArrayList<>();
@@ -181,11 +188,28 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
                 // 处理评论的目标用户
                 handleTargetUser(e,target,mapUserEntities);
             }
+
+            // 添加业务id,准备收集用户点赞情况
+            target.setLiked(likedBizIds.contains(e.getId()));
             results.add(target);
         }
         return results;
     }
 
+    /**
+     * 获取当前登录用户的点赞情况
+     */
+    private Set<Long> getCurrentUserLikedBizIds(List<InteractionReplyEntity> entities){
+        if(AppContextHolder.userContextHolder.getUser() == null){
+            return Collections.emptySet();
+        }
+        Set<Long> bizIds = entities.stream().map(InteractionReplyEntity::getId).collect(Collectors.toSet());
+
+        return likedRecordDomainService.checkUserLikeBizId(
+                AppContextHolder.userContextHolder.getUser().getId(),
+                bizIds
+        );
+    }
 
     private Set<Long> getTargetUserIds(List<InteractionReplyEntity> entities){
         Set<Long> targetUserIds = new HashSet<>();

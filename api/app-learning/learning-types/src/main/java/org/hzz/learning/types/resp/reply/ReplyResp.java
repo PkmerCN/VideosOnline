@@ -26,6 +26,9 @@ public class ReplyResp {
     @Schema(description = "评论数量")
     private Integer replyTimes;
 
+    @Schema(description = "是否点过赞 ")
+    private Boolean liked;
+
     @Schema(description = "点赞数量")
     private Integer likedTimes;
 
