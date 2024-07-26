@@ -3,6 +3,8 @@ package org.hzz.remark.domain.service;
 import org.hzz.ddd.core.domain.shared.service.DomainService;
 import org.hzz.remark.types.BizType;
 
+import java.util.Set;
+
 /**
  * 点赞领域服务
  * @author 胖卡
@@ -26,4 +28,12 @@ public interface LikedRecordDomainService extends DomainService {
      * @param bizType 业务类型
      */
     void cancel(Long userId,Long bizId,BizType bizType);
+
+    /**
+     * 查询校验用户点赞的业务
+     * @param userId 用户id
+     * @param bizIds 业务id集合
+     * @return 用户已经在bizIds中点赞过的业务id集合
+     */
+    Set<Long> checkUserLikeBizId(Long userId, Set<Long> bizIds);
 }

@@ -17,6 +17,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author 胖卡
@@ -74,6 +75,17 @@ public class LikedRecordDomainServiceImpl
             // rabbitmq
             updateLikedTimes(bizId, bizType);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param userId 用户id
+     * @param bizIds 业务id集合
+     * @return 用户已经点赞的集合，范围限定在传入的参数bizIds
+     */
+    @Override
+    public Set<Long> checkUserLikeBizId(Long userId, Set<Long> bizIds) {
+        return repository.checkUserLikeBizId(userId,bizIds);
     }
 
     /**
