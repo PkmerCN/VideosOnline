@@ -1,5 +1,7 @@
 package org.hzz.cache.core;
 
+import org.springframework.data.redis.core.RedisTemplate;
+
 import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
@@ -193,4 +195,5 @@ public interface RedisCache {
      * @return 对象列表
      */
     Collection<String> keys(final String pattern);
+
 }

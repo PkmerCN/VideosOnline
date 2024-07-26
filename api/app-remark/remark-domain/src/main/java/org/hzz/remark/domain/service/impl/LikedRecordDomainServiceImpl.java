@@ -13,6 +13,7 @@ import org.hzz.remark.domain.service.LikedRecordDomainService;
 import org.hzz.remark.types.BizType;
 import org.hzz.remark.types.LikedTimesDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ import java.util.Set;
  * @date 2024/7/25
  */
 @Service
+//@Primary
 public class LikedRecordDomainServiceImpl
         extends BaseDomainService<LikedRecordRepository>
         implements LikedRecordDomainService {
