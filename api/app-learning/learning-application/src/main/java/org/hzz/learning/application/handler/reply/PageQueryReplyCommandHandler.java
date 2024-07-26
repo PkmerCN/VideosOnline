@@ -4,6 +4,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.converter.TargetAndSourceConverter;
+import org.hzz.core.exception.db.AppDbException;
 import org.hzz.core.page.PageResponse;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
@@ -14,6 +15,7 @@ import org.hzz.learning.types.resp.reply.ReplyResp;
 import org.hzz.learning.types.resp.reply.ReplyUserResp;
 import org.hzz.remark.domain.service.LikedRecordDomainService;
 import org.hzz.security.context.AppContextHolder;
+import org.hzz.security.jwt.bo.JWTUserBo;
 import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.service.details.UserDetailDomainService;
 import org.mapstruct.Mapper;
@@ -22,6 +24,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 /**
@@ -52,45 +56,45 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
 
     /**
      * {
-     * 	"code": 2000,
-     * 	"msg": "成功",
-     * 	"data": {
-     * 		"currentPageNo": 1,
-     * 		"list": [
-     * 			            {
-     * 				"anonymity": true,
-     * 				"content": "评论用户的评论: Java 17DJK",
-     * 				"createTime": "2024-07-17 07:51:50",
-     * 				"hidden": false,
-     * 				"id": 7219247414723612672,
-     * 				"likedTimes": 0,
-     * 				"replyTimes": 0,
-     * 				"replyUser": {
-     * 					"icon": "/img-tx/1.jpg",
-     * 					"id": 1,
-     * 					"name": "壮哥"
-     *                },
-     * 				"targetUserName": "匿名用户"
-     *            },
-     *            {
-     * 				"anonymity": false,
-     * 				"content": "评论回复 Love Java yeah",
-     * 				"createTime": "2024-07-17 07:41:08",
-     * 				"hidden": false,
-     * 				"id": 7219244721317744640,
-     * 				"likedTimes": 0,
-     * 				"replyTimes": 0,
-     * 				"replyUser": {
-     * 					"icon": "/img-tx/3.jpg",
-     * 					"id": 3,
-     * 					"name": "胖卡"
-     *                },
-     * 				"targetUserName": "壮哥"
-     *            }
-     * 		],
-     * 		"total": 2,
-     * 		"totalPages": 1
-     * 	}
+     * "code": 2000,
+     * "msg": "成功",
+     * "data": {
+     * "currentPageNo": 1,
+     * "list": [
+     * {
+     * "anonymity": true,
+     * "content": "评论用户的评论: Java 17DJK",
+     * "createTime": "2024-07-17 07:51:50",
+     * "hidden": false,
+     * "id": 7219247414723612672,
+     * "likedTimes": 0,
+     * "replyTimes": 0,
+     * "replyUser": {
+     * "icon": "/img-tx/1.jpg",
+     * "id": 1,
+     * "name": "壮哥"
+     * },
+     * "targetUserName": "匿名用户"
+     * },
+     * {
+     * "anonymity": false,
+     * "content": "评论回复 Love Java yeah",
+     * "createTime": "2024-07-17 07:41:08",
+     * "hidden": false,
+     * "id": 7219244721317744640,
+     * "likedTimes": 0,
+     * "replyTimes": 0,
+     * "replyUser": {
+     * "icon": "/img-tx/3.jpg",
+     * "id": 3,
+     * "name": "胖卡"
+     * },
+     * "targetUserName": "壮哥"
+     * }
+     * ],
+     * "total": 2,
+     * "totalPages": 1
+     * }
      * }
      */
     @Override
@@ -150,8 +154,8 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
     /**
      * 处理用户信息
      *
-     * @param entities 具体数据
-     * @param isComment true 评论；false 回复
+     * @param entities   具体数据
+     * @param isComment  true 评论；false 回复
      * @param isForAdmin true admin端处理，false 用户端处理
      */
     public List<ReplyResp> handleUserInfo(List<InteractionReplyEntity> entities,
@@ -162,7 +166,7 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
         Set<Long> userIds = entities.stream().map(InteractionReplyEntity::getUserId)
                 .collect(Collectors.toSet());
 
-        if(isComment) {
+        if (isComment) {
             log.info("处理评论中的目标用户");
             // 回复的目标用户是一个匿名用户
             Set<Long> targetUserIds = getTargetUserIds(entities);
@@ -170,53 +174,74 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
         }
 
         // 处理当前登录用户的点赞情况
-        Set<Long> likedBizIds = getCurrentUserLikedBizIds(entities);
-        Map<Long, UserDetailEntity> mapUserEntities = userDetailDomainService.getMapEntities(userIds);
+        CompletableFuture<Set<Long>> likedBizIdsFuture = getCurrentUserLikedBizIds(entities);
+        CompletableFuture<Map<Long, UserDetailEntity>> mapUserEntitiesFuture = getUserMapEntitiesFuture(entities, userIds);
 
-        List<ReplyResp> results = new ArrayList<>();
-        for (InteractionReplyEntity e : entities) {
-            ReplyResp target = Converter.INSTANCE.toTarget(e);
-            // 用户端匿名回答，不处理。只处理非匿名回答或者是admin的查询
-            if (e.getAnonymity() && !isForAdmin) {
-                log.info("匿名用户用户端不进行处理 userId = {}", e.getUserId());
-            } else {
-                // 处理用户信息
-                handleUserInfo(e,target,mapUserEntities);
-            }
+        try {
+            return likedBizIdsFuture.thenCombine(mapUserEntitiesFuture, (likedBizIds, mapUserEntities) -> {
+                log.info("处理合并结果");
+                List<ReplyResp> results = new ArrayList<>();
+                for (InteractionReplyEntity e : entities) {
+                    ReplyResp target = Converter.INSTANCE.toTarget(e);
+                    // 用户端匿名回答，不处理。只处理非匿名回答或者是admin的查询
+                    if (e.getAnonymity() && !isForAdmin) {
+                        log.info("匿名用户用户端不进行处理 userId = {}", e.getUserId());
+                    } else {
+                        // 处理用户信息
+                        handleUserInfo(e, target, mapUserEntities);
+                    }
 
-            if(isComment){
-                // 处理评论的目标用户
-                handleTargetUser(e,target,mapUserEntities);
-            }
+                    if (isComment) {
+                        // 处理评论的目标用户
+                        handleTargetUser(e, target, mapUserEntities);
+                    }
 
-            // 添加业务id,准备收集用户点赞情况
-            target.setLiked(likedBizIds.contains(e.getId()));
-            results.add(target);
+                    // 添加业务id,准备收集用户点赞情况
+                    target.setLiked(likedBizIds.contains(e.getId()));
+                    results.add(target);
+                }
+                return results;
+            }).get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            throw new AppDbException("处理错误");
         }
-        return results;
+    }
+
+
+    public CompletableFuture<Map<Long, UserDetailEntity>> getUserMapEntitiesFuture(List<InteractionReplyEntity> entities,
+                                                                                   Set<Long> userIds) {
+        return CompletableFuture.supplyAsync(() -> {
+            log.info("查询评论用户的信息");
+            return userDetailDomainService.getMapEntities(userIds);
+        });
     }
 
     /**
      * 获取当前登录用户的点赞情况
      */
-    private Set<Long> getCurrentUserLikedBizIds(List<InteractionReplyEntity> entities){
-        if(AppContextHolder.userContextHolder.getUser() == null){
-            return Collections.emptySet();
-        }
-        Set<Long> bizIds = entities.stream().map(InteractionReplyEntity::getId).collect(Collectors.toSet());
+    private CompletableFuture<Set<Long>> getCurrentUserLikedBizIds(List<InteractionReplyEntity> entities) {
+        JWTUserBo user = AppContextHolder.userContextHolder.getUser();
+        return CompletableFuture.<Set<Long>>supplyAsync(() -> {
+            log.info("查询当前登录用户的点赞情况");
+            if (user == null) {
+                return Collections.emptySet();
+            }
+            Set<Long> bizIds = entities.stream().map(InteractionReplyEntity::getId).collect(Collectors.toSet());
 
-        return likedRecordDomainService.checkUserLikeBizId(
-                AppContextHolder.userContextHolder.getUser().getId(),
-                bizIds
-        );
+            return likedRecordDomainService.checkUserLikeBizId(
+                    user.getId(),
+                    bizIds
+            );
+        });
     }
 
-    private Set<Long> getTargetUserIds(List<InteractionReplyEntity> entities){
+    private Set<Long> getTargetUserIds(List<InteractionReplyEntity> entities) {
         Set<Long> targetUserIds = new HashSet<>();
         final Long replyAnonyUserId = 0L;
-        for (InteractionReplyEntity e : entities){
+        for (InteractionReplyEntity e : entities) {
             Long targetUserId = e.getTargetUserId();
-            if(!replyAnonyUserId.equals(targetUserId)){
+            if (!replyAnonyUserId.equals(targetUserId)) {
                 // 只查询回复的目标非匿名的用户
                 targetUserIds.add(targetUserId);
             }
@@ -229,8 +254,8 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
      * 处理评论或者回复的用户信息
      */
     private void handleUserInfo(InteractionReplyEntity e,
-                               ReplyResp target,
-                               Map<Long, UserDetailEntity> mapUserEntities){
+                                ReplyResp target,
+                                Map<Long, UserDetailEntity> mapUserEntities) {
         UserDetailEntity userDetailEntity = mapUserEntities.get(e.getUserId());
         ReplyUserResp replyUserResp = new ReplyUserResp();
 
@@ -246,11 +271,11 @@ public class PageQueryReplyCommandHandler implements CommandHandler,
      */
     private void handleTargetUser(InteractionReplyEntity e,
                                   ReplyResp target,
-                                  Map<Long, UserDetailEntity> mapUserEntities){
+                                  Map<Long, UserDetailEntity> mapUserEntities) {
         UserDetailEntity userDetailEntity = mapUserEntities.get(e.getTargetUserId());
-        if(userDetailEntity != null){
+        if (userDetailEntity != null) {
             target.setTargetUserName(userDetailEntity.getName());
-        }else{
+        } else {
             log.info("该评论针对的是匿名用户");
             target.setTargetUserName("匿名用户");
         }
