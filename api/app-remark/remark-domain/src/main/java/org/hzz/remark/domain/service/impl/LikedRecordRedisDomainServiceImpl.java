@@ -3,26 +3,25 @@ package org.hzz.remark.domain.service.impl;
 import cn.hutool.core.util.StrUtil;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants;
+import org.hzz.rabbitmq.core.RabbitMQHelper;
 import org.hzz.remark.constants.RedisConstants;
 import org.hzz.remark.domain.service.LikedRecordDomainService;
 import org.hzz.remark.types.BizType;
+import org.hzz.remark.types.LikedTimesDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SessionCallback;
-import org.springframework.lang.Nullable;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -39,6 +38,9 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
 
     @Setter(onMethod_ = @Autowired)
     private RedisTemplate<String,String> redisTemplate;
+
+    @Setter(onMethod_ = @Autowired)
+    private RabbitMQHelper rabbitMQHelper;
 
     @Override
     public void like(Long userId, Long bizId, BizType bizType) {
@@ -128,10 +130,39 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
     }
 
 
+    /**
+     * zset
+     * liked:times:QA -> 业务id (score点赞数量3)
+     * @param bizType 业务类型
+     * @param count 每个业务迁移的数量
+     */
+    public void readLikedTimesAndSendMsg(String bizType,Long count){
+        // ZPOPMIN key [count]
+        Set<ZSetOperations.TypedTuple<String>> typedTuples = redisTemplate.opsForZSet().popMin(
+                StrUtil.format(RedisConstants.LIKES_TIMES_KEY, bizType),
+                count
+        );
 
-    @Scheduled(fixedDelay = 3,timeUnit = TimeUnit.SECONDS)
-    public void test(){
-        log.info("现在是北京时间：{}",
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        List<LikedTimesDto> body = new ArrayList<>();
+        for(ZSetOperations.TypedTuple<String> tuple: typedTuples){
+            LikedTimesDto dto = new LikedTimesDto();
+            dto.setBizId(Long.parseLong(Objects.requireNonNull(tuple.getValue())));
+            dto.setLikedTimes(Objects.requireNonNull(tuple.getScore()).longValue());
+            body.add(dto);
+        }
+
+        sendMqMsg(body,bizType);
     }
+
+    /**
+     * {@link org.hzz.learning.trigger.mq.rabbitmq.consumer.ReplyLikeTimesListener}
+     */
+    private void sendMqMsg(List<LikedTimesDto> msg,String bizType){
+        rabbitMQHelper.send(
+                VideoMqConstants.Exchange.LIKE_RECORD_EXCHANGE,
+                StrUtil.format(VideoMqConstants.Key.LIKED_TIMES_KEY_TEMPLATE,bizType),
+                msg
+        );
+    }
+
 }

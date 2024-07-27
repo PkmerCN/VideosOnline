@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -101,10 +102,15 @@ public class LikedRecordDomainServiceImpl
         LikedTimesDto msgBody = new LikedTimesDto();
         msgBody.setLikedTimes(likedTimes)
                 .setBizId(bizId);
+
+        /**
+         * 接收消息的处理逻辑
+         * {@link org.hzz.learning.trigger.mq.rabbitmq.consumer.ReplyLikeTimesListener}
+         */
         rabbitMQHelper.sendAsync(
                 VideoMqConstants.Exchange.LIKE_RECORD_EXCHANGE,
                 StrUtil.format(VideoMqConstants.Key.LIKED_TIMES_KEY_TEMPLATE, bizType.getValue()),
-                msgBody
+                List.of(msgBody)
         );
     }
 }

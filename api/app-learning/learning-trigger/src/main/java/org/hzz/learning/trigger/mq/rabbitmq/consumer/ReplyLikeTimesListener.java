@@ -23,7 +23,9 @@ import java.io.IOException;
 
 /**
  * 监听rabbitmq点赞消息
- *
+ * 发送消息的地方
+ * {@link org.hzz.remark.domain.service.impl.LikedRecordRedisDomainServiceImpl}
+ * {@link org.hzz.remark.domain.service.impl.LikedRecordDomainServiceImpl}
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/25
