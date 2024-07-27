@@ -25,6 +25,8 @@ public class ReplyLikedEventHandler {
 
     /**
      * 监听事件点赞次数
+     * 事件发送的地方
+     * {@link org.hzz.learning.trigger.mq.rabbitmq.consumer.ReplyLikeTimesListener}
      * @param event 评论点赞事件
      */
     @EventListener
@@ -36,6 +38,10 @@ public class ReplyLikedEventHandler {
             entity.setId(dto.getBizId()).setLikedTimes(dto.getLikedTimes().intValue());
             entities.add(entity);
         }
-        replyDomainService.updateLikedTimesBatchByIds(entities);
+
+        if(entities.isEmpty()){
+            replyDomainService.updateLikedTimesBatchByIds(entities);
+        }
+
     }
 }

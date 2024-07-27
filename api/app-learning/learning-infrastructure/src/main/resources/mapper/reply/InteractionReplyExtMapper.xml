@@ -70,7 +70,7 @@
     <update id="updateBatchByPrimarySelective" parameterType="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply">
         update interaction_reply
         <set>
-            <if test="likedTimes != null">
+            <if test="list[0].likedTimes != null">
                 liked_times = CASE
                 <foreach collection="list" item="reply" separator=" ">
                     WHEN id = #{reply.id} THEN #{reply.likedTimes}

@@ -143,6 +143,8 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
                 count
         );
 
+        log.info("正在处理{}业务，一共{}条",bizType,typedTuples.size());
+
         List<LikedTimesDto> body = new ArrayList<>();
         for(ZSetOperations.TypedTuple<String> tuple: typedTuples){
             LikedTimesDto dto = new LikedTimesDto();

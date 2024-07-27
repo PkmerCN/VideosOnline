@@ -1,6 +1,7 @@
 package org.hzz.learning.infrastructure.repository.mybatis.question;
 
 import lombok.Setter;
+import org.hzz.common.collection.CollUtil;
 import org.hzz.core.converter.RecordAndEntityConverter;
 import org.hzz.core.page.PageResponse;
 import org.hzz.core.page.query.PageQuery;
@@ -110,7 +111,10 @@ public class InteractionReplyRepositoryImpl
      */
     @Override
     public int updateBatchByPrimarySelective(List<InteractionReplyEntity> list) {
-
+        if(CollUtil.isEmpty(list)){
+            logger.info("InteractionReplyExtMapper 处理批量更新为0元素的数据");
+            return 0;
+        }
         List<InteractionReply> records = Converter.INSTANCE.toRecords(list);
         return replyExtMapper.updateBatchByPrimarySelective(records);
     }
