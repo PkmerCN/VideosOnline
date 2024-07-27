@@ -9,6 +9,7 @@ import java.util.Set;
 
 /**
  * 回答或者评论Repository
+ * {@link org.hzz.learning.infrastructure.repository.mybatis.question.InteractionReplyRepositoryImpl}
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/12
@@ -50,6 +51,8 @@ public interface InteractionReplyRepository {
      */
     int updateSelective(InteractionReplyEntity entity);
 
+    int updateBatch
+
 
     /**
      * 处理回复的评论数量+1
@@ -66,5 +69,9 @@ public interface InteractionReplyRepository {
     PageResponse<InteractionReplyEntity> selectPage(PageQuery pageQuery);
 
 
+    /**
+     * 支持批量更新字段，但是目前只支持likedTimes
+     */
+    int updateBatchByPrimarySelective(List<InteractionReplyEntity> list);
 
 }

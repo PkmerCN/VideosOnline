@@ -19,7 +19,7 @@ public interface RecordAndEntityConverter<R,E> {
     List<E> toEntities(List<R> list);
 
     R toRecord(E e);
-    List<E> toRecords(List<E> list);
+    List<R> toRecords(List<E> list);
 
     /**
      * 分页转化

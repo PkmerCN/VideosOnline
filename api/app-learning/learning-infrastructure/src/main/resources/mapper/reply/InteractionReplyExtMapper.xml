@@ -65,4 +65,23 @@
             </if>
         </where>
     </select>
+
+
+    <update id="updateBatchByPrimarySelective" parameterType="org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply">
+        update interaction_reply
+        <set>
+            <if test="likedTimes != null">
+                liked_times = CASE
+                <foreach collection="list" item="reply" separator=" ">
+                    WHEN id = #{reply.id} THEN #{reply.likedTimes}
+                </foreach>
+                ELSE liked_times
+                END
+            </if>
+        </set>
+        where id IN
+        <foreach collection="list" item="reply" open="(" separator="," close=")">
+            #{reply.id}
+        </foreach>
+    </update>
 </mapper>

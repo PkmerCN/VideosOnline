@@ -4,6 +4,7 @@ import lombok.Setter;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.event.ReplyLikedEvent;
 import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;
+import org.hzz.remark.types.LikedTimesDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -25,8 +26,10 @@ public class ReplyLikedEventHandler {
      */
     @EventListener
     public void listen(ReplyLikedEvent event){
-        InteractionReplyEntity entity = new InteractionReplyEntity();
-        entity.setId(event.getBizId()).setLikedTimes(event.getLikedTimes().intValue());
-        replyDomainService.updateEntity(entity);
+        for(LikedTimesDto dto: event.getLikeTimes()){
+            InteractionReplyEntity entity = new InteractionReplyEntity();
+            entity.setId(dto.getBizId()).setLikedTimes(dto.getLikedTimes().intValue());
+            replyDomainService.updateEntity(entity);
+        }
     }
 }

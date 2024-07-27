@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hzz.ddd.core.domain.shared.event.DomainEventBus;
 import org.hzz.learning.domain.event.ReplyLikedEvent;
 import org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants;
+import org.hzz.remark.types.LikedTimesDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.Exchange;
@@ -20,6 +21,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 监听rabbitmq点赞消息
@@ -44,9 +46,13 @@ public class ReplyLikeTimesListener {
                     exchange = @Exchange(VideoMqConstants.Exchange.LIKE_RECORD_EXCHANGE)
             )}
     )
-    public void handleLikeTimes(@Payload ReplyLikedEvent event,
+    public void handleLikeTimes(@Payload List<LikedTimesDto> body,
                                 Channel channel,
                                 @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
+
+        ReplyLikedEvent event = new ReplyLikedEvent();
+        event.setLikeTimes(body);
+
         logger.info("接收到点赞消息 AT {}",event.occurredOn());
         try{
             eventBus.publishDomainEvent(event);

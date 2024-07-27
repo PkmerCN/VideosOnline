@@ -105,6 +105,16 @@ public class InteractionReplyRepositoryImpl
         return Converter.INSTANCE.convertToEntityPage(interactionReplyPageResponse);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int updateBatchByPrimarySelective(List<InteractionReplyEntity> list) {
+
+        List<InteractionReply> records = Converter.INSTANCE.toRecords(list);
+        return replyExtMapper.updateBatchByPrimarySelective(records);
+    }
+
     @Mapper
     interface Converter extends RecordAndEntityConverter<InteractionReply,InteractionReplyEntity> {
         Converter INSTANCE = Mappers.getMapper(Converter.class);

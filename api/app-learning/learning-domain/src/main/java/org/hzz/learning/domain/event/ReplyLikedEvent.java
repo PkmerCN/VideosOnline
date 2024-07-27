@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hzz.ddd.core.domain.shared.event.base.BaseDomainEvent;
 import org.hzz.learning.domain.handler.ReplyLikedEventHandler;
+import org.hzz.remark.types.LikedTimesDto;
+
+import java.util.List;
 
 /**
  * {@link ReplyLikedEventHandler}
@@ -14,6 +17,7 @@ import org.hzz.learning.domain.handler.ReplyLikedEventHandler;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class ReplyLikedEvent extends BaseDomainEvent {
-    Long bizId;
-    Long likedTimes;
+//    Long bizId;
+//    Long likedTimes;
+    List<LikedTimesDto> likeTimes;
 }
