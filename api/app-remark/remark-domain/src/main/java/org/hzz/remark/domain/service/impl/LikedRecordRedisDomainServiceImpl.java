@@ -13,11 +13,16 @@ import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.lang.Nullable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -102,7 +107,7 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
 
         // 统计数量
         Long size = redisTemplate.opsForSet().size(getLikeRecordKey(bizId));
-        if(size == null || size == 0L) return;
+        if(size == null) return;
 
         /**
          * redis zset 数据结构，为了做定时任务持久化
@@ -120,5 +125,13 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
      */
     private String getLikeRecordKey(Long bizId){
         return StrUtil.format(RedisConstants.TEMPLATE_KEY,bizId);
+    }
+
+
+
+    @Scheduled(fixedDelay = 3,timeUnit = TimeUnit.SECONDS)
+    public void test(){
+        log.info("现在是北京时间：{}",
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     }
 }
