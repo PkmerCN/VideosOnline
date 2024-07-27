@@ -3,6 +3,7 @@ package org.hzz.remark.domain.service.impl;
 import cn.hutool.core.util.StrUtil;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.common.collection.CollUtil;
 import org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants;
 import org.hzz.rabbitmq.core.RabbitMQHelper;
 import org.hzz.remark.constants.RedisConstants;
@@ -152,7 +153,6 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
             dto.setLikedTimes(Objects.requireNonNull(tuple.getScore()).longValue());
             body.add(dto);
         }
-
         sendMqMsg(body,bizType);
     }
 
@@ -160,6 +160,10 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
      * {@link org.hzz.learning.trigger.mq.rabbitmq.consumer.ReplyLikeTimesListener}
      */
     private void sendMqMsg(List<LikedTimesDto> msg,String bizType){
+        if(CollUtil.isEmpty(msg)){
+            log.info("消息为空不发送");
+            return;
+        }
         rabbitMQHelper.send(
                 VideoMqConstants.Exchange.LIKE_RECORD_EXCHANGE,
                 StrUtil.format(VideoMqConstants.Key.LIKED_TIMES_KEY_TEMPLATE,bizType),
