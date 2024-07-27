@@ -39,7 +39,7 @@ public class ReplyLikedEventHandler {
             entities.add(entity);
         }
 
-        if(entities.isEmpty()){
+        if(!entities.isEmpty()){
             replyDomainService.updateLikedTimesBatchByIds(entities);
         }
 

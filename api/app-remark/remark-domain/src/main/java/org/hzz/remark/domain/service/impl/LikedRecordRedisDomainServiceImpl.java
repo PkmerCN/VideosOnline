@@ -47,6 +47,7 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
     public void like(Long userId, Long bizId, BizType bizType) {
         /**
          * redis set 涉及 QA:业务id -> 用户id
+         * SADD  key  members
          */
         Long result = redisTemplate.opsForSet().add(
                 getLikeRecordKey(bizId),
@@ -62,6 +63,7 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
 
     @Override
     public void cancel(Long userId, Long bizId, BizType bizType) {
+        // ZREM key member
         Long remove = redisTemplate.opsForSet().remove(
                 getLikeRecordKey(bizId),
                 userId.toString()
@@ -83,6 +85,7 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
             @Override
             public Object execute(RedisOperations operations) throws DataAccessException {
                 for (Long bizId : idList) {
+                    // SISMEMBER  key  member
                     operations.opsForSet().isMember(getLikeRecordKey(bizId), userId.toString());
                 }
                 // 返回 null 因为我们不需要在这里返回实际的结果
@@ -108,13 +111,14 @@ public class LikedRecordRedisDomainServiceImpl implements LikedRecordDomainServi
     private void updateLikedTimes(Long bizId, BizType bizType){
 
 
-        // 统计数量
+        // 统计数量 SCARD  key
         Long size = redisTemplate.opsForSet().size(getLikeRecordKey(bizId));
         if(size == null) return;
 
         /**
          * redis zset 数据结构，为了做定时任务持久化
          * liked:times:QA -> 业务id (score: 30点赞数)
+         * ZADD key score member
          */
         redisTemplate.opsForZSet().add(
                 StrUtil.format(RedisConstants.LIKES_TIMES_KEY,bizType.getValue()),
