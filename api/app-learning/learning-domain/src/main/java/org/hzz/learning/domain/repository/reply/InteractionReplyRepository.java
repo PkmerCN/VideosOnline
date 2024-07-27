@@ -51,7 +51,6 @@ public interface InteractionReplyRepository {
      */
     int updateSelective(InteractionReplyEntity entity);
 
-    int updateBatch
 
 
     /**
