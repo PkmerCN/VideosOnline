@@ -96,6 +96,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-mbg           | mybatis逆向工程生成代码              |
 | app-user          | 用户相关                         |
 | app-learning      | 学习课程相关                       |
+| app-remark        | 点赞相关                         |
 | attachment        | docker的挂载目录，目前是配置了rabbitmq插件 |
 
 
@@ -186,6 +187,8 @@ It allows you to specify which modules in your multi-module project you want to 
 | mybatis typehandler处理枚举                |
 | 模版抽离：BaseEnum枚举以及mybatis typehandler   |
 | mybatis-generator结合freemarker生成字段常量类   |
+| mybatis 批量更新                           |
+| spring 注解类定时任务                         |
 
 
 
@@ -201,7 +204,8 @@ It allows you to specify which modules in your multi-module project you want to 
 | 视频记录提交与admin查看用户问答 | CompletableFuture.runAsync              |
 | 更新评论数量解决并发         | update table replyTimes = relyTimes + 1 |
 | mapstruct优化解耦ddd层  | 如分页查询的结果                                |
-| 添加用户课程，课程点赞        | 数据库唯一主键，实现幂等性                                |
+| 添加用户课程，课程点赞        | 数据库唯一主键，实现幂等性                           |
+| 点赞业务               | redis + RabbitMQ                        |
 
 ## 缓存技术
 
@@ -221,8 +225,9 @@ It allows you to specify which modules in your multi-module project you want to 
 # 项目核心业务
 
 
-| 业务  |     |
-| --- | --- |
-| 评论  |     |
-| 问题  |     |
-| 课程  |     |
+| 业务 |     |
+|----| --- |
+| 评论 |     |
+| 问题 |     |
+| 课程 |     |
+| 点赞 |     |
