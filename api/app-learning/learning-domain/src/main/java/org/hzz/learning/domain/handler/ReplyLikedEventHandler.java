@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author 胖卡
  * @version 1.0.0
@@ -26,10 +29,13 @@ public class ReplyLikedEventHandler {
      */
     @EventListener
     public void listen(ReplyLikedEvent event){
+
+        List<InteractionReplyEntity> entities = new ArrayList<>();
         for(LikedTimesDto dto: event.getLikeTimes()){
             InteractionReplyEntity entity = new InteractionReplyEntity();
             entity.setId(dto.getBizId()).setLikedTimes(dto.getLikedTimes().intValue());
-            replyDomainService.updateEntity(entity);
+            entities.add(entity);
         }
+        replyDomainService.updateLikedTimesBatchByIds(entities);
     }
 }

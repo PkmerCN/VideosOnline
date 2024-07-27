@@ -22,6 +22,11 @@ public interface InteractionReplyDomainService {
     void updateEntity(InteractionReplyEntity entity);
 
     /**
+     * 批量更新点赞数量
+     */
+    void updateLikedTimesBatchByIds(List<InteractionReplyEntity> entities);
+
+    /**
      * 获取评论
      * @param ids id列表
      * @return {@link InteractionReplyEntity}列表

@@ -44,6 +44,15 @@ public class InteractionReplyDomainServiceImpl
      * {@inheritDoc}
      */
     @Override
+    public void updateLikedTimesBatchByIds(List<InteractionReplyEntity> entities) {
+        int i = repository.updateBatchByPrimarySelective(entities);
+        logger.info("批量更新{}条数据",i);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<InteractionReplyEntity> getEntityByIds(Set<Long> ids) {
         List<InteractionReplyEntity> entities = repository.selectBatchIds(ids);
         if (CollUtil.isNotEmpty(entities)) {
