@@ -12,7 +12,7 @@ import org.hzz.points.types.resp.SignResultVo;
 public interface SignDomainService extends DomainService {
 
     /**
-     * 签到记录
+     * 添加签到记录
      * @param userId 签到用户id
      * @return 签到结果
      */
