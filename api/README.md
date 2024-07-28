@@ -189,6 +189,8 @@ It allows you to specify which modules in your multi-module project you want to 
 | mybatis-generator结合freemarker生成字段常量类   |
 | mybatis 批量更新                           |
 | spring 注解类定时任务                         |
+| 结合spring的bean注入实现了策略模式                  |
+| 使用redis的bitmap                          |
 
 
 
@@ -206,6 +208,8 @@ It allows you to specify which modules in your multi-module project you want to 
 | mapstruct优化解耦ddd层  | 如分页查询的结果                                |
 | 添加用户课程，课程点赞        | 数据库唯一主键，实现幂等性                           |
 | 点赞业务               | redis + RabbitMQ                        |
+| 奖励积分不同策略           | 结合spring的bean注入实现了策略模式                  |
+| 用户签到业务             | 使用redis的bitmap                          |
 
 ## 缓存技术
 
