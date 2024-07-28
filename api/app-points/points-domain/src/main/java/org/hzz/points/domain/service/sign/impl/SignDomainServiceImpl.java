@@ -1,6 +1,5 @@
 package org.hzz.points.domain.service.sign.impl;
 
-import jakarta.annotation.PostConstruct;
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.code.impl.AppStatusImpl;
 import org.hzz.core.exception.request.BadRequestException;
@@ -8,11 +7,7 @@ import org.hzz.core.service.BaseDomainService;
 import org.hzz.points.domain.repository.SignRecordRedisRepository;
 import org.hzz.points.domain.service.points.strategy.PointsStrategy;
 import org.hzz.points.domain.service.sign.SignDomainService;
-import org.hzz.points.domain.valueobject.PointStrategyEnum;
 import org.hzz.points.types.resp.SignResultVo;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
