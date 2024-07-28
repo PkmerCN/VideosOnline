@@ -1,8 +1,11 @@
 package org.hzz.points.domain.service.points.strategy;
 
+import org.hzz.points.domain.service.sign.impl.SignDomainServiceImpl;
+
 import java.util.function.Supplier;
 
 /**
+ * {@link SignDomainServiceImpl}使用到了这个积分奖励策略
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/29
