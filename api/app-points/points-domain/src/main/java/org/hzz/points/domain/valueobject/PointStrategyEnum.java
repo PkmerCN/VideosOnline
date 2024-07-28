@@ -1,8 +1,11 @@
 package org.hzz.points.domain.valueobject;
 
+import org.hzz.points.domain.service.points.strategy.PointsStrategy;
+
 import java.util.function.Supplier;
 
 /**
+ * @deprecated 已删除，扩展请参照{@link PointsStrategy}
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/28

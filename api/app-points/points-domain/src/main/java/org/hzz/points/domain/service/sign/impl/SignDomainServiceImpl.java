@@ -1,17 +1,23 @@
-package org.hzz.points.domain.service.impl;
+package org.hzz.points.domain.service.sign.impl;
 
 import jakarta.annotation.PostConstruct;
+import org.hzz.common.collection.CollUtil;
 import org.hzz.core.code.impl.AppStatusImpl;
 import org.hzz.core.exception.request.BadRequestException;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.points.domain.repository.SignRecordRedisRepository;
-import org.hzz.points.domain.service.SignDomainService;
+import org.hzz.points.domain.service.points.strategy.PointsStrategy;
+import org.hzz.points.domain.service.sign.SignDomainService;
 import org.hzz.points.domain.valueobject.PointStrategyEnum;
 import org.hzz.points.types.resp.SignResultVo;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -25,16 +31,25 @@ public class SignDomainServiceImpl
         extends BaseDomainService<SignRecordRedisRepository>
         implements SignDomainService {
 
-    private Map<Integer, Supplier<Integer>> pointsRewardStrategy;
-    private final Supplier<Integer> defaultPointRewardStrategy = () -> 0;
+    /**
+     * 默认积分策略
+     */
+    private final Supplier<Integer> defaultPointsSupplier = new PointsStrategy.DefaultPointsStrategy().pointsSupplier();
 
-    @PostConstruct
-    public void init() {
+    /**
+     * 积分策略
+     */
+    private final Map<Integer, Supplier<Integer>> pointsRewardStrategy;
+
+    public SignDomainServiceImpl(List<PointsStrategy> list){
         pointsRewardStrategy = new HashMap<>();
-
-
+        if(CollUtil.isNotEmpty(list)){
+            logger.info("检测到{}个积分策略PointsStrategy",list.size());
+            for (PointsStrategy s: list){
+                pointsRewardStrategy.put(s.signDays(),s.pointsSupplier());
+            }
+        }
     }
-
 
     /**
      * {@inheritDoc}
@@ -101,8 +116,14 @@ public class SignDomainServiceImpl
         /**
          * 枚举方案
          */
-        Integer rewardPoints = PointStrategyEnum.fromSignDays(signDays).get();
+        //Integer rewardPoints = PointStrategyEnum.fromSignDays(signDays).get();
 
-        return rewardPoints;
+        /**
+         * map方案
+         */
+        Supplier<Integer> pointsSupplier = pointsRewardStrategy
+                .getOrDefault(signDays, defaultPointsSupplier);
+        return pointsSupplier.get();
     }
+
 }
