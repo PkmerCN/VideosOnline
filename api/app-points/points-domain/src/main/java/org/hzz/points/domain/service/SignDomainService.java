@@ -17,4 +17,19 @@ public interface SignDomainService extends DomainService {
      * @return 签到结果
      */
     SignResultVo addSignRecord(Long userId);
+
+    /**
+     * 计算用户本月连续签到的天数，以最新为准
+     * @param userId 用户id
+     * @param endDay 统计到达的天数，也就是一个月的几号
+     * @return 本月最新连续签到天数
+     */
+    int countSignDays(Long userId,int endDay);
+
+    /**
+     * 以今天开始往之前的天数开始计算用户本月连续签到的天数
+     * @param userId 用户id
+     * @return 本月最新连续签到天数
+     */
+    int countSignDaysForToday(Long userId);
 }
