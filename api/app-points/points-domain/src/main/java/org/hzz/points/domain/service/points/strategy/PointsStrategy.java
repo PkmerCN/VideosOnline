@@ -20,6 +20,9 @@ public interface PointsStrategy {
 
     Supplier<Integer> pointsSupplier();
 
+    /**
+     * 定义一个默认的策略
+     */
     public static class DefaultPointsStrategy implements PointsStrategy{
 
         @Override
