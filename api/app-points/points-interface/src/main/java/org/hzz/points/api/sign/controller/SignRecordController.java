@@ -7,6 +7,7 @@ import org.hzz.points.api.sign.SignRecordApi;
 import org.hzz.points.application.command.sign.AddSignRecordCmd;
 import org.hzz.points.application.service.PointsCmdService;
 import org.hzz.points.types.resp.SignResultVo;
+import org.hzz.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +28,7 @@ public class SignRecordController
     public Result<SignResultVo> addSignRecord() {
         logger.info("签到");
         AddSignRecordCmd cmd = new AddSignRecordCmd();
+        cmd.setUserId(AppContextHolder.userContextHolder.getUser().getId());
         SignResultVo vo = cmdService.<SignResultVo>handleCommandWithResult(cmd);
         return success(vo);
     }

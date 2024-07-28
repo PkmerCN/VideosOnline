@@ -61,5 +61,7 @@ public class DateUtil {
         System.out.println("当前时间: " + LocalDateTime.now());
         System.out.println("本周起始时间: " + getStartOfWeek());
         System.out.println("本周结束时间: " + getEndOfWeek());
+
+        System.out.println(Boolean.TRUE.equals(true));
     }
 }

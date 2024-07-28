@@ -43,7 +43,13 @@
             <groupId>org.hzz.remark.interface</groupId>
             <artifactId>remark-interface</artifactId>
             <version>2.2.4-SNAPSHOT</version>
-        </dependency><!--   自身依赖End     -->
+        </dependency>
+        <dependency>
+            <groupId>org.hzz.points.api</groupId>
+            <artifactId>points-interface</artifactId>
+            <version>2.2.4-SNAPSHOT</version>
+        </dependency>
+        <!--   自身依赖End     -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

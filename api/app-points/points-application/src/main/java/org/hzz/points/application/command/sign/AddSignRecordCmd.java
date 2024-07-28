@@ -1,5 +1,6 @@
 package org.hzz.points.application.command.sign;
 
+import lombok.Data;
 import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
 import org.hzz.points.application.handler.sign.AddSignRecordCmdHandler;
 
@@ -10,8 +11,11 @@ import org.hzz.points.application.handler.sign.AddSignRecordCmdHandler;
  * @version 1.0.0
  * @date 2024/7/28
  */
+@Data
 public class AddSignRecordCmd implements CommandWithMark {
     public static final String MARK = AddSignRecordCmd.class.getName();
+    Long userId;
+
     @Override
     public String mark() {
         return MARK;
