@@ -1,5 +1,6 @@
 package org.hzz.points.domain.service.sign.impl;
 
+import lombok.Setter;
 import org.hzz.common.collection.CollUtil;
 import org.hzz.core.code.impl.AppStatusImpl;
 import org.hzz.core.exception.request.BadRequestException;
@@ -8,6 +9,9 @@ import org.hzz.points.domain.repository.SignRecordRedisRepository;
 import org.hzz.points.domain.service.points.strategy.PointsStrategy;
 import org.hzz.points.domain.service.sign.SignDomainService;
 import org.hzz.points.types.resp.SignResultVo;
+import org.hzz.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
+import org.hzz.rabbitmq.core.RabbitMQHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -26,6 +30,8 @@ public class SignDomainServiceImpl
         extends BaseDomainService<SignRecordRedisRepository>
         implements SignDomainService {
 
+    @Setter(onMethod_ = @Autowired)
+    private RabbitMQHelper rabbitMQHelper;
     /**
      * 默认积分策略
      */
@@ -64,6 +70,13 @@ public class SignDomainServiceImpl
         // 连续签到的天数，奖励的积分
         int signDays = countSignDaysForToday(userId);
         Integer rewardPoints = calcRewardPoints(signDays);
+
+        // todo 发送积分消息
+        rabbitMQHelper.sendAsync(
+                PointsMqConstants.Exchange.POINTS_EXCHANGE,
+                PointsMqConstants.Key.SIGN_IN,
+                "hello world , this is sign"
+        );
 
         vo.setSignDays(signDays);
         vo.setRewardPoints(rewardPoints);

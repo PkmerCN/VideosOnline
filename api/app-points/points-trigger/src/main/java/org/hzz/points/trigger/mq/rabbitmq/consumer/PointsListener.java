@@ -1,10 +1,17 @@
 package org.hzz.points.trigger.mq.rabbitmq.consumer;
 
+import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.points.trigger.mq.rabbitmq.config.RabbitMqConfig;
 import org.hzz.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
 import org.springframework.amqp.rabbit.annotation.*;
+import org.springframework.amqp.support.AmqpHeaders;
+import org.springframework.context.annotation.Primary;
+import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 /**
  * @author 胖卡
@@ -65,7 +72,12 @@ public class PointsListener {
             PointsMqConstants.Queue.NOTE_GATHERED,
 
     })
-    public void addPointsRecordListener(){
-        log.info("收到消息");
+    public void addPointsRecordListener(
+            @Payload String msg,
+            Channel channel,
+            @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
+
+        log.info("收到消息: {}",msg);
+        channel.basicAck(tag,false);
     }
 }
