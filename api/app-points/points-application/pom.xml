@@ -24,6 +24,11 @@
             <artifactId>points-infrastructure</artifactId>
             <version>2.2.4-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.hzz.points.trigger</groupId>
+            <artifactId>points-trigger</artifactId>
+            <version>2.2.4-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
