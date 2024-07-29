@@ -3,14 +3,14 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 
-<!--    <context id="MySQLTables" targetRuntime="MyBatis3">-->
-    <context id="MySQLTables" targetRuntime="MyBatis3DynamicSql">
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+<!--    <context id="MySQLTables" targetRuntime="MyBatis3DynamicSql">-->
 
         <plugin type="org.hzz.mybatis.plugins.ConstantClassGeneratorPlugin">
             <!--    其他扩展信息        -->
             <property name="pkmer" value="hzz"/>
             <!--    修改生成的文件夹        -->
-            <property name="targetPackage" value="org.hzz.remark.types.constants"/>
+            <property name="targetPackage" value="org.hzz.points.types.constants"/>
         </plugin>
 
         <!--   使用自己的注释类     -->
@@ -29,9 +29,9 @@
             <property name="useJSR310Types" value="true" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="org.hzz.remark.infrastructure.dao.model.liked" targetProject="src/main/java" />
+        <javaModelGenerator targetPackage="org.hzz.points.infrastructure.dao.model.points" targetProject="src/main/java" />
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.remark.infrastructure.dao.mapper.liked" targetProject="src/main/java"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.hzz.points.infrastructure.dao.mapper.points" targetProject="src/main/java"/>
 
 <!--   属性domainObjectName     -->
 <!--   https://mybatis.org/generator/configreference/xmlconfig.html     -->
@@ -62,8 +62,12 @@
 <!--            <columnOverride column="is_show" javaType="org.hzz.course.types.enums.teacher.IsShow" />-->
 <!--            <columnOverride column="deleted" javaType="org.hzz.core.enums.delete.Deleted" />-->
 <!--        </table>-->
-        <table tableName="liked_record">
-            <columnOverride column="biz_type" javaType="org.hzz.remark.types.BizType"/>
+<!--        <table tableName="liked_record">-->
+<!--            <columnOverride column="biz_type" javaType="org.hzz.remark.types.BizType"/>-->
+<!--        </table>-->
+
+        <table tableName="points_record">
+            <columnOverride column="type" javaType="org.hzz.points.types.enums.PointsType"/>
         </table>
 
     </context>
