@@ -3,8 +3,8 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 
-    <context id="MySQLTables" targetRuntime="MyBatis3">
-<!--    <context id="MySQLTables" targetRuntime="MyBatis3DynamicSql">-->
+<!--    <context id="MySQLTables" targetRuntime="MyBatis3">-->
+    <context id="MySQLTables" targetRuntime="MyBatis3DynamicSql">
 
         <plugin type="org.hzz.mybatis.plugins.ConstantClassGeneratorPlugin">
             <!--    其他扩展信息        -->
