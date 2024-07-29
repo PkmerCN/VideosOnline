@@ -60,6 +60,7 @@ public class PointsListener {
 //    })
 
     /**
+     * 这里使用绑定关系配置类，而不是像上面注解类的绑定配置
      * 对应的queue bean {@link RabbitMqConfig}
      */
     @RabbitListener(queues = {
