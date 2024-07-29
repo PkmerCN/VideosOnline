@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * 积分队列绑定关系
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/29
