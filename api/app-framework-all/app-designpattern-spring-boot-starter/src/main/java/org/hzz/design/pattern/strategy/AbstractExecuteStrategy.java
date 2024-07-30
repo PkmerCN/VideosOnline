@@ -8,7 +8,7 @@ package org.hzz.design.pattern.strategy;
  * @version 1.0.0
  * @date 2024/6/21
  */
-public interface AbstractExecuteStrategy<T,R> {
+public interface AbstractExecuteStrategy<T,R>{
     String mark();
 
     /**

@@ -11,5 +11,4 @@ import org.springframework.context.event.EventListener;
 public interface DomainEventHandler<T extends DomainEvent> {
     @EventListener
     void listen(T event);
-
 }

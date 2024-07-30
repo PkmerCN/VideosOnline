@@ -11,7 +11,7 @@ import java.time.Instant;
  * @version 1.0.0
  * @date 2024/6/25
  */
-public class BaseDomainEvent implements DomainEvent {
+public abstract class BaseDomainEvent implements DomainEvent {
     @JSONField(serialize = false,deserialize = false)
     private final Instant now;
     public BaseDomainEvent(){
