@@ -5,7 +5,6 @@ import org.hzz.ddd.core.domain.shared.event.DomainEventBus;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.lang.NonNull;
-import org.springframework.lang.NonNullApi;
 import org.springframework.stereotype.Component;
 
 /**

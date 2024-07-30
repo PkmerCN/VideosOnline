@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 
 /**
  * 领域发布事件实现类
+ * 为了兼容自定义的领域发布器，为了使用这个我们默认定义的领域事件发布器，
+ * // @Autowired
+ * // @DomainEvent
+ * // private DomainEventBus domainEventbus;
+ * 注入的bean就是{@link DomainEventBusImpl}
+ *
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/7/30
