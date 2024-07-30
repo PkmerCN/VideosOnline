@@ -2,13 +2,16 @@ package org.hzz.points.trigger.mq.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.core.converter.TargetAndSourceConverter;
 import org.hzz.ddd.core.domain.shared.event.DomainEventBus;
 import org.hzz.ddd.core.domain.shared.event.annotations.DDDBus;
 import org.hzz.points.domain.event.AddPointsRecordEvent;
 import org.hzz.points.trigger.mq.rabbitmq.config.RabbitMqConfig;
 import org.hzz.points.types.dto.PointsRewardDto;
 import org.hzz.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
-import org.springframework.amqp.rabbit.annotation.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -26,7 +29,7 @@ import java.io.IOException;
 public class PointsListener {
     private final DomainEventBus domainEventBus;
 
-    public PointsListener(@DDDBus DomainEventBus domainEventBus){
+    public PointsListener(@DDDBus DomainEventBus domainEventBus) {
         this.domainEventBus = domainEventBus;
     }
 
@@ -85,15 +88,26 @@ public class PointsListener {
             Channel channel,
             @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
 
-        AddPointsRecordEvent event = new AddPointsRecordEvent();
-        try{
+        AddPointsRecordEvent event = convertTo(pointsRewardDto);
+
+        try {
             domainEventBus.publishDomainEvent(event);
             channel.basicAck(tag, false);
             log.info("消费消息 success");
-        }catch (Exception e){
-            log.info("业务异常，回退消息{}",pointsRewardDto);
-            channel.basicNack(tag,false,true);
+        } catch (Exception e) {
+            log.info("业务异常，回退消息{}", pointsRewardDto);
+            channel.basicNack(tag, false, true);
         }
 
+    }
+
+
+    private AddPointsRecordEvent convertTo(PointsRewardDto dto){
+        AddPointsRecordEvent event = new AddPointsRecordEvent();
+        event.setPoints(dto.getPoints())
+                .setType(dto.getType())
+                .setUserId(dto.getUserId())
+                .setLocalDateTime(dto.getLocalDateTime());
+        return event;
     }
 }

@@ -1,14 +1,13 @@
 package org.hzz.points.domain.event;
 
-import com.alibaba.fastjson2.annotation.JSONField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.hzz.ddd.core.domain.shared.event.base.BaseDomainEvent;
-import org.hzz.fastjson2.enums.BaseEnumReader;
-import org.hzz.fastjson2.enums.BaseEnumWriter;
 import org.hzz.points.domain.handler.AddPointsRecordEventHandler;
 import org.hzz.points.types.enums.PointsType;
+
+import java.time.LocalDateTime;
 
 /**
  * 处理器{@link AddPointsRecordEventHandler}
@@ -22,6 +21,6 @@ import org.hzz.points.types.enums.PointsType;
 public class AddPointsRecordEvent extends BaseDomainEvent {
     Long userId;
     Integer points;
-    @JSONField(deserializeUsing = BaseEnumReader.class)
     PointsType type;
+    LocalDateTime localDateTime;
 }

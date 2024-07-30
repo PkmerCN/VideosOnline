@@ -77,7 +77,8 @@ public class SignDomainServiceImpl
         rabbitMQHelper.sendAsync(
                 PointsMqConstants.Exchange.POINTS_EXCHANGE,
                 PointsMqConstants.Key.SIGN_IN,
-                PointsRewardDto.of(userId,rewardPoints + vo.getSignPoints(), PointsType.SIGN_EVERYDAY)
+                PointsRewardDto.of(userId,rewardPoints + vo.getSignPoints(),
+                        PointsType.SIGN_EVERYDAY,LocalDateTime.now())
         );
 
         vo.setSignDays(signDays);
