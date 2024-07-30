@@ -9,6 +9,7 @@ import org.hzz.points.domain.repository.SignRecordRedisRepository;
 import org.hzz.points.domain.service.points.strategy.PointsStrategy;
 import org.hzz.points.domain.service.sign.SignDomainService;
 import org.hzz.points.types.dto.PointsRewardDto;
+import org.hzz.points.types.enums.PointsType;
 import org.hzz.points.types.resp.SignResultVo;
 import org.hzz.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
 import org.hzz.rabbitmq.core.RabbitMQHelper;
@@ -76,7 +77,7 @@ public class SignDomainServiceImpl
         rabbitMQHelper.sendAsync(
                 PointsMqConstants.Exchange.POINTS_EXCHANGE,
                 PointsMqConstants.Key.SIGN_IN,
-                PointsRewardDto.of(userId,rewardPoints + vo.getSignPoints())
+                PointsRewardDto.of(userId,rewardPoints + vo.getSignPoints(), PointsType.SIGN_EVERYDAY)
         );
 
         vo.setSignDays(signDays);
