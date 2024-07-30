@@ -25,7 +25,8 @@ public class AddPointsRecordEventHandler implements DomainEventHandler<AddPoints
         PointsRecordEntity entity = new PointsRecordEntity();
         entity.setPoints(event.getPoints().byteValue())
                 .setType(event.getType())
-                .setUserId(event.getUserId());
+                .setUserId(event.getUserId())
+                .setCreateTime(event.getLocalDateTime());
 
         pointsDomainService.addPoints(entity);
 
