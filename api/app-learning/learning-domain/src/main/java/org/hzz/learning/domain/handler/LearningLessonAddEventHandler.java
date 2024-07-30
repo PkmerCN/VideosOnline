@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.course.CourseDomainService;
+import org.hzz.ddd.core.domain.shared.event.DomainEventHandler;
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;
 import org.hzz.learning.domain.event.LearningLessonAddEvent;
 import org.hzz.learning.domain.service.lesson.LearnLessonDomainService;
@@ -23,7 +24,7 @@ import java.util.List;
  */
 @Component
 @Slf4j
-public class LearningLessonAddEventHandler {
+public class LearningLessonAddEventHandler implements DomainEventHandler<LearningLessonAddEvent> {
 
     @Setter(onMethod_ = @Autowired)
     private CourseDomainService courseDomainService;
@@ -31,8 +32,8 @@ public class LearningLessonAddEventHandler {
     private LearnLessonDomainService learnLessonDomainService;
 
 
-    @EventListener
-    public void handleLearningLessonAddEvent(LearningLessonAddEvent event) {
+    @Override
+    public void listen(LearningLessonAddEvent event) {
         log.info("准备处理: {}", event);
         CourseIdAggregate dto = CourseIdAggregate.builder()
                 .ids(event.getCouseIds())

@@ -1,6 +1,7 @@
 package org.hzz.learning.domain.handler;
 
 import lombok.Setter;
+import org.hzz.ddd.core.domain.shared.event.DomainEventHandler;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.event.ReplyLikedEvent;
 import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;
@@ -18,7 +19,7 @@ import java.util.List;
  * @date 2024/7/25
  */
 @Component
-public class ReplyLikedEventHandler {
+public class ReplyLikedEventHandler implements DomainEventHandler<ReplyLikedEvent> {
 
     @Setter(onMethod_ = @Autowired)
     private InteractionReplyDomainService replyDomainService;
@@ -27,6 +28,7 @@ public class ReplyLikedEventHandler {
      * 监听事件点赞次数
      * 事件发送的地方
      * {@link org.hzz.learning.trigger.mq.rabbitmq.consumer.ReplyLikeTimesListener}
+     *
      * @param event 评论点赞事件
      */
     @EventListener

@@ -2,12 +2,14 @@ package org.hzz.learning.domain.event;
 
 import lombok.*;
 import org.hzz.ddd.core.domain.shared.event.base.BaseDomainEvent;
+import org.hzz.learning.domain.handler.LearningLessonAddEventHandler;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * 添加课程事件
+ * {@link LearningLessonAddEventHandler}
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/6/25
