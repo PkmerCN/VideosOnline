@@ -2,7 +2,11 @@ package org.hzz.points.trigger.mq.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.ddd.core.domain.shared.event.DomainEventBus;
+import org.hzz.ddd.core.domain.shared.event.annotations.DDDBus;
+import org.hzz.points.domain.event.AddPointsRecordEvent;
 import org.hzz.points.trigger.mq.rabbitmq.config.RabbitMqConfig;
+import org.hzz.points.types.dto.PointsRewardDto;
 import org.hzz.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.amqp.support.AmqpHeaders;
@@ -20,6 +24,12 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class PointsListener {
+    private final DomainEventBus domainEventBus;
+
+    public PointsListener(@DDDBus DomainEventBus domainEventBus){
+        this.domainEventBus = domainEventBus;
+    }
+
 
 //    @RabbitListeners({
 //            @RabbitListener(bindings = {
@@ -71,12 +81,19 @@ public class PointsListener {
             PointsMqConstants.Queue.NOTE_GATHERED,
     })
     public void addPointsRecordListener(
-            @Payload String msg,
+            @Payload PointsRewardDto pointsRewardDto,
             Channel channel,
             @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
 
-        // todo 处理积分记录到mysql
-        log.info("收到消息: {}", msg);
-        channel.basicAck(tag, false);
+        AddPointsRecordEvent event = new AddPointsRecordEvent();
+        try{
+            domainEventBus.publishDomainEvent(event);
+            channel.basicAck(tag, false);
+            log.info("消费消息 success");
+        }catch (Exception e){
+            log.info("业务异常，回退消息{}",pointsRewardDto);
+            channel.basicNack(tag,false,true);
+        }
+
     }
 }

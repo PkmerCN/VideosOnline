@@ -8,6 +8,7 @@ import org.hzz.core.service.BaseDomainService;
 import org.hzz.points.domain.repository.SignRecordRedisRepository;
 import org.hzz.points.domain.service.points.strategy.PointsStrategy;
 import org.hzz.points.domain.service.sign.SignDomainService;
+import org.hzz.points.types.dto.PointsRewardDto;
 import org.hzz.points.types.resp.SignResultVo;
 import org.hzz.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
 import org.hzz.rabbitmq.core.RabbitMQHelper;
@@ -71,11 +72,11 @@ public class SignDomainServiceImpl
         int signDays = countSignDaysForToday(userId);
         Integer rewardPoints = calcRewardPoints(signDays);
 
-        // todo 发送积分消息
+        // 发送积分消息
         rabbitMQHelper.sendAsync(
                 PointsMqConstants.Exchange.POINTS_EXCHANGE,
                 PointsMqConstants.Key.SIGN_IN,
-                "hello world , this is sign"
+                PointsRewardDto.of(userId,rewardPoints + vo.getSignPoints())
         );
 
         vo.setSignDays(signDays);
