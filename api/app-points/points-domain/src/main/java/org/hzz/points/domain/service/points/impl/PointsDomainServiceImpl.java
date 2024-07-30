@@ -19,6 +19,7 @@ public class PointsDomainServiceImpl
 
     @Override
     public void addPoints(PointsRecordEntity entity) {
-        repository.insert(entity);
+        int i = repository.insert(entity);
+        logger.info("插入积分记录{}条",i);
     }
 }
