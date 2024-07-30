@@ -21,7 +21,7 @@ public class DomainEventBusImpl implements DomainEventBus, ApplicationEventPubli
 
     @Override
     public void publishDomainEvent(DomainEvent event) {
-        log.info("发布领域事件： {}",event.getClass().getSimpleName());
+        log.info("发布领域事件： {} AT {}",event.getClass().getSimpleName(),event.occurredOn());
         eventPublisher.publishEvent(event);
     }
 
