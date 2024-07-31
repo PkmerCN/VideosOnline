@@ -62,28 +62,26 @@ public class SignRecordRedisRepositoryImpl implements SignRecordRedisRepository 
      */
     @Override
     public int count(Long userId, int offset, int len) {
-
-        List<Long> bitFieldResult = redisTemplate.opsForValue().bitField(
-                getSignKey(userId, LocalDateTime.now()),
-                BitFieldSubCommands.create()
-                        .get(BitFieldSubCommands.BitFieldType.unsigned(len)).valueAt(offset));
-
-        if(CollUtil.isEmpty(bitFieldResult)){
-            return 0;
-        }
-
-        int bitValue = bitFieldResult.get(0).intValue();
-        String binaryRepresentation = String.format("%8s", Long.toBinaryString(bitValue)).trim();
-        log.info("获取到bit value = {}",binaryRepresentation);
-
+        int bitValue = getUserSignBitValue(userId, offset, len);
         int count = 0;
         // 位运算
         while((bitValue & 1) == 1){
             count++;
             bitValue >>>= 1;
         }
-
         return count;
+    }
+
+    @Override
+    public int[] querySignRecords(Long userId, int offset, int len) {
+        int[] signRecords = new int[len];
+        int bitValue = getUserSignBitValue(userId, offset, len);
+
+        for(int i = len - 1;i>=0;i-- ){
+            signRecords[i] = bitValue & 1;
+            bitValue >>>= 1;
+        }
+        return signRecords;
     }
 
     /**
@@ -98,5 +96,30 @@ public class SignRecordRedisRepositoryImpl implements SignRecordRedisRepository 
         return StrUtil.format(RedisConstants.SIGN_RECORD_TEMPLATE,
                 userId,
                 now.format(DateUtil.getMonthFormatCompact()));
+    }
+
+
+    /**
+     * 获取用户对应的签到记录bitValue
+     * sign::uid::1::202407 -> bitValue
+     * @param userId 用户id
+     * @param offset 起始偏移量
+     * @param len 长度
+     * @return bitvalue
+     */
+    private int getUserSignBitValue(Long userId, int offset, int len){
+        List<Long> bitFieldResult = redisTemplate.opsForValue().bitField(
+                getSignKey(userId, LocalDateTime.now()),
+                BitFieldSubCommands.create()
+                        .get(BitFieldSubCommands.BitFieldType.unsigned(len)).valueAt(offset));
+
+        if(CollUtil.isEmpty(bitFieldResult)){
+            return 0;
+        }
+
+        int bitValue =  bitFieldResult.get(0).intValue();
+        String binaryRepresentation = String.format("%8s", Long.toBinaryString(bitValue)).trim();
+        log.info("获取到bit value = {}",binaryRepresentation);
+        return bitValue;
     }
 }

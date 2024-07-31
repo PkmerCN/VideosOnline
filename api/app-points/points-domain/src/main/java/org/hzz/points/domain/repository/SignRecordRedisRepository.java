@@ -25,4 +25,16 @@ public interface SignRecordRedisRepository {
      * @return 连续为1的bit位
      */
     int count(Long userId, int offset,int len);
+
+    /**
+     * 查询用户的签到记录
+     * 比如一个月，1号为0,到10号，10天的签到记录，offset = 0,len = 10
+     * @param userId 用户id
+     * @param offset 起始位置
+     * @param len 长度
+     * @return 数组，值为0和1,0代表未签到，1代表签到
+     */
+    int[] querySignRecords(Long userId,int offset,int len);
+
+
 }

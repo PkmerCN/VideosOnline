@@ -16,6 +16,7 @@ import org.hzz.rabbitmq.core.RabbitMQHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -104,6 +105,19 @@ public class SignDomainServiceImpl
     public int countSignDaysForToday(Long userId) {
         int endDay = LocalDateTime.now().getDayOfMonth();
         return repository.count(userId, 0, endDay);
+    }
+
+    /**
+     * {@inheritDoc}
+     * @param userId 用户id
+     * @return 数组，值为0和1,0 代表未签到，1 代表签到
+     */
+    @Override
+    public int[] querySignRecordsForToday(Long userId) {
+        final int start = 0;
+        int dayOfMonth = LocalDate.now().getDayOfMonth();
+        logger.info("今天是这个月的第{}天",dayOfMonth);
+        return repository.querySignRecords(userId,start,dayOfMonth);
     }
 
     /**

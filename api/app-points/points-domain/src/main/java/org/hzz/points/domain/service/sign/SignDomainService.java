@@ -32,4 +32,11 @@ public interface SignDomainService extends DomainService {
      * @return 本月最新连续签到天数
      */
     int countSignDaysForToday(Long userId);
+
+    /**
+     * 查询用户的签到记录
+     * @param userId 用户id
+     * @return 数组，值为0和1,0代表未签到，1代表签到
+     */
+    int[] querySignRecordsForToday(Long userId);
 }
