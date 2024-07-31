@@ -2,6 +2,7 @@ package org.hzz.common.date;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
@@ -31,6 +32,32 @@ public class DateUtil {
    public static Date changeLocalDateTimeToDate(LocalDateTime dateTime){
        return dateTime != null ? Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant()) : null;
    }
+
+    /**
+     * 获取指定日期的起始时间
+     * @param dateTime 指定日期
+     * @return 起始时间
+     */
+   public static LocalDateTime getStartOfDay(LocalDateTime dateTime){
+        if (dateTime == null){
+            throw new IllegalArgumentException("dateTime 不能为空");
+        }
+//        return dateTime.toLocalDate().atStartOfDay();
+        return dateTime.toLocalDate().atTime(LocalTime.MIN);
+   }
+
+    /**
+     * 获取指定日期的结束时间
+     * @param dateTime 指定日期
+     * @return 结束时间
+     */
+    public static LocalDateTime getEndOfDay(LocalDateTime dateTime){
+        if (dateTime == null){
+            throw new IllegalArgumentException("dateTime 不能为空");
+        }
+
+        return dateTime.toLocalDate().atTime(LocalTime.MAX);
+    }
 
 
     /**
@@ -62,6 +89,7 @@ public class DateUtil {
         System.out.println("本周起始时间: " + getStartOfWeek());
         System.out.println("本周结束时间: " + getEndOfWeek());
 
-        System.out.println(Boolean.TRUE.equals(true));
+        System.out.println("今天的起始时间: " + getStartOfDay(LocalDateTime.now()));
+        System.out.println("今天的结束时间: " + getEndOfDay(LocalDateTime.now()));
     }
 }
