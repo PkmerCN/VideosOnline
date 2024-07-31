@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.hzz</groupId>
         <artifactId>auth-server</artifactId>
-        <version>2.2.4</version>
+        <version>2.2.5-SNAPSHOT</version>
     </parent>
 
     <artifactId>auth-server-interface</artifactId>
@@ -18,12 +18,12 @@
         <dependency>
             <groupId>org.hzz</groupId>
             <artifactId>auth-server-application</artifactId>
-            <version>2.2.4</version>
+            <version>2.2.5-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.hzz</groupId>
             <artifactId>auth-server-config</artifactId>
-            <version>2.2.4</version>
+            <version>2.2.5-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
