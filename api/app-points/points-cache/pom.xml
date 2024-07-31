@@ -20,6 +20,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.hzz.points.domain</groupId>
+            <artifactId>points-domain</artifactId>
+            <version>2.2.4-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.hzz.cache</groupId>
             <artifactId>app-cache-spring-boot-starter</artifactId>
             <version>2.2.4-SNAPSHOT</version>

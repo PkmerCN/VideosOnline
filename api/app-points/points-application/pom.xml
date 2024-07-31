@@ -29,6 +29,11 @@
             <artifactId>points-trigger</artifactId>
             <version>2.2.4-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.hzz.cache</groupId>
+            <artifactId>points-cache</artifactId>
+            <version>2.2.4-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

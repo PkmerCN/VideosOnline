@@ -5,6 +5,7 @@ import org.hzz.core.converter.TargetAndSourceConverter;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
 import org.hzz.points.application.command.points.GetAllSeasonCmd;
+import org.hzz.points.cache.SeasonCache;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 import org.hzz.points.domain.service.points.PointsBoardSeasonDomainService;
 import org.hzz.points.types.resp.SeasonVo;
@@ -27,6 +28,9 @@ public class GetAllSeasonCmdHandler implements CommandHandler,
     @Setter(onMethod_ = @Autowired)
     private PointsBoardSeasonDomainService seasonDomainService;
 
+    @Setter(onMethod_ = @Autowired)
+    private SeasonCache seasonCache;
+
     @Override
     public String mark() {
         return GetAllSeasonCmd.MARK;
@@ -34,10 +38,10 @@ public class GetAllSeasonCmdHandler implements CommandHandler,
 
     @Override
     public List<SeasonVo> executeWithResp(GetAllSeasonCmd cmd) {
-        List<PointsBoardSeasonEntity> allSeason = seasonDomainService.getAllSeason();
-        List<SeasonVo> targets = Converter.INSTANCE.toTargets(allSeason);
-        // todo caffeine来做缓存
-        return targets;
+//        List<PointsBoardSeasonEntity> allSeason = seasonDomainService.getAllSeason();
+//        List<SeasonVo> targets = Converter.INSTANCE.toTargets(allSeason);
+        // caffeine来做缓存
+        return seasonCache.getAllSeason();
     }
 
     @Mapper

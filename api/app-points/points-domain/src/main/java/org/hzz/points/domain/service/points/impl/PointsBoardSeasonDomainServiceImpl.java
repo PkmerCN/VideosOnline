@@ -25,7 +25,7 @@ public class PointsBoardSeasonDomainServiceImpl
     @Override
     public List<PointsBoardSeasonEntity> getAllSeason() {
         List<PointsBoardSeasonEntity> seasons = repository.selectAll();
-        logger.info("查询到赛季数据{}条",seasons.size());
+        logger.info("从数据库查询到赛季数据{}条",seasons.size());
         return seasons;
     }
 }
