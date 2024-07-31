@@ -97,6 +97,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-user          | 用户相关                         |
 | app-learning      | 学习课程相关                       |
 | app-remark        | 点赞相关                         |
+| app-points        | 积分相关                         |
 | attachment        | docker的挂载目录，目前是配置了rabbitmq插件 |
 
 
