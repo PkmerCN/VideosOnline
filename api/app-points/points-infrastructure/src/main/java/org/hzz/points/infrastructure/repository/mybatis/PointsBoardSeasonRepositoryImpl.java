@@ -39,18 +39,21 @@ public class PointsBoardSeasonRepositoryImpl implements PointsBoardSeasonReposit
      */
     @Override
     public List<PointsBoardSeasonEntity> selectAll() {
-        List<PointsBoardSeason> records1 = mapper.selectByExample(null);
-        List<PointsBoardSeason> records2 = dynamicMapper.select(SelectDSLCompleter.allRows());
+        /**
+         * 比较一下传统方式example与dynamic sql的写法却别
+         */
+//        List<PointsBoardSeason> records1 = mapper.selectByExample(null);
+//        List<PointsBoardSeason> records2 = dynamicMapper.select(SelectDSLCompleter.allRows());
+//
+//        PointsBoardSeasonExample example = new PointsBoardSeasonExample();
+//        example.setOrderByClause(beginTime.orderByName() +" "+"desc");
+//        List<PointsBoardSeason> records3 = mapper.selectByExample(example);
 
-        PointsBoardSeasonExample example = new PointsBoardSeasonExample();
-        example.setOrderByClause(beginTime.orderByName() +" "+"desc");
-
-        List<PointsBoardSeason> records3 = mapper.selectByExample(example);
         List<PointsBoardSeason> records4 = dynamicMapper.select(SelectDSLCompleter.allRowsOrderedBy(beginTime.descending()));
-        // todo 是不是asc
-        List<PointsBoardSeason> records5 = dynamicMapper.select(SelectDSLCompleter.allRowsOrderedBy(beginTime));
+        // 默认order by 一个字段，默认的排序方式就是asc
+//        List<PointsBoardSeason> records5 = dynamicMapper.select(SelectDSLCompleter.allRowsOrderedBy(beginTime));
 
-        return Converter.INSTANCE.toEntities(records1);
+        return Converter.INSTANCE.toEntities(records4);
     }
 
     @Mapper
