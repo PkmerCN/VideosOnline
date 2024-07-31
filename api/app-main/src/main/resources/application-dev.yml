@@ -90,3 +90,4 @@ app:
       - /css/*.css
       - /favicon.ico
       - /categorys/**
+      - /seasons/**
