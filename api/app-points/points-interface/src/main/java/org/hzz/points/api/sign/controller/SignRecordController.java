@@ -5,6 +5,7 @@ import org.hzz.core.controller.BaseController;
 import org.hzz.core.result.Result;
 import org.hzz.points.api.sign.SignRecordApi;
 import org.hzz.points.application.command.sign.AddSignRecordCmd;
+import org.hzz.points.application.command.sign.QuerySignRecordsCmd;
 import org.hzz.points.application.service.PointsCmdService;
 import org.hzz.points.types.resp.SignResultVo;
 import org.hzz.security.context.AppContextHolder;
@@ -31,5 +32,15 @@ public class SignRecordController
         cmd.setUserId(AppContextHolder.userContextHolder.getUser().getId());
         SignResultVo vo = cmdService.<SignResultVo>handleCommandWithResult(cmd);
         return success(vo);
+    }
+
+    @Override
+    public Result<int[]> querySignRecords() {
+        logger.info("查询用户签到记录");
+        QuerySignRecordsCmd cmd = QuerySignRecordsCmd.commandOf(
+                AppContextHolder.userContextHolder.getUser().getId()
+        );
+        int[] signRecords = cmdService.<int[]>handleCommandWithResult(cmd);
+        return success(signRecords);
     }
 }
