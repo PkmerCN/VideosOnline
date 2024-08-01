@@ -22,6 +22,7 @@
         <module>app-aop-spring-boot-starter</module>
         <module>app-fastjson2-spring-boot-starter</module>
         <module>app-cache-spring-boot-starter</module>
+        <module>app-scheduler-spring-boot-starter</module>
     </modules>
 
     <properties>
