@@ -1,6 +1,8 @@
 server:
   port: 8080
 spring:
+  application:
+    name: videos-online
   #redis配置,注意因为我引入了docker会导致data-redis自动配置类PropertiesRedisConnectionDetails失效
   cache:
     type: redis
@@ -91,3 +93,12 @@ app:
       - /favicon.ico
       - /categorys/**
       - /seasons/**
+
+# 配置xxljob
+xxl:
+  job:
+    access-token: pkmer_token
+    admin-addresses: http://localhost:8991/xxl-job-admin
+    executor:
+      appname: ${spring.application.name}
+      log-path: log/job/${spring.application.name}

@@ -1,5 +1,6 @@
 package org.hzz.remark.application.task;
 
+import com.xxl.job.core.handler.annotation.XxlJob;
 import jakarta.annotation.PostConstruct;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +44,8 @@ public class LikeTimesCheckTask {
         count = 30L;
     }
 
-    @Scheduled(fixedDelay = 3,timeUnit = TimeUnit.SECONDS)
+//    @Scheduled(fixedDelay = 3,timeUnit = TimeUnit.SECONDS)
+    @XxlJob("handleLikesToDB")
     public void test(){
         log.info("准备处理业务的点赞总数");
         for(String bizType: bizTypes){

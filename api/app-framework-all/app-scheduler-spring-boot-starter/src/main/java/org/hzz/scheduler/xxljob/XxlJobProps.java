@@ -14,7 +14,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties("xxl.job")
 public class XxlJobProps {
-    private String accessToken;
+    /**
+     * token 与xxl_job服务端配置一样
+     * 如果xxl_job没有配置的token的话
+     * 默认是default_token
+     */
+    private String accessToken = "default_token";
+
+    /**
+     * xxl_job web端访问http://ip:port/xxl-job-admin
+     */
     private String adminAddresses;
     private Executor executor;
 
@@ -24,7 +33,13 @@ public class XxlJobProps {
 
     @Data
     public static class Executor{
+        /**
+         * 执行器的名字，我们为spring应用名称
+         */
         private String appname;
+        /**
+         * 日志文件，会存储到项目中的目录文件
+         */
         private String logPath;
         private String address;
         private String ip;

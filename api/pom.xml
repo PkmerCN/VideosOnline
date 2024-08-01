@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.hzz</groupId>
@@ -21,7 +22,8 @@
     </modules>
 
     <name>VideosOnline</name>
-    <description>&#x1f525;&#x1f60a;This is a project that I use for full-stack development&#x1f60a;&#x1f525;</description>
+    <description>&#x1f525;&#x1f60a;This is a project that I use for full-stack development&#x1f60a;&#x1f525;
+    </description>
     <url>https://pkmer.gitee.io</url>
 
     <!-- Licenses -->
@@ -55,6 +57,7 @@
         <junit.version>5.9.3</junit.version>
         <mysql.version>8.0.28</mysql.version>
         <jjwt.version>0.12.5</jjwt.version>
+        <xxl.job.version>2.4.1</xxl.job.version>
         <password4j.version>1.8.2</password4j.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <java.version>17</java.version>
@@ -67,14 +70,14 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.mybatis.spring.boot</groupId>-->
-<!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>mysql</groupId>-->
+        <!--            <artifactId>mysql-connector-java</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mybatis.spring.boot</groupId>-->
+        <!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -201,14 +204,20 @@
                 <version>${freemarker.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl.job.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
     <!--scm(Software Configuration Management)将所有的代码提交到版本管理库（SVN，GIT）-->
     <scm>
         <connection>scm:git:https://gitee.com/developeros/videos-online</connection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
     <build>
         <plugins>
             <plugin>

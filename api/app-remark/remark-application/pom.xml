@@ -27,6 +27,15 @@
             <artifactId>app-designpattern-spring-boot-starter</artifactId>
             <version>2.2.5-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.hzz.scheduler</groupId>
+            <artifactId>app-scheduler-spring-boot-starter</artifactId>
+            <version>2.2.5-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
