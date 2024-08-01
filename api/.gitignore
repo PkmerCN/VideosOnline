@@ -3,3 +3,4 @@ target
 *.class
 .idea
 docker_data
+log
