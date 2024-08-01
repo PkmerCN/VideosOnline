@@ -56,6 +56,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | MyBatis Generate    | 1.4.2   |
 | MyBatis Dynamic SQL | 1.5.2   |
 | hutool              | 5.8.28  |
+| xxl_job             | 2.4.1   |
 
 
 ## 开发环境
@@ -119,6 +120,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-common-spring-boot-starter        | 封装了常用工具类                              |
 | app-aop-spring-boot-starter           | 项目中自定义的切面,目前实现了添加了自动注解标记添加用户id过滤,用于分页 |
 | app-fastjson2-spring-boot-starter     | 集成使用fastjson2,枚举序列化与反序列化              |
+| app-scheduler-spring-boot-starter     | 集成xxl_job基本配置                         |
 
 ## 业务模块的ddd模块划分
 
@@ -159,58 +161,60 @@ It allows you to specify which modules in your multi-module project you want to 
 
 # 项目搭建集成的开发工具
 
-| 集成的开发工具                                |
-|:---------------------------------------|
-| 多模块热部署spring-boot-devtools             |
-| 多模块版本控制maven-release                   |
-| 启动springboot项目spring-boot-maven-plugin |
-| 自动生成API文档springdoc-openapi             |
-| 数据库版本控制flyway                          |
-| maven 多模块开发                            |
-| git版本控制，多分支开发,tag标记，release发布版本        |
-| Gitee和Github远程仓库同步                     |
-| JWT 认证 并解析成User封装到ThreadLocal中         |
-| docker集成                               |
-| MyBatis集成以及逆向工程生成代码                    |
-| Valid 参数检验以及异常处理                       |
-| 引入fastjson2,并配置枚举序列化                   |
-| 引入password4j                           |
-| 引入mapstruct对象映射                        |
-| 系统自定义异常以及AppStatusCode完成               |
-| DDD模式开发                                |
-| 探索springboot3自动配置类,抽离模块成功              |
-| mybatis插件，雪花算法生成ID                     |
-| 数据库唯一键约束，幂等性防止消息重复消费                   |
-| 分页逻辑抽离，包含排序和条件过滤                       |
-| 自定义aop切面，基于注解                          |
-| 手动校验分组参数,并实现全局异常处理                     |
-| redis加延迟任务处理高并发业务                      |
-| mybatis typehandler处理枚举                |
-| 模版抽离：BaseEnum枚举以及mybatis typehandler   |
-| mybatis-generator结合freemarker生成字段常量类   |
-| mybatis 批量更新                           |
-| spring 注解类定时任务                         |
-| 结合spring的bean注入实现了策略模式                  |
-| 使用redis的bitmap                          |
+| 集成的开发工具                                        |
+|:-----------------------------------------------|
+| 多模块热部署spring-boot-devtools                     |
+| 多模块版本控制maven-release                           |
+| 启动springboot项目spring-boot-maven-plugin         |
+| 自动生成API文档springdoc-openapi                     |
+| 数据库版本控制flyway                                  |
+| maven 多模块开发                                    |
+| git版本控制，多分支开发,tag标记，release发布版本                |
+| Gitee和Github远程仓库同步                             |
+| JWT 认证 并解析成User封装到ThreadLocal中                 |
+| docker集成                                       |
+| MyBatis集成以及逆向工程生成代码                            |
+| Valid 参数检验以及异常处理                               |
+| 引入fastjson2,并配置枚举序列化                           |
+| 引入password4j                                   |
+| 引入mapstruct对象映射                                |
+| 系统自定义异常以及AppStatusCode完成                       |
+| DDD模式开发                                        |
+| 探索springboot3自动配置类,抽离模块成功                      |
+| mybatis插件，雪花算法生成ID                             |
+| 数据库唯一键约束，幂等性防止消息重复消费                           |
+| 分页逻辑抽离，包含排序和条件过滤                               |
+| 自定义aop切面，基于注解                                  |
+| 手动校验分组参数,并实现全局异常处理                             |
+| redis加延迟任务处理高并发业务                              |
+| mybatis typehandler处理枚举                        |
+| 模版抽离：BaseEnum枚举以及mybatis typehandler           |
+| mybatis-generator结合freemarker生成字段常量类           |
+| mybatis 批量更新                                   |
+| spring 注解类定时任务                                 |
+| 结合spring的bean注入实现了策略模式                         |
+| 使用redis的bitmap                                 |
+| 集成分布式定时任务xxl_job                               |
+| 封装成starter自动配置类并且能够处理自动配置信息application.yaml的提示 |
 
 
 
 # 业务与技术特设
 
 
-| 业务                 | 技术                                      |
-|--------------------|-----------------------------------------|
-| 视频提交记录             | redis+延迟任务                              |
-| 分类层级               | List转Tree层级算法设计                         |
-| 缓存caffeine分类信息     | JVM级别的缓存                                |
-| admin分页查询问题        | 因为需要分类信息，在分类领域前面加了一层缓存                  |
+| 业务                | 技术                                      |
+|-------------------|-----------------------------------------|
+| 视频提交记录            | redis+延迟任务                              |
+| 分类层级              | List转Tree层级算法设计                         |
+| 缓存caffeine分类信息    | JVM级别的缓存                                |
+| admin分页查询问题       | 因为需要分类信息，在分类领域前面加了一层缓存                  |
 | 视频记录提交与admin查看用户问答 | CompletableFuture.runAsync              |
-| 更新评论数量解决并发         | update table replyTimes = relyTimes + 1 |
-| mapstruct优化解耦ddd层  | 如分页查询的结果                                |
-| 添加用户课程，课程点赞        | 数据库唯一主键，实现幂等性                           |
-| 点赞业务               | redis + RabbitMQ                        |
-| 奖励积分不同策略           | 结合spring的bean注入实现了策略模式                  |
-| 用户签到业务             | 使用redis的bitmap                          |
+| 更新评论数量解决并发        | update table replyTimes = relyTimes + 1 |
+| mapstruct优化解耦ddd层 | 如分页查询的结果                                |
+| 添加用户课程，课程点赞       | 数据库唯一主键，实现幂等性                           |
+| 点赞业务              | xxl_job + redis + RabbitMQ              |
+| 奖励积分不同策略          | 结合spring的bean注入实现了策略模式                  |
+| 用户签到业务            | 使用redis的bitmap                          |
 
 ## 缓存技术
 
