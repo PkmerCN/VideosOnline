@@ -1,11 +1,18 @@
 package org.hzz.points.domain.service.points.impl;
 
+import cn.hutool.core.util.StrUtil;
+import lombok.Setter;
+import org.hzz.common.date.DateUtil;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.points.domain.entity.PointsRecordEntity;
 import org.hzz.points.domain.repository.PointsRecordRepository;
 import org.hzz.points.domain.service.points.PointsDomainService;
+import org.hzz.points.types.constants.RedisConstants;
 import org.hzz.points.types.enums.PointsType;
 import org.hzz.points.types.resp.PointsStatisticsVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,6 +30,9 @@ import java.util.stream.Collectors;
 public class PointsDomainServiceImpl
         extends BaseDomainService<PointsRecordRepository>
         implements PointsDomainService {
+
+    @Setter(onMethod_ = @Autowired)
+    private StringRedisTemplate redisTemplate;
 
     @Override
     public void addPoints(PointsRecordEntity entity) {
@@ -57,6 +67,12 @@ public class PointsDomainServiceImpl
 
         int i = repository.insert(entity);
         logger.info("插入积分记录{}条", i);
+
+        // todo 添加积分到redis,计算总量
+        String key = StrUtil.format(RedisConstants.BOARDS_TEMPLATE,
+                createTime.format(DateUtil.getMonthFormatCompact()));
+        logger.info("添加redis 积分排行榜 key = {} value = {} 添加积分 points = {}",key,userId,entity.getPoints());
+        redisTemplate.opsForZSet().incrementScore(key,userId.toString(),entity.getPoints());
     }
 
 
