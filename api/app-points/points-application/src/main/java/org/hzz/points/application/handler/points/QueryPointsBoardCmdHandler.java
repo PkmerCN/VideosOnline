@@ -45,7 +45,31 @@ public class QueryPointsBoardCmdHandler implements CommandHandler,
 
     /**
      * 查询积分排行榜
-     * todo 整理笔记
+     * {
+     * "code": 2000,
+     * "msg": "成功",
+     * "data": {
+     * "boardList": [
+     * {
+     * "points": 20,
+     * "rank": 1,
+     * "userName": "胖卡"
+     * },
+     * {
+     * "points": 10,
+     * "rank": 2,
+     * "userName": "pkmer"
+     * },
+     * {
+     * "points": 1,
+     * "rank": 3,
+     * "userName": "壮哥"
+     * }
+     * ],
+     * "points": 1,
+     * "rank": 3
+     * }
+     * }
      */
     @Override
     public PointsBoardVo executeWithResp(QueryPointsBoardCmd cmd) {
