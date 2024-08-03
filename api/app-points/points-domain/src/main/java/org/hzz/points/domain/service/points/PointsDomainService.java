@@ -25,4 +25,21 @@ public interface PointsDomainService extends DomainService {
      * @return 用户获得积分情况
      */
     List<PointsStatisticsVo> queryUserPointsForToday(Long userId);
+
+//    /**
+//     * 查询当前积分排行榜
+//     */
+//    void queryCurrentPointsBoardList();
+//
+//    /**
+//     * 查询历史积分排行榜
+//     */
+//    void queryHistoryPointsBoardList();
+//
+//    /**
+//     * 查询用户当前积分排名
+//     */
+//    void queryUserCurrentPointsBoard(Long userId);
+//
+//    void queryUserHistoryPointsBoard(Long userId);
 }

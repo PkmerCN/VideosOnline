@@ -18,4 +18,6 @@ public interface PointsBoardSeasonDomainService extends DomainService {
      * @return List赛季数据
      */
     List<PointsBoardSeasonEntity> getAllSeason();
+
+
 }
