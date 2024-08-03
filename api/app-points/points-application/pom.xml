@@ -32,6 +32,11 @@
             <artifactId>points-cache</artifactId>
             <version>2.2.5-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.hzz</groupId>
+            <artifactId>user-domain</artifactId>
+            <version>2.2.5-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

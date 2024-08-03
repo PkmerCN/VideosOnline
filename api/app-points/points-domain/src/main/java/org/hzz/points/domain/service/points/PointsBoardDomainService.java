@@ -1,6 +1,10 @@
 package org.hzz.points.domain.service.points;
 
 import org.hzz.ddd.core.domain.shared.service.DomainService;
+import org.hzz.points.domain.entity.PointsBoardEntity;
+import org.hzz.points.types.req.PointsBoardQuery;
+
+import java.util.List;
 
 /**
  * 积分排行榜领域服务
@@ -12,8 +16,10 @@ public interface PointsBoardDomainService extends DomainService {
 
     /**
      * 查询当前积分排行榜
+     * @param pageQuery 积分排行榜分页查询
+     * @return 排行榜数据
      */
-    void queryCurrentPointsBoardList();
+    List<PointsBoardEntity> queryCurrentPointsBoardList(PointsBoardQuery pageQuery);
 
     /**
      * 查询历史积分排行榜
@@ -24,6 +30,6 @@ public interface PointsBoardDomainService extends DomainService {
     /**
      * 查询用户当前积分排名
      */
-    void queryUserCurrentPointsBoard(Long userId);
+    PointsBoardEntity queryUserCurrentPointsBoard(Long userId);
 
 }

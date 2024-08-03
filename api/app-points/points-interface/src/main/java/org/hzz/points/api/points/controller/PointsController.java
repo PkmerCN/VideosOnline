@@ -6,6 +6,8 @@ import org.hzz.core.result.Result;
 import org.hzz.points.api.points.PointsApi;
 import org.hzz.points.application.command.points.QueryUserPointsCmd;
 import org.hzz.points.application.service.PointsCmdService;
+import org.hzz.points.types.req.PointsBoardQuery;
+import org.hzz.points.types.resp.PointsBoardVo;
 import org.hzz.points.types.resp.PointsStatisticsVo;
 import org.hzz.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +36,10 @@ public class PointsController
         );
         List<PointsStatisticsVo> vos = cmdService.<List<PointsStatisticsVo>>handleCommandWithResult(cmd);
         return success(vos);
+    }
+
+    @Override
+    public Result<PointsBoardVo> queryPointsBoardBySeason(PointsBoardQuery query) {
+        return null;
     }
 }
