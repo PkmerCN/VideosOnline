@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hzz.common.date.DateUtil;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.points.domain.entity.PointsRecordEntity;
+import org.hzz.points.domain.repository.PointsBoardCurrentRepository;
 import org.hzz.points.domain.repository.PointsRecordRepository;
 import org.hzz.points.domain.service.points.PointsDomainService;
 import org.hzz.points.types.constants.RedisConstants;
@@ -32,6 +33,9 @@ public class PointsDomainServiceImpl
 
     @Setter(onMethod_ = @Autowired)
     private StringRedisTemplate redisTemplate;
+
+    @Setter(onMethod_ = @Autowired)
+    PointsBoardCurrentRepository pointsCurrentRepository;
 
     @Override
     public void addPoints(PointsRecordEntity entity) {
@@ -62,7 +66,7 @@ public class PointsDomainServiceImpl
         savePointsRecord(entity);
 
         // 累加积分到redis,计算总量
-        incrPointsToRedisPointsBoards(entity);
+        pointsCurrentRepository.incrUserPoints(entity);
     }
 
     /**
@@ -81,23 +85,6 @@ public class PointsDomainServiceImpl
     private void savePointsRecord(PointsRecordEntity entity) {
         int i = repository.insert(entity);
         logger.info("插入积分记录{}条", i);
-    }
-
-    /**
-     * 累加积分到redis
-     */
-    private void incrPointsToRedisPointsBoards(PointsRecordEntity entity) {
-        String key = StrUtil.format(RedisConstants.BOARDS_TEMPLATE,
-                entity.getCreateTime().format(DateUtil.getMonthFormatCompact()));
-
-        logger.info("添加redis 积分排行榜 key = {} value = {} 添加积分 points = {}",
-                key, entity.getUserId(), entity.getPoints());
-
-        redisTemplate.opsForZSet()
-                .incrementScore(
-                        key,
-                        entity.getUserId().toString(),
-                        entity.getPoints());
     }
 
 

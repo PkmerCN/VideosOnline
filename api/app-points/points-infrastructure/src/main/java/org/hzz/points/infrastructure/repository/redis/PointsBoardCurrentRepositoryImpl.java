@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.common.date.DateUtil;
 import org.hzz.points.domain.entity.PointsBoardEntity;
+import org.hzz.points.domain.entity.PointsRecordEntity;
 import org.hzz.points.domain.repository.PointsBoardCurrentRepository;
 import org.hzz.points.types.constants.RedisConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
     @Setter(onMethod_ = @Autowired)
     private StringRedisTemplate redisTemplate;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public PointsBoardEntity queryUserCurrentPointsBoard(Long userId) {
         BoundZSetOperations<String, String> ops = redisTemplate.boundZSetOps(buildKey(LocalDateTime.now()));
@@ -42,6 +46,23 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
         // redis中的rank是以0开始的
         entity.setRank(rank == null ? 0: (byte)(rank.intValue() + 1));
         return entity;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void incrUserPoints(PointsRecordEntity entity) {
+        String key = buildKey(entity.getCreateTime());
+
+        log.info("添加redis 积分排行榜 key = {} value = {} 添加积分 points = {}",
+                key, entity.getUserId(), entity.getPoints());
+
+        redisTemplate.opsForZSet()
+                .incrementScore(
+                        key,
+                        entity.getUserId().toString(),
+                        entity.getPoints());
     }
 
     /**
