@@ -27,6 +27,12 @@ public class PointsDomainServiceImpl
 
     @Override
     public void addPoints(PointsRecordEntity entity) {
+        // todo 判断此时用户获得积分上限
+
+        List<PointsRecordEntity> pointsRecordEntities = repository.selectUserPointsByLocalDateTime(entity.getUserId(), LocalDateTime.now());
+
+
+
         int i = repository.insert(entity);
         logger.info("插入积分记录{}条",i);
     }

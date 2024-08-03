@@ -10,6 +10,7 @@ import org.hzz.points.infrastructure.dao.mapper.points.PointsRecordDynamicMapper
 import org.hzz.points.infrastructure.dao.mapper.points.PointsRecordMapper;
 import org.hzz.points.infrastructure.dao.model.points.PointsRecord;
 import org.hzz.points.types.constants.PointsRecordFields;
+import org.hzz.points.types.enums.PointsType;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.mybatis.dynamic.sql.render.RenderingStrategies;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hzz.points.infrastructure.dao.mapper.points.PointsRecordDynamicSqlSupport.*;
 import static org.mybatis.dynamic.sql.SqlBuilder.*;
@@ -70,6 +72,28 @@ public class PointsRecordRepositoryImpl implements PointsRecordRepository {
 
         List<PointsRecord> pointsRecords = dynamicMapper.selectMany(selectSql);
         return Converter.INSTANCE.toEntities(pointsRecords);
+    }
+
+    @Override
+    public Integer selectUserPointsByLocalDateTimeAndType(Long _userId, LocalDateTime localDateTime, PointsType pointsType) {
+        SelectStatementProvider selectSql = select(sum(points).as(PointsRecordFields.POINTS))
+                .from(pointsRecord)
+                .where(userId, isEqualTo(_userId))
+                .and(createTime, isBetween(DateUtil.getStartOfDay(localDateTime)).and(DateUtil.getEndOfDay(localDateTime)))
+                .and(type,isEqualTo(pointsType))
+                .groupBy(type)
+                .build().render(RenderingStrategies.MYBATIS3);
+
+        log.info("执行SQL: {}",selectSql.getSelectStatement());
+
+        Optional<PointsRecord> pointsRecordOptional = dynamicMapper.selectOne(selectSql);
+
+        if(pointsRecordOptional.isPresent()){
+            PointsRecord pointsRecord = pointsRecordOptional.get();
+            return pointsRecord.getPoints().intValue();
+        }
+        log.info("当前积分{}不存在",pointsType.getDesc());
+        return 0;
     }
 
     @Mapper
