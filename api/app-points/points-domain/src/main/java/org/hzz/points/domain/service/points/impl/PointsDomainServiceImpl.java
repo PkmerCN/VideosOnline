@@ -24,21 +24,45 @@ public class PointsDomainServiceImpl
         extends BaseDomainService<PointsRecordRepository>
         implements PointsDomainService {
 
-
     @Override
     public void addPoints(PointsRecordEntity entity) {
-        // todo 判断此时用户获得积分上限
+        // 处理此时用户获得积分上限
+        PointsType pointsType = entity.getType();
+        Long userId = entity.getUserId();
+        LocalDateTime createTime = entity.getCreateTime();
+        Byte addPoints = entity.getPoints();
+        // 获取用户当日指定类型的积分值
+        Integer currentPoints = repository.selectUserPointsByLocalDateTimeAndType(
+                userId,
+                createTime,
+                pointsType);
 
-        List<PointsRecordEntity> pointsRecordEntities = repository.selectUserPointsByLocalDateTime(entity.getUserId(), LocalDateTime.now());
+        if (currentPoints >= pointsType.getMaxPoints()) {
+            logger.info("用户(id = {}) 在{}时间，获取{}类型的积分已经达到上限：用户获取的已经获取的积分值{},上限积分{}",
+                    userId, createTime, pointsType.getDesc(), currentPoints, pointsType.getMaxPoints());
+            return;
+        }
 
 
+        /**
+         *  防止这种情况发生 上限积分50，已获得积分是45，现在要添加积分+10.
+         *  如果直接插入数据库总积分会变成55.
+         *  所以计算一下
+         */
+        if ((addPoints + currentPoints) > pointsType.getMaxPoints()) {
+            logger.info("计算实际获得积分，防止超过上限");
+            int realPoints = pointsType.getMaxPoints() - currentPoints;
+            entity.setPoints((byte) realPoints);
+        }
 
         int i = repository.insert(entity);
-        logger.info("插入积分记录{}条",i);
+        logger.info("插入积分记录{}条", i);
     }
+
 
     /**
      * {@inheritDoc}
+     *
      * @param userId 用户id
      * @return
      */
@@ -54,9 +78,9 @@ public class PointsDomainServiceImpl
         PointsType[] types = PointsType.values();
         List<PointsStatisticsVo> result = new ArrayList<>(types.length);
 
-        for(PointsType type: types){
+        for (PointsType type : types) {
             PointsStatisticsVo vo = new PointsStatisticsVo();
-            vo.setPoints(map.getOrDefault(type,(byte)0).intValue());
+            vo.setPoints(map.getOrDefault(type, (byte) 0).intValue());
             vo.setType(type.getDesc());
             vo.setMaxPoints(type.getMaxPoints());
             result.add(vo);
