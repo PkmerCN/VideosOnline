@@ -4,6 +4,7 @@ import lombok.Setter;
 import org.hzz.core.controller.BaseController;
 import org.hzz.core.result.Result;
 import org.hzz.points.api.points.PointsApi;
+import org.hzz.points.application.command.points.QueryPointsBoardCmd;
 import org.hzz.points.application.command.points.QueryUserPointsCmd;
 import org.hzz.points.application.service.PointsCmdService;
 import org.hzz.points.types.req.PointsBoardQuery;
@@ -40,6 +41,13 @@ public class PointsController
 
     @Override
     public Result<PointsBoardVo> queryPointsBoardBySeason(PointsBoardQuery query) {
-        return null;
+        logger.info("查询当前赛季排行榜");
+        QueryPointsBoardCmd cmd = QueryPointsBoardCmd.commandOf(
+                AppContextHolder.userContextHolder.getUser().getId(),
+                query
+        );
+
+        PointsBoardVo vo = cmdService.<PointsBoardVo>handleCommandWithResult(cmd);
+        return success(vo);
     }
 }
