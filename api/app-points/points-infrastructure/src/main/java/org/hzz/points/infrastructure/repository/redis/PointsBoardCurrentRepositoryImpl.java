@@ -55,6 +55,9 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
         return entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<PointsBoardEntity> queryCurrentPointsBoardList(PageQuery pageQuery) {
 
@@ -65,6 +68,7 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
             throw new BadRequestException("只支持查询100名以内的排名");
         }
 
+        // zrevrange board::202408 0 1
         Set<ZSetOperations.TypedTuple<String>> pointsBoardTuples = redisTemplate.opsForZSet()
                 .reverseRangeWithScores(
                         buildKey(LocalDateTime.now()),
