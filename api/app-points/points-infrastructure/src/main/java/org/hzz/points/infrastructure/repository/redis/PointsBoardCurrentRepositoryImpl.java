@@ -80,7 +80,10 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
         log.info("查询到{}条数据",pointsBoardTuples.size());
 
         List<PointsBoardEntity> result = new ArrayList<>();
+        // 手动计算排行
         byte rank = (byte)(start + 1);
+
+        // 处理封装结果
         for(ZSetOperations.TypedTuple<String> tuple: pointsBoardTuples){
             PointsBoardEntity entity = new PointsBoardEntity();
             entity.setUserId(Long.parseLong(tuple.getValue()));
