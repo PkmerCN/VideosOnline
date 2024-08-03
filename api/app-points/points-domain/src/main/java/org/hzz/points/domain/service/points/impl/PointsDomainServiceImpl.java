@@ -11,7 +11,6 @@ import org.hzz.points.types.constants.RedisConstants;
 import org.hzz.points.types.enums.PointsType;
 import org.hzz.points.types.resp.PointsStatisticsVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -36,43 +35,69 @@ public class PointsDomainServiceImpl
 
     @Override
     public void addPoints(PointsRecordEntity entity) {
-        // 处理此时用户获得积分上限
+        // 当前添加的积分类型
         PointsType pointsType = entity.getType();
-        Long userId = entity.getUserId();
-        LocalDateTime createTime = entity.getCreateTime();
-        Byte addPoints = entity.getPoints();
-        // 获取用户当日指定类型的积分值
-        Integer currentPoints = repository.selectUserPointsByLocalDateTimeAndType(
-                userId,
-                createTime,
-                pointsType);
 
+        // 获取用户当日指定类型的积分值
+        Integer currentPoints = getUserCurrentPoints(entity);
+        // 处理此时用户获得积分上限
         if (currentPoints >= pointsType.getMaxPoints()) {
             logger.info("用户(id = {}) 在{}时间，获取{}类型的积分已经达到上限：用户获取的已经获取的积分值{},上限积分{}",
-                    userId, createTime, pointsType.getDesc(), currentPoints, pointsType.getMaxPoints());
+                    entity.getUserId(), entity.getCreateTime(), pointsType.getDesc(), currentPoints, pointsType.getMaxPoints());
             return;
         }
-
 
         /**
          *  防止这种情况发生 上限积分50，已获得积分是45，现在要添加积分+10.
          *  如果直接插入数据库总积分会变成55.
          *  所以计算一下
          */
-        if ((addPoints + currentPoints) > pointsType.getMaxPoints()) {
+        if ((entity.getPoints() + currentPoints) > pointsType.getMaxPoints()) {
             logger.info("计算实际获得积分，防止超过上限");
             int realPoints = pointsType.getMaxPoints() - currentPoints;
             entity.setPoints((byte) realPoints);
         }
 
+        // 保存积分记录
+        savePointsRecord(entity);
+
+        // 累加积分到redis,计算总量
+        incrPointsToRedisPointsBoards(entity);
+    }
+
+    /**
+     * 获取用户当日指定类型的积分值
+     */
+    private Integer getUserCurrentPoints(PointsRecordEntity entity) {
+        return repository.selectUserPointsByLocalDateTimeAndType(
+                entity.getUserId(),
+                entity.getCreateTime(),
+                entity.getType());
+    }
+
+    /**
+     * 保存积分记录
+     */
+    private void savePointsRecord(PointsRecordEntity entity) {
         int i = repository.insert(entity);
         logger.info("插入积分记录{}条", i);
+    }
 
-        // todo 添加积分到redis,计算总量
+    /**
+     * 累加积分到redis
+     */
+    private void incrPointsToRedisPointsBoards(PointsRecordEntity entity) {
         String key = StrUtil.format(RedisConstants.BOARDS_TEMPLATE,
-                createTime.format(DateUtil.getMonthFormatCompact()));
-        logger.info("添加redis 积分排行榜 key = {} value = {} 添加积分 points = {}",key,userId,entity.getPoints());
-        redisTemplate.opsForZSet().incrementScore(key,userId.toString(),entity.getPoints());
+                entity.getCreateTime().format(DateUtil.getMonthFormatCompact()));
+
+        logger.info("添加redis 积分排行榜 key = {} value = {} 添加积分 points = {}",
+                key, entity.getUserId(), entity.getPoints());
+
+        redisTemplate.opsForZSet()
+                .incrementScore(
+                        key,
+                        entity.getUserId().toString(),
+                        entity.getPoints());
     }
 
 
