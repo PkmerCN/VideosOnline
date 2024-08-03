@@ -61,6 +61,7 @@ public class QueryPointsBoardCmdHandler implements CommandHandler,
      */
     private PointsBoardVo handleCurrentSeason(QueryPointsBoardCmd cmd) throws ExecutionException, InterruptedException {
         log.info("查询当前赛季");
+
         // 获取用户当前积分排行榜信息
         CompletableFuture<PointsBoardEntity> userPointsBoardCompletableFuture = CompletableFuture.supplyAsync(
                 () -> boardDomainService.queryUserCurrentPointsBoard(cmd.getUserId()));
@@ -84,11 +85,10 @@ public class QueryPointsBoardCmdHandler implements CommandHandler,
         // 封装结果
         return all.thenApply(v -> {
             try {
-                PointsBoardVo vo = new PointsBoardVo();
-
                 PointsBoardEntity userPointsBoard = userPointsBoardCompletableFuture.get();
                 List<PointsBoardEntity> pointsBoardEntities = listCompletableFuture.get();
                 Map<Long, UserDetailEntity> userMap = mapCompletableFuture.get();
+
                 return handleResult(pointsBoardEntities, userPointsBoard, userMap);
             } catch (InterruptedException | ExecutionException e) {
                 throw new RuntimeException(e);

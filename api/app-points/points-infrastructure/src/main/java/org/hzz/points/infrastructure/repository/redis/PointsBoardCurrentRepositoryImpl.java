@@ -43,10 +43,11 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
     public PointsBoardEntity queryUserCurrentPointsBoard(Long userId) {
         BoundZSetOperations<String, String> ops = redisTemplate.boundZSetOps(buildKey(LocalDateTime.now()));
         // zscore board::202408 userId
-        Double score = ops.score(userId);
+        // Double score = ops.score(userId);
+        Double score = ops.score(userId.toString());
 
         // zrevrank board::202408 userId
-        Long rank = ops.reverseRank(userId);
+        Long rank = ops.reverseRank(userId.toString());
 
         PointsBoardEntity entity = new PointsBoardEntity();
         entity.setPoints(score == null ? 0 : score.intValue());

@@ -23,8 +23,8 @@ public class PointsBoardDomainServiceImpl  implements PointsBoardDomainService {
 
     @Setter(onMethod_ = @Autowired)
     private PointsBoardCurrentRepository currentRepository;
-    @Setter(onMethod_ = @Autowired)
-    private PointsBoardHistoryRepository historyRepository;
+//    @Setter(onMethod_ = @Autowired)
+//    private PointsBoardHistoryRepository historyRepository;
 
 
     /**
