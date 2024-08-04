@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.repository.PointsBoardCurrentRepository;
+import org.hzz.points.domain.repository.PointsBoardHistoryRepository;
 import org.hzz.points.domain.service.points.PointsBoardDomainService;
 import org.hzz.points.types.req.PointsBoardQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class PointsBoardDomainServiceImpl  implements PointsBoardDomainService {
 
     @Setter(onMethod_ = @Autowired)
     private PointsBoardCurrentRepository currentRepository;
-//    @Setter(onMethod_ = @Autowired)
-//    private PointsBoardHistoryRepository historyRepository;
+    @Setter(onMethod_ = @Autowired)
+    private PointsBoardHistoryRepository historyRepository;
 
 
     /**
@@ -75,5 +76,12 @@ public class PointsBoardDomainServiceImpl  implements PointsBoardDomainService {
     public PointsBoardEntity queryUserCurrentPointsBoard(Long userId) {
         log.info("查询用户当前赛季排行榜信息");
         return currentRepository.queryUserCurrentPointsBoard(userId);
+    }
+
+    @Override
+    public int addPointsBoard(List<PointsBoardEntity> entities) {
+        int i = historyRepository.batchInsertSelective(entities);
+        log.info("原始数量{} 》》》 成功添加{}",entities.size(),i);
+        return i;
     }
 }

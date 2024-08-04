@@ -42,4 +42,11 @@ public interface PointsBoardDomainService extends DomainService {
      */
     PointsBoardEntity queryUserCurrentPointsBoard(Long userId);
 
+    /**
+     * 添加积分排行榜
+     * @param entities 积分排行榜
+     * @return 成功的数量
+     */
+    int addPointsBoard(List<PointsBoardEntity> entities);
+
 }
