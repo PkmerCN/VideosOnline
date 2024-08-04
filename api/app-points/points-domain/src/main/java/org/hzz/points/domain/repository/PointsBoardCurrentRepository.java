@@ -1,9 +1,14 @@
 package org.hzz.points.domain.repository;
 
+import cn.hutool.core.util.StrUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.hzz.common.date.DateUtil;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.entity.PointsRecordEntity;
+import org.hzz.points.types.constants.RedisConstants;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -13,20 +18,29 @@ import java.util.List;
  * @date 2024/8/3
  */
 public interface PointsBoardCurrentRepository {
+
+    /**
+     * 构建key
+     * @return 例如boards::202408
+     */
+    default String buildKey(LocalDateTime dateTime) {
+        return StrUtil.format(RedisConstants.BOARDS_TEMPLATE,
+                dateTime.format(DateUtil.getMonthFormatCompact()));
+    }
+
+
     /**
      * 查询用户当前积分排名
      */
     PointsBoardEntity queryUserCurrentPointsBoard(Long userId);
 
     /**
-     * 查询当前积分排行榜
+     * 分页查询积分排行榜
+     * @param key {@link PointsBoardCurrentRepository#buildKey(LocalDateTime)}
+     * @param pageQuery 分页
+     * @return 排行榜数据
      */
-    List<PointsBoardEntity> queryCurrentPointsBoardList(PageQuery pageQuery);
-
-    /**
-     * 查询上赛季积分排行榜
-     */
-    List<PointsBoardEntity> queryPrePointsBoardList(PageQuery pageQuery);
+     List<PointsBoardEntity> queryPointsBoardListByKey(String key,PageQuery pageQuery);
 
 
     /**

@@ -57,30 +57,14 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<PointsBoardEntity> queryCurrentPointsBoardList(PageQuery pageQuery) {
-       return queryPointsBoardListByKey(buildKey(LocalDateTime.now()),pageQuery);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<PointsBoardEntity> queryPrePointsBoardList(PageQuery pageQuery) {
-        LocalDateTime localDateTime = LocalDateTime.now().minusMonths(1);
-        return queryPointsBoardListByKey(buildKey(localDateTime),pageQuery);
-    }
-
-
-    /**
      * 分页查询积分排行榜
      * @param key key
      * @param pageQuery 分页
      * @return
      */
-    private List<PointsBoardEntity> queryPointsBoardListByKey(String key,PageQuery pageQuery){
+    public List<PointsBoardEntity> queryPointsBoardListByKey(String key,PageQuery pageQuery){
+        log.info("查询赛季排行榜信息 key = {}",key);
+
         long start = pageQuery.getPageNo() - 1;
         long end = start + pageQuery.getPageSize() - 1;
 
@@ -133,13 +117,5 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
                         entity.getPoints());
     }
 
-    /**
-     * 构建key
-     */
-    private String buildKey(LocalDateTime dateTime) {
-        String key = StrUtil.format(RedisConstants.BOARDS_TEMPLATE,
-                dateTime.format(DateUtil.getMonthFormatCompact()));
-        log.info("当前key = {}", key);
-        return key;
-    }
+
 }

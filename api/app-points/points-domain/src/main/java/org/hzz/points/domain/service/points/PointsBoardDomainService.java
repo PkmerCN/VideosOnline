@@ -1,9 +1,12 @@
 package org.hzz.points.domain.service.points;
 
+import org.hzz.core.page.query.PageQuery;
 import org.hzz.ddd.core.domain.shared.service.DomainService;
 import org.hzz.points.domain.entity.PointsBoardEntity;
+import org.hzz.points.domain.repository.PointsBoardCurrentRepository;
 import org.hzz.points.types.req.PointsBoardQuery;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -20,6 +23,13 @@ public interface PointsBoardDomainService extends DomainService {
      * @return 排行榜数据
      */
     List<PointsBoardEntity> queryCurrentPointsBoardList(PointsBoardQuery pageQuery);
+
+    /**
+     * 分页查询上赛季积分排行榜
+     * @param pageQuery 分页
+     * @return 排行榜数据
+     */
+     List<PointsBoardEntity> queryPrePointsBoardList(PageQuery pageQuery);
 
     /**
      * 查询历史积分排行榜
