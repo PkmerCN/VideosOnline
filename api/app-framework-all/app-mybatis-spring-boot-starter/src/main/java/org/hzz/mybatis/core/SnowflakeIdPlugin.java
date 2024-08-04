@@ -68,7 +68,7 @@ public class SnowflakeIdPlugin implements Interceptor {
             }
         }else if(object instanceof DefaultMultiRowInsertStatementProvider provider){
             logger.info("支持mybatis dynamic sql");
-            entities.add(provider.getRecords());
+            entities.addAll(provider.getRecords());
         } else{
             // 单个对象
             entities.add(object);
