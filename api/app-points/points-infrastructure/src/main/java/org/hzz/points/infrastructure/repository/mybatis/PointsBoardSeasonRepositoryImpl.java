@@ -8,7 +8,6 @@ import org.hzz.points.domain.repository.PointsBoardSeasonRepository;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonDynamicMapper;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonMapper;
 import org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason;
-import org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.mybatis.dynamic.sql.select.SelectDSLCompleter;
@@ -37,6 +36,7 @@ public class PointsBoardSeasonRepositoryImpl implements PointsBoardSeasonReposit
 
     /**
      * {@inheritDoc}
+     *
      * @return 全部赛季数据
      */
     @Override
@@ -69,8 +69,10 @@ public class PointsBoardSeasonRepositoryImpl implements PointsBoardSeasonReposit
 
     @Override
     public Optional<PointsBoardSeasonEntity> selectLatestOne() {
-        Optional<PointsBoardSeason> recordOptional = dynamicMapper.selectOne(c -> c.orderBy(beginTime.descending()));
-        if(recordOptional.isPresent()){
+        Optional<PointsBoardSeason> recordOptional = dynamicMapper.selectOne(
+                c -> c.orderBy(beginTime.descending())
+                        .limit(1));
+        if (recordOptional.isPresent()) {
             PointsBoardSeason record = recordOptional.get();
             PointsBoardSeasonEntity entity = Converter.INSTANCE.toEntity(record);
             return Optional.of(entity);
@@ -83,7 +85,7 @@ public class PointsBoardSeasonRepositoryImpl implements PointsBoardSeasonReposit
 
         Optional<PointsBoardSeason> recordOptional = dynamicMapper.selectOne(
                 c -> c.orderBy(id.descending()).limit(1).offset(1));
-        if(recordOptional.isPresent()){
+        if (recordOptional.isPresent()) {
             PointsBoardSeason record = recordOptional.get();
             PointsBoardSeasonEntity entity = Converter.INSTANCE.toEntity(record);
             return Optional.of(entity);
@@ -93,7 +95,7 @@ public class PointsBoardSeasonRepositoryImpl implements PointsBoardSeasonReposit
     }
 
     @Mapper
-    interface Converter extends RecordAndEntityConverter<PointsBoardSeason,PointsBoardSeasonEntity>{
+    interface Converter extends RecordAndEntityConverter<PointsBoardSeason, PointsBoardSeasonEntity> {
         Converter INSTANCE = Mappers.getMapper(Converter.class);
     }
 }
