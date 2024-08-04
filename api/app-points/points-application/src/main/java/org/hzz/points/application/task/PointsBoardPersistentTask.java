@@ -1,6 +1,7 @@
 package org.hzz.points.application.task;
 
 import lombok.Setter;
+import org.hzz.points.domain.service.points.PointsBoardDomainService;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonExtMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,11 +21,13 @@ import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamic
 public class PointsBoardPersistentTask {
 
     @Setter(onMethod_ = @Autowired)
+    private PointsBoardDomainService domainService;
+
+    @Setter(onMethod_ = @Autowired)
     private PointsBoardSeasonExtMapper boardSeasonExtMapper;
     private final String logicTableName = pointsBoard.tableNameAtRuntime();
 
     /**
-     * 每个月开始我们就创建本赛的赛季表和id
      * 创建本赛季id
      */
 
