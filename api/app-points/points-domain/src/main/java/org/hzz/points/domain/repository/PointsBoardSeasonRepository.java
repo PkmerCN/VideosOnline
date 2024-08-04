@@ -3,6 +3,7 @@ package org.hzz.points.domain.repository;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 赛季
@@ -17,4 +18,8 @@ public interface PointsBoardSeasonRepository {
      * @return list
      */
     List<PointsBoardSeasonEntity> selectAll();
+
+    int insertSelective(PointsBoardSeasonEntity entity);
+
+    Optional<PointsBoardSeasonEntity> selectLatestOne();
 }

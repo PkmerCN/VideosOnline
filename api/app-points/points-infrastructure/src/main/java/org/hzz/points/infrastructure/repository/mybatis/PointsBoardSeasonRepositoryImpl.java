@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonDynamicSqlSupport.beginTime;
 
@@ -54,6 +55,26 @@ public class PointsBoardSeasonRepositoryImpl implements PointsBoardSeasonReposit
 //        List<PointsBoardSeason> records5 = dynamicMapper.select(SelectDSLCompleter.allRowsOrderedBy(beginTime));
 
         return Converter.INSTANCE.toEntities(records4);
+    }
+
+    @Override
+    public int insertSelective(PointsBoardSeasonEntity entity) {
+        PointsBoardSeason record = Converter.INSTANCE.toRecord(entity);
+        int i = mapper.insertSelective(record);
+        // 设置生成的id
+        entity.setId(record.getId());
+        return i;
+    }
+
+    @Override
+    public Optional<PointsBoardSeasonEntity> selectLatestOne() {
+        Optional<PointsBoardSeason> recordOptional = dynamicMapper.selectOne(c -> c.orderBy(beginTime.descending()));
+        if(recordOptional.isPresent()){
+            PointsBoardSeason record = recordOptional.get();
+            PointsBoardSeasonEntity entity = Converter.INSTANCE.toEntity(record);
+            return Optional.of(entity);
+        }
+        return Optional.empty();
     }
 
     @Mapper

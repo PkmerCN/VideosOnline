@@ -1,12 +1,16 @@
 package org.hzz.points.domain.service.points.impl;
 
+import cn.hutool.core.util.StrUtil;
+import org.hzz.common.date.DateUtil;
 import org.hzz.core.service.BaseDomainService;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 import org.hzz.points.domain.repository.PointsBoardSeasonRepository;
 import org.hzz.points.domain.service.points.PointsBoardSeasonDomainService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author 胖卡
@@ -18,6 +22,8 @@ public class PointsBoardSeasonDomainServiceImpl
         extends BaseDomainService<PointsBoardSeasonRepository>
         implements PointsBoardSeasonDomainService {
 
+    final String seasonTemplate = "第{}赛季";
+
     /**
      * {@inheritDoc}
      * @return List赛季数据
@@ -27,5 +33,63 @@ public class PointsBoardSeasonDomainServiceImpl
         List<PointsBoardSeasonEntity> seasons = repository.selectAll();
         logger.info("从数据库查询到赛季数据{}条",seasons.size());
         return seasons;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void genCurrentSeason() {
+        Optional<PointsBoardSeasonEntity> entityOptional = repository.selectLatestOne();
+        if(entityOptional.isPresent()){
+            logger.info("处理下一个赛季");
+            PointsBoardSeasonEntity entity = entityOptional.get();
+            // 赛季id
+            Integer id = entity.getId();
+            String seasonName = entity.getName();
+            String currentSeasonName = genSeasonName(id + 1);
+            logger.info("上个赛季: {} >>> 新赛季: {}",seasonName,currentSeasonName);
+            // 处理下一个赛季
+            genNewSeason(currentSeasonName);
+        }else{
+            logger.info("生成第一个赛季");
+            initFirstSeason();
+        }
+    }
+
+    /**
+     * 初始化第一个赛季
+     */
+    private void initFirstSeason(){
+        final Integer firstSeasonId = 1;
+        String name = StrUtil.format(seasonTemplate, firstSeasonId);
+        genNewSeason(name);
+    }
+
+    private void genNewSeason(String seasonName){
+        PointsBoardSeasonEntity newSeason = new PointsBoardSeasonEntity();
+        // 使用数据库的自增主键来处理
+//        newSeason.setId(seasonId);
+        newSeason.setName(seasonName);
+        newSeason.setBeginTime(DateUtil.getCurrentStartOfDay());
+        newSeason.setEndTime(DateUtil.getCurrentEndOfDay());
+
+        repository.insertSelective(newSeason);
+    }
+
+    private String genSeasonName(Integer index){
+        return StrUtil.format(seasonTemplate, 1);
+    }
+
+    public static void main(String[] args) {
+        LocalDate today = LocalDate.now();
+
+        // 获取当前月份的第一天
+        LocalDate firstDayOfMonth = today.withDayOfMonth(1);
+
+        // 获取当前月份的最后一天
+        LocalDate lastDayOfMonth = today.withDayOfMonth(today.lengthOfMonth());
+        System.out.println(firstDayOfMonth); // 2024-08-01
+        System.out.println(lastDayOfMonth);  // 2024-08-31
     }
 }

@@ -19,5 +19,10 @@ public interface PointsBoardSeasonDomainService extends DomainService {
      */
     List<PointsBoardSeasonEntity> getAllSeason();
 
+    /**
+     * 生成当前赛季
+     */
+    void genCurrentSeason();
+
 
 }

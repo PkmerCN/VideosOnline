@@ -1,9 +1,6 @@
 package org.hzz.common.date;
 
-import java.time.DayOfWeek;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
@@ -83,6 +80,21 @@ public class DateUtil {
                .withSecond(59);
    }
 
+    /**
+     * 获取这个月的第一天
+     */
+   public static LocalDate getCurrentStartOfDay(){
+        return LocalDate.now().withDayOfMonth(1);
+   }
+
+    /**
+     * 获取这个月的最后一体
+     */
+   public static LocalDate getCurrentEndOfDay(){
+       LocalDate today = LocalDate.now();
+       return today.withDayOfMonth(today.lengthOfMonth());
+   }
+
     public static void main(String[] args) {
         System.out.println(LocalDateTime.now().format(getMonthFormatCompact()));
         System.out.println("当前时间: " + LocalDateTime.now());
@@ -91,5 +103,8 @@ public class DateUtil {
 
         System.out.println("今天的起始时间: " + getStartOfDay(LocalDateTime.now()));
         System.out.println("今天的结束时间: " + getEndOfDay(LocalDateTime.now()));
+
+        System.out.println("这个月的第一天是：" + getCurrentStartOfDay());
+        System.out.println("这个月的最后一天是：" + getCurrentEndOfDay());
     }
 }
