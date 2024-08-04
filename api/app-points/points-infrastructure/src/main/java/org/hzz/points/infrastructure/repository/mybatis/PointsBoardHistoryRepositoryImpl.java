@@ -7,6 +7,7 @@ import org.hzz.points.domain.repository.PointsBoardHistoryRepository;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicMapper;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardMapper;
 import org.hzz.points.infrastructure.dao.model.points.PointsBoard;
+import org.hzz.points.types.constants.PointsBoardFields;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.mybatis.dynamic.sql.insert.render.MultiRowInsertStatementProvider;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicSqlSupport.pointsBoard;
+import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicSqlSupport.*;
 import static org.mybatis.dynamic.sql.SqlBuilder.insertMultiple;
 
 /**
@@ -39,6 +40,11 @@ public class PointsBoardHistoryRepositoryImpl implements PointsBoardHistoryRepos
         List<PointsBoard> records = Converter.INSTANCE.toRecords(entities);
         MultiRowInsertStatementProvider<PointsBoard> into = insertMultiple(records)
                 .into(pointsBoard)
+                .map(id).toProperty(PointsBoardFields.ID)
+                .map(userId).toProperty(PointsBoardFields.USER_ID)
+                .map(points).toProperty(PointsBoardFields.POINTS)
+                .map(rank).toProperty(PointsBoardFields.RANK)
+                .map(season).toProperty(PointsBoardFields.SEASON)
                 .build()
                 .render(RenderingStrategies.MYBATIS3);
         return dynamicMapper.insertMultiple(into);

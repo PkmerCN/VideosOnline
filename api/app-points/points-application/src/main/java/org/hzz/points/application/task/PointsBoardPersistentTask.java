@@ -142,8 +142,8 @@ public class PointsBoardPersistentTask {
      */
     public void persistent(){
         log.info("总流程");
-        genNewSeason();
-        createPointsBoardTable();
+//        genNewSeason();
+//        createPointsBoardTable();
         persistentPointsBoard();
 //        clearPointsBoardFromRedis();
     }
