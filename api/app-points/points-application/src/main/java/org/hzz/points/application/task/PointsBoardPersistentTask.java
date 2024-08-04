@@ -105,6 +105,7 @@ public class PointsBoardPersistentTask {
 
 
     /**
+     * 顺序4
      * 清楚redis中的积分排行榜
      */
     public void clearPointsBoardFromRedis(){
