@@ -46,6 +46,7 @@ public class PointsBoardPersistentTask {
      */
     // todo xxljob
     public void genNewSeason(){
+        log.info("xxljob 生成新赛季");
         boardSeasonDomainService.genCurrentSeason();
     }
 
@@ -58,15 +59,17 @@ public class PointsBoardPersistentTask {
      */
     public void createPointsBoardTable(){
         PointsBoardSeasonEntity season = getPersistentSeason();
-        log.info("准备生成{}的相关表",season.getName());
+        log.info("xxljob 准备生成{}的相关表",season.getName());
         boardSeasonExtMapper.createPointsBoardSeasonTable(logicTableName + "_" + season.getId() );
     }
 
 
     /**
      * 顺序3
+     * 持久化积分排行榜
      */
     public void persistentPointsBoard(){
+        log.info("xxljob 持久化积分排行榜");
         PointsBoardSeasonEntity season = getPersistentSeason();
         int count = 0;
 
@@ -100,6 +103,13 @@ public class PointsBoardPersistentTask {
         log.info("成功持久化{}条记录",count);
     }
 
+
+    /**
+     * 清楚redis中的积分排行榜
+     */
+    public void clearPointsBoardFromRedis(){
+        pointsBoardDomainService.clearPrePointsBoardList();
+    }
 
 
 

@@ -47,4 +47,10 @@ public interface PointsBoardCurrentRepository {
      * 增加用户当前赛季积分
      */
     void incrUserPoints(PointsRecordEntity entity);
+
+    /**
+     * 积分排行榜
+     * @param key key
+     */
+    void clearPointsBoardList(String key);
 }

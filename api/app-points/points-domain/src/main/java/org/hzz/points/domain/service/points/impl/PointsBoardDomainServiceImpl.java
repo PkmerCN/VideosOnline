@@ -55,6 +55,17 @@ public class PointsBoardDomainServiceImpl  implements PointsBoardDomainService {
         return  currentRepository.queryPointsBoardListByKey(key,pageQuery);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void clearPrePointsBoardList() {
+        LocalDateTime localDateTime = LocalDateTime.now().minusMonths(1);
+        String key = currentRepository.buildKey(localDateTime);
+        log.info("删除上赛季排行榜信息 key = {}",key);
+        currentRepository.clearPointsBoardList(key);
+    }
+
 
     @Override
     public void queryHistoryPointsBoardList() {

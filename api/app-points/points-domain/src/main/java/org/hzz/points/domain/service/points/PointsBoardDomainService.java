@@ -32,6 +32,11 @@ public interface PointsBoardDomainService extends DomainService {
      List<PointsBoardEntity> queryPrePointsBoardList(PageQuery pageQuery);
 
     /**
+     * 清除上赛季的积分排行榜
+     */
+    void clearPrePointsBoardList();
+
+    /**
      * 查询历史积分排行榜
      */
     void queryHistoryPointsBoardList();

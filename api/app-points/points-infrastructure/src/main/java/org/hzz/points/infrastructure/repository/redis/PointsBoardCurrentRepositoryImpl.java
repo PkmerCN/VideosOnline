@@ -117,5 +117,14 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
                         entity.getPoints());
     }
 
+    /**
+     * {@inheritDoc}
+     * @param key key
+     */
+    @Override
+    public void clearPointsBoardList(String key) {
+        redisTemplate.unlink(key);
+    }
+
 
 }
