@@ -109,6 +109,7 @@ public class PointsBoardPersistentTask {
      * 清楚redis中的积分排行榜
      */
     public void clearPointsBoardFromRedis(){
+        log.info("xxljob 迁移成功准备清除上赛季数据");
         pointsBoardDomainService.clearPrePointsBoardList();
     }
 
