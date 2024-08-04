@@ -1,6 +1,5 @@
 package org.hzz.points.infrastructure.dao.plugin;
 
-import cn.hutool.core.util.ReflectUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
