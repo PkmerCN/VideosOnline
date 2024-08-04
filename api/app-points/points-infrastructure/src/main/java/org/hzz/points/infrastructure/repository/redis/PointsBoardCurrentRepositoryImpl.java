@@ -84,9 +84,9 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
         long start = pageQuery.getPageNo() - 1;
         long end = start + pageQuery.getPageSize() - 1;
 
-        if(end >= 100){
-            throw new BadRequestException("只支持查询100名以内的排名");
-        }
+//        if(end >= 100){
+//            throw new BadRequestException("只支持查询100名以内的排名");
+//        }
 
         // zrevrange board::202408 0 1
         Set<ZSetOperations.TypedTuple<String>> pointsBoardTuples = redisTemplate.opsForZSet()
