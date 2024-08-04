@@ -14,7 +14,6 @@ import org.hzz.points.types.enums.PointsType;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.mybatis.dynamic.sql.render.RenderingStrategies;
-import org.mybatis.dynamic.sql.render.RenderingStrategy;
 import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
