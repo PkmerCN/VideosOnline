@@ -8,6 +8,7 @@ import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
 import org.hzz.mybatis.annotation.SnowflakeId;
+import org.mybatis.dynamic.sql.insert.render.DefaultMultiRowInsertStatementProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,7 +66,10 @@ public class SnowflakeIdPlugin implements Interceptor {
                     }
                 }
             }
-        }else{
+        }else if(object instanceof DefaultMultiRowInsertStatementProvider provider){
+            logger.info("支持mybatis dynamic sql");
+            entities.add(provider.getRecords());
+        } else{
             // 单个对象
             entities.add(object);
         }
