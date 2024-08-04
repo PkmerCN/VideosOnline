@@ -58,6 +58,14 @@ public class PointsBoardSeasonDomainServiceImpl
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Optional<PointsBoardSeasonEntity> getPreSeason() {
+        return repository.getPreSeason();
+    }
+
+    /**
      * 初始化第一个赛季
      */
     private void initFirstSeason(){

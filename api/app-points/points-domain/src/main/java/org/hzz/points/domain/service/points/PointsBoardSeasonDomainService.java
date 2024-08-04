@@ -4,6 +4,7 @@ import org.hzz.ddd.core.domain.shared.service.DomainService;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 赛季领域服务
@@ -23,6 +24,11 @@ public interface PointsBoardSeasonDomainService extends DomainService {
      * 生成当前赛季
      */
     void genCurrentSeason();
+
+    /**
+     * 获取上个赛季
+     */
+    Optional<PointsBoardSeasonEntity> getPreSeason();
 
 
 }

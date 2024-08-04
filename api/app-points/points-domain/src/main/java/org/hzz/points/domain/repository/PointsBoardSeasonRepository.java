@@ -21,5 +21,14 @@ public interface PointsBoardSeasonRepository {
 
     int insertSelective(PointsBoardSeasonEntity entity);
 
+
+    /**
+     * 获取目前最新的赛季
+     */
     Optional<PointsBoardSeasonEntity> selectLatestOne();
+
+    /**
+     * 获取上个赛季
+     */
+    Optional<PointsBoardSeasonEntity> getPreSeason();
 }

@@ -61,7 +61,26 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
      */
     @Override
     public List<PointsBoardEntity> queryCurrentPointsBoardList(PageQuery pageQuery) {
+       return queryPointsBoardListByKey(buildKey(LocalDateTime.now()),pageQuery);
+    }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<PointsBoardEntity> queryPrePointsBoardList(PageQuery pageQuery) {
+        LocalDateTime localDateTime = LocalDateTime.now().minusMonths(1);
+        return queryPointsBoardListByKey(buildKey(localDateTime),pageQuery);
+    }
+
+
+    /**
+     * 分页查询积分排行榜
+     * @param key key
+     * @param pageQuery 分页
+     * @return
+     */
+    private List<PointsBoardEntity> queryPointsBoardListByKey(String key,PageQuery pageQuery){
         long start = pageQuery.getPageNo() - 1;
         long end = start + pageQuery.getPageSize() - 1;
 
@@ -72,7 +91,7 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
         // zrevrange board::202408 0 1
         Set<ZSetOperations.TypedTuple<String>> pointsBoardTuples = redisTemplate.opsForZSet()
                 .reverseRangeWithScores(
-                        buildKey(LocalDateTime.now()),
+                        key,
                         start,
                         end
                 );
@@ -94,6 +113,8 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
 
         return result;
     }
+
+
 
     /**
      * {@inheritDoc}

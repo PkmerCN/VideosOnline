@@ -7,7 +7,7 @@ import org.hzz.points.domain.entity.PointsRecordEntity;
 import java.util.List;
 
 /**
- * 积分排行榜repository
+ * 积分排行榜redis repository
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/8/3
@@ -22,6 +22,12 @@ public interface PointsBoardCurrentRepository {
      * 查询当前积分排行榜
      */
     List<PointsBoardEntity> queryCurrentPointsBoardList(PageQuery pageQuery);
+
+    /**
+     * 查询上赛季积分排行榜
+     */
+    List<PointsBoardEntity> queryPrePointsBoardList(PageQuery pageQuery);
+
 
     /**
      * 增加用户当前赛季积分

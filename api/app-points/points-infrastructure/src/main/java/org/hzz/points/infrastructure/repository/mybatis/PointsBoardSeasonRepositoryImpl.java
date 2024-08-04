@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonDynamicSqlSupport.beginTime;
+import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonDynamicSqlSupport.id;
 
 /**
  * @author 胖卡
@@ -74,6 +75,20 @@ public class PointsBoardSeasonRepositoryImpl implements PointsBoardSeasonReposit
             PointsBoardSeasonEntity entity = Converter.INSTANCE.toEntity(record);
             return Optional.of(entity);
         }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<PointsBoardSeasonEntity> getPreSeason() {
+
+        Optional<PointsBoardSeason> recordOptional = dynamicMapper.selectOne(
+                c -> c.orderBy(id.descending()).limit(1).offset(1));
+        if(recordOptional.isPresent()){
+            PointsBoardSeason record = recordOptional.get();
+            PointsBoardSeasonEntity entity = Converter.INSTANCE.toEntity(record);
+            return Optional.of(entity);
+        }
+
         return Optional.empty();
     }
 
