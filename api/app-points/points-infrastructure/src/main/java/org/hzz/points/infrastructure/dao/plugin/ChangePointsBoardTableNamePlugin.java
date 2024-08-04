@@ -67,10 +67,10 @@ public class ChangePointsBoardTableNamePlugin implements Interceptor {
     private String processTableName(String sql,Integer index){
         log.info("sql >>> {}",sql);
         // 定义表名的正则表达式，不区分大小写
-        Pattern pattern = Pattern.compile(logicTableName,Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("\\b" + logicTableName + "\\b",Pattern.CASE_INSENSITIVE);
         // 替换表名
-        Matcher matcher = pattern.matcher(logicTableName + "_" + index);
-        String realSql = matcher.replaceAll(sql);
+        Matcher matcher = pattern.matcher(sql);
+        String realSql = matcher.replaceAll(logicTableName + "_" + index);
         log.info("修改后的sql >>> {}",realSql);
         return realSql;
     }
@@ -82,16 +82,17 @@ public class ChangePointsBoardTableNamePlugin implements Interceptor {
         String tablename = pointsBoard.tableNameAtRuntime();
         System.out.println(tablename);
         // 定义表名的正则表达式，不区分大小写
-        Pattern pattern = Pattern.compile(tablename,Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("\\b" + tablename + "\\b",Pattern.CASE_INSENSITIVE);
+        String orginalLowCaseSql = "insert into points_board (id, user_id, points, rank, season) values (?, ?, ?, ?, ?), (?, ?, ?, ?, ?), (?, ?, ?, ?, ?)";
+        String orginalCapitalSql = "insert into POINTS_BOARD (id, user_id, points, rank, season) values (?, ?, ?, ?, ?), (?, ?, ?, ?, ?), (?, ?, ?, ?, ?)";
 
         // 替换表名
-        Matcher matcher = pattern.matcher(tablename + "_" + 1);
-        String orginalLowCaseSql = "select * from points_board";
-        String orginalCapitalSql = "select * from POINTS_BOARD";
+        Matcher lowCaseMatcher = pattern.matcher(orginalLowCaseSql);
+        Matcher capitalMatcher = pattern.matcher(orginalCapitalSql);
 
         // 测试小写
-        System.out.println(matcher.replaceAll(orginalLowCaseSql));
+        System.out.println(lowCaseMatcher.replaceAll(tablename + "_" + 1));
         // 测试小写
-        System.out.println(matcher.replaceAll(orginalCapitalSql));
+        System.out.println(capitalMatcher.replaceAll(tablename + "_" + 1));
     }
 }
