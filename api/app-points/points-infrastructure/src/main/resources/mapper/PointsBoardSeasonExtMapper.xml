@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonExtMapper">
+
+
+    <update id="createPointsBoardSeasonTable" parameterType="string">
+        CREATE TABLE IF NOT EXISTS `${tableName}`
+        (
+            `id`         int  NOT NULL AUTO_INCREMENT COMMENT '自增长id，season标示',
+            `name`       varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '赛季名称，例如：第1赛季',
+            `begin_time` date NOT NULL COMMENT '赛季开始时间',
+            `end_time`   date NOT NULL COMMENT '赛季结束时间',
+            PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '赛季表' ROW_FORMAT = DYNAMIC;
+    </update>
+</mapper>
