@@ -77,19 +77,11 @@ public class PointsBoardSeasonDomainServiceImpl
         repository.insertSelective(newSeason);
     }
 
+    /**
+     * 新赛季名称
+     * @param index 第几个赛季
+     */
     private String genSeasonName(Integer index){
-        return StrUtil.format(seasonTemplate, 1);
-    }
-
-    public static void main(String[] args) {
-        LocalDate today = LocalDate.now();
-
-        // 获取当前月份的第一天
-        LocalDate firstDayOfMonth = today.withDayOfMonth(1);
-
-        // 获取当前月份的最后一天
-        LocalDate lastDayOfMonth = today.withDayOfMonth(today.lengthOfMonth());
-        System.out.println(firstDayOfMonth); // 2024-08-01
-        System.out.println(lastDayOfMonth);  // 2024-08-31
+        return StrUtil.format(seasonTemplate, index);
     }
 }
