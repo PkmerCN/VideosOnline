@@ -35,7 +35,7 @@ public class PointsBoardHistoryRepositoryImpl implements PointsBoardHistoryRepos
 
     @Override
     public int batchInsertSelective(List<PointsBoardEntity> entities) {
-        // todo 整理笔记
+        // todo 整理笔记 真实处理
         List<PointsBoard> records = Converter.INSTANCE.toRecords(entities);
         MultiRowInsertStatementProvider<PointsBoard> into = insertMultiple(records)
                 .into(pointsBoard)

@@ -10,6 +10,8 @@ import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 import org.hzz.points.domain.service.points.PointsBoardDomainService;
 import org.hzz.points.domain.service.points.PointsBoardSeasonDomainService;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonExtMapper;
+import org.hzz.points.infrastructure.dao.plugin.ChangePointsBoardTableNamePlugin;
+import org.hzz.points.infrastructure.dao.plugin.support.PointsBoardTableIndexSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -80,27 +82,35 @@ public class PointsBoardPersistentTask {
         int pageSize = 10;
         int pageNo = 1;
 
-        while(true){
-            PageQuery pageQuery = new PageQuery();
-            pageQuery.setPageSize(pageSize);
-            pageQuery.setPageNo(pageNo);
-            // 查询上赛季的积分数据
-            List<PointsBoardEntity> pointsBoardEntities = pointsBoardDomainService.queryPrePointsBoardList(pageQuery);
+        try{
+            /**
+             * 分表的处理
+             * {@link ChangePointsBoardTableNamePlugin}
+             */
+            PointsBoardTableIndexSupport.setTableIndex(season.getId());
 
-            if (pointsBoardEntities.isEmpty()){
-                break;
+            while(true){
+                PageQuery pageQuery = new PageQuery();
+                pageQuery.setPageSize(pageSize);
+                pageQuery.setPageNo(pageNo);
+                // 查询上赛季的积分数据
+                List<PointsBoardEntity> pointsBoardEntities = pointsBoardDomainService.queryPrePointsBoardList(pageQuery);
+
+                if (pointsBoardEntities.isEmpty()){
+                    break;
+                }
+                // 设置赛季id
+                pointsBoardEntities.forEach(e -> e.setSeason(season.getId().shortValue()));
+                int i = pointsBoardDomainService.addPointsBoard(pointsBoardEntities);
+                count += i;
+
+                // 翻页 todo 使用xxljob total
+                pageNo++;
             }
-            // 设置赛季id
-            pointsBoardEntities.forEach(e -> e.setSeason(season.getId().shortValue()));
-            int i = pointsBoardDomainService.addPointsBoard(pointsBoardEntities);
-            count += i;
-
-            // 翻页 todo 使用xxljob total
-            pageNo++;
+            log.info("成功持久化{}条记录",count);
+        }finally {
+            PointsBoardTableIndexSupport.clear();
         }
-
-
-        log.info("成功持久化{}条记录",count);
     }
 
 
@@ -126,5 +136,15 @@ public class PointsBoardPersistentTask {
                 .orElseThrow(() -> new RuntimeException("对应的赛季表还没有生成"));
     }
 
-    // todo 直接按顺序排列好
+
+    /**
+     * 直接按顺序排列好
+     */
+    public void persistent(){
+        log.info("总流程");
+        genNewSeason();
+        createPointsBoardTable();
+        persistentPointsBoard();
+//        clearPointsBoardFromRedis();
+    }
 }

@@ -38,4 +38,5 @@ public interface PointsApi {
             @Parameter
             @RequestBody
             PointsBoardQuery query);
+
 }

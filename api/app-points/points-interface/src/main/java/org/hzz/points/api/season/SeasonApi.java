@@ -17,8 +17,19 @@ import java.util.List;
 @RequestMapping("/seasons")
 public interface SeasonApi {
 
+    /**
+     * 获取全部赛季数据
+     */
     @Operation(description = "获取全部赛季数据")
     @ApiResponse
     @GetMapping("/list")
     Result<List<SeasonVo>> getAllSeason();
+
+
+    /**
+     * 持久化上一个赛季
+     */
+    @Operation(description = "持久化上一个赛季")
+    @GetMapping("/persistent")
+    Result<Void> persistentSeason();
 }
