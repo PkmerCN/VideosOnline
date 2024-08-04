@@ -12,7 +12,6 @@ import org.hzz.common.util.ReflectionUtils;
 import org.hzz.points.infrastructure.dao.plugin.support.PointsBoardTableIndexSupport;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +21,7 @@ import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamic
 /**
  * 动态修改积分表名
  * 因为我们做了积分赛季的一个水平拆分
+ * todo 可以考虑使用dynamic sql的方案
  * @author 胖卡
  * @version 1.0.0
  * @date 2024/8/4
