@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonMapper">
     <resultMap id="BaseResultMap" type="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="begin_time" jdbcType="DATE" property="beginTime"/>
-        <result column="end_time" jdbcType="DATE" property="endTime"/>
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="begin_time" jdbcType="DATE" property="beginTime" />
+        <result column="end_time" jdbcType="DATE" property="endTime" />
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -25,8 +25,7 @@
                                 </when>
                                 <when test="criterion.listValue">
                                     and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
-                                             separator=",">
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
                                 </when>
@@ -55,8 +54,7 @@
                                 </when>
                                 <when test="criterion.listValue">
                                     and ${criterion.condition}
-                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
-                                             separator=",">
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
                                 </when>
@@ -68,19 +66,17 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-        id
-        , name, begin_time, end_time
+        id, name, begin_time, end_time
     </sql>
-    <select id="selectByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample"
-            resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
         </if>
-        <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List" />
         from points_board_season
         <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
+            <include refid="Example_Where_Clause" />
         </if>
         <if test="orderByClause != null">
             order by ${orderByClause}
@@ -88,34 +84,35 @@
     </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"/>
+        <include refid="Base_Column_List" />
         from points_board_season
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete
-        from points_board_season
+        delete from points_board_season
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <delete id="deleteByExample"
-            parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample">
+    <delete id="deleteByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample">
         delete from points_board_season
         <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
+            <include refid="Example_Where_Clause" />
         </if>
     </delete>
     <insert id="insert" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
-        insert into points_board_season (id, name, begin_time,
-                                         end_time)
-        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{beginTime,jdbcType=DATE},
-                #{endTime,jdbcType=DATE})
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into points_board_season (name, begin_time, end_time
+        )
+        values (#{name,jdbcType=VARCHAR}, #{beginTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}
+        )
     </insert>
     <insert id="insertSelective" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert into points_board_season
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
             <if test="name != null">
                 name,
             </if>
@@ -127,9 +124,6 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=INTEGER},
-            </if>
             <if test="name != null">
                 #{name,jdbcType=VARCHAR},
             </if>
@@ -141,11 +135,10 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample"
-            resultType="java.lang.Long">
+    <select id="countByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample" resultType="java.lang.Long">
         select count(*) from points_board_season
         <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
+            <include refid="Example_Where_Clause" />
         </if>
     </select>
     <update id="updateByExampleSelective" parameterType="map">
@@ -165,7 +158,7 @@
             </if>
         </set>
         <if test="example != null">
-            <include refid="Update_By_Example_Where_Clause"/>
+            <include refid="Update_By_Example_Where_Clause" />
         </if>
     </update>
     <update id="updateByExample" parameterType="map">
@@ -175,11 +168,10 @@
         begin_time = #{row.beginTime,jdbcType=DATE},
         end_time = #{row.endTime,jdbcType=DATE}
         <if test="example != null">
-            <include refid="Update_By_Example_Where_Clause"/>
+            <include refid="Update_By_Example_Where_Clause" />
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective"
-            parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
+    <update id="updateByPrimaryKeySelective" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
         update points_board_season
         <set>
             <if test="name != null">
@@ -196,9 +188,9 @@
     </update>
     <update id="updateByPrimaryKey" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
         update points_board_season
-        set name       = #{name,jdbcType=VARCHAR},
+        set name = #{name,jdbcType=VARCHAR},
             begin_time = #{beginTime,jdbcType=DATE},
-            end_time   = #{endTime,jdbcType=DATE}
+            end_time = #{endTime,jdbcType=DATE}
         where id = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

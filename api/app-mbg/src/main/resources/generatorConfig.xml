@@ -3,8 +3,8 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 
-<!--    <context id="MySQLTables" targetRuntime="MyBatis3">-->
-    <context id="MySQLTables" targetRuntime="MyBatis3DynamicSql">
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+<!--    <context id="MySQLTables" targetRuntime="MyBatis3DynamicSql">-->
 
         <plugin type="org.hzz.mybatis.plugins.ConstantClassGeneratorPlugin">
             <!--    其他扩展信息        -->
@@ -69,8 +69,10 @@
 <!--        <table tableName="points_record">-->
 <!--            <columnOverride column="type" javaType="org.hzz.points.types.enums.PointsType"/>-->
 <!--        </table>-->
-        <table tableName="points_board"/>
-        <table tableName="points_board_season"/>
+<!--        <table tableName="points_board"/>-->
+        <table tableName="points_board_season">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
     </context>
 
 </generatorConfiguration>
