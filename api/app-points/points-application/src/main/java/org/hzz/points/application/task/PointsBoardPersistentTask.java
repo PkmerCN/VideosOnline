@@ -2,6 +2,8 @@ package org.hzz.points.application.task;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.hzz.core.page.query.PageQuery;
+import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 import org.hzz.points.domain.service.points.PointsBoardDomainService;
 import org.hzz.points.domain.service.points.PointsBoardSeasonDomainService;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicSqlSupport.pointsBoard;
@@ -66,7 +69,15 @@ public class PointsBoardPersistentTask {
 
     public void persistentPointsBoard(){
 
+        PageQuery pageQuery = new PageQuery();
+        pageQuery.setPageSize(1);
+        pageQuery.setPageNo(1);
+        // 查询上赛季的积分数据
+        List<PointsBoardEntity> pointsBoardEntities = pointsBoardDomainService.queryPrePointsBoardList(pageQuery);
 
+
+
+        // todo mysql
 
     }
 }
