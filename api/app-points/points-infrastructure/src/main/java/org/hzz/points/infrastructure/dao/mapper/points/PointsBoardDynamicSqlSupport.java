@@ -33,7 +33,7 @@ public final class PointsBoardDynamicSqlSupport {
 
         public final SqlColumn<Integer> points = column("points", JDBCType.INTEGER);
 
-        public final SqlColumn<Byte> rank = column("rank", JDBCType.TINYINT);
+        public final SqlColumn<Byte> rank = column("`rank`", JDBCType.TINYINT);
 
         public final SqlColumn<Short> season = column("season", JDBCType.SMALLINT);
 

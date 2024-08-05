@@ -38,16 +38,18 @@ public class PointsBoardHistoryRepositoryImpl implements PointsBoardHistoryRepos
     public int batchInsertSelective(List<PointsBoardEntity> entities) {
         // todo 整理笔记 真实处理
         List<PointsBoard> records = Converter.INSTANCE.toRecords(entities);
-        MultiRowInsertStatementProvider<PointsBoard> into = insertMultiple(records)
-                .into(pointsBoard)
-                .map(id).toProperty(PointsBoardFields.ID)
-                .map(userId).toProperty(PointsBoardFields.USER_ID)
-                .map(points).toProperty(PointsBoardFields.POINTS)
-                .map(rank).toProperty(PointsBoardFields.RANK)
-                .map(season).toProperty(PointsBoardFields.SEASON)
-                .build()
-                .render(RenderingStrategies.MYBATIS3);
-        return dynamicMapper.insertMultiple(into);
+//        MultiRowInsertStatementProvider<PointsBoard> into = insertMultiple(records)
+//                .into(pointsBoard)
+//                .map(id).toProperty("id")
+//                .map(userId).toProperty("userId")
+//                .map(points).toProperty("points")
+//                .map(rank).toProperty("rank")
+//                .map(season).toProperty("season")
+//                .build()
+//                .render(RenderingStrategies.MYBATIS3);
+//        dynamicMapper.insertMultiple(into);
+
+        return dynamicMapper.insertMultiple(records);
     }
 
     @Mapper

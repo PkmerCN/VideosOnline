@@ -4,13 +4,15 @@
 
 
     <update id="createPointsBoardSeasonTable" parameterType="string">
-        CREATE TABLE IF NOT EXISTS `${tableName}`
+        CREATE TABLE `${tableName}`
         (
-            `id`         int  NOT NULL AUTO_INCREMENT COMMENT '自增长id，season标示',
-            `name`       varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '赛季名称，例如：第1赛季',
-            `begin_time` date NOT NULL COMMENT '赛季开始时间',
-            `end_time`   date NOT NULL COMMENT '赛季结束时间',
-            PRIMARY KEY (`id`) USING BTREE
-        ) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '赛季表' ROW_FORMAT = DYNAMIC;
+            `id`      bigint   NOT NULL COMMENT '榜单id',
+            `user_id` bigint   NOT NULL COMMENT '学生id',
+            `points`  int      NOT NULL COMMENT '积分值',
+            `rank`    tinyint  NOT NULL COMMENT '名次，只记录赛季前100',
+            `season`  smallint NOT NULL COMMENT '赛季id',
+            PRIMARY KEY (`id`) USING BTREE,
+            KEY       `idx_user_id` (`user_id`) USING BTREE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='学霸天梯榜';
     </update>
 </mapper>

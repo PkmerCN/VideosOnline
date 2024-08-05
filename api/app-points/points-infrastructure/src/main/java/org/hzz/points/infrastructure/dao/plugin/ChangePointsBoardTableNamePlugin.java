@@ -42,22 +42,17 @@ public class ChangePointsBoardTableNamePlugin implements Interceptor {
             return invocation.proceed();
         }
         // 处理表名的拼接
-        try{
-            StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
-            // 获取 BoundSql 对象
-            BoundSql boundSql = statementHandler.getBoundSql();
-            String sql = boundSql.getSql();
+        StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
+        // 获取 BoundSql 对象
+        BoundSql boundSql = statementHandler.getBoundSql();
+        String sql = boundSql.getSql();
 
-            if(isPointsBoardTable(sql)){
-                String modifiedSql = processTableName(sql,tableIndex);
-                // 通过反射设置修改后的 SQL
-                ReflectionUtils.setField(boundSql, "sql", modifiedSql);
-            }
-            return invocation.proceed();
-        }finally {
-            // 防止threadLocal内存泄漏直接在这里处理
-            PointsBoardTableIndexSupport.clear();
+        if(isPointsBoardTable(sql)){
+            String modifiedSql = processTableName(sql,tableIndex);
+            // 通过反射设置修改后的 SQL
+            ReflectionUtils.setField(boundSql, "sql", modifiedSql);
         }
+        return invocation.proceed();
     }
 
     private boolean isPointsBoardTable(String sql){

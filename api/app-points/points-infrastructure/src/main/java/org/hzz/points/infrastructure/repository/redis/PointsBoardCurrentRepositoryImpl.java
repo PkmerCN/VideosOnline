@@ -65,7 +65,7 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
     public List<PointsBoardEntity> queryPointsBoardListByKey(String key,PageQuery pageQuery){
         log.info("查询赛季排行榜信息 key = {}",key);
 
-        long start = pageQuery.getPageNo() - 1;
+        long start = (long) (pageQuery.getPageNo() - 1) * pageQuery.getPageSize();
         long end = start + pageQuery.getPageSize() - 1;
 
 //        if(end >= 100){
