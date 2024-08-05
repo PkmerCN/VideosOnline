@@ -1,6 +1,7 @@
 package org.hzz.points.application.handler.points;
 
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.hzz.core.converter.TargetAndSourceConverter;
 import org.hzz.ddd.core.domain.shared.command.CommandHandler;
 import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
@@ -22,6 +23,7 @@ import java.util.List;
  * @date 2024/7/31
  */
 @Component
+@Slf4j
 public class GetAllSeasonCmdHandler implements CommandHandler,
         AbstractExecuteStrategy<GetAllSeasonCmd, List<SeasonVo>> {
 
@@ -41,7 +43,10 @@ public class GetAllSeasonCmdHandler implements CommandHandler,
 //        List<PointsBoardSeasonEntity> allSeason = seasonDomainService.getAllSeason();
 //        List<SeasonVo> targets = Converter.INSTANCE.toTargets(allSeason);
         // caffeine来做缓存
-        return seasonCache.getAllSeason();
+        List<SeasonVo> allSeason = seasonCache.getAllSeason();
+        log.info("去除当前赛季");
+        allSeason.remove(allSeason.size() - 1);
+        return allSeason;
     }
 
     @Mapper
