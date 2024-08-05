@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.hzz.points</groupId>
         <artifactId>app-points</artifactId>
-        <version>2.2.5-SNAPSHOT</version>
+        <version>2.2.5</version>
     </parent>
 
     <groupId>org.hzz.points.application</groupId>
@@ -20,27 +20,27 @@
         <dependency>
             <groupId>org.hzz.points.infrastructure</groupId>
             <artifactId>points-infrastructure</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
         <dependency>
             <groupId>org.hzz.points.trigger</groupId>
             <artifactId>points-trigger</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
         <dependency>
             <groupId>org.hzz.cache</groupId>
             <artifactId>points-cache</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
         <dependency>
             <groupId>org.hzz</groupId>
             <artifactId>user-domain</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
         <dependency>
             <groupId>org.hzz.scheduler</groupId>
             <artifactId>app-scheduler-spring-boot-starter</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
         <dependency>
             <groupId>com.xuxueli</groupId>

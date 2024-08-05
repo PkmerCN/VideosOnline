@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.hzz.points</groupId>
         <artifactId>app-points</artifactId>
-        <version>2.2.5-SNAPSHOT</version>
+        <version>2.2.5</version>
     </parent>
 
     <groupId>org.hzz.points.infrastructure</groupId>
@@ -20,12 +20,12 @@
         <dependency>
             <groupId>org.hzz.points.domain</groupId>
             <artifactId>points-domain</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
         <dependency>
             <groupId>org.hzz</groupId>
             <artifactId>app-mybatis-spring-boot-starter</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
     </dependencies>
 </project>

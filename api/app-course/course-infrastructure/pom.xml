@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.hzz.course</groupId>
         <artifactId>app-course</artifactId>
-        <version>2.2.5-SNAPSHOT</version>
+        <version>2.2.5</version>
     </parent>
 
     <artifactId>course-infrastructure</artifactId>
@@ -19,17 +19,17 @@
         <dependency>
             <groupId>org.hzz.course</groupId>
             <artifactId>course-domain</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
         <dependency>
             <groupId>org.hzz.common</groupId>
             <artifactId>app-common-spring-boot-starter</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
         <dependency>
             <groupId>org.hzz</groupId>
             <artifactId>app-mybatis-spring-boot-starter</artifactId>
-            <version>2.2.5-SNAPSHOT</version>
+            <version>2.2.5</version>
         </dependency>
     </dependencies>
 </project>

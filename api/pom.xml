@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.hzz</groupId>
     <artifactId>api</artifactId>
-    <version>2.2.5-SNAPSHOT</version>
+    <version>2.2.5</version>
 
     <packaging>pom</packaging>
     <modules>
@@ -216,7 +215,7 @@
     <!--scm(Software Configuration Management)将所有的代码提交到版本管理库（SVN，GIT）-->
     <scm>
         <connection>scm:git:https://gitee.com/developeros/videos-online</connection>
-        <tag>HEAD</tag>
+        <tag>V2.2.5</tag>
     </scm>
     <build>
         <plugins>
