@@ -1,6 +1,7 @@
 package org.hzz.points.application.task;
 
 import com.xxl.job.core.context.XxlJobHelper;
+import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.hzz.common.collection.CollUtil;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicSqlSupport.pointsBoard;
 
@@ -43,10 +45,11 @@ public class PointsBoardPersistentTask {
 
     /**
      * 顺序1
+     * xxljob 调度为轮询
      * 每一个月初生成新赛季，只生成赛季id，并没有创建表
      * 创建本赛季id
      */
-    // todo xxljob
+    @XxlJob("generateNewSeason")
     public void genNewSeason(){
         log.info("xxljob 生成新赛季");
         boardSeasonDomainService.genCurrentSeason();
@@ -56,9 +59,11 @@ public class PointsBoardPersistentTask {
 
     /**
      * 顺序2
+     * xxljob 调度为轮询
      * 每个月初创建上赛季的一个积分排行表记录表
      * 必须确保新的赛季已经生成，{@link PointsBoardPersistentTask#genNewSeason()}
      */
+    @XxlJob("createPointsBoardTableJob")
     public void createPointsBoardTable(){
         PointsBoardSeasonEntity season = getPersistentSeason();
         log.info("xxljob 准备生成{}的相关表",season.getName());
@@ -69,18 +74,21 @@ public class PointsBoardPersistentTask {
     /**
      * 顺序3
      * 持久化积分排行榜
+     * xxljob 调度策略为分片广播
      */
+    @XxlJob("savePointsBoard2DB")
     public void persistentPointsBoard(){
         log.info("xxljob 持久化积分排行榜");
         PointsBoardSeasonEntity season = getPersistentSeason();
         int count = 0;
 
         // xxljob 分片处理,防止重复插入
-//        int shardIndex = XxlJobHelper.getShardIndex();
-//        int shardTotal = XxlJobHelper.getShardTotal();
+        int shardIndex = XxlJobHelper.getShardIndex();
+        int shardTotal = XxlJobHelper.getShardTotal();
 
         int pageSize = 10;
-        int pageNo = 1;
+        // 分片以0开始
+        int pageNo = shardIndex + 1;
 
         try{
             /**
@@ -105,8 +113,16 @@ public class PointsBoardPersistentTask {
                 int i = pointsBoardDomainService.addPointsBoard(pointsBoardEntities);
                 count += i;
 
-                // 翻页 todo 使用xxljob total
-                pageNo++;
+                /**
+                 * 翻页 使用xxljob total
+                 * 例子
+                 * 数据【1,2,3,4,5,6,7】
+                 * pageSize 1
+                 * A执行获取数据: 1,4,7
+                 * B执行获取数据: 2,5
+                 * C执行获取数据: 3,6
+                 */
+                pageNo += shardTotal;
             }
             log.info("成功持久化{}条记录",count);
         }finally {
@@ -117,8 +133,10 @@ public class PointsBoardPersistentTask {
 
     /**
      * 顺序4
+     * xxljob 调度为轮询
      * 清楚redis中的积分排行榜
      */
+    @XxlJob("cleanPointsBoardFromRedis")
     public void clearPointsBoardFromRedis(){
         log.info("xxljob 迁移成功准备清除上赛季数据");
         pointsBoardDomainService.clearPrePointsBoardList();
@@ -139,13 +157,13 @@ public class PointsBoardPersistentTask {
 
 
     /**
-     * 直接按顺序排列好
+     * 直接按顺序排列好,单机版本
      */
     public void persistent(){
         log.info("总流程");
-//        genNewSeason();
-//        createPointsBoardTable();
+        genNewSeason();
+        createPointsBoardTable();
         persistentPointsBoard();
-//        clearPointsBoardFromRedis();
+        clearPointsBoardFromRedis();
     }
 }
