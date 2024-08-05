@@ -94,8 +94,42 @@ public class QueryPointsBoardCmdHandler implements CommandHandler,
         CompletableFuture<List<PointsBoardEntity>> listCompletableFuture = CompletableFuture.supplyAsync(
                 () -> boardDomainService.queryCurrentPointsBoardList(cmd.getPointsBoardQuery()));
 
-        // 获取用户信息
-        CompletableFuture<Map<Long, UserDetailEntity>> mapCompletableFuture = listCompletableFuture.thenApply(pointsBoardEntities -> {
+        return handleCompletableFuture(userPointsBoardCompletableFuture, listCompletableFuture);
+    }
+
+    /**
+     * 处理历史赛季
+     */
+    private PointsBoardVo handleHistorySeason(QueryPointsBoardCmd cmd) throws ExecutionException, InterruptedException {
+        Integer seasonId = cmd.getPointsBoardQuery().getSeasonId();
+        log.info("查询历史{}赛季", seasonId);
+        // 获取用户当前积分排行榜信息
+        CompletableFuture<PointsBoardEntity> userPointsBoardCompletableFuture = CompletableFuture.supplyAsync(
+                () -> boardDomainService.queryUserHistoryPointsBoard(seasonId, cmd.getUserId()));
+
+        // 获取排行榜信息
+        CompletableFuture<List<PointsBoardEntity>> listCompletableFuture = CompletableFuture.supplyAsync(
+                () -> boardDomainService.queryHistoryPointsBoardList(seasonId, cmd.getPointsBoardQuery()));
+
+        return handleCompletableFuture(userPointsBoardCompletableFuture, listCompletableFuture);
+    }
+
+
+    /**
+     * 处理所有相关completableFuture
+     *
+     * @param currentUserPointBoardCompletableFuture 当前用户的积分排行
+     * @param allPointsBoardCompletableFuture        所有用户的积分排行
+     * @return 封装的结果
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
+    private PointsBoardVo handleCompletableFuture(
+            CompletableFuture<PointsBoardEntity> currentUserPointBoardCompletableFuture,
+            CompletableFuture<List<PointsBoardEntity>> allPointsBoardCompletableFuture) throws ExecutionException, InterruptedException {
+
+        // 获取所有用户信息
+        CompletableFuture<Map<Long, UserDetailEntity>> mapCompletableFuture = allPointsBoardCompletableFuture.thenApply(pointsBoardEntities -> {
             Set<Long> userIds = pointsBoardEntities.stream()
                     .map(PointsBoardEntity::getUserId)
                     .collect(Collectors.toSet());
@@ -104,13 +138,13 @@ public class QueryPointsBoardCmdHandler implements CommandHandler,
         });
 
         // 等待所有CompletableFuture完成
-        CompletableFuture<Void> all = CompletableFuture.allOf(userPointsBoardCompletableFuture, listCompletableFuture, mapCompletableFuture);
+        CompletableFuture<Void> all = CompletableFuture.allOf(currentUserPointBoardCompletableFuture, allPointsBoardCompletableFuture, mapCompletableFuture);
 
         // 封装结果
         return all.thenApply(v -> {
             try {
-                PointsBoardEntity userPointsBoard = userPointsBoardCompletableFuture.get();
-                List<PointsBoardEntity> pointsBoardEntities = listCompletableFuture.get();
+                PointsBoardEntity userPointsBoard = currentUserPointBoardCompletableFuture.get();
+                List<PointsBoardEntity> pointsBoardEntities = allPointsBoardCompletableFuture.get();
                 Map<Long, UserDetailEntity> userMap = mapCompletableFuture.get();
 
                 return handleResult(pointsBoardEntities, userPointsBoard, userMap);
@@ -118,16 +152,6 @@ public class QueryPointsBoardCmdHandler implements CommandHandler,
                 throw new RuntimeException(e);
             }
         }).get();
-    }
-
-    /**
-     * 处理历史赛季
-     */
-    private PointsBoardVo handleHistorySeason(QueryPointsBoardCmd cmd) {
-        log.info("查询历史赛季");
-        PointsBoardVo vo = new PointsBoardVo();
-
-        return vo;
     }
 
 

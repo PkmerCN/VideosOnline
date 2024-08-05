@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 积分排行榜领域服务
@@ -68,27 +69,48 @@ public class PointsBoardDomainServiceImpl  implements PointsBoardDomainService {
     }
 
 
+    /**
+     * {@inheritDoc}
+     * @param seasonId 赛季id
+     * @param pageQuery 分页
+     * @return 赛季排名
+     */
     @Override
     public List<PointsBoardEntity> queryHistoryPointsBoardList(Integer seasonId,PageQuery pageQuery) {
         try{
             // 设置分表的分片键
             PointsBoardTableIndexSupport.setTableIndex(seasonId);
+            return historyRepository.queryHistoryPointsBoardList(pageQuery);
         }finally {
             PointsBoardTableIndexSupport.clear();
         }
-
-        return null;
     }
 
+    /**
+     * {@inheritDoc}
+     * @param seasonId 赛季id
+     * @param userId 用户id
+     * @return 用户的排名情况
+     */
     @Override
     public PointsBoardEntity queryUserHistoryPointsBoard(Integer seasonId,Long userId) {
         try{
             // 设置分表的分片键
             PointsBoardTableIndexSupport.setTableIndex(seasonId);
+            Optional<PointsBoardEntity> pointsBoardEntityOptional = historyRepository.queryUserHistoryPointsBoard(userId);
+
+            return pointsBoardEntityOptional.orElseGet(() -> {
+                // 不存在排名那就返回0 积分 0 排名
+                PointsBoardEntity entity = new PointsBoardEntity();
+                entity.setUserId(userId);
+                entity.setRank((byte)0);
+                entity.setPoints(0);
+                return entity;
+            });
+
         }finally {
             PointsBoardTableIndexSupport.clear();
         }
-        return null;
     }
 
     /**
