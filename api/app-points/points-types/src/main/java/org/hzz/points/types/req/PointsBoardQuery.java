@@ -15,4 +15,13 @@ import org.hzz.core.page.query.PageQuery;
 public class PointsBoardQuery extends PageQuery {
     @Schema(description = "赛季id",example = "如果为空那么查询的是当前赛季")
     private Integer seasonId;
+
+    /**
+     * 查询数据是否超过100条
+     * @return
+     */
+    public boolean isMoreThen100(){
+        int maxCount =  getPageNo() * getPageSize();
+        return maxCount > 100;
+    }
 }

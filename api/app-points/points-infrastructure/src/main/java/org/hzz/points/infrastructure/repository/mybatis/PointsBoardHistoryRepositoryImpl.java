@@ -34,6 +34,11 @@ public class PointsBoardHistoryRepositoryImpl implements PointsBoardHistoryRepos
     @Setter(onMethod_ = @Autowired)
     private PointsBoardMapper mapper;
 
+    /**
+     * {@inheritDoc}
+     * @param entities 要插入的数据
+     * @return
+     */
     @Override
     public int batchInsertSelective(List<PointsBoardEntity> entities) {
         // todo 整理笔记 真实处理
@@ -52,6 +57,11 @@ public class PointsBoardHistoryRepositoryImpl implements PointsBoardHistoryRepos
         return dynamicMapper.insertMultiple(records);
     }
 
+    /**
+     * {@inheritDoc}
+     * @param pageQuery 分页
+     * @return
+     */
     @Override
     public List<PointsBoardEntity> queryHistoryPointsBoardList(PageQuery pageQuery) {
 
@@ -66,6 +76,11 @@ public class PointsBoardHistoryRepositoryImpl implements PointsBoardHistoryRepos
         return Converter.INSTANCE.toEntities(records);
     }
 
+    /**
+     * {@inheritDoc}
+     * @param _userId 用户id
+     * @return
+     */
     @Override
     public Optional<PointsBoardEntity> queryUserHistoryPointsBoard(Long _userId) {
 

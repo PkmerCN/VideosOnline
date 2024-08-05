@@ -2,6 +2,7 @@ package org.hzz.points.api.points.controller;
 
 import lombok.Setter;
 import org.hzz.core.controller.BaseController;
+import org.hzz.core.exception.request.BadRequestException;
 import org.hzz.core.result.Result;
 import org.hzz.points.api.points.PointsApi;
 import org.hzz.points.application.command.points.QueryPointsBoardCmd;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static org.hzz.core.code.impl.AppStatusImpl.NOT_ALLOW_100;
 
 /**
  * @author 胖卡
@@ -42,6 +45,11 @@ public class PointsController
     @Override
     public Result<PointsBoardVo> queryPointsBoardBySeason(PointsBoardQuery query) {
         logger.info("查询赛季排行榜");
+        if(query.isMoreThen100()){
+            logger.info("只允许查询一百条");
+            throw new BadRequestException(NOT_ALLOW_100);
+        }
+
         QueryPointsBoardCmd cmd = QueryPointsBoardCmd.commandOf(
                 AppContextHolder.userContextHolder.getUser().getId(),
                 query

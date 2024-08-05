@@ -17,6 +17,7 @@ public enum AppStatusImpl implements AppStatus {
     ARG_INVALID(4005,"参数不合法"),
     NO_PERMISSION(4006,"没有权限"),
     REPEAT_OPERATION(4007,"重复操作"),
+    NOT_ALLOW_100(4008,"只允许查询100条"),
     REPEAT_SIGN_OPERATION(4008,"重复签到"),
     INTERNAL_ERROR(5000,"应用异常"),
     DB_ERROR(5001,"数据库异常"),
