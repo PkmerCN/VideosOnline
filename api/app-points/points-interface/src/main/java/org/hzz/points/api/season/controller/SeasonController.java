@@ -34,7 +34,7 @@ public class SeasonController
      */
     @Override
     public Result<List<SeasonVo>> getAllSeason() {
-        logger.info("获取全部赛季列表");
+        logger.info("获取全部历史赛季列表");
         List<SeasonVo> seasonVos = cmdService.<List<SeasonVo>>handleCommandWithResult(
                 GetAllSeasonCmd.commandOf());
 
