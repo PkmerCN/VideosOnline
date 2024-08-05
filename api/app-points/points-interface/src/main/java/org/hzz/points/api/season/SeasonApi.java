@@ -20,7 +20,7 @@ public interface SeasonApi {
     /**
      * 获取全部赛季数据
      */
-    @Operation(description = "获取全部赛季数据")
+    @Operation(description = "获取全部历史赛季数据")
     @ApiResponse
     @GetMapping("/list")
     Result<List<SeasonVo>> getAllSeason();
