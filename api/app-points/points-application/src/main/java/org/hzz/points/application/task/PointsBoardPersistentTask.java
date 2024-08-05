@@ -93,7 +93,7 @@ public class PointsBoardPersistentTask {
                 PageQuery pageQuery = new PageQuery();
                 pageQuery.setPageSize(pageSize);
                 pageQuery.setPageNo(pageNo);
-                // 查询上赛季的积分数据
+                // 从redis查询上赛季的积分数据
                 List<PointsBoardEntity> pointsBoardEntities = pointsBoardDomainService.queryPrePointsBoardList(pageQuery);
 
                 if (pointsBoardEntities.isEmpty()){
@@ -101,6 +101,7 @@ public class PointsBoardPersistentTask {
                 }
                 // 设置赛季id
                 pointsBoardEntities.forEach(e -> e.setSeason(season.getId().shortValue()));
+                // 持久化到mysql
                 int i = pointsBoardDomainService.addPointsBoard(pointsBoardEntities);
                 count += i;
 
