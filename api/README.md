@@ -196,25 +196,30 @@ It allows you to specify which modules in your multi-module project you want to 
 | 使用redis的bitmap                                 |
 | 集成分布式定时任务xxl_job                               |
 | 封装成starter自动配置类并且能够处理自动配置信息application.yaml的提示 |
+| mybatis改表名插件，实现分表                              |
+| xxljob定时任务执行持久化                                |
+| CompletableFuture优查询                           |
+| xxljob 子任务，动态分片                           |
 
 
 
 # 业务与技术特设
 
 
-| 业务                | 技术                                      |
-|-------------------|-----------------------------------------|
-| 视频提交记录            | redis+延迟任务                              |
-| 分类层级              | List转Tree层级算法设计                         |
-| 缓存caffeine分类信息    | JVM级别的缓存                                |
-| admin分页查询问题       | 因为需要分类信息，在分类领域前面加了一层缓存                  |
-| 视频记录提交与admin查看用户问答 | CompletableFuture.runAsync              |
-| 更新评论数量解决并发        | update table replyTimes = relyTimes + 1 |
-| mapstruct优化解耦ddd层 | 如分页查询的结果                                |
-| 添加用户课程，课程点赞       | 数据库唯一主键，实现幂等性                           |
-| 点赞业务              | xxl_job + redis + RabbitMQ              |
-| 奖励积分不同策略          | 结合spring的bean注入实现了策略模式                  |
-| 用户签到业务            | 使用redis的bitmap                          |
+| 业务                 | 技术                                                        |
+|--------------------|-----------------------------------------------------------|
+| 视频提交记录             | redis+延迟任务                                                |
+| 分类层级               | List转Tree层级算法设计                                           |
+| 缓存caffeine分类信息     | JVM级别的缓存                                                  |
+| admin分页查询问题        | 因为需要分类信息，在分类领域前面加了一层缓存                                    |
+| 视频记录提交与admin查看用户问答 | CompletableFuture.runAsync                                |
+| 更新评论数量解决并发         | update table replyTimes = relyTimes + 1                   |
+| mapstruct优化解耦ddd层  | 如分页查询的结果                                                  |
+| 添加用户课程，课程点赞        | 数据库唯一主键，实现幂等性                                             |
+| 点赞业务               | xxl_job + redis + RabbitMQ                                |
+| 奖励积分不同策略           | 结合spring的bean注入实现了策略模式                                    |
+| 用户签到业务             | 使用redis的bitmap                                            |
+| 积分排行榜持久化           | 分表处理，底层实现我们通过ThreadLocal + mybatis插件改表名，辅助xxljob 子任务，动态分片 |
 
 ## 缓存技术
 
@@ -240,3 +245,4 @@ It allows you to specify which modules in your multi-module project you want to 
 | 问题 |     |
 | 课程 |     |
 | 点赞 |     |
+| 积分 |     |
