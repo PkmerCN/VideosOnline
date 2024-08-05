@@ -51,6 +51,7 @@ public class PointsBoardCurrentRepositoryImpl implements PointsBoardCurrentRepos
         Long rank = ops.reverseRank(userId.toString());
 
         PointsBoardEntity entity = new PointsBoardEntity();
+        entity.setUserId(userId);
         entity.setPoints(score == null ? 0 : score.intValue());
         // redis中的rank是以0开始的
         entity.setRank(rank == null ? 0 : (byte) (rank.intValue() + 1));

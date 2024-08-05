@@ -69,7 +69,7 @@ public class PointsBoardHistoryRepositoryImpl implements PointsBoardHistoryRepos
         int rowCount = pageQuery.getPageSize();
 
         List<PointsBoard> records = dynamicMapper.select(c -> c.
-                orderBy(rank.descending())
+                orderBy(rank)
                 .limit(rowCount)
                 .offset(offset));
 
