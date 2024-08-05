@@ -1,4 +1,4 @@
-package org.hzz.points.infrastructure.dao.plugin.support;
+package org.hzz.points.support;
 
 /**
  * 赛季积分表水平拆分支持

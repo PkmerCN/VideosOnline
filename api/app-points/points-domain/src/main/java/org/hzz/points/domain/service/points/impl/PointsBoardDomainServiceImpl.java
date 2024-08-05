@@ -7,6 +7,7 @@ import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.repository.PointsBoardCurrentRepository;
 import org.hzz.points.domain.repository.PointsBoardHistoryRepository;
 import org.hzz.points.domain.service.points.PointsBoardDomainService;
+import org.hzz.points.support.PointsBoardTableIndexSupport;
 import org.hzz.points.types.req.PointsBoardQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,14 +69,26 @@ public class PointsBoardDomainServiceImpl  implements PointsBoardDomainService {
 
 
     @Override
-    public void queryHistoryPointsBoardList() {
+    public List<PointsBoardEntity> queryHistoryPointsBoardList(Integer seasonId,PageQuery pageQuery) {
+        try{
+            // 设置分表的分片键
+            PointsBoardTableIndexSupport.setTableIndex(seasonId);
+        }finally {
+            PointsBoardTableIndexSupport.clear();
+        }
 
+        return null;
     }
 
     @Override
-    public void queryUserHistoryPointsBoard(Long userId) {
-
-
+    public PointsBoardEntity queryUserHistoryPointsBoard(Integer seasonId,Long userId) {
+        try{
+            // 设置分表的分片键
+            PointsBoardTableIndexSupport.setTableIndex(seasonId);
+        }finally {
+            PointsBoardTableIndexSupport.clear();
+        }
+        return null;
     }
 
     /**

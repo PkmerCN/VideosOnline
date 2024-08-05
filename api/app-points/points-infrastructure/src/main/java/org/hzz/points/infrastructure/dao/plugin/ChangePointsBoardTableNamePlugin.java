@@ -8,7 +8,7 @@ import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
 import org.hzz.common.util.ReflectionUtils;
-import org.hzz.points.infrastructure.dao.plugin.support.PointsBoardTableIndexSupport;
+import org.hzz.points.support.PointsBoardTableIndexSupport;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;

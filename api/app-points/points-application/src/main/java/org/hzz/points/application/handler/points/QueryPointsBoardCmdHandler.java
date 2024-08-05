@@ -94,7 +94,7 @@ public class QueryPointsBoardCmdHandler implements CommandHandler,
         CompletableFuture<List<PointsBoardEntity>> listCompletableFuture = CompletableFuture.supplyAsync(
                 () -> boardDomainService.queryCurrentPointsBoardList(cmd.getPointsBoardQuery()));
 
-        // 获取积分排行榜
+        // 获取用户信息
         CompletableFuture<Map<Long, UserDetailEntity>> mapCompletableFuture = listCompletableFuture.thenApply(pointsBoardEntities -> {
             Set<Long> userIds = pointsBoardEntities.stream()
                     .map(PointsBoardEntity::getUserId)

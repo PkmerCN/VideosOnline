@@ -2,23 +2,23 @@ package org.hzz.points.infrastructure.repository.mybatis;
 
 import lombok.Setter;
 import org.hzz.core.converter.RecordAndEntityConverter;
+import org.hzz.core.page.query.PageQuery;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.repository.PointsBoardHistoryRepository;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicMapper;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardMapper;
 import org.hzz.points.infrastructure.dao.model.points.PointsBoard;
-import org.hzz.points.types.constants.PointsBoardFields;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.mybatis.dynamic.sql.insert.render.MultiRowInsertStatementProvider;
-import org.mybatis.dynamic.sql.render.RenderingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
-import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicSqlSupport.*;
-import static org.mybatis.dynamic.sql.SqlBuilder.insertMultiple;
+import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicSqlSupport.rank;
+import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicSqlSupport.userId;
+import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
 
 /**
  * @author 胖卡
@@ -52,8 +52,36 @@ public class PointsBoardHistoryRepositoryImpl implements PointsBoardHistoryRepos
         return dynamicMapper.insertMultiple(records);
     }
 
+    @Override
+    public List<PointsBoardEntity> queryHistoryPointsBoardList(PageQuery pageQuery) {
+
+        int offset = (pageQuery.getPageNo() - 1) * pageQuery.getPageSize();
+        int rowCount = pageQuery.getPageSize();
+
+        List<PointsBoard> records = dynamicMapper.select(c -> c.
+                orderBy(rank.descending())
+                .limit(rowCount)
+                .offset(offset));
+
+        return Converter.INSTANCE.toEntities(records);
+    }
+
+    @Override
+    public Optional<PointsBoardEntity> queryUserHistoryPointsBoard(Long _userId) {
+
+        Optional<PointsBoard> recordOptional = dynamicMapper.selectOne(c -> c.where(userId, isEqualTo(_userId)));
+
+        if (recordOptional.isPresent()) {
+            PointsBoard record = recordOptional.get();
+            PointsBoardEntity entity = Converter.INSTANCE.toEntity(record);
+            return Optional.of(entity);
+        }
+
+        return Optional.empty();
+    }
+
     @Mapper
-    interface Converter extends RecordAndEntityConverter<PointsBoard,PointsBoardEntity>{
+    interface Converter extends RecordAndEntityConverter<PointsBoard, PointsBoardEntity> {
         Converter INSTANCE = Mappers.getMapper(Converter.class);
     }
 }

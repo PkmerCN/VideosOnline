@@ -4,7 +4,6 @@ import com.xxl.job.core.context.XxlJobHelper;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.common.collection.CollUtil;
 import org.hzz.core.page.query.PageQuery;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
@@ -12,12 +11,11 @@ import org.hzz.points.domain.service.points.PointsBoardDomainService;
 import org.hzz.points.domain.service.points.PointsBoardSeasonDomainService;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonExtMapper;
 import org.hzz.points.infrastructure.dao.plugin.ChangePointsBoardTableNamePlugin;
-import org.hzz.points.infrastructure.dao.plugin.support.PointsBoardTableIndexSupport;
+import org.hzz.points.support.PointsBoardTableIndexSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicSqlSupport.pointsBoard;
 

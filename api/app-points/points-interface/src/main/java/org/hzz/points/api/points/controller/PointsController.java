@@ -41,7 +41,7 @@ public class PointsController
 
     @Override
     public Result<PointsBoardVo> queryPointsBoardBySeason(PointsBoardQuery query) {
-        logger.info("查询当前赛季排行榜");
+        logger.info("查询赛季排行榜");
         QueryPointsBoardCmd cmd = QueryPointsBoardCmd.commandOf(
                 AppContextHolder.userContextHolder.getUser().getId(),
                 query

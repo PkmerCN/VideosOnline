@@ -38,10 +38,19 @@ public interface PointsBoardDomainService extends DomainService {
 
     /**
      * 查询历史积分排行榜
+     * @param seasonId 赛季id
+     * @param pageQuery 分页
+     * @return 历史赛季积分排行榜
      */
-    void queryHistoryPointsBoardList();
+    List<PointsBoardEntity> queryHistoryPointsBoardList(Integer seasonId,PageQuery pageQuery);
 
-    void queryUserHistoryPointsBoard(Long userId);
+    /**
+     * 查询用户历史赛季积分排行榜
+     * @param seasonId 赛季id
+     * @param userId 用户id
+     * @return 用户排行榜
+     */
+    PointsBoardEntity queryUserHistoryPointsBoard(Integer seasonId, Long userId);
     /**
      * 查询用户当前积分排名
      */
