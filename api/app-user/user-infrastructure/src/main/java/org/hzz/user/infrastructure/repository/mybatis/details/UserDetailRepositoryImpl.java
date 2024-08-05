@@ -11,6 +11,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -40,6 +41,10 @@ public class UserDetailRepositoryImpl
      */
     @Override
     public List<UserDetailEntity> selectBatchByIds(Set<Long> ids) {
+        if(ids.isEmpty()){
+            return Collections.emptyList();
+        }
+
         UserDetailExample example = new UserDetailExample();
         example.createCriteria().andIdIn(new ArrayList<>(ids));
         List<UserDetail> records = mapper.selectByExample(example);
