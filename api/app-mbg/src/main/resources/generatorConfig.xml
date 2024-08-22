@@ -69,10 +69,10 @@
 <!--        <table tableName="points_record">-->
 <!--            <columnOverride column="type" javaType="io.gitee.pkmer.points.types.enums.PointsType"/>-->
 <!--        </table>-->
-<!--        <table tableName="points_board"/>-->
-        <table tableName="points_board_season">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+        <table tableName="points_board"/>
+<!--        <table tableName="points_board_season">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
     </context>
 
 </generatorConfiguration>
