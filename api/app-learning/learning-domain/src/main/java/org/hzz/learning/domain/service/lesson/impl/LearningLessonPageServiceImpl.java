@@ -1,9 +1,9 @@
 package org.hzz.learning.domain.service.lesson.impl;
 
 import lombok.Setter;
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.course.CourseDomainService;

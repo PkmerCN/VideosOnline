@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.hzz.core.page.PageResponse;
+import io.gitee.pkmer.convention.page.PageResponse;
 
 /**
  * @author 胖卡

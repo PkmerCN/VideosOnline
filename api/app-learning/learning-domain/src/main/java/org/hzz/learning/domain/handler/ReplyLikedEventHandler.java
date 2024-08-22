@@ -1,7 +1,7 @@
 package org.hzz.learning.domain.handler;
 
 import lombok.Setter;
-import org.hzz.ddd.core.domain.shared.event.DomainEventHandler;
+import io.gitee.pkmer.ddd.shared.event.DomainEventHandler;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.event.ReplyLikedEvent;
 import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;

@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 
 /**
  * 分页查询回答或者评论

@@ -2,7 +2,7 @@ package org.hzz.learning.trigger.mq.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import lombok.Setter;
-import org.hzz.ddd.core.domain.shared.event.DomainEventBus;
+import io.gitee.pkmer.ddd.shared.event.DomainEventBus;
 import org.hzz.learning.domain.event.LearningLessonAddEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +20,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Queue.*;
-import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Key.*;
-import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Exchange.*;
+import static io.gitee.pkmer.rabbitmq.constants.rabbitmq.VideoMqConstants.Queue.*;
+import static io.gitee.pkmer.rabbitmq.constants.rabbitmq.VideoMqConstants.Key.*;
+import static io.gitee.pkmer.rabbitmq.constants.rabbitmq.VideoMqConstants.Exchange.*;
 
 /**
  * @author 胖卡

@@ -2,8 +2,8 @@ package org.hzz.learning.application.command.lesson;
 
 import lombok.Data;
 import lombok.Value;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.ddd.core.domain.shared.command.Command;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.ddd.shared.command.Command;
 
 /**
  * @author 胖卡

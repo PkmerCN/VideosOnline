@@ -1,6 +1,6 @@
 package org.hzz.points.cache;
 
-import org.hzz.core.converter.TargetAndSourceConverter;
+import io.gitee.pkmer.convention.converter.TargetAndSourceConverter;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 import org.hzz.points.types.resp.SeasonVo;
 import org.mapstruct.Mapper;

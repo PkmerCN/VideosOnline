@@ -4,8 +4,8 @@ import com.alibaba.fastjson2.annotation.JSONField;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.fastjson2.enums.BaseEnumReader;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.fastjson2.enums.BaseEnumReader;
 import org.hzz.learning.types.enums.question.QuestionStatus;
 
 import java.time.LocalDateTime;

@@ -1,8 +1,8 @@
 package org.hzz.points.application.handler.points;
 
 import lombok.Setter;
-import org.hzz.ddd.core.domain.shared.command.CommandHandler;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.ddd.shared.command.CommandHandler;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.points.application.command.points.QueryUserPointsCmd;
 import org.hzz.points.domain.service.points.PointsDomainService;
 import org.hzz.points.types.resp.PointsStatisticsVo;

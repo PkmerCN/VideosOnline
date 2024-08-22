@@ -1,6 +1,6 @@
 package org.hzz.points.trigger.mq.rabbitmq.config;
 
-import org.hzz.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
+import io.gitee.pkmer.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;

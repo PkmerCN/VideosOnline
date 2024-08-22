@@ -1,6 +1,6 @@
 package org.hzz.user.infrastructure.repository.mybatis.details;
 
-import org.hzz.core.repository.nomapper.BaseRepository;
+import io.gitee.pkmer.convention.repository.nomapper.BaseRepository;
 import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.repository.UserDetailRepository;
 import org.hzz.user.infrastructure.dao.entity.details.UserDetail;

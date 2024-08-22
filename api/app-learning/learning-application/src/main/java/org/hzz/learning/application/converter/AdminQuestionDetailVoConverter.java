@@ -1,6 +1,6 @@
 package org.hzz.learning.application.converter;
 
-import org.hzz.common.tree.BaseConverter;
+import io.gitee.pkmer.common.tree.BaseConverter;
 import org.hzz.learning.application.handler.question.admin.AdminGetQuestionDetailCommandHandler;
 import org.hzz.learning.application.handler.question.admin.AdminQuestionPageQueryCommandHandler;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;

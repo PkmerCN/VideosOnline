@@ -1,9 +1,9 @@
 package org.hzz.learning.domain.service.lesson.impl;
 
 import lombok.Setter;
-import org.hzz.core.exception.db.AppDbEntityNotFoundException;
-import org.hzz.core.exception.db.AppDbUpdateException;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.convention.exception.db.AppDbEntityNotFoundException;
+import io.gitee.pkmer.convention.exception.db.AppDbUpdateException;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.course.CourseDomainService;
 import org.hzz.learning.domain.aggregate.EnrollCourseAggregate;

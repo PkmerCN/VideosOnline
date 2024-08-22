@@ -1,6 +1,6 @@
 package org.hzz.user.domain.service.impl;
 
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.user.domain.exception.EmailException;
 import org.hzz.user.domain.entity.User;
 import org.hzz.user.domain.repository.UserRepository;

@@ -1,7 +1,7 @@
 package org.hzz.user.domain.service.details.impl;
 
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.repository.UserDetailRepository;
 import org.hzz.user.domain.service.details.UserDetailDomainService;

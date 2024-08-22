@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.hzz</groupId>
+        <groupId>io.gitee.pkmer</groupId>
         <artifactId>api</artifactId>
         <version>2.2.6-SNAPSHOT</version>
     </parent>
@@ -11,7 +11,7 @@
     <version>2.2.6-SNAPSHOT</version>
 
     <properties>
-        <start.class>org.hzz.AppMain</start.class>
+        <start.class>io.gitee.pkmer.AppMain</start.class>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <resource.delimiter>@</resource.delimiter>
@@ -20,32 +20,31 @@
     <dependencies>
         <!--  自身依赖Start      -->
         <dependency>
-            <groupId>org.hzz</groupId>
-            <artifactId>app-web-spring-boot-starter</artifactId>
-            <version>2.2.6-SNAPSHOT</version>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hzz</groupId>
+            <groupId>io.gitee.pkmer</groupId>
             <artifactId>auth-server-interface</artifactId>
             <version>2.2.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.hzz</groupId>
+            <groupId>io.gitee.pkmer</groupId>
             <artifactId>learning-interface</artifactId>
             <version>2.2.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.hzz.course</groupId>
+            <groupId>io.gitee.pkmer</groupId>
             <artifactId>course-interface</artifactId>
             <version>2.2.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.hzz.remark.interface</groupId>
+            <groupId>io.gitee.pkmer</groupId>
             <artifactId>remark-interface</artifactId>
             <version>2.2.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.hzz.points.api</groupId>
+            <groupId>io.gitee.pkmer</groupId>
             <artifactId>points-interface</artifactId>
             <version>2.2.6-SNAPSHOT</version>
         </dependency>

@@ -1,10 +1,10 @@
 package org.hzz.user.domain.entity;
 
+import io.gitee.pkmer.ddd.shared.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hzz.ddd.core.domain.shared.Entity;
 
 /**
  * @author 胖卡

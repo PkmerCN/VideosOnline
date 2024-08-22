@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonMapper">
-    <resultMap id="BaseResultMap" type="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
+<mapper namespace="io.gitee.pkmer.points.infrastructure.dao.mapper.points.PointsBoardSeasonMapper">
+    <resultMap id="BaseResultMap" type="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardSeason">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="begin_time" jdbcType="DATE" property="beginTime" />
@@ -68,7 +68,7 @@
     <sql id="Base_Column_List">
         id, name, begin_time, end_time
     </sql>
-    <select id="selectByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardSeasonExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -92,13 +92,13 @@
         delete from points_board_season
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <delete id="deleteByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample">
+    <delete id="deleteByExample" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardSeasonExample">
         delete from points_board_season
         <if test="_parameter != null">
             <include refid="Example_Where_Clause" />
         </if>
     </delete>
-    <insert id="insert" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
+    <insert id="insert" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardSeason">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -107,7 +107,7 @@
         values (#{name,jdbcType=VARCHAR}, #{beginTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}
         )
     </insert>
-    <insert id="insertSelective" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
+    <insert id="insertSelective" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardSeason">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -135,7 +135,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeasonExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardSeasonExample" resultType="java.lang.Long">
         select count(*) from points_board_season
         <if test="_parameter != null">
             <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
             <include refid="Update_By_Example_Where_Clause" />
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
+    <update id="updateByPrimaryKeySelective" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardSeason">
         update points_board_season
         <set>
             <if test="name != null">
@@ -186,7 +186,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardSeason">
+    <update id="updateByPrimaryKey" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardSeason">
         update points_board_season
         set name = #{name,jdbcType=VARCHAR},
             begin_time = #{beginTime,jdbcType=DATE},

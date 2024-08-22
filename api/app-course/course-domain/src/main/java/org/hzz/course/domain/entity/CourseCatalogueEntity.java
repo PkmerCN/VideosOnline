@@ -1,10 +1,10 @@
 package org.hzz.course.domain.entity;
 
 import lombok.Data;
-import org.hzz.core.enums.delete.Deleted;
+import io.gitee.pkmer.convention.enums.Deleted;
 import org.hzz.course.types.enums.catalogue.CatalogueType;
 import org.hzz.course.types.enums.catalogue.TrailerType;
-import org.hzz.ddd.core.domain.shared.Entity;
+import io.gitee.pkmer.ddd.shared.Entity;
 
 import java.time.LocalDateTime;
 

@@ -4,7 +4,7 @@ import com.alibaba.fastjson2.annotation.JSONField;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
-import org.hzz.fastjson2.enums.BaseEnumWriter;
+import io.gitee.pkmer.fastjson2.enums.BaseEnumWriter;
 import org.hzz.learning.types.enums.lesson.LessonStatus;
 import org.hzz.learning.types.enums.lesson.PlanStatus;
 

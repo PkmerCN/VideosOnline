@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.hzz.learning.infrastructure.dao.mapper.question.InteractionQuestionPageMapper">
+<mapper namespace="io.gitee.pkmer.learning.infrastructure.dao.mapper.question.InteractionQuestionPageMapper">
     <sql id="Base_Column_List">
         id, title, description, course_id, chapter_id, section_id, user_id, latest_answer_id,
     answer_times, anonymity, hidden, status, create_time, update_time
     </sql>
-    <select id="pageSelect" resultType="org.hzz.learning.infrastructure.dao.entity.question.InteractionQuestion">
+    <select id="pageSelect" resultType="io.gitee.pkmer.learning.infrastructure.dao.entity.question.InteractionQuestion">
         select
         <include refid="Base_Column_List"/>
         from interaction_question

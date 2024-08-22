@@ -1,7 +1,7 @@
 package org.hzz.learning.domain.entity;
 
 import lombok.Data;
-import org.hzz.ddd.core.domain.shared.Entity;
+import io.gitee.pkmer.ddd.shared.Entity;
 
 import java.util.List;
 import java.util.Map;

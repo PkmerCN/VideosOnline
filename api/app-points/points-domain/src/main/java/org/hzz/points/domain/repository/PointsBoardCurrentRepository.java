@@ -2,8 +2,8 @@ package org.hzz.points.domain.repository;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.common.date.DateUtil;
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.common.date.DateUtil;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.entity.PointsRecordEntity;
 import org.hzz.points.types.constants.RedisConstants;

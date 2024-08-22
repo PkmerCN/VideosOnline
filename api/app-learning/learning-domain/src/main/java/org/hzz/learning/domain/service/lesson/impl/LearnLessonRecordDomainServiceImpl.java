@@ -1,10 +1,10 @@
 package org.hzz.learning.domain.service.lesson.impl;
 
 import lombok.Setter;
-import org.hzz.common.date.DateUtil;
-import org.hzz.core.exception.db.AppDbEntityNotFoundException;
-import org.hzz.core.exception.db.AppDbInsertException;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.common.date.DateUtil;
+import io.gitee.pkmer.convention.exception.db.AppDbEntityNotFoundException;
+import io.gitee.pkmer.convention.exception.db.AppDbInsertException;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.learning.domain.aggregate.LearningLessonRecordAggregate;
 import org.hzz.learning.domain.entity.IdAndNumEntity;
 import org.hzz.learning.domain.entity.LearnRecordEntity;

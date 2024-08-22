@@ -1,6 +1,6 @@
 package org.hzz.course.api.course;
 
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.course.infrastructure.dao.model.Course;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

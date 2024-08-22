@@ -1,14 +1,14 @@
 package org.hzz.remark.api.like.controller;
 
 import lombok.Setter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.remark.api.like.LikedRecordApi;
 import org.hzz.remark.application.command.liked.CheckUserLikeBizIdCommand;
 import org.hzz.remark.application.command.liked.LikedCommand;
 import org.hzz.remark.application.service.RemarkCmdService;
 import org.hzz.remark.req.LikedReq;
-import org.hzz.security.context.AppContextHolder;
+import io.gitee.pkmer.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

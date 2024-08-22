@@ -1,6 +1,6 @@
 package org.hzz.learning.domain.repository.lesson;
 
-import org.hzz.core.page.PageResponse;
+import io.gitee.pkmer.convention.page.PageResponse;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 
 /**

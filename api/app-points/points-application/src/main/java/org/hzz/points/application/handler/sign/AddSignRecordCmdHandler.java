@@ -1,7 +1,7 @@
 package org.hzz.points.application.handler.sign;
 
 import lombok.Setter;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.points.application.command.sign.AddSignRecordCmd;
 import org.hzz.points.domain.service.sign.SignDomainService;
 import org.hzz.points.types.resp.SignResultVo;

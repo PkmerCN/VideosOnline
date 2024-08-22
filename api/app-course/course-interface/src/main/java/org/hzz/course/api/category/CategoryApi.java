@@ -1,7 +1,7 @@
 package org.hzz.course.api.category;
 
 import io.swagger.v3.oas.annotations.Operation;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.course.types.resp.CategoryTreeVo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,7 +1,7 @@
 package org.hzz.learning.domain.entity.question;
 
 import lombok.Data;
-import org.hzz.ddd.core.domain.shared.Entity;
+import io.gitee.pkmer.ddd.shared.Entity;
 import org.hzz.learning.types.enums.question.QuestionStatus;
 
 import java.time.LocalDateTime;

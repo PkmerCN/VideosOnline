@@ -4,7 +4,7 @@ import com.alibaba.fastjson2.annotation.JSONField;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.hzz.fastjson2.enums.BaseEnumReader;
+import io.gitee.pkmer.fastjson2.enums.BaseEnumReader;
 import org.hzz.learning.types.enums.lesson.SectionType;
 
 import java.time.LocalDateTime;

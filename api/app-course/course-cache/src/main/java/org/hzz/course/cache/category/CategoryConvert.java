@@ -6,7 +6,7 @@ package org.hzz.course.cache.category;
  * @date 2024/7/15
  */
 
-import org.hzz.common.tree.BaseConverter;
+import io.gitee.pkmer.common.tree.BaseConverter;
 import org.hzz.course.domain.entity.CategoryEntity;
 import org.hzz.course.types.dto.CategoryTreeDto;
 import org.mapstruct.Mapper;

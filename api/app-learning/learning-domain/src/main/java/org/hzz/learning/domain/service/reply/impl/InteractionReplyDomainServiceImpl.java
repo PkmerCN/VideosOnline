@@ -1,12 +1,12 @@
 package org.hzz.learning.domain.service.reply.impl;
 
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.page.query.FilterCondition;
-import org.hzz.core.page.query.FilterCondition.Operation;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.core.page.query.SortOrder;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.page.query.FilterCondition;
+import io.gitee.pkmer.convention.page.query.FilterCondition.Operation;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.convention.page.query.SortOrder;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.repository.reply.InteractionReplyRepository;
 import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;

@@ -1,7 +1,7 @@
 package org.hzz.points.application.command.sign;
 
 import lombok.Data;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 import org.hzz.points.application.handler.sign.AddSignRecordCmdHandler;
 
 /**

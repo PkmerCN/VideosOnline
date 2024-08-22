@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.learning.types.req.lesson.LearningRecordFormRequest;
 import org.hzz.learning.application.resp.LearnLessonRecordDto;
 import org.springframework.web.bind.annotation.*;

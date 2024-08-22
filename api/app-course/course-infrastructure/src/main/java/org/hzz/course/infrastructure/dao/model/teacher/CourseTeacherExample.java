@@ -3,7 +3,7 @@ package org.hzz.course.infrastructure.dao.model.teacher;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.hzz.core.enums.delete.Deleted;
+import io.gitee.pkmer.convention.enums.Deleted;
 import org.hzz.course.types.enums.teacher.IsShow;
 
 public class CourseTeacherExample {

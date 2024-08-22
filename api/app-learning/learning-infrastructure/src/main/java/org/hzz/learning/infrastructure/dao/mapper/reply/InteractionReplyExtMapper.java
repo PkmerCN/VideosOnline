@@ -2,7 +2,7 @@ package org.hzz.learning.infrastructure.dao.mapper.reply;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.hzz.core.mapper.PageMapper;
+import io.gitee.pkmer.convention.mapper.PageMapper;
 import org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply;
 import org.hzz.learning.infrastructure.repository.mybatis.question.InteractionReplyRepositoryImpl;
 

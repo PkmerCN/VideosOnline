@@ -1,9 +1,9 @@
 package org.hzz.learning.api.reply.controller;
 
 import lombok.Setter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.learning.api.reply.AdminInteractionReplyApi;
 import org.hzz.learning.application.command.reply.PageQueryReplyCommand;
 import org.hzz.learning.application.command.reply.admin.HiddenReplyCommand;

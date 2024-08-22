@@ -1,6 +1,6 @@
 package org.hzz.course.application.service.category;
 
-import org.hzz.ddd.core.domain.shared.service.CmdService;
+import io.gitee.pkmer.ddd.shared.service.CmdService;
 import org.springframework.stereotype.Service;
 
 /**

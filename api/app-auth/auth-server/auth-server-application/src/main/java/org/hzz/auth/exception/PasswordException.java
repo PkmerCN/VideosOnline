@@ -1,7 +1,7 @@
 package org.hzz.auth.exception;
 
-import org.hzz.core.code.impl.AppStatusImpl;
-import org.hzz.core.exception.AppCommonException;
+import io.gitee.pkmer.convention.code.impl.AppStatusImpl;
+import io.gitee.pkmer.convention.exception.AppCommonException;
 
 /**
  * @author 胖卡

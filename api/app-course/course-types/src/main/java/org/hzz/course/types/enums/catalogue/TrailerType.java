@@ -1,8 +1,8 @@
 package org.hzz.course.types.enums.catalogue;
 
 import lombok.Getter;
-import org.hzz.core.enums.BaseEnumTemplate;
-import org.hzz.core.enums.BaseEnum;
+import io.gitee.pkmer.convention.enums.BaseEnumTemplate;
+import io.gitee.pkmer.convention.enums.BaseEnum;
 
 /**
  * 是否支持试看

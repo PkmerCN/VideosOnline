@@ -2,7 +2,7 @@ package org.hzz.points.application.command.points;
 
 import lombok.Data;
 import lombok.Value;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 import org.hzz.points.application.handler.points.GetAllSeasonCmdHandler;
 
 /**

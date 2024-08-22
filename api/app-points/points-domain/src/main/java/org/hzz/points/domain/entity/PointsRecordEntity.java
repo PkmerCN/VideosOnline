@@ -2,7 +2,7 @@ package org.hzz.points.domain.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.hzz.ddd.core.domain.shared.Entity;
+import io.gitee.pkmer.ddd.shared.Entity;
 import org.hzz.points.types.enums.PointsType;
 
 import java.time.LocalDateTime;

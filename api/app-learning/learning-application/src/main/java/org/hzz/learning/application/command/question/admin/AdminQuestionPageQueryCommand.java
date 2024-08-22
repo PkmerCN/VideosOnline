@@ -1,8 +1,8 @@
 package org.hzz.learning.application.command.question.admin;
 
 import lombok.Data;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 import org.hzz.learning.application.handler.question.admin.AdminQuestionPageQueryCommandHandler;
 import org.hzz.learning.types.enums.question.QuestionStatus;
 

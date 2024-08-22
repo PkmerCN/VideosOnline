@@ -1,8 +1,8 @@
 package org.hzz.remark.types;
 
 import lombok.Getter;
-import org.hzz.core.enums.BaseEnum;
-import org.hzz.core.enums.BaseEnumTemplate;
+import io.gitee.pkmer.convention.enums.BaseEnum;
+import io.gitee.pkmer.convention.enums.BaseEnumTemplate;
 
 /**
  * @author 胖卡

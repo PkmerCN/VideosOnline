@@ -1,7 +1,7 @@
 package org.hzz.learning.domain.event;
 
 import lombok.*;
-import org.hzz.ddd.core.domain.shared.event.base.BaseDomainEvent;
+import io.gitee.pkmer.ddd.shared.event.base.BaseDomainEvent;
 import org.hzz.learning.domain.handler.LearningLessonAddEventHandler;
 
 import java.time.LocalDateTime;

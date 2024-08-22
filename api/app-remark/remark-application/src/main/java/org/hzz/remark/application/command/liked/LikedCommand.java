@@ -2,7 +2,7 @@ package org.hzz.remark.application.command.liked;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 import org.hzz.remark.application.handler.liked.LikedCommandHandler;
 import org.hzz.remark.types.BizType;
 

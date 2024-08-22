@@ -2,9 +2,9 @@ package org.hzz.learning.trigger.mq.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import lombok.Setter;
-import org.hzz.ddd.core.domain.shared.event.DomainEventBus;
+import io.gitee.pkmer.ddd.shared.event.DomainEventBus;
 import org.hzz.learning.domain.event.ReplyLikedEvent;
-import org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants;
+import io.gitee.pkmer.rabbitmq.constants.rabbitmq.VideoMqConstants;
 import org.hzz.remark.types.LikedTimesDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

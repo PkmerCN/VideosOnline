@@ -1,6 +1,6 @@
 package org.hzz.remark.api.like;
 
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.remark.types.BizType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

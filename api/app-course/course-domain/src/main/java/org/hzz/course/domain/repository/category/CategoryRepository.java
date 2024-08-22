@@ -1,6 +1,6 @@
 package org.hzz.course.domain.repository.category;
 
-import org.hzz.core.enums.delete.Deleted;
+import io.gitee.pkmer.convention.enums.Deleted;
 import org.hzz.course.domain.entity.CategoryEntity;
 
 import java.util.List;

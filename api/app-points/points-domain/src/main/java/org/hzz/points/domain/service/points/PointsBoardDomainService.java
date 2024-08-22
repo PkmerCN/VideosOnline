@@ -1,7 +1,7 @@
 package org.hzz.points.domain.service.points;
 
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.ddd.core.domain.shared.service.DomainService;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.ddd.shared.service.DomainService;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.repository.PointsBoardCurrentRepository;
 import org.hzz.points.types.req.PointsBoardQuery;

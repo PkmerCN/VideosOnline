@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.cache.core.RedisCache;
+import io.gitee.pkmer.cache.core.RedisCache;
 import org.hzz.learning.application.task.DelayTask;
 import org.hzz.learning.application.task.DelayTaskHandler;
 import org.hzz.learning.domain.entity.LearnRecordEntity;

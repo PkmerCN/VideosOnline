@@ -2,13 +2,13 @@ package org.hzz.points.trigger.mq.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.core.converter.TargetAndSourceConverter;
-import org.hzz.ddd.core.domain.shared.event.DomainEventBus;
-import org.hzz.ddd.core.domain.shared.event.annotations.DDDBus;
+import io.gitee.pkmer.convention.converter.TargetAndSourceConverter;
+import io.gitee.pkmer.ddd.shared.event.DomainEventBus;
+import io.gitee.pkmer.ddd.shared.event.annotations.DDDBus;
 import org.hzz.points.domain.event.AddPointsRecordEvent;
 import org.hzz.points.trigger.mq.rabbitmq.config.RabbitMqConfig;
 import org.hzz.points.types.dto.PointsRewardDto;
-import org.hzz.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
+import io.gitee.pkmer.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

@@ -2,12 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.hzz.remark</groupId>
+        <groupId>io.gitee.pkmer</groupId>
         <artifactId>app-remark</artifactId>
         <version>2.2.6-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.hzz.remark.infrastructure</groupId>
     <artifactId>remark-infrastructure</artifactId>
 
     <properties>
@@ -18,13 +17,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hzz.remark.domain</groupId>
+            <groupId>io.gitee.pkmer</groupId>
             <artifactId>remark-domain</artifactId>
             <version>2.2.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.mybatis.dynamic-sql</groupId>
-            <artifactId>mybatis-dynamic-sql</artifactId>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-starter-mybatis</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -2,7 +2,7 @@ package org.hzz.points.domain.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.hzz.ddd.core.domain.shared.Entity;
+import io.gitee.pkmer.ddd.shared.Entity;
 
 /**
  * @author 胖卡

@@ -1,6 +1,6 @@
 package org.hzz.learning.infrastructure.dao.entity.reply;
 
-import org.hzz.mybatis.annotation.SnowflakeId;
+import io.gitee.pkmer.mybatis.annotations.SnowflakeId;
 
 import java.time.LocalDateTime;
 

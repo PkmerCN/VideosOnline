@@ -1,18 +1,18 @@
 package org.hzz.points.domain.service.sign.impl;
 
 import lombok.Setter;
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.code.impl.AppStatusImpl;
-import org.hzz.core.exception.request.BadRequestException;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.code.impl.AppStatusImpl;
+import io.gitee.pkmer.convention.exception.request.BadRequestException;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.points.domain.repository.SignRecordRedisRepository;
 import org.hzz.points.domain.service.points.strategy.PointsStrategy;
 import org.hzz.points.domain.service.sign.SignDomainService;
 import org.hzz.points.types.dto.PointsRewardDto;
 import org.hzz.points.types.enums.PointsType;
 import org.hzz.points.types.resp.SignResultVo;
-import org.hzz.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
-import org.hzz.rabbitmq.core.RabbitMQHelper;
+import io.gitee.pkmer.rabbitmq.constants.rabbitmq.video.PointsMqConstants;
+import io.gitee.pkmer.rabbitmq.core.RabbitMQHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

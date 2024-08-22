@@ -1,6 +1,6 @@
 package org.hzz.remark.infrastructure.dao.handler;
 
-import org.hzz.core.handler.StringTypeHandler;
+import io.gitee.pkmer.convention.handler.StringTypeHandler;
 import org.hzz.remark.types.BizType;
 
 /**

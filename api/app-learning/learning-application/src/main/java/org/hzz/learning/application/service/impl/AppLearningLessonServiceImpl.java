@@ -1,8 +1,8 @@
 package org.hzz.learning.application.service.impl;
 
 import lombok.Setter;
-import org.hzz.core.page.PageResponse;
-import org.hzz.design.pattern.strategy.StrategyChoose;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.designpattern.strategy.StrategyChoose;
 import org.hzz.learning.application.command.lesson.LearnRecordCommitCommand;
 import org.hzz.learning.application.command.lesson.PageQueryCommand;
 import org.hzz.learning.application.handler.MarkConstants;

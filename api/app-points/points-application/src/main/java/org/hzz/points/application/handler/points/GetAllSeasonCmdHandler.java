@@ -2,10 +2,10 @@ package org.hzz.points.application.handler.points;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.converter.TargetAndSourceConverter;
-import org.hzz.ddd.core.domain.shared.command.CommandHandler;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.converter.TargetAndSourceConverter;
+import io.gitee.pkmer.ddd.shared.command.CommandHandler;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.points.application.command.points.GetAllSeasonCmd;
 import org.hzz.points.cache.SeasonCache;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;

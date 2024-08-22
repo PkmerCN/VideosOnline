@@ -1,6 +1,6 @@
 package org.hzz.course.domain.service.teacher.impl;
 
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.course.domain.entity.CourseTeacherEntity;
 import org.hzz.course.domain.repository.teacher.CourseTeacherRepository;
 import org.hzz.course.domain.service.teacher.CourseTeacherDomainService;

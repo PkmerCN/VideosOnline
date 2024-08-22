@@ -2,11 +2,11 @@ package org.hzz.learning.application.handler.plan;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.page.query.FilterCondition;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.page.query.FilterCondition;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.plan.PlanPageQueryCommand;
 import org.hzz.learning.domain.aggregate.LearningLessonAggregate;
 import org.hzz.learning.domain.entity.IdAndNumEntity;

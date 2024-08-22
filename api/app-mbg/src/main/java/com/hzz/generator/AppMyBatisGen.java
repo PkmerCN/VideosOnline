@@ -1,7 +1,7 @@
 package com.hzz.generator;
 
+import io.gitee.pkmer.mybatis.generator.MyBatisGeneratorRunner;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.mybatis.generator.MyBatisGeneratorRunner;
 
 import java.nio.file.FileSystems;
 

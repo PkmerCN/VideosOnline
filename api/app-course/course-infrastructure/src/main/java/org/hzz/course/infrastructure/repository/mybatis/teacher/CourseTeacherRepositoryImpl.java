@@ -1,7 +1,7 @@
 package org.hzz.course.infrastructure.repository.mybatis.teacher;
 
-import org.hzz.common.tree.BaseConverter;
-import org.hzz.core.repository.nomapper.BaseRepository;
+import io.gitee.pkmer.common.tree.BaseConverter;
+import io.gitee.pkmer.convention.repository.nomapper.BaseRepository;
 import org.hzz.course.domain.entity.CourseTeacherEntity;
 import org.hzz.course.domain.repository.teacher.CourseTeacherRepository;
 import org.hzz.course.infrastructure.dao.mapper.teacher.CourseTeacherMapper;

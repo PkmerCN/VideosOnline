@@ -2,8 +2,8 @@ package org.hzz.learning.application.command.reply;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 import org.hzz.learning.application.handler.reply.PageQueryReplyCommandHandler;
 
 /**

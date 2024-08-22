@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.hzz</groupId>
+        <groupId>io.gitee.pkmer</groupId>
         <artifactId>app-learning</artifactId>
         <version>2.2.6-SNAPSHOT</version>
     </parent>
@@ -18,29 +18,25 @@
     <dependencies>
         <!--   自身依赖start     -->
         <dependency>
-            <groupId>org.hzz</groupId>
+            <groupId>io.gitee.pkmer</groupId>
             <artifactId>learning-domain</artifactId>
             <version>2.2.6-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.hzz</groupId>
-            <artifactId>app-rabbitmq-spring-boot-starter</artifactId>
-            <version>2.2.6-SNAPSHOT</version>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-starter-rabbitmq</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hzz.common</groupId>
-            <artifactId>app-common-spring-boot-starter</artifactId>
-            <version>2.2.6-SNAPSHOT</version>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hzz</groupId>
-            <artifactId>app-mybatis-spring-boot-starter</artifactId>
-            <version>2.2.6-SNAPSHOT</version>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-starter-mybatis</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hzz.cache</groupId>
-            <artifactId>app-cache-spring-boot-starter</artifactId>
-            <version>2.2.6-SNAPSHOT</version>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-starter-cache</artifactId>
         </dependency>
         <!--   自身依赖start     -->
         <dependency>

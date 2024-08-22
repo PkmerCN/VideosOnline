@@ -1,11 +1,11 @@
 package org.hzz.learning.application.handler.question;
 
 import lombok.Setter;
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.ddd.core.domain.shared.command.CommandHandler;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.ddd.shared.command.CommandHandler;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.question.QuestionPageQueryCommand;
 import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;

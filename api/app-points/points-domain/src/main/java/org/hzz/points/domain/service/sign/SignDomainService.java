@@ -1,6 +1,6 @@
 package org.hzz.points.domain.service.sign;
 
-import org.hzz.ddd.core.domain.shared.service.DomainService;
+import io.gitee.pkmer.ddd.shared.service.DomainService;
 import org.hzz.points.types.resp.SignResultVo;
 
 /**

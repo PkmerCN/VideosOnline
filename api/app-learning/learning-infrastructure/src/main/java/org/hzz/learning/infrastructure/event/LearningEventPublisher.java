@@ -1,7 +1,7 @@
 package org.hzz.learning.infrastructure.event;
 
-import org.hzz.ddd.core.domain.shared.event.DomainEvent;
-import org.hzz.ddd.core.domain.shared.event.DomainEventBus;
+import io.gitee.pkmer.ddd.shared.event.DomainEvent;
+import io.gitee.pkmer.ddd.shared.event.DomainEventBus;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.lang.NonNull;

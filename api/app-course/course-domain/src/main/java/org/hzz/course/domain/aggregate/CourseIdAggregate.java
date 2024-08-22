@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hzz.ddd.core.domain.shared.AggregateRoot;
+import io.gitee.pkmer.ddd.shared.AggregateRoot;
 
 import java.util.List;
 /**

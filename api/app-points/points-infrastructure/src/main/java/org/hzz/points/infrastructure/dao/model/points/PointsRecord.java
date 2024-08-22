@@ -1,6 +1,6 @@
 package org.hzz.points.infrastructure.dao.model.points;
 
-import org.hzz.mybatis.annotation.SnowflakeId;
+import io.gitee.pkmer.mybatis.annotations.SnowflakeId;
 import org.hzz.points.types.enums.PointsType;
 
 import java.time.LocalDateTime;

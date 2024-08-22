@@ -1,7 +1,7 @@
 package org.hzz.course.domain.service.course.impl;
 
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.service.BaseAppService;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.service.BaseAppService;
 import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.repository.CourseRepository;

@@ -1,7 +1,7 @@
 package org.hzz.course.infrastructure.dao.handler.teacher;
 
-import org.hzz.core.enums.delete.Deleted;
-import org.hzz.core.handler.ByteTypeHandler;
+import io.gitee.pkmer.convention.enums.Deleted;
+import io.gitee.pkmer.convention.handler.ByteTypeHandler;
 
 /**
  * 处理course_teacher表中deleted tinyint

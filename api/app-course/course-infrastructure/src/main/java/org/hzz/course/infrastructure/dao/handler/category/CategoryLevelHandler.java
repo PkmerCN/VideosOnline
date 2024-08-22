@@ -1,6 +1,6 @@
 package org.hzz.course.infrastructure.dao.handler.category;
 
-import org.hzz.core.handler.IntTypeHandler;
+import io.gitee.pkmer.convention.handler.IntTypeHandler;
 import org.hzz.course.types.enums.catagory.CategoryLevel;
 
 /**

@@ -2,8 +2,8 @@ package org.hzz.points.domain.service.points.impl;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.Setter;
-import org.hzz.common.date.DateUtil;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.common.date.DateUtil;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.points.domain.entity.PointsRecordEntity;
 import org.hzz.points.domain.repository.PointsBoardCurrentRepository;
 import org.hzz.points.domain.repository.PointsRecordRepository;

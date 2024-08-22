@@ -2,12 +2,12 @@ package org.hzz.learning.api.lesson.controller;
 
 import com.alibaba.fastjson2.JSON;
 import lombok.Setter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.learning.api.lesson.LearningTestApi;
 import org.hzz.learning.domain.event.LearningLessonAddEvent;
 import org.hzz.learning.infrastructure.mq.rabbitmq.model.TestData;
-import org.hzz.rabbitmq.core.RabbitMQHelper;
+import io.gitee.pkmer.rabbitmq.core.RabbitMQHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.hzz.learning.infrastructure.mq.rabbitmq.constants.RabbitmqConstants.RoutingKey.LEARNING_TEST_KEY;
-import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Key.*;
-import static org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants.Exchange.*;
+import static io.gitee.pkmer.rabbitmq.constants.rabbitmq.VideoMqConstants.Key.*;
+import static io.gitee.pkmer.rabbitmq.constants.rabbitmq.VideoMqConstants.Exchange.*;
 /**
  * @author 胖卡
  * @version 1.0.0

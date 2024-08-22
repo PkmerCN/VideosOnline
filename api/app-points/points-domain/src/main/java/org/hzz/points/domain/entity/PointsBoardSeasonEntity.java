@@ -1,7 +1,7 @@
 package org.hzz.points.domain.entity;
 
 import lombok.Data;
-import org.hzz.ddd.core.domain.shared.Entity;
+import io.gitee.pkmer.ddd.shared.Entity;
 
 import java.time.LocalDate;
 

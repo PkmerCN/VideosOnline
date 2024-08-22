@@ -2,9 +2,9 @@ package org.hzz.learning.application.command.plan;
 
 import lombok.Data;
 import lombok.Value;
-import org.hzz.ddd.core.domain.shared.command.Command;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
-import org.hzz.ddd.core.domain.shared.command.Mark;
+import io.gitee.pkmer.ddd.shared.command.Command;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
+import io.gitee.pkmer.ddd.shared.command.Mark;
 
 import static org.hzz.learning.application.handler.MarkConstants.LEARN_PLAN_ADD;
 

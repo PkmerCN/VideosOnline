@@ -1,8 +1,8 @@
 package org.hzz.course.domain.service.category.impl;
 
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.enums.delete.Deleted;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.enums.Deleted;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.course.domain.entity.CategoryEntity;
 import org.hzz.course.domain.repository.category.CategoryRepository;
 import org.hzz.course.domain.service.category.CategoryDomainService;

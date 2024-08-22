@@ -1,7 +1,7 @@
 package org.hzz.learning.types.enums.lesson;
 
 import lombok.Getter;
-import org.hzz.core.enums.BaseEnum;
+import io.gitee.pkmer.convention.enums.BaseEnum;
 
 /**
  * @author 胖卡

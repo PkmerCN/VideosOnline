@@ -1,8 +1,8 @@
 package org.hzz.course.infrastructure.repository.mybatis.catalogue;
 
-import org.hzz.common.tree.BaseConverter;
-import org.hzz.core.enums.delete.Deleted;
-import org.hzz.core.repository.nomapper.BaseRepository;
+import io.gitee.pkmer.common.tree.BaseConverter;
+import io.gitee.pkmer.convention.enums.Deleted;
+import io.gitee.pkmer.convention.repository.nomapper.BaseRepository;
 import org.hzz.course.domain.entity.CourseCatalogueEntity;
 import org.hzz.course.domain.repository.catalogue.CatalogueRepository;
 import org.hzz.course.infrastructure.dao.mapper.catalogue.CourseCatalogueMapper;

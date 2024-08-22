@@ -4,7 +4,7 @@ import com.xxl.job.core.context.XxlJobHelper;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 import org.hzz.points.domain.service.points.PointsBoardDomainService;

@@ -1,7 +1,7 @@
 package org.hzz.learning.domain.service.question;
 
-import org.hzz.core.page.PageResponse;
-import org.hzz.ddd.core.domain.shared.service.DomainService;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.ddd.shared.service.DomainService;
 import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 

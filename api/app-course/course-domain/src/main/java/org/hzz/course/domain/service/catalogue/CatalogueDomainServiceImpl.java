@@ -1,7 +1,7 @@
 package org.hzz.course.domain.service.catalogue;
 
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.course.domain.entity.CourseCatalogueEntity;
 import org.hzz.course.domain.repository.catalogue.CatalogueRepository;
 import org.springframework.stereotype.Service;

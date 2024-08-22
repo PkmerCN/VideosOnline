@@ -2,7 +2,7 @@ package org.hzz.course.infrastructure.dao.handler.category;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
-import org.hzz.core.enums.delete.Deleted;
+import io.gitee.pkmer.convention.enums.Deleted;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

@@ -2,7 +2,7 @@ package org.hzz.points.api.sign;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.points.types.resp.SignResultVo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

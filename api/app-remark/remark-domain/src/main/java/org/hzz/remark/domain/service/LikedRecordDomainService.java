@@ -1,6 +1,6 @@
 package org.hzz.remark.domain.service;
 
-import org.hzz.ddd.core.domain.shared.service.DomainService;
+import io.gitee.pkmer.ddd.shared.service.DomainService;
 import org.hzz.remark.types.BizType;
 
 import java.util.Set;

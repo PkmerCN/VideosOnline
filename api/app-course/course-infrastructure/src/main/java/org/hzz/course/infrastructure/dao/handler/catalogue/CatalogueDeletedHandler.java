@@ -2,8 +2,8 @@ package org.hzz.course.infrastructure.dao.handler.catalogue;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
-import org.hzz.core.enums.delete.Deleted;
-import org.hzz.core.handler.ByteTypeHandler;
+import io.gitee.pkmer.convention.enums.Deleted;
+import io.gitee.pkmer.convention.handler.ByteTypeHandler;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

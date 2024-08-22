@@ -1,8 +1,8 @@
 package org.hzz.course.infrastructure.repository.mybatis.category;
 
 import lombok.Setter;
-import org.hzz.core.enums.delete.Deleted;
-import org.hzz.core.repository.nomapper.BaseRepository;
+import io.gitee.pkmer.convention.enums.Deleted;
+import io.gitee.pkmer.convention.repository.nomapper.BaseRepository;
 import org.hzz.course.domain.entity.CategoryEntity;
 import org.hzz.course.domain.repository.category.CategoryRepository;
 import org.hzz.course.infrastructure.dao.mapper.category.CategoryExtMapper;

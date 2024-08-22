@@ -1,7 +1,7 @@
 package org.hzz.learning.application.command.question.admin;
 
 import lombok.Data;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 import org.hzz.learning.application.handler.question.admin.AdminGetQuestionDetailCommandHandler;
 
 /**

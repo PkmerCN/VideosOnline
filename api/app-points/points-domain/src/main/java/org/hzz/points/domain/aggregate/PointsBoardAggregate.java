@@ -1,7 +1,7 @@
 package org.hzz.points.domain.aggregate;
 
 import lombok.Data;
-import org.hzz.ddd.core.domain.shared.AggregateRoot;
+import io.gitee.pkmer.ddd.shared.AggregateRoot;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 
 import java.util.List;

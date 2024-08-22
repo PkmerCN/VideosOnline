@@ -1,6 +1,6 @@
 package org.hzz.course.types.enums.catagory;
 
-import org.hzz.core.enums.BaseEnum;
+import io.gitee.pkmer.convention.enums.BaseEnum;
 
 /**
  * 一级分类，二级分类，三级分类

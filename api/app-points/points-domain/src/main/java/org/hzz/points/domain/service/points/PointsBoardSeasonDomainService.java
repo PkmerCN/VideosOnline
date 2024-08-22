@@ -1,6 +1,6 @@
 package org.hzz.points.domain.service.points;
 
-import org.hzz.ddd.core.domain.shared.service.DomainService;
+import io.gitee.pkmer.ddd.shared.service.DomainService;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 
 import java.util.List;

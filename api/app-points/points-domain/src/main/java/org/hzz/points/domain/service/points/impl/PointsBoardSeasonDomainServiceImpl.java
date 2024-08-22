@@ -1,8 +1,8 @@
 package org.hzz.points.domain.service.points.impl;
 
 import cn.hutool.core.util.StrUtil;
-import org.hzz.common.date.DateUtil;
-import org.hzz.core.service.BaseDomainService;
+import io.gitee.pkmer.common.date.DateUtil;
+import io.gitee.pkmer.convention.service.BaseDomainService;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 import org.hzz.points.domain.repository.PointsBoardSeasonRepository;
 import org.hzz.points.domain.service.points.PointsBoardSeasonDomainService;

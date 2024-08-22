@@ -1,7 +1,7 @@
 package org.hzz.learning.domain.repository.reply;
 
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 
 import java.util.List;

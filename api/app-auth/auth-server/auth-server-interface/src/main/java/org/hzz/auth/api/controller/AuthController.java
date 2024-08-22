@@ -5,8 +5,8 @@ import org.hzz.auth.AuthAppService;
 import org.hzz.api.AuthAPI;
 import org.hzz.api.model.LoginUserRequest;
 import org.hzz.auth.command.UserLoginCommand;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.result.Result;;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

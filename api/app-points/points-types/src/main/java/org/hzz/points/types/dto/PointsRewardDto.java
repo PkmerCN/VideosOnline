@@ -4,8 +4,8 @@ import com.alibaba.fastjson2.annotation.JSONField;
 import lombok.Data;
 import lombok.Value;
 import lombok.experimental.Accessors;
-import org.hzz.fastjson2.enums.BaseEnumReader;
-import org.hzz.fastjson2.enums.BaseEnumWriter;
+import io.gitee.pkmer.fastjson2.enums.BaseEnumReader;
+import io.gitee.pkmer.fastjson2.enums.BaseEnumWriter;
 import org.hzz.points.types.enums.PointsType;
 
 import java.time.LocalDateTime;

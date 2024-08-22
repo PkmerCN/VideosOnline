@@ -1,9 +1,9 @@
 package org.hzz.points.api.points.controller;
 
 import lombok.Setter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.exception.request.BadRequestException;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.exception.request.BadRequestException;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.points.api.points.PointsApi;
 import org.hzz.points.application.command.points.QueryPointsBoardCmd;
 import org.hzz.points.application.command.points.QueryUserPointsCmd;
@@ -11,13 +11,13 @@ import org.hzz.points.application.service.PointsCmdService;
 import org.hzz.points.types.req.PointsBoardQuery;
 import org.hzz.points.types.resp.PointsBoardVo;
 import org.hzz.points.types.resp.PointsStatisticsVo;
-import org.hzz.security.context.AppContextHolder;
+import io.gitee.pkmer.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static org.hzz.core.code.impl.AppStatusImpl.NOT_ALLOW_100;
+import static io.gitee.pkmer.convention.code.impl.AppStatusImpl.NOT_ALLOW_100;
 
 /**
  * @author 胖卡

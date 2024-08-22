@@ -1,8 +1,8 @@
 package org.hzz.points.infrastructure.repository.mybatis;
 
 import lombok.Setter;
-import org.hzz.core.converter.RecordAndEntityConverter;
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.convention.converter.RecordAndEntityConverter;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.repository.PointsBoardHistoryRepository;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardDynamicMapper;

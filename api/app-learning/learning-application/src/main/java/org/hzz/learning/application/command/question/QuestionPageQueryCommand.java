@@ -1,12 +1,12 @@
 package org.hzz.learning.application.command.question;
 
 import lombok.Data;
-import org.hzz.core.page.query.FilterCondition;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.convention.page.query.FilterCondition;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 import org.hzz.learning.application.handler.question.QuestionPageQueryCommandHandler;
 import org.hzz.learning.types.req.question.QuestionPageQuery;
-import org.hzz.security.context.AppContextHolder;
+import io.gitee.pkmer.security.context.AppContextHolder;
 
 import java.util.ArrayList;
 import java.util.List;

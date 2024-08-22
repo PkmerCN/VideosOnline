@@ -1,6 +1,6 @@
 package org.hzz.learning.domain.repository.question;
 
-import org.hzz.core.page.PageResponse;
+import io.gitee.pkmer.convention.page.PageResponse;
 import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 

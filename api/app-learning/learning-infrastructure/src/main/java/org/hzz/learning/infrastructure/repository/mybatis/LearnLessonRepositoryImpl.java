@@ -1,7 +1,7 @@
 package org.hzz.learning.infrastructure.repository.mybatis;
 
 import lombok.Setter;
-import org.hzz.common.collection.CollUtil;
+import io.gitee.pkmer.common.collection.CollUtil;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
 import org.hzz.learning.domain.repository.lesson.LearnLessonRepository;
 import org.hzz.learning.domain.valueobject.EnrollerLesson;

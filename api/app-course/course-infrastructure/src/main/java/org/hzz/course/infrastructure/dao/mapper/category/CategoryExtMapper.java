@@ -2,7 +2,7 @@ package org.hzz.course.infrastructure.dao.mapper.category;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.hzz.core.enums.delete.Deleted;
+import io.gitee.pkmer.convention.enums.Deleted;
 import org.hzz.course.infrastructure.dao.model.category.Category;
 
 import java.util.List;

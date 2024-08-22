@@ -1,11 +1,11 @@
 package org.hzz.learning.infrastructure.repository.mybatis.question;
 
 import lombok.Setter;
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.converter.RecordAndEntityConverter;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.core.repository.nomapper.PageBaseRepository;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.converter.RecordAndEntityConverter;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.convention.repository.nomapper.PageBaseRepository;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.repository.reply.InteractionReplyRepository;
 import org.hzz.learning.infrastructure.dao.entity.reply.InteractionReply;

@@ -1,6 +1,6 @@
 package org.hzz.course.infrastructure.dao.model.catalogue;
 
-import org.hzz.core.enums.delete.Deleted;
+import io.gitee.pkmer.convention.enums.Deleted;
 import org.hzz.course.types.enums.catalogue.CatalogueType;
 import org.hzz.course.types.enums.catalogue.TrailerType;
 

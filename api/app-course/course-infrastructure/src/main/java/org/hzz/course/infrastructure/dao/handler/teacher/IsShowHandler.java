@@ -1,6 +1,6 @@
 package org.hzz.course.infrastructure.dao.handler.teacher;
 
-import org.hzz.core.handler.ByteTypeHandler;
+import io.gitee.pkmer.convention.handler.ByteTypeHandler;
 import org.hzz.course.types.enums.teacher.IsShow;
 
 /**

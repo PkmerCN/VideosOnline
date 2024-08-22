@@ -2,10 +2,10 @@ package org.hzz.api.controller;
 
 
 import org.hzz.api.AuthTestAPI;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.exception.AppCommonException;
-import org.hzz.security.context.AppContextHolder;
-import org.hzz.security.jwt.bo.JWTUserBo;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.exception.AppCommonException;
+import io.gitee.pkmer.security.context.AppContextHolder;
+import io.gitee.pkmer.security.jwt.bo.JWTUserBo;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;

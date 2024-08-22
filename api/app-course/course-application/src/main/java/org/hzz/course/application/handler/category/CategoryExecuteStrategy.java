@@ -1,8 +1,8 @@
 package org.hzz.course.application.handler.category;
 
-import org.hzz.ddd.core.domain.shared.command.CommandHandler;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.ddd.shared.command.CommandHandler;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

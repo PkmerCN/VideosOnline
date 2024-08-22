@@ -1,7 +1,7 @@
 package org.hzz.learning.infrastructure.dao.mapper.lesson;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.hzz.core.mapper.PageMapper;
+import io.gitee.pkmer.convention.mapper.PageMapper;
 import org.hzz.learning.infrastructure.dao.entity.lesson.LearningLesson;
 
 /**

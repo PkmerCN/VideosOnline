@@ -1,7 +1,7 @@
 package org.hzz.learning.application.handler.question;
 
 import lombok.Setter;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.question.GetQuestionCommand;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.service.question.InteractionQuestionDomainService;

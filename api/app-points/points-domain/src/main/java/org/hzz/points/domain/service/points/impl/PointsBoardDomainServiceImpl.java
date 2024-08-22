@@ -2,7 +2,7 @@ package org.hzz.points.domain.service.points.impl;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 import org.hzz.points.domain.repository.PointsBoardCurrentRepository;
 import org.hzz.points.domain.repository.PointsBoardHistoryRepository;

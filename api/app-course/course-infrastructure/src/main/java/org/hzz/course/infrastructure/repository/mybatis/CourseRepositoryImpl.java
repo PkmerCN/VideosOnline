@@ -1,7 +1,7 @@
 package org.hzz.course.infrastructure.repository.mybatis;
 
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.repository.withmapper.BaseRepository;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.repository.withmapper.BaseRepository;
 import org.hzz.course.domain.aggregate.CourseIdAggregate;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.repository.CourseRepository;

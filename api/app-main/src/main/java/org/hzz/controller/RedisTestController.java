@@ -1,8 +1,8 @@
 package org.hzz.controller;
 
-import org.hzz.cache.core.RedisCache;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.cache.core.RedisCache;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;

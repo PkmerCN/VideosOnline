@@ -3,7 +3,7 @@ package org.hzz.learning.types.req.question;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 
 /**
  * @author 胖卡

@@ -1,10 +1,10 @@
 package org.hzz.course.api.category.controller;
 
 import lombok.Setter;
-import org.hzz.common.tree.BaseConverter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.enums.delete.Deleted;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.common.tree.BaseConverter;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.enums.Deleted;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.course.api.category.CategoryApi;
 import org.hzz.course.application.command.category.GetAllTreeCategoryCommand;
 import org.hzz.course.types.dto.CategoryTreeDto;

@@ -1,6 +1,6 @@
 package org.hzz.course.cache.category;
 
-import org.hzz.common.tree.TreeDataUtils;
+import io.gitee.pkmer.common.tree.TreeDataUtils;
 import org.hzz.course.domain.entity.CategoryEntity;
 import org.hzz.course.types.dto.CategoryTreeDto;
 

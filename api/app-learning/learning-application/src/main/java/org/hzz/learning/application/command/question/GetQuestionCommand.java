@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 import org.hzz.learning.application.handler.question.GetQuestionCommandHandler;
 
 /**

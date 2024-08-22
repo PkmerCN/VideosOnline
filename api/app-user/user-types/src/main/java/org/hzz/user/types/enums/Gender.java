@@ -1,8 +1,9 @@
 package org.hzz.user.types.enums;
 
+import io.gitee.pkmer.convention.enums.BaseEnum;
+import io.gitee.pkmer.convention.enums.BaseEnumTemplate;
 import lombok.Getter;
-import org.hzz.core.enums.BaseEnum;
-import org.hzz.core.enums.BaseEnumTemplate;
+
 
 /**
  * 性别枚举

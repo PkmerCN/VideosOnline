@@ -7,14 +7,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.hzz.auth.config.exception.AppTokenExpireException;
 import org.hzz.auth.config.exception.AppTokenInvalidException;
 
-import org.hzz.security.context.AppContextHolder;
-import org.hzz.security.jwt.bo.JWTUserBo;
-import org.hzz.security.jwt.service.JWTService;
+import io.gitee.pkmer.security.context.AppContextHolder;
+import io.gitee.pkmer.security.jwt.bo.JWTUserBo;
+import io.gitee.pkmer.security.jwt.service.JWTService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import static org.hzz.security.jwt.constants.JWTConstants.*;
+import static io.gitee.pkmer.security.jwt.constants.JWTConstants.*;
 
 /**
  * @author 胖卡

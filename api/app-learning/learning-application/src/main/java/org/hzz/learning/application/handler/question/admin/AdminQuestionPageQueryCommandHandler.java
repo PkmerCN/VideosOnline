@@ -1,16 +1,16 @@
 package org.hzz.learning.application.handler.question.admin;
 
 import lombok.Setter;
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.page.query.FilterCondition;
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.page.query.FilterCondition;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 import org.hzz.course.cache.category.CategoryCache;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.domain.service.catalogue.CatalogueDomainService;
 import org.hzz.course.domain.service.course.CourseDomainService;
-import org.hzz.ddd.core.domain.shared.command.CommandHandler;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.ddd.shared.command.CommandHandler;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.question.admin.AdminQuestionPageQueryCommand;
 import org.hzz.learning.application.converter.AdminQuestionDetailVoConverter;
 import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
@@ -21,7 +21,7 @@ import org.hzz.user.domain.entity.UserDetailEntity;
 import org.hzz.user.domain.service.details.UserDetailDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.hzz.core.page.query.FilterCondition.Operation;
+import io.gitee.pkmer.convention.page.query.FilterCondition.Operation;
 
 import java.util.*;
 

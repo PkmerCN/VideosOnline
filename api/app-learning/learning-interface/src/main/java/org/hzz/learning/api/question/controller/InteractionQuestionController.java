@@ -1,10 +1,10 @@
 package org.hzz.learning.api.question.controller;
 
 import lombok.Setter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.exception.request.BadRequestException;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.exception.request.BadRequestException;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.learning.api.question.InteractionQuestionApi;
 import org.hzz.learning.types.req.question.ModifyQuestionReq;
 import org.hzz.learning.types.req.question.NewQuestionReq;
@@ -13,7 +13,7 @@ import org.hzz.learning.application.service.AppHandleCmdService;
 import org.hzz.learning.types.req.question.QuestionPageQuery;
 import org.hzz.learning.types.resp.question.QuestionDetailDto;
 import org.hzz.learning.types.resp.question.QuestionDto;
-import org.hzz.security.context.AppContextHolder;
+import io.gitee.pkmer.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

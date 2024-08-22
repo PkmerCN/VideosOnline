@@ -1,7 +1,7 @@
 package org.hzz.course.domain.entity;
 
 import lombok.Data;
-import org.hzz.ddd.core.domain.shared.Entity;
+import io.gitee.pkmer.ddd.shared.Entity;
 
 import java.time.LocalDateTime;
 import java.util.List;

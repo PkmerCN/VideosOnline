@@ -2,7 +2,7 @@ package org.hzz.learning.domain.event;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hzz.ddd.core.domain.shared.event.base.BaseDomainEvent;
+import io.gitee.pkmer.ddd.shared.event.base.BaseDomainEvent;
 import org.hzz.learning.domain.handler.ReplyLikedEventHandler;
 import org.hzz.remark.types.LikedTimesDto;
 

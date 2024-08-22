@@ -2,7 +2,7 @@ package org.hzz.points.infrastructure.repository.mybatis;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.core.converter.RecordAndEntityConverter;
+import io.gitee.pkmer.convention.converter.RecordAndEntityConverter;
 import org.hzz.points.domain.entity.PointsBoardSeasonEntity;
 import org.hzz.points.domain.repository.PointsBoardSeasonRepository;
 import org.hzz.points.infrastructure.dao.mapper.points.PointsBoardSeasonDynamicMapper;

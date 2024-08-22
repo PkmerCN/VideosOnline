@@ -1,6 +1,6 @@
 package org.hzz.course.infrastructure.converter;
 
-import org.hzz.common.date.DateUtil;
+import io.gitee.pkmer.common.date.DateUtil;
 import org.hzz.course.domain.entity.CourseEntity;
 import org.hzz.course.infrastructure.dao.model.Course;
 import org.mapstruct.Mapper;

@@ -1,6 +1,6 @@
 package org.hzz.points.infrastructure.dao.handler;
 
-import org.hzz.core.handler.ByteTypeHandler;
+import io.gitee.pkmer.convention.handler.ByteTypeHandler;
 import org.hzz.points.types.enums.PointsType;
 
 /**

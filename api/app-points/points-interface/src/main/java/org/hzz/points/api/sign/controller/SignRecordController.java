@@ -1,14 +1,14 @@
 package org.hzz.points.api.sign.controller;
 
 import lombok.Setter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.points.api.sign.SignRecordApi;
 import org.hzz.points.application.command.sign.AddSignRecordCmd;
 import org.hzz.points.application.command.sign.QuerySignRecordsCmd;
 import org.hzz.points.application.service.PointsCmdService;
 import org.hzz.points.types.resp.SignResultVo;
-import org.hzz.security.context.AppContextHolder;
+import io.gitee.pkmer.security.context.AppContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

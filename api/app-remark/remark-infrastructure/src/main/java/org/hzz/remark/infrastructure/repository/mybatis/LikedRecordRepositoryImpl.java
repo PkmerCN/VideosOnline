@@ -1,9 +1,9 @@
 package org.hzz.remark.infrastructure.repository.mybatis;
 
 import lombok.Setter;
-import org.hzz.common.collection.CollUtil;
-import org.hzz.core.converter.RecordAndEntityConverter;
-import org.hzz.core.repository.nomapper.BaseRepository;
+import io.gitee.pkmer.common.collection.CollUtil;
+import io.gitee.pkmer.convention.converter.RecordAndEntityConverter;
+import io.gitee.pkmer.convention.repository.nomapper.BaseRepository;
 import org.hzz.remark.domain.entity.LikedRecordEntity;
 import org.hzz.remark.domain.repository.LikedRecordRepository;
 import org.hzz.remark.infrastructure.dao.mapper.liked.LikedRecordDynamicMapper;

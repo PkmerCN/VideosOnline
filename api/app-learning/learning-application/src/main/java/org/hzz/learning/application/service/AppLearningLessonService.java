@@ -1,6 +1,6 @@
 package org.hzz.learning.application.service;
 
-import org.hzz.core.page.PageResponse;
+import io.gitee.pkmer.convention.page.PageResponse;
 import org.hzz.learning.application.command.lesson.LearnLessonRecordCommand;
 import org.hzz.learning.application.command.lesson.LearnRecordCommitCommand;
 import org.hzz.learning.application.command.lesson.PageQueryCommand;

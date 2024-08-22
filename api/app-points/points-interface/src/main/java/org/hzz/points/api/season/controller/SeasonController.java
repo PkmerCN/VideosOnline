@@ -1,8 +1,8 @@
 package org.hzz.points.api.season.controller;
 
 import lombok.Setter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.points.api.season.SeasonApi;
 import org.hzz.points.application.command.points.GetAllSeasonCmd;
 import org.hzz.points.application.service.PointsCmdService;

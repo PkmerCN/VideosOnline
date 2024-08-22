@@ -1,9 +1,9 @@
 package org.hzz.learning.api.question.controller;
 
 import lombok.Setter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.learning.api.question.AdminQuestionApi;
 import org.hzz.learning.application.command.question.admin.AdminGetQuestionDetailCommand;
 import org.hzz.learning.application.command.question.admin.AdminHiddenQuestionCommand;

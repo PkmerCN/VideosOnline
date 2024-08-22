@@ -2,8 +2,8 @@ package org.hzz.auth.config.web;
 
 import org.hzz.auth.config.interceptor.JWTAuthenticationInterceptor;
 import org.hzz.auth.config.props.AppProps;
-import org.hzz.security.config.AppSecurityAutoConfig;
-import org.hzz.security.jwt.service.JWTService;
+import io.gitee.pkmer.security.config.AppSecurityAutoConfig;
+import io.gitee.pkmer.security.jwt.service.JWTService;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

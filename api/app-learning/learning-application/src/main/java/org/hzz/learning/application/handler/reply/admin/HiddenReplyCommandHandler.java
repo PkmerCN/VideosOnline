@@ -2,9 +2,9 @@ package org.hzz.learning.application.handler.reply.admin;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.core.exception.db.AppDbEntityNotFoundException;
-import org.hzz.ddd.core.domain.shared.command.CommandHandler;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.convention.exception.db.AppDbEntityNotFoundException;
+import io.gitee.pkmer.ddd.shared.command.CommandHandler;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.reply.admin.HiddenReplyCommand;
 import org.hzz.learning.domain.entity.question.InteractionReplyEntity;
 import org.hzz.learning.domain.service.reply.InteractionReplyDomainService;

@@ -1,7 +1,7 @@
 package org.hzz.auth;
 
 import org.hzz.auth.command.UserLoginCommand;
-import org.hzz.design.pattern.strategy.StrategyChoose;
+import io.gitee.pkmer.designpattern.strategy.StrategyChoose;
 import org.hzz.user.domain.common.UserLoginTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

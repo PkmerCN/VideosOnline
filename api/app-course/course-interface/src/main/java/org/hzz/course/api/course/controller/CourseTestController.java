@@ -1,7 +1,7 @@
 package org.hzz.course.api.course.controller;
 
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.course.api.course.CourseTestApi;
 import org.hzz.course.infrastructure.dao.mapper.CourseMapper;
 import org.hzz.course.infrastructure.dao.mapper.CourseTestMapper;

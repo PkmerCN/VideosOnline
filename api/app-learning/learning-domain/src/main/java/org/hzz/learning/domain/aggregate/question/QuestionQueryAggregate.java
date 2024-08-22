@@ -1,8 +1,8 @@
 package org.hzz.learning.domain.aggregate.question;
 
 import lombok.Data;
-import org.hzz.core.page.query.PageQuery;
-import org.hzz.ddd.core.domain.shared.AggregateRoot;
+import io.gitee.pkmer.convention.page.query.PageQuery;
+import io.gitee.pkmer.ddd.shared.AggregateRoot;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 
 /**

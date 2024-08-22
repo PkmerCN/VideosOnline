@@ -2,7 +2,7 @@ package org.hzz.learning.application.command.reply.admin;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 import org.hzz.learning.application.handler.reply.admin.HiddenReplyCommandHandler;
 
 /**

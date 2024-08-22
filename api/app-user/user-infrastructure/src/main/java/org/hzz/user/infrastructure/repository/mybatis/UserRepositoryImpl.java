@@ -1,6 +1,6 @@
 package org.hzz.user.infrastructure.repository.mybatis;
 
-import org.hzz.core.repository.withmapper.BaseRepository;
+import io.gitee.pkmer.convention.repository.withmapper.BaseRepository;
 import org.hzz.user.domain.entity.User;
 import org.hzz.user.domain.repository.UserRepository;
 import org.hzz.user.infrastructure.converter.UserConverter;

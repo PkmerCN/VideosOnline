@@ -1,7 +1,7 @@
 package org.hzz.points.domain.handler;
 
 import lombok.Setter;
-import org.hzz.ddd.core.domain.shared.event.DomainEventHandler;
+import io.gitee.pkmer.ddd.shared.event.DomainEventHandler;
 import org.hzz.points.domain.entity.PointsRecordEntity;
 import org.hzz.points.domain.event.AddPointsRecordEvent;
 import org.hzz.points.domain.service.points.PointsDomainService;

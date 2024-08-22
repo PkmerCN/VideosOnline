@@ -1,8 +1,8 @@
 package org.hzz.points.application.handler.sign;
 
 import lombok.Setter;
-import org.hzz.ddd.core.domain.shared.command.CommandHandler;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.ddd.shared.command.CommandHandler;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.points.application.command.sign.QuerySignRecordsCmd;
 import org.hzz.points.domain.service.sign.SignDomainService;
 import org.springframework.beans.factory.annotation.Autowired;

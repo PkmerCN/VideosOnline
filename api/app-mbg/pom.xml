@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.hzz</groupId>
+        <groupId>io.gitee.pkmer</groupId>
         <artifactId>api</artifactId>
         <version>2.2.6-SNAPSHOT</version>
     </parent>
@@ -18,13 +18,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hzz</groupId>
-            <artifactId>app-mybatis-spring-boot-starter</artifactId>
-            <version>2.2.6-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-starter-mybatis</artifactId>
         </dependency>
     </dependencies>
 
@@ -54,9 +49,9 @@
                         <version>${mysql.version}</version>
                     </dependency>
                     <dependency>
-                        <groupId>org.hzz</groupId>
-                        <artifactId>app-mybatis-spring-boot-starter</artifactId>
-                        <version>2.2.6-SNAPSHOT</version>
+                        <groupId>io.gitee.pkmer</groupId>
+                        <artifactId>pkmer-boot-starter-mybatis</artifactId>
+                        <version>1.2.1</version>
                     </dependency>
                 </dependencies>
             </plugin>

@@ -1,6 +1,6 @@
 package org.hzz.points.domain.repository;
 
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 import org.hzz.points.domain.entity.PointsBoardEntity;
 
 import java.util.List;

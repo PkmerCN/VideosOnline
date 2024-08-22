@@ -1,8 +1,8 @@
 package org.hzz.course.api.catalogue.controller;
 
 import lombok.Setter;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.course.api.catalogue.TestCatalogueApi;
 import org.hzz.course.domain.entity.CourseCatalogueEntity;
 import org.hzz.course.domain.service.catalogue.CatalogueDomainService;

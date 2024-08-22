@@ -3,7 +3,7 @@ package org.hzz.course.application.command.category;
 import lombok.Data;
 import lombok.Value;
 import org.hzz.course.application.handler.category.GetAllTreeCategoryCommandHandler;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
 
 /**
  * 获取所有的分类，以Tree分层的形式

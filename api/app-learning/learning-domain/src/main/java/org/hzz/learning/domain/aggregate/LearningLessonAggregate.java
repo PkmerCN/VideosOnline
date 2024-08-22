@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hzz.core.page.query.PageQuery;
+import io.gitee.pkmer.convention.page.query.PageQuery;
 import org.hzz.course.domain.entity.CourseEntity;
-import org.hzz.ddd.core.domain.shared.AggregateRoot;
+import io.gitee.pkmer.ddd.shared.AggregateRoot;
 import org.hzz.learning.types.enums.lesson.LessonStatus;
 import org.hzz.learning.types.enums.lesson.PlanStatus;
 

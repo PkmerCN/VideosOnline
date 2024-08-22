@@ -2,8 +2,8 @@ package org.hzz.learning.application.service;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.ddd.core.domain.shared.command.CommandWithMark;
-import org.hzz.design.pattern.strategy.StrategyChoose;
+import io.gitee.pkmer.ddd.shared.command.CommandWithMark;
+import io.gitee.pkmer.designpattern.strategy.StrategyChoose;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

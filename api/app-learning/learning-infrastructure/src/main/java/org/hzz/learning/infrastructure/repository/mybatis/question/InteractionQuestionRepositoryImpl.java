@@ -2,8 +2,8 @@ package org.hzz.learning.infrastructure.repository.mybatis.question;
 
 import cn.hutool.core.bean.BeanUtil;
 import lombok.Setter;
-import org.hzz.core.page.PageResponse;
-import org.hzz.core.repository.nomapper.PageBaseRepository;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.convention.repository.nomapper.PageBaseRepository;
 import org.hzz.learning.domain.aggregate.question.QuestionQueryAggregate;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.repository.question.InteractionQuestionRepository;

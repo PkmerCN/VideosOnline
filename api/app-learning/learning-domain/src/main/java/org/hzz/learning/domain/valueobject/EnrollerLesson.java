@@ -1,7 +1,7 @@
 package org.hzz.learning.domain.valueobject;
 
 import lombok.Data;
-import org.hzz.ddd.core.domain.shared.ValueObject;
+import io.gitee.pkmer.ddd.shared.ValueObject;
 
 import java.time.LocalDateTime;
 

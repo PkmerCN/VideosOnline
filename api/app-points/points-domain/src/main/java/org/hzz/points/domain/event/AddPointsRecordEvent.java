@@ -3,7 +3,7 @@ package org.hzz.points.domain.event;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.hzz.ddd.core.domain.shared.event.base.BaseDomainEvent;
+import io.gitee.pkmer.ddd.shared.event.base.BaseDomainEvent;
 import org.hzz.points.domain.handler.AddPointsRecordEventHandler;
 import org.hzz.points.types.enums.PointsType;
 

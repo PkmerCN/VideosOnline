@@ -2,8 +2,8 @@ package org.hzz.learning.application.handler.question.admin;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hzz.core.exception.request.BadRequestException;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.convention.exception.request.BadRequestException;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.question.admin.AdminHiddenQuestionCommand;
 import org.hzz.learning.domain.entity.question.InteractionQuestionEntity;
 import org.hzz.learning.domain.service.question.InteractionQuestionDomainService;

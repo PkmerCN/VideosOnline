@@ -1,9 +1,9 @@
 package org.hzz.learning.application.handler.lesson;
 
 import lombok.Setter;
-import org.hzz.core.page.PageResponse;
-import org.hzz.ddd.core.domain.shared.command.CommandHandler;
-import org.hzz.design.pattern.strategy.AbstractExecuteStrategy;
+import io.gitee.pkmer.convention.page.PageResponse;
+import io.gitee.pkmer.ddd.shared.command.CommandHandler;
+import io.gitee.pkmer.designpattern.strategy.AbstractExecuteStrategy;
 import org.hzz.learning.application.command.lesson.PageQueryCommand;
 import org.hzz.learning.application.converter.LearnLessonDtoConverter;
 import org.hzz.learning.application.handler.MarkConstants;

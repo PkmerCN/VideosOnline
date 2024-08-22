@@ -2,7 +2,7 @@ package org.hzz.remark.domain.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.hzz.ddd.core.domain.shared.Entity;
+import io.gitee.pkmer.ddd.shared.Entity;
 import org.hzz.remark.types.BizType;
 
 import java.time.LocalDateTime;

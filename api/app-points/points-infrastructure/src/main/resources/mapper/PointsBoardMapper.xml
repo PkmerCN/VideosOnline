@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.hzz.points.infrastructure.dao.mapper.points.PointsBoardMapper">
-    <resultMap id="BaseResultMap" type="org.hzz.points.infrastructure.dao.model.points.PointsBoard">
+<mapper namespace="io.gitee.pkmer.points.infrastructure.dao.mapper.points.PointsBoardMapper">
+    <resultMap id="BaseResultMap" type="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoard">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="user_id" jdbcType="BIGINT" property="userId"/>
         <result column="points" jdbcType="INTEGER" property="points"/>
@@ -72,7 +72,7 @@
         id
         , user_id, points, rank, season
     </sql>
-    <select id="selectByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardExample"
+    <select id="selectByExample" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardExample"
             resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -98,19 +98,19 @@
         from points_board
         where id = #{id,jdbcType=BIGINT}
     </delete>
-    <delete id="deleteByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardExample">
+    <delete id="deleteByExample" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardExample">
         delete from points_board
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoard">
+    <insert id="insert" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoard">
         insert into points_board (id, user_id, points,
                                   rank, season)
         values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{points,jdbcType=INTEGER},
                 #{rank,jdbcType=TINYINT}, #{season,jdbcType=SMALLINT})
     </insert>
-    <insert id="insertSelective" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoard">
+    <insert id="insertSelective" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoard">
         insert into points_board
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -147,7 +147,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoardExample"
+    <select id="countByExample" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoardExample"
             resultType="java.lang.Long">
         select count(*) from points_board
         <if test="_parameter != null">
@@ -188,7 +188,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoard">
+    <update id="updateByPrimaryKeySelective" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoard">
         update points_board
         <set>
             <if test="userId != null">
@@ -206,7 +206,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="org.hzz.points.infrastructure.dao.model.points.PointsBoard">
+    <update id="updateByPrimaryKey" parameterType="io.gitee.pkmer.points.infrastructure.dao.model.points.PointsBoard">
         update points_board
         set user_id = #{userId,jdbcType=BIGINT},
             points  = #{points,jdbcType=INTEGER},

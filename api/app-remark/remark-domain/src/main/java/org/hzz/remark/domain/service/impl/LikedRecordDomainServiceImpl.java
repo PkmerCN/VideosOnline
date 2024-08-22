@@ -2,11 +2,11 @@ package org.hzz.remark.domain.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.Setter;
-import org.hzz.core.code.impl.AppStatusImpl;
-import org.hzz.core.exception.request.BadRequestException;
-import org.hzz.core.service.BaseDomainService;
-import org.hzz.rabbitmq.constants.rabbitmq.VideoMqConstants;
-import org.hzz.rabbitmq.core.RabbitMQHelper;
+import io.gitee.pkmer.convention.code.impl.AppStatusImpl;
+import io.gitee.pkmer.convention.exception.request.BadRequestException;
+import io.gitee.pkmer.convention.service.BaseDomainService;
+import io.gitee.pkmer.rabbitmq.constants.rabbitmq.VideoMqConstants;
+import io.gitee.pkmer.rabbitmq.core.RabbitMQHelper;
 import org.hzz.remark.domain.entity.LikedRecordEntity;
 import org.hzz.remark.domain.repository.LikedRecordRepository;
 import org.hzz.remark.domain.service.LikedRecordDomainService;

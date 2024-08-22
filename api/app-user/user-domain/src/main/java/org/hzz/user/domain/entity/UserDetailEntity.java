@@ -1,7 +1,7 @@
 package org.hzz.user.domain.entity;
 
 import lombok.Data;
-import org.hzz.ddd.core.domain.shared.Entity;
+import io.gitee.pkmer.ddd.shared.Entity;
 import org.hzz.user.types.enums.Gender;
 
 import java.time.LocalDate;

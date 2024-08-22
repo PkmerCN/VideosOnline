@@ -3,7 +3,7 @@ package org.hzz.learning.domain.aggregate;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hzz.course.domain.entity.CourseEntity;
-import org.hzz.ddd.core.domain.shared.AggregateRoot;
+import io.gitee.pkmer.ddd.shared.AggregateRoot;
 import org.hzz.learning.domain.entity.LearningLessonEntity;
 
 /**

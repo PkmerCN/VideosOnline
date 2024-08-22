@@ -1,8 +1,8 @@
 package org.hzz.remark.api.like.controller;
 
 import jakarta.annotation.PostConstruct;
-import org.hzz.core.controller.BaseController;
-import org.hzz.core.result.Result;
+import io.gitee.pkmer.convention.controller.BaseController;
+import io.gitee.pkmer.convention.result.Result;
 import org.hzz.remark.api.like.LikeRecordTestApi;
 import org.hzz.remark.types.BizType;
 import org.springframework.web.bind.annotation.RestController;

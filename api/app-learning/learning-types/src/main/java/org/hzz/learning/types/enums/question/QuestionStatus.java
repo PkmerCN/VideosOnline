@@ -1,6 +1,6 @@
 package org.hzz.learning.types.enums.question;
 
-import org.hzz.core.enums.BaseEnum;
+import io.gitee.pkmer.convention.enums.BaseEnum;
 
 /**
  * 管理端问题状态

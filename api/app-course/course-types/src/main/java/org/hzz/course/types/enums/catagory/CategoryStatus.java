@@ -1,8 +1,8 @@
 package org.hzz.course.types.enums.catagory;
 
 import lombok.Getter;
-import org.hzz.core.enums.BaseEnum;
-import org.hzz.core.enums.BaseEnumTemplate;
+import io.gitee.pkmer.convention.enums.BaseEnum;
+import io.gitee.pkmer.convention.enums.BaseEnumTemplate;
 
 /**
  * 分类状态
