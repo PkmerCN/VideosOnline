@@ -11,7 +11,7 @@
     <version>2.2.6-SNAPSHOT</version>
 
     <properties>
-        <start.class>io.gitee.pkmer.AppMain</start.class>
+        <start.class>org.hzz.AppMain</start.class>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <resource.delimiter>@</resource.delimiter>

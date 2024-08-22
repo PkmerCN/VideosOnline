@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.gitee.pkmer.user.infrastructure.dao.mapper.details.UserDetailMapper">
-  <resultMap id="BaseResultMap" type="io.gitee.pkmer.user.infrastructure.dao.entity.details.UserDetail">
+<mapper namespace="org.hzz.user.infrastructure.dao.mapper.details.UserDetailMapper">
+  <resultMap id="BaseResultMap" type="org.hzz.user.infrastructure.dao.entity.details.UserDetail">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="type" jdbcType="TINYINT" property="type" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -87,7 +87,7 @@
     intro, photo, role_id, course_amount, create_time, update_time, creater, updater, 
     dep_id
   </sql>
-  <select id="selectByExample" parameterType="io.gitee.pkmer.user.infrastructure.dao.entity.details.UserDetailExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.hzz.user.infrastructure.dao.entity.details.UserDetailExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -111,13 +111,13 @@
     delete from user_detail
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="io.gitee.pkmer.user.infrastructure.dao.entity.details.UserDetailExample">
+  <delete id="deleteByExample" parameterType="org.hzz.user.infrastructure.dao.entity.details.UserDetailExample">
     delete from user_detail
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="io.gitee.pkmer.user.infrastructure.dao.entity.details.UserDetail">
+  <insert id="insert" parameterType="org.hzz.user.infrastructure.dao.entity.details.UserDetail">
     insert into user_detail (id, type, name, 
       gender, icon, email, 
       qq, birthday, job, province, 
@@ -133,7 +133,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{creater,jdbcType=BIGINT}, 
       #{updater,jdbcType=BIGINT}, #{depId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="io.gitee.pkmer.user.infrastructure.dao.entity.details.UserDetail">
+  <insert id="insertSelective" parameterType="org.hzz.user.infrastructure.dao.entity.details.UserDetail">
     insert into user_detail
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -266,7 +266,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="io.gitee.pkmer.user.infrastructure.dao.entity.details.UserDetailExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.hzz.user.infrastructure.dao.entity.details.UserDetailExample" resultType="java.lang.Long">
     select count(*) from user_detail
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -370,7 +370,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="io.gitee.pkmer.user.infrastructure.dao.entity.details.UserDetail">
+  <update id="updateByPrimaryKeySelective" parameterType="org.hzz.user.infrastructure.dao.entity.details.UserDetail">
     update user_detail
     <set>
       <if test="type != null">
@@ -436,7 +436,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.gitee.pkmer.user.infrastructure.dao.entity.details.UserDetail">
+  <update id="updateByPrimaryKey" parameterType="org.hzz.user.infrastructure.dao.entity.details.UserDetail">
     update user_detail
     set type = #{type,jdbcType=TINYINT},
       name = #{name,jdbcType=VARCHAR},

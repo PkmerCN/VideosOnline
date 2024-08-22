@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.gitee.pkmer.infrastructure.dao.mapper.teacher.CourseTeacherMapper">
-    <resultMap id="BaseResultMap" type="io.gitee.pkmer.infrastructure.dao.model.teacher.CourseTeacher">
+<mapper namespace="org.hzz.course.infrastructure.dao.mapper.teacher.CourseTeacherMapper">
+    <resultMap id="BaseResultMap" type="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="course_id" jdbcType="BIGINT" property="courseId"/>
         <result column="teacher_id" jdbcType="BIGINT" property="teacherId"/>
@@ -79,7 +79,7 @@
         , course_id, teacher_id, is_show, c_index, dep_id, create_time, update_time, creater_id,
     updater_id, deleted
     </sql>
-    <select id="selectByExample" parameterType="io.gitee.pkmer.infrastructure.dao.model.teacher.CourseTeacherExample"
+    <select id="selectByExample" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacherExample"
             resultMap="BaseResultMap">
         select
         <if test="distinct">
@@ -105,13 +105,13 @@
         from course_teacher
         where id = #{id,jdbcType=BIGINT}
     </delete>
-    <delete id="deleteByExample" parameterType="io.gitee.pkmer.infrastructure.dao.model.teacher.CourseTeacherExample">
+    <delete id="deleteByExample" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacherExample">
         delete from course_teacher
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="io.gitee.pkmer.infrastructure.dao.model.teacher.CourseTeacher">
+    <insert id="insert" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
         insert into course_teacher (id, course_id, teacher_id,
                                     is_show, c_index, dep_id,
                                     create_time, update_time, creater_id,
@@ -121,7 +121,7 @@
                 #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createrId,jdbcType=BIGINT},
                 #{updaterId,jdbcType=BIGINT}, #{deleted,jdbcType=TINYINT})
     </insert>
-    <insert id="insertSelective" parameterType="io.gitee.pkmer.infrastructure.dao.model.teacher.CourseTeacher">
+    <insert id="insertSelective" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
         insert into course_teacher
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -194,7 +194,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="io.gitee.pkmer.infrastructure.dao.model.teacher.CourseTeacherExample"
+    <select id="countByExample" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacherExample"
             resultType="java.lang.Long">
         select count(*) from course_teacher
         <if test="_parameter != null">
@@ -260,7 +260,7 @@
         </if>
     </update>
     <update id="updateByPrimaryKeySelective"
-            parameterType="io.gitee.pkmer.infrastructure.dao.model.teacher.CourseTeacher">
+            parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
         update course_teacher
         <set>
             <if test="courseId != null">
@@ -296,7 +296,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="io.gitee.pkmer.infrastructure.dao.model.teacher.CourseTeacher">
+    <update id="updateByPrimaryKey" parameterType="org.hzz.course.infrastructure.dao.model.teacher.CourseTeacher">
         update course_teacher
         set course_id   = #{courseId,jdbcType=BIGINT},
             teacher_id  = #{teacherId,jdbcType=BIGINT},
