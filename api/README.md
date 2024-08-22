@@ -93,7 +93,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-main          | 程序入口                         |
 | app-auth          | 认证父模块                        |
 | auth-server       | 认证服务                         |
-| app-framework-all | 项目通用框架集合                     |
+| app-framework-all | （废弃🚨）项目通用框架集合               |
 | app-mbg           | mybatis逆向工程生成代码              |
 | app-user          | 用户相关                         |
 | app-learning      | 学习课程相关                       |
@@ -102,8 +102,11 @@ It allows you to specify which modules in your multi-module project you want to 
 | attachment        | docker的挂载目录，目前是配置了rabbitmq插件 |
 
 
-## app-framework-all子模块
+## app-framework-all子模块(废弃🚨)
 
+🚨注意，从版本2.2.6版本开始，已经将这个模块（`app-framework-all`）独立出来另一个项目[pkmer-boot](https://gitee.com/pkmer/pkmer-boot)(pkmer-boot项目采用gradle开发对标的是springboot一样开箱即用的功能)
+
+----------
 > 这里我单独建立了一个父模块`app-framework-all`用于存储项目通用的模块代码，详情如下
 
 
@@ -121,6 +124,7 @@ It allows you to specify which modules in your multi-module project you want to 
 | app-aop-spring-boot-starter           | 项目中自定义的切面,目前实现了添加了自动注解标记添加用户id过滤,用于分页 |
 | app-fastjson2-spring-boot-starter     | 集成使用fastjson2,枚举序列化与反序列化              |
 | app-scheduler-spring-boot-starter     | 集成xxl_job基本配置                         |
+
 
 ## 业务模块的ddd模块划分
 
