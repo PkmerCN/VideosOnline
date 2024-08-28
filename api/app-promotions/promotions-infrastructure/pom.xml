@@ -17,4 +17,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>promotions-domain</artifactId>
+            <version>2.2.7-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-starter-mybatis</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

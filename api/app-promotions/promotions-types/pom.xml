@@ -17,4 +17,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-convention</artifactId>
+        </dependency>
+    </dependencies>
 </project>
