@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS `coupon`;
+CREATE TABLE `coupon`  (
+       `id` bigint NOT NULL COMMENT '优惠券id',
+       `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0' COMMENT '优惠券名称，可以和活动名称保持一致',
+       `type` tinyint NOT NULL DEFAULT 1 COMMENT '优惠券类型，1：普通券。目前就一种，保留字段',
+       `discount_type` tinyint NOT NULL COMMENT '折扣类型，1：满减，2：每满减，3：折扣，4：无门槛',
+       `specific` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否限定作用范围，false：不限定，true：限定。默认false',
+       `discount_value` int NOT NULL DEFAULT 1 COMMENT '折扣值，如果是满减则存满减金额，如果是折扣，则存折扣率，8折就是存80',
+       `threshold_amount` int NOT NULL DEFAULT 0 COMMENT '使用门槛，0：表示无门槛，其他值：最低消费金额',
+       `max_discount_amount` int NOT NULL DEFAULT 0 COMMENT '最高优惠金额，满减最大，0：表示没有限制，不为0，则表示该券有金额的限制',
+       `obtain_way` tinyint NOT NULL DEFAULT 0 COMMENT '获取方式：1：手动领取，2：兑换码',
+       `issue_begin_time` datetime NULL DEFAULT NULL COMMENT '开始发放时间',
+       `issue_end_time` datetime NULL DEFAULT NULL COMMENT '结束发放时间',
+       `term_days` int NOT NULL DEFAULT 0 COMMENT '优惠券有效期天数，0：表示有效期是指定有效期的',
+       `term_begin_time` datetime NULL DEFAULT NULL COMMENT '优惠券有效期开始时间',
+       `term_end_time` datetime NULL DEFAULT NULL COMMENT '优惠券有效期结束时间',
+       `status` tinyint NULL DEFAULT 1 COMMENT '优惠券配置状态，1：待发放，2：未开始   3：进行中，4：已结束，5：暂停',
+       `total_num` int NOT NULL DEFAULT 0 COMMENT '总数量，不超过5000',
+       `issue_num` int NOT NULL DEFAULT 0 COMMENT '已发行数量，用于判断是否超发',
+       `used_num` int NOT NULL DEFAULT 0 COMMENT '已使用数量',
+       `user_limit` int NOT NULL DEFAULT 1 COMMENT '每个人限领的数量，默认1',
+       `ext_param` json NULL COMMENT '拓展参数字段，保留字段',
+       `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+       `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+       `creater` bigint NOT NULL COMMENT '创建人',
+       `updater` bigint NOT NULL COMMENT '更新人',
+       PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB  CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '优惠券的规则信息' ROW_FORMAT = Dynamic;

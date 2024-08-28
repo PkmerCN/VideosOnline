@@ -10,7 +10,7 @@
             <!--    其他扩展信息        -->
             <property name="pkmer" value="hzz"/>
             <!--    修改生成的文件夹        -->
-            <property name="targetPackage" value="io.gitee.pkmer.points.types.constants"/>
+            <property name="targetPackage" value="io.gitee.pkmer.coupon.types.constants"/>
         </plugin>
 
         <!--   使用自己的注释类     -->
@@ -29,9 +29,9 @@
             <property name="useJSR310Types" value="true" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="io.gitee.pkmer.points.infrastructure.dao.model.points" targetProject="src/main/java" />
+        <javaModelGenerator targetPackage="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon" targetProject="src/main/java" />
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="io.gitee.pkmer.points.infrastructure.dao.mapper.points" targetProject="src/main/java"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="io.gitee.coupon.points.infrastructure.dao.mapper.coupon" targetProject="src/main/java"/>
 
 <!--   属性domainObjectName     -->
 <!--   https://mybatis.org/generator/configreference/xmlconfig.html     -->
@@ -69,7 +69,8 @@
 <!--        <table tableName="points_record">-->
 <!--            <columnOverride column="type" javaType="io.gitee.pkmer.points.types.enums.PointsType"/>-->
 <!--        </table>-->
-        <table tableName="points_board"/>
+<!--        <table tableName="points_board"/>-->
+        <table tableName="coupon"/>
 <!--        <table tableName="points_board_season">-->
 <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
 <!--        </table>-->
