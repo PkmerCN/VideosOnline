@@ -17,6 +17,7 @@
         <module>app-course</module>
         <module>app-remark</module>
         <module>app-points</module>
+        <module>app-promotions</module>
     </modules>
 
     <name>VideosOnline</name>
@@ -57,6 +58,7 @@
         <jjwt.version>0.12.5</jjwt.version>
         <password4j.version>1.8.2</password4j.version>
         <pkmer.boot.version>1.2.2</pkmer.boot.version>
+        <pkmer.toolkit.version>1.0.1</pkmer.toolkit.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <java.version>17</java.version>
         <hutool.version>5.8.28</hutool.version>
@@ -122,6 +124,7 @@
 
     <dependencyManagement>
         <dependencies>
+        <!--    自己的依赖【START】        -->
             <dependency>
                 <groupId>io.gitee.pkmer</groupId>
                 <artifactId>pkmer-boot-dependencies</artifactId>
@@ -129,6 +132,16 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>io.gitee.pkmer</groupId>
+                <artifactId>toolkit-bom</artifactId>
+                <version>${pkmer.toolkit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        <!--    自己的依赖【END】        -->
+
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
