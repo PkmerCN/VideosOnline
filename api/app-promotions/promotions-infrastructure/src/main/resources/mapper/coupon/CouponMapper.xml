@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.gitee.pkmer.coupon.infrastructure.dao.mapper.coupon.CouponMapper">
-  <resultMap id="BaseResultMap" type="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.Coupon">
+<mapper namespace="org.hzz.coupon.infrastructure.dao.mapper.coupon.CouponMapper">
+  <resultMap id="BaseResultMap" type="org.hzz.coupon.infrastructure.dao.model.coupon.Coupon">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="type" jdbcType="TINYINT" property="type" />
@@ -26,7 +26,7 @@
     <result column="creater" jdbcType="BIGINT" property="creater" />
     <result column="updater" jdbcType="BIGINT" property="updater" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.Coupon">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.hzz.coupon.infrastructure.dao.model.coupon.Coupon">
     <result column="ext_param" jdbcType="LONGVARCHAR" property="extParam" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -88,15 +88,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, type, discount_type, specific, discount_value, threshold_amount, max_discount_amount, 
-    obtain_way, issue_begin_time, issue_end_time, term_days, term_begin_time, term_end_time, 
-    status, total_num, issue_num, used_num, user_limit, create_time, update_time, creater, 
-    updater
+    id, `name`, `type`, discount_type, `specific`, discount_value, threshold_amount, 
+    max_discount_amount, obtain_way, issue_begin_time, issue_end_time, term_days, term_begin_time, 
+    term_end_time, `status`, total_num, issue_num, used_num, user_limit, create_time, 
+    update_time, creater, updater
   </sql>
   <sql id="Blob_Column_List">
     ext_param
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -112,7 +112,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -138,18 +138,18 @@
     delete from coupon
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponExample">
+  <delete id="deleteByExample" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponExample">
     delete from coupon
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.Coupon">
-    insert into coupon (id, name, type, 
-      discount_type, specific, discount_value, 
+  <insert id="insert" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.Coupon">
+    insert into coupon (id, `name`, `type`, 
+      discount_type, `specific`, discount_value, 
       threshold_amount, max_discount_amount, obtain_way, 
       issue_begin_time, issue_end_time, term_days, 
-      term_begin_time, term_end_time, status, 
+      term_begin_time, term_end_time, `status`, 
       total_num, issue_num, used_num, 
       user_limit, create_time, update_time, 
       creater, updater, ext_param
@@ -164,23 +164,23 @@
       #{creater,jdbcType=BIGINT}, #{updater,jdbcType=BIGINT}, #{extParam,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.Coupon">
+  <insert id="insertSelective" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.Coupon">
     insert into coupon
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
       <if test="name != null">
-        name,
+        `name`,
       </if>
       <if test="type != null">
-        type,
+        `type`,
       </if>
       <if test="discountType != null">
         discount_type,
       </if>
       <if test="specific != null">
-        specific,
+        `specific`,
       </if>
       <if test="discountValue != null">
         discount_value,
@@ -210,7 +210,7 @@
         term_end_time,
       </if>
       <if test="status != null">
-        status,
+        `status`,
       </if>
       <if test="totalNum != null">
         total_num,
@@ -315,7 +315,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponExample" resultType="java.lang.Long">
     select count(*) from coupon
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -328,16 +328,16 @@
         id = #{row.id,jdbcType=BIGINT},
       </if>
       <if test="row.name != null">
-        name = #{row.name,jdbcType=VARCHAR},
+        `name` = #{row.name,jdbcType=VARCHAR},
       </if>
       <if test="row.type != null">
-        type = #{row.type,jdbcType=TINYINT},
+        `type` = #{row.type,jdbcType=TINYINT},
       </if>
       <if test="row.discountType != null">
         discount_type = #{row.discountType,jdbcType=TINYINT},
       </if>
       <if test="row.specific != null">
-        specific = #{row.specific,jdbcType=BIT},
+        `specific` = #{row.specific,jdbcType=BIT},
       </if>
       <if test="row.discountValue != null">
         discount_value = #{row.discountValue,jdbcType=INTEGER},
@@ -367,7 +367,7 @@
         term_end_time = #{row.termEndTime,jdbcType=TIMESTAMP},
       </if>
       <if test="row.status != null">
-        status = #{row.status,jdbcType=TINYINT},
+        `status` = #{row.status,jdbcType=TINYINT},
       </if>
       <if test="row.totalNum != null">
         total_num = #{row.totalNum,jdbcType=INTEGER},
@@ -404,10 +404,10 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update coupon
     set id = #{row.id,jdbcType=BIGINT},
-      name = #{row.name,jdbcType=VARCHAR},
-      type = #{row.type,jdbcType=TINYINT},
+      `name` = #{row.name,jdbcType=VARCHAR},
+      `type` = #{row.type,jdbcType=TINYINT},
       discount_type = #{row.discountType,jdbcType=TINYINT},
-      specific = #{row.specific,jdbcType=BIT},
+      `specific` = #{row.specific,jdbcType=BIT},
       discount_value = #{row.discountValue,jdbcType=INTEGER},
       threshold_amount = #{row.thresholdAmount,jdbcType=INTEGER},
       max_discount_amount = #{row.maxDiscountAmount,jdbcType=INTEGER},
@@ -417,7 +417,7 @@
       term_days = #{row.termDays,jdbcType=INTEGER},
       term_begin_time = #{row.termBeginTime,jdbcType=TIMESTAMP},
       term_end_time = #{row.termEndTime,jdbcType=TIMESTAMP},
-      status = #{row.status,jdbcType=TINYINT},
+      `status` = #{row.status,jdbcType=TINYINT},
       total_num = #{row.totalNum,jdbcType=INTEGER},
       issue_num = #{row.issueNum,jdbcType=INTEGER},
       used_num = #{row.usedNum,jdbcType=INTEGER},
@@ -434,10 +434,10 @@
   <update id="updateByExample" parameterType="map">
     update coupon
     set id = #{row.id,jdbcType=BIGINT},
-      name = #{row.name,jdbcType=VARCHAR},
-      type = #{row.type,jdbcType=TINYINT},
+      `name` = #{row.name,jdbcType=VARCHAR},
+      `type` = #{row.type,jdbcType=TINYINT},
       discount_type = #{row.discountType,jdbcType=TINYINT},
-      specific = #{row.specific,jdbcType=BIT},
+      `specific` = #{row.specific,jdbcType=BIT},
       discount_value = #{row.discountValue,jdbcType=INTEGER},
       threshold_amount = #{row.thresholdAmount,jdbcType=INTEGER},
       max_discount_amount = #{row.maxDiscountAmount,jdbcType=INTEGER},
@@ -447,7 +447,7 @@
       term_days = #{row.termDays,jdbcType=INTEGER},
       term_begin_time = #{row.termBeginTime,jdbcType=TIMESTAMP},
       term_end_time = #{row.termEndTime,jdbcType=TIMESTAMP},
-      status = #{row.status,jdbcType=TINYINT},
+      `status` = #{row.status,jdbcType=TINYINT},
       total_num = #{row.totalNum,jdbcType=INTEGER},
       issue_num = #{row.issueNum,jdbcType=INTEGER},
       used_num = #{row.usedNum,jdbcType=INTEGER},
@@ -460,20 +460,20 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.Coupon">
+  <update id="updateByPrimaryKeySelective" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.Coupon">
     update coupon
     <set>
       <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="type != null">
-        type = #{type,jdbcType=TINYINT},
+        `type` = #{type,jdbcType=TINYINT},
       </if>
       <if test="discountType != null">
         discount_type = #{discountType,jdbcType=TINYINT},
       </if>
       <if test="specific != null">
-        specific = #{specific,jdbcType=BIT},
+        `specific` = #{specific,jdbcType=BIT},
       </if>
       <if test="discountValue != null">
         discount_value = #{discountValue,jdbcType=INTEGER},
@@ -503,7 +503,7 @@
         term_end_time = #{termEndTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=TINYINT},
+        `status` = #{status,jdbcType=TINYINT},
       </if>
       <if test="totalNum != null">
         total_num = #{totalNum,jdbcType=INTEGER},
@@ -535,12 +535,12 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.Coupon">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.Coupon">
     update coupon
-    set name = #{name,jdbcType=VARCHAR},
-      type = #{type,jdbcType=TINYINT},
+    set `name` = #{name,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=TINYINT},
       discount_type = #{discountType,jdbcType=TINYINT},
-      specific = #{specific,jdbcType=BIT},
+      `specific` = #{specific,jdbcType=BIT},
       discount_value = #{discountValue,jdbcType=INTEGER},
       threshold_amount = #{thresholdAmount,jdbcType=INTEGER},
       max_discount_amount = #{maxDiscountAmount,jdbcType=INTEGER},
@@ -550,7 +550,7 @@
       term_days = #{termDays,jdbcType=INTEGER},
       term_begin_time = #{termBeginTime,jdbcType=TIMESTAMP},
       term_end_time = #{termEndTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=TINYINT},
+      `status` = #{status,jdbcType=TINYINT},
       total_num = #{totalNum,jdbcType=INTEGER},
       issue_num = #{issueNum,jdbcType=INTEGER},
       used_num = #{usedNum,jdbcType=INTEGER},
@@ -562,12 +562,12 @@
       ext_param = #{extParam,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.Coupon">
+  <update id="updateByPrimaryKey" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.Coupon">
     update coupon
-    set name = #{name,jdbcType=VARCHAR},
-      type = #{type,jdbcType=TINYINT},
+    set `name` = #{name,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=TINYINT},
       discount_type = #{discountType,jdbcType=TINYINT},
-      specific = #{specific,jdbcType=BIT},
+      `specific` = #{specific,jdbcType=BIT},
       discount_value = #{discountValue,jdbcType=INTEGER},
       threshold_amount = #{thresholdAmount,jdbcType=INTEGER},
       max_discount_amount = #{maxDiscountAmount,jdbcType=INTEGER},
@@ -577,7 +577,7 @@
       term_days = #{termDays,jdbcType=INTEGER},
       term_begin_time = #{termBeginTime,jdbcType=TIMESTAMP},
       term_end_time = #{termEndTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=TINYINT},
+      `status` = #{status,jdbcType=TINYINT},
       total_num = #{totalNum,jdbcType=INTEGER},
       issue_num = #{issueNum,jdbcType=INTEGER},
       used_num = #{usedNum,jdbcType=INTEGER},

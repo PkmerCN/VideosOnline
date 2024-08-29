@@ -1,0 +1,19 @@
+package org.hzz.promotions.domain.service;
+
+import io.gitee.pkmer.ddd.shared.service.DomainService;
+import org.hzz.promotions.domain.entity.CouponEntity;
+
+/**
+ * @author <a href="mailto:1193094618@qq.com">pkmer</a>
+ * <br>
+ * <a href = "https://gitee.com/pkmer/sonatype-central-publisher">Code Repository</a>
+ * At 2024/8/29
+ */
+public interface CouponDomainService extends DomainService {
+
+    /**
+     * 创建优惠券
+     * @param coupon 优惠券实体
+     */
+    void insertCoupon(CouponEntity coupon);
+}

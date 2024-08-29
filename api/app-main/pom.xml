@@ -48,7 +48,11 @@
             <artifactId>points-interface</artifactId>
             <version>2.2.7-SNAPSHOT</version>
         </dependency>
-        <!--   自身依赖End     -->
+        <dependency>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>promotions-interface</artifactId>
+            <version>2.2.7-SNAPSHOT</version>
+        </dependency><!--   自身依赖End     -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

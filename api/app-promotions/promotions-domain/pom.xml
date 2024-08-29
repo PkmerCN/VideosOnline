@@ -20,6 +20,10 @@
     <dependencies>
         <dependency>
             <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-ddd</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.gitee.pkmer</groupId>
             <artifactId>promotions-types</artifactId>
             <version>2.2.7-SNAPSHOT</version>
         </dependency>

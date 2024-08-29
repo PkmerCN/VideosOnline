@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="io.gitee.pkmer.coupon.infrastructure.dao.mapper.coupon.CouponScopeMapper">
-  <resultMap id="BaseResultMap" type="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponScope">
+<mapper namespace="org.hzz.coupon.infrastructure.dao.mapper.coupon.CouponScopeMapper">
+  <resultMap id="BaseResultMap" type="org.hzz.coupon.infrastructure.dao.model.coupon.CouponScope">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="type" jdbcType="TINYINT" property="type" />
     <result column="coupon_id" jdbcType="BIGINT" property="couponId" />
@@ -66,9 +66,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, type, coupon_id, biz_id
+    id, `type`, coupon_id, biz_id
   </sql>
-  <select id="selectByExample" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponScopeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponScopeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,26 +92,26 @@
     delete from coupon_scope
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponScopeExample">
+  <delete id="deleteByExample" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponScopeExample">
     delete from coupon_scope
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponScope">
-    insert into coupon_scope (id, type, coupon_id, 
+  <insert id="insert" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponScope">
+    insert into coupon_scope (id, `type`, coupon_id, 
       biz_id)
     values (#{id,jdbcType=BIGINT}, #{type,jdbcType=TINYINT}, #{couponId,jdbcType=BIGINT}, 
       #{bizId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponScope">
+  <insert id="insertSelective" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponScope">
     insert into coupon_scope
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
       <if test="type != null">
-        type,
+        `type`,
       </if>
       <if test="couponId != null">
         coupon_id,
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponScopeExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponScopeExample" resultType="java.lang.Long">
     select count(*) from coupon_scope
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -148,7 +148,7 @@
         id = #{row.id,jdbcType=BIGINT},
       </if>
       <if test="row.type != null">
-        type = #{row.type,jdbcType=TINYINT},
+        `type` = #{row.type,jdbcType=TINYINT},
       </if>
       <if test="row.couponId != null">
         coupon_id = #{row.couponId,jdbcType=BIGINT},
@@ -164,18 +164,18 @@
   <update id="updateByExample" parameterType="map">
     update coupon_scope
     set id = #{row.id,jdbcType=BIGINT},
-      type = #{row.type,jdbcType=TINYINT},
+      `type` = #{row.type,jdbcType=TINYINT},
       coupon_id = #{row.couponId,jdbcType=BIGINT},
       biz_id = #{row.bizId,jdbcType=BIGINT}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponScope">
+  <update id="updateByPrimaryKeySelective" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponScope">
     update coupon_scope
     <set>
       <if test="type != null">
-        type = #{type,jdbcType=TINYINT},
+        `type` = #{type,jdbcType=TINYINT},
       </if>
       <if test="couponId != null">
         coupon_id = #{couponId,jdbcType=BIGINT},
@@ -186,9 +186,9 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="io.gitee.pkmer.coupon.infrastructure.dao.model.coupon.CouponScope">
+  <update id="updateByPrimaryKey" parameterType="org.hzz.coupon.infrastructure.dao.model.coupon.CouponScope">
     update coupon_scope
-    set type = #{type,jdbcType=TINYINT},
+    set `type` = #{type,jdbcType=TINYINT},
       coupon_id = #{couponId,jdbcType=BIGINT},
       biz_id = #{bizId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}

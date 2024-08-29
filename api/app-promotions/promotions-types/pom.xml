@@ -22,5 +22,9 @@
             <groupId>io.gitee.pkmer</groupId>
             <artifactId>pkmer-boot-convention</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.gitee.pkmer</groupId>
+            <artifactId>pkmer-boot-starter-fastjson2</artifactId>
+        </dependency>
     </dependencies>
 </project>

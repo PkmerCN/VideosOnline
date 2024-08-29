@@ -47,7 +47,7 @@ public class InteractionQuestionController
         );
 
         cmdService.handleCommand(command);
-        return success();
+        return success(null);
     }
 
     /**
@@ -63,7 +63,7 @@ public class InteractionQuestionController
                 .setAnonymity(modifyQuestionReq.getAnonymity())
                 .setUserId(AppContextHolder.userContextHolder.getUser().getId());
         cmdService.handleCommand(command);
-        return success();
+        return success(null);
     }
 
     /**
@@ -102,6 +102,6 @@ public class InteractionQuestionController
                 .build();
 
         cmdService.handleCommand(command);
-        return success();
+        return success(null);
     }
 }
